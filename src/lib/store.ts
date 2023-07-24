@@ -7,22 +7,23 @@
 // Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 
 import { writable } from "svelte/store";
+import type { DocModel } from "./docmodel/docmodeltypes";
 
 type AppStore = {
-	data: any
-}
+	doc: DocModel | null;
+};
 
 function createStore() {
 	const appDefault: AppStore = {
-		data: null
+		doc: null
 	};
 	const { subscribe, set, update } = writable(appDefault);
 
 	return {
 		subscribe,
-		setData: (data: any) =>
+		setDocument: (data: any) =>
 			update((settings) => {
-				settings.data = data;
+				settings.doc = data;
 				return settings;
 			}),
 		reset: () => set(appDefault)

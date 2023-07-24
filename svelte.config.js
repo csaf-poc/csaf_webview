@@ -7,15 +7,17 @@
 // Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 
 /** @type {import('@sveltejs/kit').Config} */
-import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import adapter from "@sveltejs/adapter-static";
+import { vitePreprocess } from "@sveltejs/kit/vite";
+
+const dev = process.argv.includes("dev");
 
 const config = {
 	preprocess: [vitePreprocess()],
 	kit: {
 		adapter: adapter(),
 		paths: {
-			base: '/csaf_webview'
+			base: dev ? "" : process.env.BASE_PATH
 		}
 	}
 };

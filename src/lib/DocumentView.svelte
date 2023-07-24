@@ -8,30 +8,30 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
-	import { appStore } from './store';
-	let tlpStyle: string = '';
-	const formatDate = (d: string) => {
-		if (d === '') return '';
-		let [date, _] = d.split('T');
-		return date;
-	};
-	$: title = $appStore.data ? $appStore.data['document']['title'] : '';
-	$: lang = $appStore.data ? $appStore.data['document']['lang'] : '';
-	$: csafVersion = $appStore.data ? $appStore.data['document']['csaf_version'] : '';
-	$: tlp = $appStore.data ? $appStore.data['document']['distribution']['tlp']['label'] : '';
-	$: if (tlp === 'WHITE') tlpStyle = 'tlpclear';
-	$: id = $appStore.data ? $appStore.data['document']['tracking']['id'] : '';
-	$: status = $appStore.data ? $appStore.data['document']['tracking']['status'] : '';
-	$: published = formatDate(
-		$appStore.data ? $appStore.data['document']['tracking']['initial_release_date'] : ''
-	);
-	$: lastUpdate = formatDate(
-		$appStore.data ? $appStore.data['document']['tracking']['current_release_date'] : ''
-	);
+	import { TLP } from "$lib/docmodel/docmodeltypes";
+	import { appStore } from "./store";
+	let tlpStyle: string = "";
+	$: title = $appStore.doc?.title;
+	$: lang = $appStore.doc?.lang;
+	$: csafVersion = $appStore.doc?.csafVersion;
+	$: tlp = $appStore.doc?.tlp;
+	$: if (tlp === TLP.WHITE) {
+		tlpStyle = "tlpclear";
+	} else if (tlp === TLP.RED) {
+		tlpStyle = "tlred";
+	} else if (tlp === TLP.AMBER) {
+		tlpStyle = "tlamber";
+	} else if (tlp === TLP.GREEN) {
+		tlpStyle = "tlgreen";
+	}
+	$: id = $appStore.doc?.id;
+	$: published = $appStore.doc?.published;
+	$: lastUpdate = $appStore.doc?.lastUpdate;
+	$: status = $appStore.doc?.status;
 </script>
 
-{#if $appStore.data}
-	<div class="">
+{#if $appStore.doc}
+	<div class="documentdata">
 		<dl>
 			<dt>TLP</dt>
 			<dd><span class={tlpStyle}>{tlp}</span></dd>
@@ -56,9 +56,12 @@
 <style>
 	dt {
 		font-size: large;
+		float: left;
+		clear: left;
+		width: 15%;
 	}
 	dd {
-		margin-bottom: 1.5em;
+		margin-bottom: 0.3em;
 	}
 	.tlpclear {
 		background: #000;

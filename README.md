@@ -26,9 +26,23 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 ### Install dependencies
 
 ```npm install```
+```npx playwright install```
 
 ### Run development server and `--open` a browser.
 
 ```npm run dev -- --open```
 
 ### Drag a valid csaf-file over the `dropzone`.
+
+### Run unit tests
+
+```npm run test:unit```
+
+### Run unit tests coverage
+
+```npm run coverage```
+
+### Deploy new version of GH page
+
+```npm run build:ghpage```
+```npm run deploy```

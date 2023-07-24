@@ -8,31 +8,44 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
-	import { appStore } from './store';
+	import { appStore } from "$lib/store";
+	import { convertToDocModel } from "$lib/docmodel/docmodel";
+
 	let hover: boolean = false;
 	let valid: boolean | null = null;
-	let text: string = 'Drop your CSAF-file here';
+	$: invalid = valid === false;
+	let text: string = "Drop your CSAF-file here";
 	const fileDropped = (e: DragEvent) => {
 		if (e.dataTransfer) {
 			const csafFile: File = e.dataTransfer.files[0];
 			const type: string = csafFile.type;
-			if (type == 'application/json') {
+			if (type == "application/json") {
 				valid = true;
 				text = `Displaying file "${csafFile.name}".`;
 				readFile(csafFile);
 			} else {
 				text = `File "${csafFile.name}" has an invalid format.`;
 				valid = false;
-				appStore.setData('');
+				appStore.setDocument(null);
 			}
 		}
 	};
 	const readFile = (csafFile: File) => {
 		const fileReader: FileReader = new FileReader();
-		fileReader.onload = (e) => {
+		let jsonDocument = {};
+		fileReader.onload = (e: ProgressEvent<FileReader>) => {
 			if (e.target) {
-				const jsonDocument = JSON.parse(e.target.result as string);
-				appStore.setData(jsonDocument);
+				try {
+					jsonDocument = JSON.parse(e.target.result as string);
+				} catch (_) {
+					/*
+						Treat unparsable documents as empty documents
+					   	The according errors will be reflected in the converted
+					   	DocModel.
+					*/
+				}
+				const result = convertToDocModel(jsonDocument);
+				appStore.setDocument(result);
 			}
 		};
 		fileReader.readAsText(csafFile);
@@ -53,7 +66,7 @@
 	}}
 	on:drop|preventDefault={fileDropped}
 >
-	{#if valid === false}<i class="bx bx-error" />{/if}{text}
+	{#if invalid}<i class="bx bx-error" />{/if}{text}
 </div>
 
 <style>

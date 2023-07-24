@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"build:ghpage": "BASE_PATH=/csaf_webview vite build",
 		"deploy": "git subtree push --prefix build origin gh-pages",
 		"preview": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
@@ -13,7 +14,8 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"test:integration": "playwright test",
-		"test:unit": "vitest"
+		"test:unit": "vitest",
+		"coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
@@ -22,6 +24,7 @@
 		"@sveltejs/kit": "^1.20.4",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
+		"@vitest/coverage-istanbul": "^0.33.0",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte": "^2.30.0",
