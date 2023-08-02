@@ -1,0 +1,25 @@
+name: Integrationtest
+
+on:
+    push:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+
+        - name: 'Install Node'
+          uses: actions/setup-node@v2
+          with:
+            node-version: '16.x'
+
+        - name: 'Install Deps'
+          run: npm install
+
+        - name: 'Install playwright'
+          run: npx playwright install
+
+        - name: 'Integration test'
+          run: npm run test:integration
+

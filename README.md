@@ -38,6 +38,10 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 ```npm run test:unit```
 
+### Run integration tests
+
+```npm run test:integration```
+
 ### Run unit tests coverage
 
 ```npm run coverage```
