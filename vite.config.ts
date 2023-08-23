@@ -8,6 +8,9 @@
 
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vitest/config";
+import { readFileSync } from "fs";
+
+const VERSION = readFileSync("VERSION", "utf8").trimEnd();
 
 export default defineConfig({
 	plugins: [sveltekit()],
@@ -21,5 +24,8 @@ export default defineConfig({
 			functions: 60,
 			statements: 60
 		}
+	},
+	define: {
+		__APP_VERSION__: VERSION
 	}
 });

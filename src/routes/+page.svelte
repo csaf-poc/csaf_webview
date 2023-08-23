@@ -14,6 +14,8 @@
 	import "boxicons/css/boxicons.min.css";
 	import { browser } from "$app/environment";
 	import { page } from "$app/stores";
+	// @ts-ignore
+	const version: string = "__APP_VERSION__";
 	const externalReference = browser && $page.url.searchParams.get("ref");
 	$: noRef = !externalReference;
 	const disable = (e: Event) => {
@@ -25,7 +27,10 @@
 
 <div class="container">
 	<!-- svelte-ignore a11y-no-redundant-roles -->
-	<h1 role="heading" class="text-center">CSAF Webview+</h1>
+	<div class="header">
+		<h1 role="heading" class="text-center">CSAF Webview+</h1>
+		<h4>v. {version}</h4>
+	</div>
 	{#if noRef}
 		<div class="row">
 			<div class="col">
@@ -39,3 +44,12 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.header {
+		display: flex;
+		align-content: flex-end;
+		align-items: center;
+		justify-content: space-between;
+	}
+</style>
