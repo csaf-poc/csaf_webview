@@ -4,8 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
-		"build:ghpage": "BASE_PATH=/csaf_webview vite build",
+		"build": "git describe --tags > VERSION && vite build",
+		"build:ghpage": "BASE_PATH=/csaf_webview git describe --tags > VERSION && vite build",
 		"deploy": "git subtree push --prefix build origin gh-pages",
 		"preview": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
