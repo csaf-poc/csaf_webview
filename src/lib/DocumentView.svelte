@@ -8,7 +8,7 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
-	import { TLP } from "$lib/docmodel/docmodeltypes";
+	import { Status, TLP } from "$lib/docmodel/docmodeltypes";
 	import { appStore } from "./store";
 	let tlpStyle: string = "";
 	$: title = $appStore.doc?.title;
@@ -47,8 +47,10 @@
 			<dd>{published}</dd>
 			<dt>Last update</dt>
 			<dd>{lastUpdate}</dd>
-			<dt>Status</dt>
-			<dd>{status}</dd>
+			{#if $appStore.doc?.status !== Status.final}
+				<dt>Status</dt>
+				<dd>{status}</dd>
+			{/if}
 		</dl>
 	</div>
 {/if}
