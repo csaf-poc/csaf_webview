@@ -26,6 +26,6 @@ export default defineConfig({
 		}
 	},
 	define: {
-		__APP_VERSION__: VERSION
+		__APP_VERSION__: `${JSON.stringify(VERSION)}`
 	}
 });
