@@ -15,7 +15,7 @@
 	import { browser } from "$app/environment";
 	import { page } from "$app/stores";
 	// @ts-ignore
-	const version: string = "__APP_VERSION__";
+	const version: string = __APP_VERSION__;
 	const externalReference = browser && $page.url.searchParams.get("ref");
 	$: noRef = !externalReference;
 	const disable = (e: Event) => {
