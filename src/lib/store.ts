@@ -10,24 +10,24 @@ import { writable } from "svelte/store";
 import type { DocModel } from "./docmodel/docmodeltypes";
 
 type AppStore = {
-	doc: DocModel | null;
+  doc: DocModel | null;
 };
 
 function createStore() {
-	const appDefault: AppStore = {
-		doc: null
-	};
-	const { subscribe, set, update } = writable(appDefault);
+  const appDefault: AppStore = {
+    doc: null
+  };
+  const { subscribe, set, update } = writable(appDefault);
 
-	return {
-		subscribe,
-		setDocument: (data: any) =>
-			update((settings) => {
-				settings.doc = data;
-				return settings;
-			}),
-		reset: () => set(appDefault)
-	};
+  return {
+    subscribe,
+    setDocument: (data: any) =>
+      update((settings) => {
+        settings.doc = data;
+        return settings;
+      }),
+    reset: () => set(appDefault)
+  };
 }
 
 export const appStore = createStore();
