@@ -17,7 +17,7 @@ function createStore() {
   const appDefault: AppStore = {
     doc: null
   };
-  const { subscribe, set, update } = writable(appDefault);
+  const { subscribe, set, update } = writable({ ...appDefault });
 
   return {
     subscribe,
@@ -26,7 +26,7 @@ function createStore() {
         settings.doc = data;
         return settings;
       }),
-    reset: () => set(appDefault)
+    reset: () => set({ ...appDefault })
   };
 }
 
