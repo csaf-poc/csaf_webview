@@ -14,7 +14,7 @@ export const ProductStatus = {
   RECOMMENDED: "RECOMMENDED"
 } as const;
 
-export const ProductStatusSymbols = {
+export const ProductStatusSymbol = {
   FIXED: "F",
   UNDER_INVESTIGATION: "U",
   KNOWN_AFFECTED: "K",

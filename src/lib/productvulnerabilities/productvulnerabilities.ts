@@ -6,7 +6,7 @@
 // SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
 // Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 
-import { ProductStatusSymbols, type Vulnerability } from "./productvulnerabilitiestypes";
+import { ProductStatusSymbol, type Vulnerability } from "./productvulnerabilitiestypes";
 
 const generateProductVulnerabilities = (jsonDocument: any) => {
   const products = extractProducts(jsonDocument);
@@ -46,19 +46,19 @@ const generateLineWith = (product: any, vulnerabilities: any) => {
   vulnerabilities.forEach((vulnerability: any) => {
     let column = "";
     if (vulnerability.fixed?.[product.product_id]) {
-      column += ProductStatusSymbols.FIXED;
+      column += ProductStatusSymbol.FIXED;
     }
     if (vulnerability.under_investigation?.[product.product_id]) {
-      column += ProductStatusSymbols.UNDER_INVESTIGATION;
+      column += ProductStatusSymbol.UNDER_INVESTIGATION;
     }
     if (vulnerability.known_affected?.[product.product_id]) {
-      column += ProductStatusSymbols.KNOWN_AFFECTED;
+      column += ProductStatusSymbol.KNOWN_AFFECTED;
     }
     if (vulnerability.known_not_affected?.[product.product_id]) {
-      column += ProductStatusSymbols.NOT_AFFECTED;
+      column += ProductStatusSymbol.NOT_AFFECTED;
     }
     if (vulnerability.recommended?.[product.product_id]) {
-      column += ProductStatusSymbols.RECOMMENDED;
+      column += ProductStatusSymbol.RECOMMENDED;
     }
     line.push(column);
   });

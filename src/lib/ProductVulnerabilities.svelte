@@ -10,6 +10,7 @@
 
 <script lang="ts">
   import { appStore } from "$lib/store";
+  import { ProductStatusSymbol } from "./productvulnerabilities/productvulnerabilitiestypes";
   let headerColumns: any = [];
   let productLines: string[][];
   $: if ($appStore.doc) {
@@ -40,16 +41,21 @@
                 {:else if column === "N.A"}
                   <td>{column}</td>
                 {:else}
-                  <td
-                    ><i
-                      class:bx={true}
-                      class:bx-x={column === "K"}
-                      class:bx-check={column === "F"}
-                      class:bx-error={column === "U"}
-                      class:bx-minus={column === "N"}
-                      class:bx-heart={column === "R"}
-                    /></td
-                  >
+                  <td>
+                    {#if column === ProductStatusSymbol.NOT_AFFECTED + ProductStatusSymbol.RECOMMENDED}
+                      <i class="bx bx-heart" />
+                      <i class="bx b-minus" />
+                    {:else}
+                      <i
+                        class:bx={true}
+                        class:bx-x={column === ProductStatusSymbol.KNOWN_AFFECTED}
+                        class:bx-check={column === ProductStatusSymbol.FIXED}
+                        class:bx-error={column === ProductStatusSymbol.UNDER_INVESTIGATION}
+                        class:bx-minus={column === ProductStatusSymbol.NOT_AFFECTED}
+                        class:bx-heart={column === ProductStatusSymbol.RECOMMENDED}
+                      />
+                    {/if}
+                  </td>
                 {/if}
               {/each}
             </tr>
