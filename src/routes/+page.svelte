@@ -14,18 +14,19 @@
   import { appStore } from "$lib/store";
   import { page } from "$app/stores";
   import SingleView from "$lib/singleview/SingleView.svelte";
+  import FeedView from "$lib/feedview/FeedView.svelte";
   // @ts-ignore
   const version: string = __APP_VERSION__;
   const externalReference = browser && $page.url.searchParams.get("ref");
   const MODE = {
     SINGLE: "Switch to ROLIE-feed",
-    ROLIE: "Switch to single view"
+    FEED: "Switch to single view"
   };
   let mode = MODE.SINGLE;
   $: noRef = !externalReference;
   const switchView = (e: Event) => {
     if (mode === MODE.SINGLE) {
-      mode = MODE.ROLIE;
+      mode = MODE.FEED;
       appStore.reset();
     } else {
       mode = MODE.SINGLE;
@@ -48,6 +49,8 @@
   </div>
   {#if noRef && mode === MODE.SINGLE}
     <SingleView />
+  {:else}
+    <FeedView />
   {/if}
 </div>
 
