@@ -9,8 +9,8 @@
 -->
 <script lang="ts">
   import { appStore } from "$lib/store";
-  import { convertToDocModel } from "$lib/docmodel/docmodel";
-  import { generateProductVulnerabilities } from "./productvulnerabilities/productvulnerabilities";
+  import { convertToDocModel } from "$lib/singleview/docmodel/docmodel";
+  import { generateProductVulnerabilities } from "../productvulnerabilities/productvulnerabilities";
 
   let hover: boolean = false;
   let valid: boolean | null = null;

@@ -6,7 +6,13 @@
 // SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
 //
 
-import { TLP, type DocModel, Status, EMPTY, CSAFDocProps } from "$lib/docmodel/docmodeltypes";
+import {
+  TLP,
+  type DocModel,
+  Status,
+  EMPTY,
+  CSAFDocProps
+} from "$lib/singleview/docmodel/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
   return csafDoc.hasOwnProperty(CSAFDocProps.DOCUMENT);

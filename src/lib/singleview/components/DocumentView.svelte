@@ -8,8 +8,8 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
-  import { Status, TLP } from "$lib/docmodel/docmodeltypes";
-  import { appStore } from "./store";
+  import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
+  import { appStore } from "$lib/store";
   let tlpStyle: string = "";
   $: title = $appStore.doc?.title;
   $: lang = $appStore.doc?.lang;

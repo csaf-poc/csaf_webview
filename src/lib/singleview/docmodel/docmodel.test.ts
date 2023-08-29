@@ -7,7 +7,7 @@
 // Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 
 import { describe, it, expect } from "vitest";
-import { convertToDocModel } from "$lib/docmodel/docmodel";
+import { convertToDocModel } from "$lib/singleview/docmodel/docmodel";
 import {
   EMPTY,
   Status,
@@ -15,7 +15,7 @@ import {
   type DocModel,
   type DocModelKey,
   TLP
-} from "$lib/docmodel/docmodeltypes";
+} from "$lib/singleview/docmodel/docmodeltypes";
 
 const allEmpty = (docModel: DocModel, properties: DocModelKey[]) => {
   properties.forEach((p) => {

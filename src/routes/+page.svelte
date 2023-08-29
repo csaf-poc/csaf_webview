@@ -8,14 +8,12 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
-  import SingleDocumentView from "$lib/DocumentView.svelte";
-  import Droparea from "$lib/Droparea.svelte";
-  import ProductVulnerabilities from "$lib/ProductVulnerabilities.svelte";
   import "chota/dist/chota.min.css";
   import "boxicons/css/boxicons.min.css";
   import { browser } from "$app/environment";
   import { appStore } from "$lib/store";
   import { page } from "$app/stores";
+  import SingleView from "$lib/singleview/SingleView.svelte";
   // @ts-ignore
   const version: string = __APP_VERSION__;
   const externalReference = browser && $page.url.searchParams.get("ref");
@@ -49,21 +47,7 @@
     <h4>v. {version}</h4>
   </div>
   {#if noRef && mode === MODE.SINGLE}
-    <div class="row">
-      <div class="col">
-        <Droparea />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <SingleDocumentView />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <ProductVulnerabilities />
-      </div>
-    </div>
+    <SingleView />
   {/if}
 </div>
 
