@@ -9,7 +9,9 @@
 -->
 # Webview+
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+The CSAF-Webview is a complementary service for the CSAF-suite. Its purpose is to display the abstract information of CSAF-Dokuments in a human friendly way.
+
+There are two ways to visualize the documents: For one you could drag and drop any single CSAF-Document in the dropzone and view its contens. Or you could browse ROLIE-feeds.
 
 ![](docs/app.png)
 
