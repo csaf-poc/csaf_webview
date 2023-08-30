@@ -19,7 +19,11 @@ export const CSAFDocProps = {
   LABEL: "label",
   STATUS: "status",
   INITIALRELEASEDATE: "initial_release_date",
-  CURRENTRELEASEDATE: "current_release_date"
+  CURRENTRELEASEDATE: "current_release_date",
+  PUBLISHER: "publisher",
+  PUBLISHER_CATEGORY: "category",
+  PUBLISHER_NAME: "name",
+  PUBLISHER_NAMESPACE: "namespace"
 } as const;
 
 export const TLP = {
@@ -42,6 +46,12 @@ export const Status = {
 } as const;
 export type StatusKeys = (typeof Status)[keyof typeof Status];
 
+export type Publisher = {
+  category: string;
+  name: string;
+  namespace: string;
+};
+
 export type DocModel = {
   title: string;
   lang: string;
@@ -52,11 +62,13 @@ export type DocModel = {
   status: string;
   published: string;
   lastUpdate: string;
+  publisher: Publisher;
   vulnerabilities: Array<Array<string>>;
   isDocPresent: boolean;
   isTrackingPresent: boolean;
   isDistributionPresent: boolean;
   isTLPPresent: boolean;
+  isPublisherPresent: boolean;
 };
 
 export type DocModelKey = keyof DocModel;

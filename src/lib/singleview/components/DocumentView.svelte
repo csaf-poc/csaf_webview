@@ -11,6 +11,9 @@
   import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
   import { appStore } from "$lib/store";
   let tlpStyle: string = "";
+  $: publisherName = $appStore.doc?.publisher.name;
+  $: publisherCategory = $appStore.doc?.publisher.category;
+  $: publisherNamespace = $appStore.doc?.publisher.namespace;
   $: category = $appStore.doc?.category;
   $: title = $appStore.doc?.title;
   $: lang = $appStore.doc?.lang;
@@ -43,6 +46,12 @@
       <dd>{title}</dd>
       <dt>ID</dt>
       <dd>{id}</dd>
+      <dt>Publisher name</dt>
+      <dd>{publisherName}</dd>
+      <dt>Publisher category</dt>
+      <dd>{publisherCategory}</dd>
+      <dt>Publisher namespace</dt>
+      <dd>{publisherNamespace}</dd>
       <dt>Language</dt>
       <dd>{lang}</dd>
       <dt>CSAF-Version</dt>
@@ -64,7 +73,7 @@
     font-size: large;
     float: left;
     clear: left;
-    width: 15%;
+    width: 20%;
   }
   dd {
     margin-bottom: 0.3em;

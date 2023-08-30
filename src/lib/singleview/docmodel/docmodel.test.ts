@@ -55,6 +55,10 @@ describe("docmodel test", () => {
         "isTLPPresent"
       ])
     ).true;
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -74,6 +78,10 @@ describe("docmodel test", () => {
     ]);
     expect(allDisabled(docModel, ["isTrackingPresent", "isDistributionPresent", "isTLPPresent"]))
       .true;
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -86,6 +94,10 @@ describe("docmodel test", () => {
     expect(docModel.title).toBe(TITLE);
     expect(allDisabled(docModel, ["isTrackingPresent", "isDistributionPresent", "isTLPPresent"]))
       .true;
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -98,6 +110,38 @@ describe("docmodel test", () => {
     expect(docModel.csafVersion).toBe(version);
     expect(allDisabled(docModel, ["isTrackingPresent", "isDistributionPresent", "isTLPPresent"]))
       .true;
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
+  });
+});
+
+describe("docmodel test", () => {
+  it("converts an object with document property and publisher information", () => {
+    const version = "2.0";
+    const publisherName = "ABC";
+    const publisherCategory = "coordinator";
+    const publisherNameSpace = "https://www.example.com";
+    const doc = {
+      [CSAFDocProps.DOCUMENT]: {
+        [CSAFDocProps.CSAFVERSION]: version,
+        [CSAFDocProps.PUBLISHER]: {
+          [CSAFDocProps.PUBLISHER_NAME]: publisherName,
+          [CSAFDocProps.PUBLISHER_CATEGORY]: publisherCategory,
+          [CSAFDocProps.PUBLISHER_NAMESPACE]: publisherNameSpace
+        }
+      }
+    };
+    const docModel: DocModel = convertToDocModel(doc);
+    allEmpty(docModel, ["id", "lang", "lastUpdate", "published", "status", "title", "tlp"]);
+    expect(docModel.csafVersion).toBe(version);
+    expect(allDisabled(docModel, ["isTrackingPresent", "isDistributionPresent", "isTLPPresent"]))
+      .true;
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe(publisherName);
+    expect(publisher.category).toBe(publisherCategory);
+    expect(publisher.namespace).toBe(publisherNameSpace);
   });
 });
 
@@ -110,6 +154,10 @@ describe("docmodel test", () => {
     expect(docModel.lang).toBe(lang);
     expect(allDisabled(docModel, ["isTrackingPresent", "isDistributionPresent", "isTLPPresent"]))
       .true;
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -131,6 +179,10 @@ describe("docmodel test", () => {
     expect(docModel.category).toBe(category);
     expect(allDisabled(docModel, ["isTrackingPresent", "isDistributionPresent", "isTLPPresent"]))
       .true;
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -141,6 +193,10 @@ describe("docmodel test", () => {
     allEmpty(docModel, ["id", "lang", "lastUpdate", "published", "title", "tlp", "csafVersion"]);
     expect(allDisabled(docModel, ["isDistributionPresent", "isTLPPresent"])).true;
     expect(docModel.status).toBe(Status.ERROR);
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -155,6 +211,10 @@ describe("docmodel test", () => {
     expect(allDisabled(docModel, ["isDistributionPresent", "isTLPPresent"])).true;
     expect(docModel.status).toBe(Status.ERROR);
     expect(docModel.id).toBe(testId);
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -168,6 +228,10 @@ describe("docmodel test", () => {
     allEmpty(docModel, ["id", "lang", "lastUpdate", "published", "title", "tlp", "csafVersion"]);
     expect(allDisabled(docModel, ["isDistributionPresent", "isTLPPresent"])).true;
     expect(docModel.status).toBe(Status.final);
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -183,6 +247,10 @@ describe("docmodel test", () => {
     allEmpty(docModel, ["id", "lang", "lastUpdate", "title", "tlp", "csafVersion"]);
     expect(allDisabled(docModel, ["isDistributionPresent", "isTLPPresent"])).true;
     expect(docModel.status).toBe(Status.ERROR);
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -198,6 +266,10 @@ describe("docmodel test", () => {
     allEmpty(docModel, ["id", "lang", "published", "title", "tlp", "csafVersion"]);
     expect(allDisabled(docModel, ["isDistributionPresent", "isTLPPresent"])).true;
     expect(docModel.status).toBe(Status.ERROR);
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -216,6 +288,10 @@ describe("docmodel test", () => {
       "csafVersion"
     ]);
     expect(allDisabled(docModel, ["isTrackingPresent", "isTLPPresent"])).true;
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -236,6 +312,10 @@ describe("docmodel test", () => {
       "csafVersion"
     ]);
     expect(allDisabled(docModel, ["isTrackingPresent"])).true;
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -251,6 +331,10 @@ describe("docmodel test", () => {
     allEmpty(docModel, ["id", "lang", "lastUpdate", "published", "status", "title", "csafVersion"]);
     expect(allDisabled(docModel, ["isTrackingPresent"])).true;
     expect(docModel.tlp).toBe(TLP.RED);
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });
 
@@ -266,5 +350,9 @@ describe("docmodel test", () => {
     allEmpty(docModel, ["id", "lang", "lastUpdate", "published", "status", "title", "csafVersion"]);
     expect(allDisabled(docModel, ["isTrackingPresent"])).true;
     expect(docModel.tlp).toBe(TLP.ERROR);
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
   });
 });

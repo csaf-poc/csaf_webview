@@ -11,7 +11,8 @@ import {
   type DocModel,
   Status,
   EMPTY,
-  CSAFDocProps
+  CSAFDocProps,
+  type Publisher
 } from "$lib/singleview/docmodel/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
@@ -32,6 +33,10 @@ const checkTLPPresent = (csafDoc: any): boolean => {
     csafDoc.document.distribution[CSAFDocProps.TLP] &&
     csafDoc.document.distribution[CSAFDocProps.TLP][CSAFDocProps.LABEL]
   );
+};
+
+const checkPublisher = (csafDoc: any): boolean => {
+  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.PUBLISHER];
 };
 
 const getTitle = (csafDoc: any): string => {
@@ -99,6 +104,22 @@ const getCategory = (csafDoc: any): string => {
   return csafDoc.document[CSAFDocProps.CATEGORY] || EMPTY;
 };
 
+const getPublisher = (csafDoc: any): Publisher => {
+  if (!checkPublisher(csafDoc)) {
+    return {
+      category: "",
+      name: "",
+      namespace: ""
+    };
+  }
+  const publisher = csafDoc.document[CSAFDocProps.PUBLISHER];
+  return {
+    category: publisher[CSAFDocProps.PUBLISHER_CATEGORY],
+    name: publisher[CSAFDocProps.PUBLISHER_NAME],
+    namespace: publisher[CSAFDocProps.PUBLISHER_NAMESPACE]
+  };
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
     title: getTitle(csafDoc),
@@ -109,12 +130,14 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     id: getId(csafDoc),
     status: getStatus(csafDoc),
     published: getPublished(csafDoc),
+    publisher: getPublisher(csafDoc),
     lastUpdate: getLastUpdate(csafDoc),
     vulnerabilities: [],
     isDocPresent: checkDocumentPresent(csafDoc),
     isTrackingPresent: checkTrackingPresent(csafDoc),
     isDistributionPresent: checkDistributionPresent(csafDoc),
-    isTLPPresent: checkTLPPresent(csafDoc)
+    isTLPPresent: checkTLPPresent(csafDoc),
+    isPublisherPresent: checkPublisher(csafDoc)
   };
   return docModel;
 };
