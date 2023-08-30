@@ -82,11 +82,20 @@ const parseBranch = (acc: any, branch: any) => {
       acc.concat(parseBranch(acc, subbranch));
     });
   } else {
-    if (branch.product && branch.product.product_id && branch.product.name) {
+    if (isProduct(branch)) {
       acc.push({ product_id: branch.product.product_id, name: branch.product.name });
     }
   }
   return acc;
+};
+
+const isProduct = (branch: any) => {
+  return (
+    branch.category === "product_version" &&
+    branch.product &&
+    branch.product.product_id &&
+    branch.product.name
+  );
 };
 
 const generateDictFrom = (productStatus: any, section: string) => {

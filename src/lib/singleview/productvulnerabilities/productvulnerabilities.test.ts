@@ -30,6 +30,7 @@ const oneProductNotNested = {
   product_tree: {
     branches: [
       {
+        category: "product_version",
         product: {
           product_id: "123",
           name: "Product A"
@@ -45,6 +46,7 @@ const simpleNested = {
       {
         branches: [
           {
+            category: "product_version",
             product: {
               product_id: "123",
               name: "Product A"
@@ -64,6 +66,7 @@ const complexNested = {
           {
             branches: [
               {
+                category: "product_version",
                 product: {
                   product_id: "8910",
                   name: "Product C"
@@ -72,12 +75,14 @@ const complexNested = {
             ]
           },
           {
+            category: "product_version",
             product: {
               product_id: "123",
               name: "Product A"
             }
           },
           {
+            category: "product_version",
             product: {
               product_id: "3456",
               name: "Product B"
@@ -136,12 +141,14 @@ const jsonDocument = {
           {
             branches: [
               {
+                category: "product_version",
                 product: {
                   product_id: "8910",
                   name: "Product C"
                 }
               },
               {
+                category: "product_version",
                 product: {
                   product_id: "1112",
                   name: "Product D"
@@ -150,18 +157,21 @@ const jsonDocument = {
             ]
           },
           {
+            category: "product_version",
             product: {
               product_id: "123",
               name: "Product A"
             }
           },
           {
+            category: "product_version",
             product: {
               product_id: "3456",
               name: "Product B"
             }
           },
           {
+            category: "product_version",
             product: {
               product_id: "1314",
               name: "Product E"
