@@ -26,6 +26,8 @@ type StringObject = {
   [key: string]: string;
 };
 
+export type Product = { product_id: string; name: string };
+
 export type Vulnerability = {
   cve: string;
 } & {

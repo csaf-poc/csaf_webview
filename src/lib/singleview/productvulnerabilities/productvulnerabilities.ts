@@ -6,12 +6,16 @@
 // SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
 // Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 
-import { ProductStatusSymbol, type Vulnerability } from "./productvulnerabilitiestypes";
+import {
+  ProductStatusSymbol,
+  type Vulnerability,
+  type Product
+} from "./productvulnerabilitiestypes";
 
 const generateProductVulnerabilities = (jsonDocument: any) => {
   const products = extractProducts(jsonDocument);
   let vulnerabilities = extractVulnerabilities(jsonDocument);
-  vulnerabilities.sort((vuln1: any, vuln2: any) => {
+  vulnerabilities.sort((vuln1: Vulnerability, vuln2: Vulnerability) => {
     if (vuln1.cve < vuln2.cve) return -1;
     if (vuln1.cve > vuln2.cve) return 1;
     return 0;
@@ -20,10 +24,10 @@ const generateProductVulnerabilities = (jsonDocument: any) => {
   return result;
 };
 
-const generateCrossTableFrom = (products: any, vulnerabilities: any) => {
+const generateCrossTableFrom = (products: Product[], vulnerabilities: Vulnerability[]) => {
   let result = [];
   let header = ["Product", "Total result"];
-  const getCVE = vulnerabilities.map((vulnerability: any) => vulnerability.cve);
+  const getCVE = vulnerabilities.map((vulnerability: Vulnerability) => vulnerability.cve);
   header = header.concat(getCVE);
   result.push(header);
   let productLines = products.map((product: any) => {
@@ -40,10 +44,10 @@ const generateCrossTableFrom = (products: any, vulnerabilities: any) => {
   return result;
 };
 
-const generateLineWith = (product: any, vulnerabilities: any) => {
+const generateLineWith = (product: Product, vulnerabilities: Vulnerability[]) => {
   const DUMMY_TOTAL = "N.A";
   const line: any = [DUMMY_TOTAL];
-  vulnerabilities.forEach((vulnerability: any) => {
+  vulnerabilities.forEach((vulnerability: Vulnerability) => {
     let column = "";
     if (vulnerability.fixed?.[product.product_id]) {
       column += ProductStatusSymbol.FIXED;
@@ -69,14 +73,14 @@ const generateLineWith = (product: any, vulnerabilities: any) => {
   return line;
 };
 
-const extractProducts = (jsonDocument: any) => {
+const extractProducts = (jsonDocument: any): Product[] => {
   if (!jsonDocument.product_tree || !jsonDocument.product_tree.branches) {
     return [];
   }
   return jsonDocument.product_tree.branches.reduce(parseBranch, []);
 };
 
-const parseBranch = (acc: any, branch: any) => {
+const parseBranch = (acc: Product[], branch: any) => {
   if (branch.branches) {
     branch.branches.forEach((subbranch: any) => {
       acc.concat(parseBranch(acc, subbranch));
@@ -100,7 +104,7 @@ const generateDictFrom = (productStatus: any, section: string) => {
   }, {});
 };
 
-const extractVulnerabilities = (jsonDocument: any) => {
+const extractVulnerabilities = (jsonDocument: any): Vulnerability[] => {
   if (!jsonDocument.vulnerabilities) {
     return [];
   }
