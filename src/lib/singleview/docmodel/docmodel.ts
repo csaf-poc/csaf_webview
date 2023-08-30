@@ -94,11 +94,17 @@ const getLastUpdate = (csafDoc: any): string => {
   return csafDoc.document.tracking[CSAFDocProps.CURRENTRELEASEDATE] || EMPTY;
 };
 
+const getCategory = (csafDoc: any): string => {
+  if (!checkDocumentPresent(csafDoc)) return EMPTY;
+  return csafDoc.document[CSAFDocProps.CATEGORY] || EMPTY;
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
     title: getTitle(csafDoc),
     lang: getLanguage(csafDoc),
     csafVersion: getCSAFVersion(csafDoc),
+    category: getCategory(csafDoc),
     tlp: getTlp(csafDoc),
     id: getId(csafDoc),
     status: getStatus(csafDoc),

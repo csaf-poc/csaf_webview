@@ -8,6 +8,7 @@
 
 export const CSAFDocProps = {
   DOCUMENT: "document",
+  CATEGORY: "category",
   TRACKING: "tracking",
   DISTRIBUTION: "distribution",
   TLP: "tlp",
@@ -45,6 +46,7 @@ export type DocModel = {
   title: string;
   lang: string;
   csafVersion: string;
+  category: string;
   tlp: string;
   id: string;
   status: string;

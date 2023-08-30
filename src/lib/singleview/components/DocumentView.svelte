@@ -11,6 +11,7 @@
   import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
   import { appStore } from "$lib/store";
   let tlpStyle: string = "";
+  $: category = $appStore.doc?.category;
   $: title = $appStore.doc?.title;
   $: lang = $appStore.doc?.lang;
   $: csafVersion = $appStore.doc?.csafVersion;
@@ -36,6 +37,8 @@
     <dl>
       <dt>TLP</dt>
       <dd><span class={tlpStyle}>{tlp}</span></dd>
+      <dt>Category</dt>
+      <dd>{category}</dd>
       <dt>Title</dt>
       <dd>{title}</dd>
       <dt>ID</dt>

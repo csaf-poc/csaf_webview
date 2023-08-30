@@ -114,6 +114,27 @@ describe("docmodel test", () => {
 });
 
 describe("docmodel test", () => {
+  it("converts an object with document property and category", () => {
+    const category = "csaf_security_advisory";
+    const doc = { [CSAFDocProps.DOCUMENT]: { [CSAFDocProps.CATEGORY]: category } };
+    const docModel: DocModel = convertToDocModel(doc);
+    allEmpty(docModel, [
+      "id",
+      "lastUpdate",
+      "published",
+      "status",
+      "title",
+      "tlp",
+      "csafVersion",
+      "lang"
+    ]);
+    expect(docModel.category).toBe(category);
+    expect(allDisabled(docModel, ["isTrackingPresent", "isDistributionPresent", "isTLPPresent"]))
+      .true;
+  });
+});
+
+describe("docmodel test", () => {
   it("converts an object with tracking property", () => {
     const doc = { [CSAFDocProps.DOCUMENT]: { [CSAFDocProps.TRACKING]: {} } };
     const docModel: DocModel = convertToDocModel(doc);
