@@ -23,7 +23,9 @@ export const CSAFDocProps = {
   PUBLISHER: "publisher",
   PUBLISHER_CATEGORY: "category",
   PUBLISHER_NAME: "name",
-  PUBLISHER_NAMESPACE: "namespace"
+  PUBLISHER_NAMESPACE: "namespace",
+  TRACKINGVERSION: "version",
+  REVISIONHISTORY: "revision_history"
 } as const;
 
 export const TLP = {
@@ -52,6 +54,12 @@ export type Publisher = {
   namespace: string;
 };
 
+export type RevisionHistoryEntry = {
+  date: string;
+  number: number;
+  summary: string;
+};
+
 export type DocModel = {
   title: string;
   lang: string;
@@ -63,6 +71,8 @@ export type DocModel = {
   published: string;
   lastUpdate: string;
   publisher: Publisher;
+  trackingVersion: string;
+  revisionHistory: RevisionHistoryEntry[];
   vulnerabilities: Array<Array<string>>;
   isDocPresent: boolean;
   isTrackingPresent: boolean;

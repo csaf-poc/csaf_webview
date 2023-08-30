@@ -90,12 +90,7 @@ const parseBranch = (acc: any, branch: any) => {
 };
 
 const isProduct = (branch: any) => {
-  return (
-    branch.category === "product_version" &&
-    branch.product &&
-    branch.product.product_id &&
-    branch.product.name
-  );
+  return branch.product && branch.product.product_id && branch.product.name;
 };
 
 const generateDictFrom = (productStatus: any, section: string) => {

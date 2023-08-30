@@ -120,6 +120,11 @@ const getPublisher = (csafDoc: any): Publisher => {
   };
 };
 
+const getTrackingVersion = (csafDoc: any): string => {
+  if (!checkTrackingPresent(csafDoc)) return EMPTY;
+  return csafDoc.document.tracking[CSAFDocProps.TRACKINGVERSION] || EMPTY;
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
     title: getTitle(csafDoc),
@@ -131,6 +136,8 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     status: getStatus(csafDoc),
     published: getPublished(csafDoc),
     publisher: getPublisher(csafDoc),
+    trackingVersion: getTrackingVersion(csafDoc),
+    revisionHistory: [],
     lastUpdate: getLastUpdate(csafDoc),
     vulnerabilities: [],
     isDocPresent: checkDocumentPresent(csafDoc),

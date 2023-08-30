@@ -82,6 +82,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -98,6 +99,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -114,6 +116,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -142,6 +145,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe(publisherName);
     expect(publisher.category).toBe(publisherCategory);
     expect(publisher.namespace).toBe(publisherNameSpace);
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -158,6 +162,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -183,6 +188,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -197,6 +203,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -215,6 +222,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -232,6 +240,27 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
+  });
+});
+
+describe("docmodel test", () => {
+  it("converts an object with tracking property and trackingVersion", () => {
+    const version = 1;
+    const doc = {
+      [CSAFDocProps.DOCUMENT]: {
+        [CSAFDocProps.TRACKING]: { [CSAFDocProps.TRACKINGVERSION]: version }
+      }
+    };
+    const docModel: DocModel = convertToDocModel(doc);
+    allEmpty(docModel, ["id", "lang", "lastUpdate", "published", "title", "tlp", "csafVersion"]);
+    expect(allDisabled(docModel, ["isDistributionPresent", "isTLPPresent"])).true;
+    expect(docModel.status).toBe(Status.ERROR);
+    const publisher = docModel.publisher;
+    expect(publisher.name).toBe("");
+    expect(publisher.category).toBe("");
+    expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe(version);
   });
 });
 
@@ -251,6 +280,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -270,6 +300,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -292,6 +323,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -316,6 +348,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -335,6 +368,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });
 
@@ -354,5 +388,6 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe("");
     expect(publisher.category).toBe("");
     expect(publisher.namespace).toBe("");
+    expect(docModel.trackingVersion).toBe("");
   });
 });

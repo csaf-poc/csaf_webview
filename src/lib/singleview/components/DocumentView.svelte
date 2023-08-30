@@ -11,6 +11,7 @@
   import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
   import { appStore } from "$lib/store";
   let tlpStyle: string = "";
+  $: trackingVersion = $appStore.doc?.trackingVersion;
   $: publisherName = $appStore.doc?.publisher.name;
   $: publisherCategory = $appStore.doc?.publisher.category;
   $: publisherNamespace = $appStore.doc?.publisher.namespace;
@@ -38,14 +39,16 @@
   <div class="documentdata">
     <h2>General</h2>
     <dl>
+      <dt>ID</dt>
+      <dd>{id}</dd>
+      <dt>CSAF-Version</dt>
+      <dd>{csafVersion}</dd>
       <dt>TLP</dt>
       <dd><span class={tlpStyle}>{tlp}</span></dd>
       <dt>Category</dt>
       <dd>{category}</dd>
       <dt>Title</dt>
       <dd>{title}</dd>
-      <dt>ID</dt>
-      <dd>{id}</dd>
       <dt>Publisher name</dt>
       <dd>{publisherName}</dd>
       <dt>Publisher category</dt>
@@ -54,12 +57,12 @@
       <dd>{publisherNamespace}</dd>
       <dt>Language</dt>
       <dd>{lang}</dd>
-      <dt>CSAF-Version</dt>
-      <dd>{csafVersion}</dd>
       <dt>Published</dt>
       <dd>{published}</dd>
       <dt>Last update</dt>
       <dd>{lastUpdate}</dd>
+      <dt>Tracking Version</dt>
+      <dd>{trackingVersion}</dd>
       {#if $appStore.doc?.status !== Status.final}
         <dt>Status</dt>
         <dd>{status}</dd>
