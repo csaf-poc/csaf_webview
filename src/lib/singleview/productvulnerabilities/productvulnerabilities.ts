@@ -74,7 +74,22 @@ const generateLineWith = (product: Product, vulnerabilities: Vulnerability[]) =>
     line.push(column);
   });
   const calculateLineTotal = (line: string[]) => {
-    return DUMMY_TOTAL;
+    let result = DUMMY_TOTAL;
+    switch (true) {
+      case line.includes("K"):
+        result = "K";
+        break;
+      case line.includes("U"):
+        result = "U";
+        break;
+      case line.includes("F"):
+        result = "F";
+        break;
+      case line.includes("N"):
+        result = "N";
+        break;
+    }
+    return result;
   };
   line[0] = calculateLineTotal(line);
   return line;
