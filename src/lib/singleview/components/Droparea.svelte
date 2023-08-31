@@ -46,7 +46,7 @@
 					*/
         }
         let docModel = convertToDocModel(jsonDocument);
-        docModel.vulnerabilities = generateProductVulnerabilities(jsonDocument);
+        docModel.productVulnerabilities = generateProductVulnerabilities(jsonDocument);
         appStore.setDocument(docModel);
       }
     };

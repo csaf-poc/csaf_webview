@@ -48,6 +48,12 @@ export const Status = {
 } as const;
 export type StatusKeys = (typeof Status)[keyof typeof Status];
 
+export const DocumentCategory = {
+  CSAF_SECURITY_ADVISORY: "csaf_security_advisory",
+  CSAF_BASE: "csaf_base",
+  CSAF_VEX: "csaf_vex"
+} as const;
+
 export type Publisher = {
   category: string;
   name: string;
@@ -73,7 +79,7 @@ export type DocModel = {
   publisher: Publisher;
   trackingVersion: string;
   revisionHistory: RevisionHistoryEntry[];
-  vulnerabilities: Array<Array<string>>;
+  productVulnerabilities: Array<Array<string>>;
   isDocPresent: boolean;
   isTrackingPresent: boolean;
   isDistributionPresent: boolean;

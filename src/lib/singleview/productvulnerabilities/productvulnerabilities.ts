@@ -12,12 +12,16 @@ import {
   type Product,
   type Relationship,
   type ProductStatus_t,
-  type ProductStatus_t_Key
+  type ProductStatus_t_Key,
+  type VulnerabilitesExtractionResult
 } from "./productvulnerabilitiestypes";
 
 const generateProductVulnerabilities = (jsonDocument: any) => {
-  const products = extractProducts(jsonDocument);
-  let vulnerabilities = extractVulnerabilities(jsonDocument);
+  let products = extractProducts(jsonDocument);
+  let { vulnerabilities, relevantProducts } = extractVulnerabilities(jsonDocument);
+  products = products.filter((product: Product) => {
+    return relevantProducts[product.product_id];
+  });
   vulnerabilities.sort((vuln1: Vulnerability, vuln2: Vulnerability) => {
     if (vuln1.cve < vuln2.cve) return -1;
     if (vuln1.cve > vuln2.cve) return 1;
@@ -119,43 +123,57 @@ const generateDictFrom = (productStatus: ProductStatus_t, section: ProductStatus
   }, {});
 };
 
-const extractVulnerabilities = (jsonDocument: any): Vulnerability[] => {
+const extractVulnerabilities = (jsonDocument: any): VulnerabilitesExtractionResult => {
+  const extractionResult: VulnerabilitesExtractionResult = {
+    vulnerabilities: [],
+    relevantProducts: {}
+  };
   if (!jsonDocument.vulnerabilities) {
-    return [];
+    return extractionResult;
   }
-  return jsonDocument.vulnerabilities.reduce((acc: Vulnerability[], vulnerability: any) => {
-    if (!vulnerability.cve) {
+  const vulnerabilities = jsonDocument.vulnerabilities.reduce(
+    (acc: Vulnerability[], vulnerability: any) => {
+      if (!vulnerability.cve) {
+        return acc;
+      }
+      const result: Vulnerability = {
+        cve: vulnerability.cve
+      };
+      if (vulnerability.product_status) {
+        if (vulnerability.product_status.known_affected) {
+          result.known_affected = generateDictFrom(vulnerability.product_status, "known_affected");
+          Object.assign(extractionResult.relevantProducts, result.known_affected);
+        }
+        if (vulnerability.product_status.fixed) {
+          result.fixed = generateDictFrom(vulnerability.product_status, "fixed");
+          Object.assign(extractionResult.relevantProducts, result.fixed);
+        }
+        if (vulnerability.product_status.under_investigation) {
+          result.under_investigation = generateDictFrom(
+            vulnerability.product_status,
+            "under_investigation"
+          );
+          Object.assign(extractionResult.relevantProducts, result.under_investigation);
+        }
+        if (vulnerability.product_status.known_not_affected) {
+          result.known_not_affected = generateDictFrom(
+            vulnerability.product_status,
+            "known_not_affected"
+          );
+          Object.assign(extractionResult.relevantProducts, result.known_not_affected);
+        }
+        if (vulnerability.product_status.recommended) {
+          result.recommended = generateDictFrom(vulnerability.product_status, "recommended");
+          Object.assign(extractionResult.relevantProducts, result.recommended);
+        }
+      }
+      acc.push(result);
       return acc;
-    }
-    const result: Vulnerability = {
-      cve: vulnerability.cve
-    };
-    if (vulnerability.product_status) {
-      if (vulnerability.product_status.known_affected) {
-        result.known_affected = generateDictFrom(vulnerability.product_status, "known_affected");
-      }
-      if (vulnerability.product_status.fixed) {
-        result.fixed = generateDictFrom(vulnerability.product_status, "fixed");
-      }
-      if (vulnerability.product_status.under_investigation) {
-        result.under_investigation = generateDictFrom(
-          vulnerability.product_status,
-          "under_investigation"
-        );
-      }
-      if (vulnerability.product_status.known_not_affected) {
-        result.known_not_affected = generateDictFrom(
-          vulnerability.product_status,
-          "known_not_affected"
-        );
-      }
-      if (vulnerability.product_status.recommended) {
-        result.recommended = generateDictFrom(vulnerability.product_status, "recommended");
-      }
-    }
-    acc.push(result);
-    return acc;
-  }, []);
+    },
+    []
+  );
+  extractionResult.vulnerabilities = vulnerabilities;
+  return extractionResult;
 };
 
 export { extractProducts, extractVulnerabilities, generateProductVulnerabilities };

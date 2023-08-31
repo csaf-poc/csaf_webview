@@ -59,3 +59,8 @@ export type Vulnerability = {
   known_not_affected?: StringObject;
   recommended?: StringObject;
 };
+
+export type VulnerabilitesExtractionResult = {
+  vulnerabilities: Vulnerability[];
+  relevantProducts: StringObject;
+};

@@ -12,7 +12,7 @@ import {
   extractVulnerabilities,
   generateProductVulnerabilities
 } from "./productvulnerabilities";
-import { ProductStatusSymbol } from "./productvulnerabilitiestypes";
+import { ProductStatusSymbol, type Vulnerability } from "./productvulnerabilitiestypes";
 
 const emptyObject = {};
 
@@ -264,48 +264,48 @@ describe("Productvulnerabilities test", () => {
 
 describe("Productvulnerabilities test", () => {
   it("Vulnerability: parses empty object", () => {
-    const result = extractVulnerabilities(emptyObject);
-    expect(result.length).toBe(0);
+    const { vulnerabilities } = extractVulnerabilities(emptyObject);
+    expect(vulnerabilities.length).toBe(0);
   });
 });
 
 describe("Productvulnerabilities test", () => {
   it("Vulnerability: parses no vulnerabilities", () => {
-    const result = extractVulnerabilities(noVulnerabilities);
-    expect(result.length).toBe(0);
+    const { vulnerabilities } = extractVulnerabilities(noVulnerabilities);
+    expect(vulnerabilities.length).toBe(0);
   });
 });
 
 describe("Productvulnerabilities test", () => {
   it("Vulnerability: parses vulnerability without cve", () => {
-    const result = extractVulnerabilities(vulnerability_wo_CVE);
-    expect(result.length).toBe(1);
+    const { vulnerabilities } = extractVulnerabilities(vulnerability_wo_CVE);
+    expect(vulnerabilities.length).toBe(0);
   });
 });
 
 describe("Productvulnerabilities test", () => {
   it("Vulnerability: parses vulnerability with empty product_status", () => {
-    const result = extractVulnerabilities(vulnerability_empty_product_status);
-    expect(result.length).toBe(1);
+    const { vulnerabilities } = extractVulnerabilities(vulnerability_empty_product_status);
+    expect(vulnerabilities.length).toBe(1);
   });
 });
 
 describe("Productvulnerabilities test", () => {
   it("Vulnerability: parses vulnerability with empty known_affected", () => {
-    const result = extractVulnerabilities(vulnerability_known_affected_empty);
-    expect(result.length).toBe(1);
-    expect(Object.keys(result[0].known_affected).length).toBe(0);
+    const { vulnerabilities } = extractVulnerabilities(vulnerability_known_affected_empty);
+    expect(vulnerabilities.length).toBe(1);
+    expect(Object.keys(vulnerabilities[0].known_affected!).length).toBe(0);
   });
 });
 
 describe("Productvulnerabilities test", () => {
   it("Vulnerability: parses vulnerability with filled known_affected", () => {
-    const result = extractVulnerabilities(vulnerability_known_affected_filled);
-    const value = result[0];
-    expect(result.length).toBe(1);
-    expect(Object.keys(value.known_affected).length).toBe(2);
-    expect(value.known_affected["123"]).toBe("123");
-    expect(value.known_affected["456"]).toBe("456");
+    const { vulnerabilities } = extractVulnerabilities(vulnerability_known_affected_filled);
+    const value = vulnerabilities[0];
+    expect(vulnerabilities.length).toBe(1);
+    expect(Object.keys(value.known_affected!).length).toBe(2);
+    expect(value.known_affected!["123"]).toBe("123");
+    expect(value.known_affected!["456"]).toBe("456");
   });
 });
 

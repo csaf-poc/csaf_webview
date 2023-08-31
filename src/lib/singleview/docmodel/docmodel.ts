@@ -139,7 +139,7 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     trackingVersion: getTrackingVersion(csafDoc),
     revisionHistory: [],
     lastUpdate: getLastUpdate(csafDoc),
-    vulnerabilities: [],
+    productVulnerabilities: [],
     isDocPresent: checkDocumentPresent(csafDoc),
     isTrackingPresent: checkTrackingPresent(csafDoc),
     isDistributionPresent: checkDistributionPresent(csafDoc),

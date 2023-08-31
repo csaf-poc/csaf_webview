@@ -10,17 +10,21 @@
 
 <script lang="ts">
   import { appStore } from "$lib/store";
+  import { CSAFDocProps, DocumentCategory } from "../docmodel/docmodeltypes";
   import { ProductStatusSymbol } from "../productvulnerabilities/productvulnerabilitiestypes";
-  let headerColumns: any = [];
+  let headerColumns: string[] = [];
   let productLines: string[][];
   $: if ($appStore.doc) {
-    const vulnerabilities = [...$appStore.doc.vulnerabilities];
-    headerColumns = vulnerabilities.shift();
+    const vulnerabilities = [...$appStore.doc.productVulnerabilities];
+    headerColumns = vulnerabilities.shift()!;
     productLines = vulnerabilities;
   }
+  $: isDocumentASecurityAdvisory =
+    $appStore.doc &&
+    $appStore.doc[CSAFDocProps.CATEGORY] === DocumentCategory.CSAF_SECURITY_ADVISORY;
 </script>
 
-{#if $appStore.doc}
+{#if isDocumentASecurityAdvisory}
   <div>
     <h2>Vulnerabilities overview</h2>
     {#if productLines.length > 0}
