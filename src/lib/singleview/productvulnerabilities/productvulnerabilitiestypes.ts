@@ -14,6 +14,19 @@ export const ProductStatus = {
   RECOMMENDED: "RECOMMENDED"
 } as const;
 
+export type ProductStatus_t = {
+  first_affected?: string[];
+  first_fixed?: string[];
+  fixed?: string[];
+  known_affected?: string[];
+  known_not_affected?: string[];
+  last_affected?: string[];
+  recommended?: string[];
+  under_investigation?: string[];
+};
+
+export type ProductStatus_t_Key = keyof ProductStatus_t;
+
 export const ProductStatusSymbol = {
   FIXED: "F",
   UNDER_INVESTIGATION: "U",

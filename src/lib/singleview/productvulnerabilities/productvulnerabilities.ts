@@ -10,7 +10,9 @@ import {
   ProductStatusSymbol,
   type Vulnerability,
   type Product,
-  type Relationship
+  type Relationship,
+  type ProductStatus_t,
+  type ProductStatus_t_Key
 } from "./productvulnerabilitiestypes";
 
 const generateProductVulnerabilities = (jsonDocument: any) => {
@@ -31,7 +33,7 @@ const generateCrossTableFrom = (products: Product[], vulnerabilities: Vulnerabil
   const getCVE = vulnerabilities.map((vulnerability: Vulnerability) => vulnerability.cve);
   header = header.concat(getCVE);
   result.push(header);
-  let productLines = products.map((product: any) => {
+  let productLines = products.map((product: Product) => {
     let line = [product.name];
     line = line.concat(generateLineWith(product, vulnerabilities));
     return line;
@@ -110,8 +112,8 @@ const isProduct = (branch: any) => {
   return branch.product && branch.product.product_id && branch.product.name;
 };
 
-const generateDictFrom = (productStatus: any, section: string) => {
-  return productStatus[section].reduce((o: any, n: string) => {
+const generateDictFrom = (productStatus: ProductStatus_t, section: ProductStatus_t_Key) => {
+  return productStatus[section]!.reduce((o: any, n: string) => {
     o[n] = n;
     return o;
   }, {});
