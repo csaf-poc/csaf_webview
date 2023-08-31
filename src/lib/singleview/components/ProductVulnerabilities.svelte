@@ -32,7 +32,11 @@
         <thead>
           <tr>
             {#each headerColumns as column, index}
-              <th>{column}</th>
+              {#if index < 2}
+                <th>{column}</th>
+              {:else}
+                <th><a href={column}>{column}</a></th>
+              {/if}
             {/each}
           </tr>
         </thead>
@@ -41,7 +45,7 @@
             <tr>
               {#each line as column, index}
                 {#if index < 1}
-                  <td>{column}</td>
+                  <td><a href={column}>{column}</a></td>
                 {:else if column === "N.A"}
                   <td>{column}</td>
                 {:else}
