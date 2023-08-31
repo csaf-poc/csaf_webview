@@ -85,6 +85,7 @@ const generateLineWith = (product: Product, vulnerabilities: Vulnerability[]) =>
       case line.includes("F"):
         result = "F";
         break;
+      case line.includes("NR"):
       case line.includes("N"):
         result = "N";
         break;

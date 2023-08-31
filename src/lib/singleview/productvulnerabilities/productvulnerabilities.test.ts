@@ -336,6 +336,7 @@ describe("Productvulnerabilities test", () => {
     const line4 = result[4];
     const line5 = result[5];
     const PRODUCT_COLUMN = 0;
+    const TOTAL_COLUMN = 1;
     const CVE_2016_0173_COLUMN = 2;
     const CVE_2018_0172_COLUMN = 3;
     const CVE_2019_0171_COLUMN = 4;
@@ -343,30 +344,35 @@ describe("Productvulnerabilities test", () => {
     expect(result.length).toBe(6);
     // Product A
     expect(line1[PRODUCT_COLUMN]).toBe("Product A");
+    expect(line1[TOTAL_COLUMN]).toBe("K");
     expect(line1[CVE_2016_0173_COLUMN]).toBe("");
     expect(line1[CVE_2018_0172_COLUMN]).toBe("");
     expect(line1[CVE_2019_0171_COLUMN]).toBe(ProductStatusSymbol.KNOWN_AFFECTED);
     expect(line1[CVE_2020_0174_COLUMN]).toBe("");
     // Product B
     expect(line2[PRODUCT_COLUMN]).toBe("Product B");
+    expect(line2[TOTAL_COLUMN]).toBe("K");
     expect(line2[CVE_2016_0173_COLUMN]).toBe("");
     expect(line2[CVE_2018_0172_COLUMN]).toBe("");
     expect(line2[CVE_2019_0171_COLUMN]).toBe(ProductStatusSymbol.KNOWN_AFFECTED);
     expect(line2[CVE_2020_0174_COLUMN]).toBe("");
     // Product C
     expect(line3[PRODUCT_COLUMN]).toBe("Product C");
+    expect(line3[TOTAL_COLUMN]).toBe("K");
     expect(line3[CVE_2016_0173_COLUMN]).toBe("");
     expect(line3[CVE_2018_0172_COLUMN]).toBe(ProductStatusSymbol.KNOWN_AFFECTED);
     expect(line3[CVE_2019_0171_COLUMN]).toBe("");
     expect(line3[CVE_2020_0174_COLUMN]).toBe("");
     // Product D
     expect(line4[PRODUCT_COLUMN]).toBe("Product D");
+    expect(line4[TOTAL_COLUMN]).toBe("F");
     expect(line4[CVE_2016_0173_COLUMN]).toBe("");
     expect(line4[CVE_2018_0172_COLUMN]).toBe("");
     expect(line4[CVE_2019_0171_COLUMN]).toBe("");
     expect(line4[CVE_2020_0174_COLUMN]).toBe(ProductStatusSymbol.FIXED);
     //Product E
     expect(line5[PRODUCT_COLUMN]).toBe("Product E");
+    expect(line5[TOTAL_COLUMN]).toBe("N");
     expect(line5[CVE_2016_0173_COLUMN]).toBe(
       ProductStatusSymbol.NOT_AFFECTED + ProductStatusSymbol.RECOMMENDED
     );
