@@ -123,9 +123,9 @@ const extractVulnerabilities = (jsonDocument: any): Vulnerability[] => {
   if (!jsonDocument.vulnerabilities) {
     return [];
   }
-  return jsonDocument.vulnerabilities.map((vulnerability: any) => {
+  return jsonDocument.vulnerabilities.reduce((acc: Vulnerability[], vulnerability: any) => {
     if (!vulnerability.cve) {
-      return {};
+      return acc;
     }
     const result: Vulnerability = {
       cve: vulnerability.cve
@@ -153,8 +153,9 @@ const extractVulnerabilities = (jsonDocument: any): Vulnerability[] => {
         result.recommended = generateDictFrom(vulnerability.product_status, "recommended");
       }
     }
-    return result;
-  });
+    acc.push(result);
+    return acc;
+  }, []);
 };
 
 export { extractProducts, extractVulnerabilities, generateProductVulnerabilities };
