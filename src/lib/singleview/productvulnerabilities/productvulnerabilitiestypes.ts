@@ -26,6 +26,15 @@ type StringObject = {
   [key: string]: string;
 };
 
+export type FullProductName = {
+  name: string;
+  product_id: string;
+};
+
+export type Relationship = {
+  full_product_name: FullProductName;
+};
+
 export type Product = { product_id: string; name: string };
 
 export type Vulnerability = {

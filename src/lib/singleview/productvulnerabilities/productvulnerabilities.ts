@@ -9,7 +9,8 @@
 import {
   ProductStatusSymbol,
   type Vulnerability,
-  type Product
+  type Product,
+  type Relationship
 } from "./productvulnerabilitiestypes";
 
 const generateProductVulnerabilities = (jsonDocument: any) => {
@@ -77,7 +78,19 @@ const extractProducts = (jsonDocument: any): Product[] => {
   if (!jsonDocument.product_tree || !jsonDocument.product_tree.branches) {
     return [];
   }
-  return jsonDocument.product_tree.branches.reduce(parseBranch, []);
+  const productsFromBranches = jsonDocument.product_tree.branches.reduce(parseBranch, []);
+  const productsFromRelationships: Product[] = getProductsFromRelationships(jsonDocument);
+  return productsFromBranches.concat(productsFromRelationships);
+};
+
+const getProductsFromRelationships = (jsonDocument: any): Product[] => {
+  if (!jsonDocument.product_tree.relationships) return [];
+  return jsonDocument.product_tree.relationships.map((relationship: Relationship) => {
+    return {
+      product_id: relationship.full_product_name.product_id,
+      name: relationship.full_product_name.name
+    };
+  });
 };
 
 const parseBranch = (acc: Product[], branch: any) => {
