@@ -39,6 +39,10 @@ const checkPublisher = (csafDoc: any): boolean => {
   return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.PUBLISHER];
 };
 
+const checkVulnerabilities = (csafDoc: any): boolean => {
+  return csafDoc.hasOwnProperty(CSAFDocProps.VULNERABILITIES);
+};
+
 const getTitle = (csafDoc: any): string => {
   if (!checkDocumentPresent(csafDoc)) return EMPTY;
   return csafDoc.document[CSAFDocProps.TITLE] || EMPTY;
@@ -125,6 +129,11 @@ const getTrackingVersion = (csafDoc: any): string => {
   return csafDoc.document.tracking[CSAFDocProps.TRACKINGVERSION] || EMPTY;
 };
 
+const getVulnerabilities = (csafDoc: any) => {
+  if (!checkVulnerabilities(csafDoc)) return [];
+  return csafDoc.vulnerabilities;
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
     title: getTitle(csafDoc),
@@ -139,12 +148,14 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     trackingVersion: getTrackingVersion(csafDoc),
     revisionHistory: [],
     lastUpdate: getLastUpdate(csafDoc),
+    vulnerabilities: getVulnerabilities(csafDoc),
     productVulnerabilities: [],
     isDocPresent: checkDocumentPresent(csafDoc),
     isTrackingPresent: checkTrackingPresent(csafDoc),
     isDistributionPresent: checkDistributionPresent(csafDoc),
     isTLPPresent: checkTLPPresent(csafDoc),
-    isPublisherPresent: checkPublisher(csafDoc)
+    isPublisherPresent: checkPublisher(csafDoc),
+    isVulnerabilitiesPresent: checkVulnerabilities(csafDoc)
   };
   return docModel;
 };

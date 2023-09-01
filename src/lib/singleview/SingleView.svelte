@@ -11,6 +11,7 @@
   import SingleDocumentView from "$lib/singleview/components/DocumentView.svelte";
   import Droparea from "$lib/singleview/components/Droparea.svelte";
   import ProductVulnerabilities from "$lib/singleview/components/ProductVulnerabilities.svelte";
+  import Vulnerabilities from "./components/vulnerabilities/Vulnerabilities.svelte";
 </script>
 
 <div class="row">
@@ -26,5 +27,10 @@
 <div class="row">
   <div class="col">
     <ProductVulnerabilities />
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <Vulnerabilities />
   </div>
 </div>
