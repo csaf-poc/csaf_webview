@@ -35,41 +35,38 @@
   $: status = $appStore.doc?.status;
 </script>
 
-{#if $appStore.doc}
-  <div class="documentdata">
-    <h2>General</h2>
-    <dl>
-      <dt>ID</dt>
-      <dd>{id}</dd>
-      <dt>CSAF-Version</dt>
-      <dd>{csafVersion}</dd>
-      <dt>TLP</dt>
-      <dd><span class={tlpStyle}>{tlp}</span></dd>
-      <dt>Category</dt>
-      <dd>{category}</dd>
-      <dt>Title</dt>
-      <dd>{title}</dd>
-      <dt>Publisher name</dt>
-      <dd>{publisherName}</dd>
-      <dt>Publisher category</dt>
-      <dd>{publisherCategory}</dd>
-      <dt>Publisher namespace</dt>
-      <dd>{publisherNamespace}</dd>
-      <dt>Language</dt>
-      <dd>{lang}</dd>
-      <dt>Published</dt>
-      <dd>{published}</dd>
-      <dt>Last update</dt>
-      <dd>{lastUpdate}</dd>
-      <dt>Tracking Version</dt>
-      <dd>{trackingVersion}</dd>
-      {#if $appStore.doc?.status !== Status.final}
-        <dt>Status</dt>
-        <dd>{status}</dd>
-      {/if}
-    </dl>
-  </div>
-{/if}
+<div class="documentdata">
+  <dl>
+    <dt>ID</dt>
+    <dd>{id}</dd>
+    <dt>CSAF-Version</dt>
+    <dd>{csafVersion}</dd>
+    <dt>TLP</dt>
+    <dd><span class={tlpStyle}>{tlp}</span></dd>
+    <dt>Category</dt>
+    <dd>{category}</dd>
+    <dt>Title</dt>
+    <dd>{title}</dd>
+    <dt>Publisher name</dt>
+    <dd>{publisherName}</dd>
+    <dt>Publisher category</dt>
+    <dd>{publisherCategory}</dd>
+    <dt>Publisher namespace</dt>
+    <dd>{publisherNamespace}</dd>
+    <dt>Language</dt>
+    <dd>{lang}</dd>
+    <dt>Published</dt>
+    <dd>{published}</dd>
+    <dt>Last update</dt>
+    <dd>{lastUpdate}</dd>
+    <dt>Tracking Version</dt>
+    <dd>{trackingVersion}</dd>
+    {#if $appStore.doc?.status !== Status.final}
+      <dt>Status</dt>
+      <dd>{status}</dd>
+    {/if}
+  </dl>
+</div>
 
 <style>
   dt {
