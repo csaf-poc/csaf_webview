@@ -68,6 +68,29 @@
   </dl>
 </div>
 
+{#if $appStore.doc?.isRevisionHistoryPresent}
+  <div>
+    <h3>Revision History</h3>
+    <table class="striped">
+      <thead>
+        <tr
+          ><th>date</th>
+          <th>number</th>
+          <th>summary</th>
+          <th>legacy_version</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each $appStore.doc?.revisionHistory as entry}
+          <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
+            >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
+          >
+        {/each}
+      </tbody>
+    </table>
+  </div>
+{/if}
+
 <style>
   dt {
     font-size: large;

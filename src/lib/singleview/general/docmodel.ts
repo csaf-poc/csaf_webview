@@ -12,7 +12,8 @@ import {
   Status,
   EMPTY,
   CSAFDocProps,
-  type Publisher
+  type Publisher,
+  type RevisionHistoryEntry
 } from "$lib/singleview/general/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
@@ -138,6 +139,17 @@ const getVulnerabilities = (csafDoc: any) => {
   return csafDoc.vulnerabilities;
 };
 
+const getRevisionHistory = (csafDoc: any): RevisionHistoryEntry[] => {
+  if (!checkRevisionHistoryPresent(csafDoc)) return [];
+  const result: RevisionHistoryEntry[] = csafDoc.document.tracking[CSAFDocProps.REVISIONHISTORY];
+  result.sort((entry1: RevisionHistoryEntry, entry2: RevisionHistoryEntry) => {
+    if (entry1.date < entry2.date) return -1;
+    if (entry1.date > entry2.date) return 1;
+    return 0;
+  });
+  return result;
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
     title: getTitle(csafDoc),
@@ -150,7 +162,7 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     published: getPublished(csafDoc),
     publisher: getPublisher(csafDoc),
     trackingVersion: getTrackingVersion(csafDoc),
-    revisionHistory: [],
+    revisionHistory: getRevisionHistory(csafDoc),
     lastUpdate: getLastUpdate(csafDoc),
     vulnerabilities: getVulnerabilities(csafDoc),
     productVulnerabilities: [],
