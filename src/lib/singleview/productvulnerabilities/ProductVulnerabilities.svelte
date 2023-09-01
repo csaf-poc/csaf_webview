@@ -10,7 +10,7 @@
 
 <script lang="ts">
   import { appStore } from "$lib/store";
-  import { ProductStatusSymbol } from "../productvulnerabilities/productvulnerabilitiestypes";
+  import { ProductStatusSymbol } from "./productvulnerabilitiestypes";
   let headerColumns: string[] = [];
   let productLines: string[][];
   $: if ($appStore.doc) {

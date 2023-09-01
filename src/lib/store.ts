@@ -7,7 +7,7 @@
 // Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 
 import { writable } from "svelte/store";
-import type { DocModel } from "./singleview/docmodel/docmodeltypes";
+import type { DocModel } from "./singleview/general/docmodeltypes";
 
 type AppStore = {
   doc: DocModel | null;

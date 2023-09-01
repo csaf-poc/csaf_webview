@@ -63,6 +63,7 @@ export type Publisher = {
 
 export type RevisionHistoryEntry = {
   date: string;
+  legacyVersion?: string;
   number: number;
   summary: string;
 };
@@ -88,6 +89,7 @@ export type DocModel = {
   isTLPPresent: boolean;
   isPublisherPresent: boolean;
   isVulnerabilitiesPresent: boolean;
+  isRevisionHistoryPresent: boolean;
 };
 
 export type DocModelKey = keyof DocModel;

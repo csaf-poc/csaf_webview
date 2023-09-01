@@ -13,7 +13,7 @@ import {
   EMPTY,
   CSAFDocProps,
   type Publisher
-} from "$lib/singleview/docmodel/docmodeltypes";
+} from "$lib/singleview/general/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
   return csafDoc.hasOwnProperty(CSAFDocProps.DOCUMENT);
@@ -41,6 +41,10 @@ const checkPublisher = (csafDoc: any): boolean => {
 
 const checkVulnerabilities = (csafDoc: any): boolean => {
   return csafDoc.hasOwnProperty(CSAFDocProps.VULNERABILITIES);
+};
+
+const checkRevisionHistoryPresent = (csafDoc: any): boolean => {
+  return checkTrackingPresent(csafDoc) && csafDoc.document.tracking[CSAFDocProps.REVISIONHISTORY];
 };
 
 const getTitle = (csafDoc: any): string => {
@@ -155,7 +159,8 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     isDistributionPresent: checkDistributionPresent(csafDoc),
     isTLPPresent: checkTLPPresent(csafDoc),
     isPublisherPresent: checkPublisher(csafDoc),
-    isVulnerabilitiesPresent: checkVulnerabilities(csafDoc)
+    isVulnerabilitiesPresent: checkVulnerabilities(csafDoc),
+    isRevisionHistoryPresent: checkRevisionHistoryPresent(csafDoc)
   };
   return docModel;
 };

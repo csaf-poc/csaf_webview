@@ -10,11 +10,11 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
   import Collapsible from "$lib/Collapsible.svelte";
-  import General from "$lib/singleview/components/General.svelte";
-  import Droparea from "$lib/singleview/components/Droparea.svelte";
-  import ProductVulnerabilities from "$lib/singleview/components/ProductVulnerabilities.svelte";
-  import Vulnerabilities from "./components/vulnerabilities/Vulnerabilities.svelte";
-  import { CSAFDocProps, DocumentCategory } from "./docmodel/docmodeltypes";
+  import General from "$lib/singleview/general/General.svelte";
+  import Droparea from "$lib/singleview/Droparea.svelte";
+  import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
+  import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
+  import { CSAFDocProps, DocumentCategory } from "./general/docmodeltypes";
   $: isDocumentASecurityAdvisory =
     $appStore.doc &&
     $appStore.doc[CSAFDocProps.CATEGORY] === DocumentCategory.CSAF_SECURITY_ADVISORY;
