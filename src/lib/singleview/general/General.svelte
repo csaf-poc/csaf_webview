@@ -82,9 +82,11 @@
       </thead>
       <tbody>
         {#each $appStore.doc?.revisionHistory as entry}
-          <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
-            >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
-          >
+          <tr>
+            <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
+              >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
+            >
+          </tr>
         {/each}
       </tbody>
     </table>
