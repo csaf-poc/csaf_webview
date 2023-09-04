@@ -7,13 +7,22 @@
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
-# Webview+
+# CSAF Webview
 
-The CSAF-Webview is a complementary service for the CSAF-suite. Its purpose is to display the abstract information of CSAF-Dokuments in a human friendly way.
+**WIP**:
+A browser based web app to:
+ * Display the contents of a CSAF document.
+ * Browse the tree of CSAF documents offered by a CSAF Provider or Aggregator
+   via the ROLIE feed.
 
-There are two ways to visualize the documents: For one you could drag and drop any single CSAF-Document in the dropzone and view its contens. Or you could browse ROLIE-feeds.
+Status: pre-alpha
+  (early functionality to display parts of a CSAF document)
 
 ![](docs/app.png)
+
+A demo deployment will be done occasionally via github pages
+and thus maybe behind the latest developments.
+
 
 ## Development
 
@@ -52,3 +61,15 @@ There are two ways to visualize the documents: For one you could drag and drop a
 
 ```npm run build:ghpage```
 ```npm run deploy```
+
+
+## License
+
+- csaf_webview is licensed as Free Software under MIT License.
+
+- See the specific source files
+  for details, the licenses itself can be found in the directory `LICENSES/`.
+
+- The resulting webpage contains third party Free Software components under
+  licenses that to our best knowledge are compatible at time of adding
+  the dependency. See `package.json` for details.
