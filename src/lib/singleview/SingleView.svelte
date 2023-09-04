@@ -28,7 +28,7 @@
 {#if $appStore.doc}
   <div class="row">
     <div class="col">
-      <Collapsible header="General">
+      <Collapsible header="General" open={$appStore.ui.isGeneralSectionVisible}>
         <General />
       </Collapsible>
     </div>
@@ -37,7 +37,10 @@
 {#if isDocumentASecurityAdvisory}
   <div class="row">
     <div class="col">
-      <Collapsible header="Vulnerabilities overview" open={false}>
+      <Collapsible
+        header="Vulnerabilities overview"
+        open={$appStore.ui.isVulnerabilisiesOverviewVisible}
+      >
         <ProductVulnerabilities />
       </Collapsible>
     </div>
@@ -46,7 +49,7 @@
 {#if $appStore.doc?.isVulnerabilitiesPresent}
   <div class="row">
     <div class="col">
-      <Collapsible header="Vulnerabilities" open={false}>
+      <Collapsible header="Vulnerabilities" open={$appStore.ui.isVulnerabilisiesSectionVisible}>
         <Vulnerabilities />
       </Collapsible>
     </div>

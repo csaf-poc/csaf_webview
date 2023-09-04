@@ -11,11 +11,23 @@ import type { DocModel } from "./singleview/general/docmodeltypes";
 
 type AppStore = {
   doc: DocModel | null;
+  ui: {
+    isGeneralSectionVisible: boolean;
+    isRevisionHistoryVisible: boolean;
+    isVulnerabilisiesOverviewVisible: boolean;
+    isVulnerabilisiesSectionVisible: boolean;
+  };
 };
 
 function createStore() {
   const appDefault: AppStore = {
-    doc: null
+    doc: null,
+    ui: {
+      isGeneralSectionVisible: true,
+      isRevisionHistoryVisible: false,
+      isVulnerabilisiesOverviewVisible: false,
+      isVulnerabilisiesSectionVisible: false
+    }
   };
   const { subscribe, set, update } = writable({ ...appDefault });
 

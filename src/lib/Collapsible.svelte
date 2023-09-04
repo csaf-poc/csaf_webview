@@ -1,6 +1,6 @@
 <script lang="ts">
   export let header: string;
-  export let open: boolean = true;
+  export let open: boolean = false;
   export let index: string = "2";
   export let class_: string = "";
   let visibility = open ? "block" : "none";

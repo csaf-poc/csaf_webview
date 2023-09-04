@@ -70,7 +70,7 @@
 </div>
 
 {#if $appStore.doc?.isRevisionHistoryPresent}
-  <Collapsible header="Revision history" index="3" open={false}>
+  <Collapsible header="Revision history" index="3" open={$appStore.ui.isRevisionHistoryVisible}>
     <table class="striped">
       <thead>
         <tr
