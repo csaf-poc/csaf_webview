@@ -49,7 +49,10 @@
 {#if $appStore.doc?.isVulnerabilitiesPresent}
   <div class="row">
     <div class="col">
-      <Collapsible header="Vulnerabilities" open={$appStore.ui.isVulnerabilisiesSectionVisible}>
+      <Collapsible
+        header="Vulnerabilities"
+        open={$appStore.ui.isVulnerabilisiesSectionVisible || $appStore.ui.selectedCVE !== ""}
+      >
         <Vulnerabilities />
       </Collapsible>
     </div>

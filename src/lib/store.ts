@@ -16,6 +16,7 @@ type AppStore = {
     isRevisionHistoryVisible: boolean;
     isVulnerabilisiesOverviewVisible: boolean;
     isVulnerabilisiesSectionVisible: boolean;
+    selectedCVE: string;
   };
 };
 
@@ -26,7 +27,8 @@ function createStore() {
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
       isVulnerabilisiesOverviewVisible: false,
-      isVulnerabilisiesSectionVisible: false
+      isVulnerabilisiesSectionVisible: false,
+      selectedCVE: ""
     }
   };
   const { subscribe, set, update } = writable({ ...appDefault });
@@ -38,6 +40,19 @@ function createStore() {
         settings.doc = data;
         return settings;
       }),
+    setSelectedCVE: (cve: string) => {
+      update((settings) => {
+        console.log(cve);
+        settings.ui.selectedCVE = cve;
+        return settings;
+      });
+    },
+    resetSelectedCVE: () => {
+      update((settings) => {
+        settings.ui.selectedCVE = "";
+        return settings;
+      });
+    },
     reset: () => set({ ...appDefault })
   };
 }
