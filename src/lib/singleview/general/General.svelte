@@ -8,6 +8,7 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
+  import Collapsible from "$lib/Collapsible.svelte";
   import { Status, TLP } from "$lib/singleview/general/docmodeltypes";
   import { appStore } from "$lib/store";
   let tlpStyle: string = "";
@@ -69,8 +70,7 @@
 </div>
 
 {#if $appStore.doc?.isRevisionHistoryPresent}
-  <div>
-    <h3>Revision History</h3>
+  <Collapsible header="Revision history" index="3" open={false}>
     <table class="striped">
       <thead>
         <tr
@@ -90,7 +90,7 @@
         {/each}
       </tbody>
     </table>
-  </div>
+  </Collapsible>
 {/if}
 
 <style>
