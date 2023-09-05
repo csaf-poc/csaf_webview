@@ -1,7 +1,7 @@
 <script lang="ts">
   export let header: string;
   export let open: boolean = false;
-  export let index: string = "2";
+  export let level: string = "2";
   export let class_: string = "";
   let visibility = "none";
   $: if (open) {
@@ -24,20 +24,20 @@
 </script>
 
 <div>
-  {#if index == "2"}
+  {#if level == "2"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div on:click={toggle} class={class_}><h2><i class="bx {icon}" />{header}</h2></div>
+    <div id={header} on:click={toggle} class={class_}><h2><i class="bx {icon}" />{header}</h2></div>
   {/if}
-  {#if index == "3"}
+  {#if level == "3"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div on:click={toggle} class={class_}><h3><i class="bx {icon}" />{header}</h3></div>
+    <div id={header} on:click={toggle} class={class_}><h3><i class="bx {icon}" />{header}</h3></div>
   {/if}
-  {#if index == "4"}
+  {#if level == "4"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div on:click={toggle} class={class_}><h4><i class="bx {icon}" />{header}</h4></div>
+    <div id={header} on:click={toggle} class={class_}><h4><i class="bx {icon}" />{header}</h4></div>
   {/if}
   <div style="display:{visibility}" class="body">
     <slot />
