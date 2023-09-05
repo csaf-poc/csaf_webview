@@ -43,7 +43,7 @@
     <dt>CSAF-Version</dt>
     <dd>{csafVersion}</dd>
     <dt>TLP</dt>
-    <dd><span class={tlpStyle}>{tlp}</span></dd>
+    <dd><span class={tlpStyle}>{tlp}&nbsp;</span></dd>
     <dt>Category</dt>
     <dd>{category}</dd>
     <dt>Title</dt>
@@ -55,7 +55,7 @@
     <dt>Publisher namespace</dt>
     <dd>{publisherNamespace}</dd>
     <dt>Language</dt>
-    <dd>{lang}</dd>
+    <dd>{lang}&nbsp;</dd>
     <dt>Published</dt>
     <dd>{published}</dd>
     <dt>Last update</dt>
