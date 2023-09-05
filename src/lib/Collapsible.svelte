@@ -3,7 +3,12 @@
   export let open: boolean = false;
   export let index: string = "2";
   export let class_: string = "";
-  let visibility = open ? "block" : "none";
+  let visibility = "none";
+  $: if (open) {
+    visibility = "block";
+  } else {
+    visibility = "none";
+  }
   let icon = "bx-chevron-down";
   const toggle = (e: Event) => {
     if (visibility === "block") visibility = "none";

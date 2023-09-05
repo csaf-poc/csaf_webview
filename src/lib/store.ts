@@ -42,7 +42,6 @@ function createStore() {
       }),
     setSelectedCVE: (cve: string) => {
       update((settings) => {
-        console.log(cve);
         settings.ui.selectedCVE = cve;
         return settings;
       });
@@ -50,6 +49,18 @@ function createStore() {
     resetSelectedCVE: () => {
       update((settings) => {
         settings.ui.selectedCVE = "";
+        return settings;
+      });
+    },
+    setVulnerabilitiesSectionVisible: () => {
+      update((settings) => {
+        settings.ui.isVulnerabilisiesSectionVisible = true;
+        return settings;
+      });
+    },
+    setVulnerabilitiesSectionInvisible: () => {
+      update((settings) => {
+        settings.ui.isVulnerabilisiesSectionVisible = false;
         return settings;
       });
     },
