@@ -21,23 +21,25 @@ const checkDocumentPresent = (csafDoc: any): boolean => {
 };
 
 const checkTrackingPresent = (csafDoc: any): boolean => {
-  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.TRACKING];
+  return checkDocumentPresent(csafDoc) && csafDoc.document.hasOwnProperty(CSAFDocProps.TRACKING);
 };
 
 const checkDistributionPresent = (csafDoc: any): boolean => {
-  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.DISTRIBUTION];
+  return (
+    checkDocumentPresent(csafDoc) && csafDoc.document.hasOwnProperty(CSAFDocProps.DISTRIBUTION)
+  );
 };
 
 const checkTLPPresent = (csafDoc: any): boolean => {
   return (
     checkDistributionPresent(csafDoc) &&
-    csafDoc.document.distribution[CSAFDocProps.TLP] &&
-    csafDoc.document.distribution[CSAFDocProps.TLP][CSAFDocProps.LABEL]
+    csafDoc.document.distribution.hasOwnProperty(CSAFDocProps.TLP) &&
+    csafDoc.document.distribution[CSAFDocProps.TLP].hasOwnProperty(CSAFDocProps.LABEL)
   );
 };
 
 const checkPublisher = (csafDoc: any): boolean => {
-  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.PUBLISHER];
+  return checkDocumentPresent(csafDoc) && csafDoc.document.hasOwnProperty(CSAFDocProps.PUBLISHER);
 };
 
 const checkVulnerabilities = (csafDoc: any): boolean => {
@@ -45,7 +47,10 @@ const checkVulnerabilities = (csafDoc: any): boolean => {
 };
 
 const checkRevisionHistoryPresent = (csafDoc: any): boolean => {
-  return checkTrackingPresent(csafDoc) && csafDoc.document.tracking[CSAFDocProps.REVISIONHISTORY];
+  return (
+    checkTrackingPresent(csafDoc) &&
+    csafDoc.document.tracking.hasOwnProperty(CSAFDocProps.REVISIONHISTORY)
+  );
 };
 
 const getTitle = (csafDoc: any): string => {

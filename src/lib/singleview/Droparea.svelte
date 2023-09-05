@@ -48,6 +48,7 @@
         let docModel = convertToDocModel(jsonDocument);
         docModel.productVulnerabilities = generateProductVulnerabilities(jsonDocument);
         appStore.setDocument(docModel);
+        console.log(docModel);
       }
     };
     fileReader.readAsText(csafFile);
