@@ -51,7 +51,10 @@
     <div class="col">
       <Collapsible
         header="Vulnerabilities"
-        open={$appStore.ui.isVulnerabilisiesSectionVisible || $appStore.ui.selectedCVE !== ""}
+        open={$appStore.ui.isVulnerabilitiesSectionVisible}
+        onClose={() => {
+          appStore.setVulnerabilitiesSectionInvisible();
+        }}
       >
         <Vulnerabilities />
       </Collapsible>

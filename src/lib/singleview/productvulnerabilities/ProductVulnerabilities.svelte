@@ -21,6 +21,7 @@
   const openCVE = (e: Event) => {
     let CVE: string = (e.target as Element).getAttribute("href")!;
     appStore.setSelectedCVE(CVE);
+    appStore.setVulnerabilitiesSectionVisible();
     e.preventDefault();
   };
 </script>

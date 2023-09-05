@@ -3,6 +3,7 @@
   export let open: boolean = false;
   export let level: string = "2";
   export let class_: string = "";
+  export let onClose: Function = () => {};
   let visibility = "none";
   $: if (open) {
     visibility = "block";
@@ -11,8 +12,10 @@
   }
   let icon = "bx-chevron-down";
   const toggle = (e: Event) => {
-    if (visibility === "block") visibility = "none";
-    else {
+    if (visibility === "block") {
+      onClose();
+      visibility = "none";
+    } else {
       visibility = "block";
     }
   };
