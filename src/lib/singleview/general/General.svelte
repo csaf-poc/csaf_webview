@@ -101,8 +101,8 @@
     min-width: 80rem;
   }
   .revisionhistory {
-    width: 30vw;
-    min-width: 50rem;
+    width: 40vw;
+    min-width: 70rem;
   }
   dt {
     float: left;
