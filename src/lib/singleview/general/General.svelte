@@ -97,7 +97,7 @@
   dt {
     float: left;
     clear: left;
-    width: 20%;
+    width: 21rem;
     font-weight: 100;
   }
   dd {

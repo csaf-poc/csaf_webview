@@ -99,10 +99,10 @@
     font-size: large;
     float: left;
     clear: left;
-    width: 1rem;
+    width: 3rem;
   }
   dd {
-    margin-bottom: 0.1em;
+    margin-bottom: 0.3em;
   }
   th {
     font-weight: 100;
