@@ -51,4 +51,9 @@
   .body {
     padding-left: 3rem;
   }
+  h2,
+  h3,
+  h4 {
+    margin-bottom: 0;
+  }
 </style>

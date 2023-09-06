@@ -102,6 +102,9 @@
     width: 1rem;
   }
   dd {
-    margin-bottom: 0.3em;
+    margin-bottom: 0.1em;
+  }
+  th {
+    font-weight: 100;
   }
 </style>

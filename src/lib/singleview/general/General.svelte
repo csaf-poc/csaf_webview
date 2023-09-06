@@ -95,13 +95,13 @@
 
 <style>
   dt {
-    font-size: large;
     float: left;
     clear: left;
     width: 20%;
+    font-weight: 100;
   }
   dd {
-    margin-bottom: 0.3em;
+    margin-bottom: 0.1em;
   }
   .tlpclear {
     background: #000;
@@ -118,5 +118,8 @@
   .tlpgreen {
     background: #33ff00;
     color: #fff;
+  }
+  th {
+    font-weight: 100;
   }
 </style>
