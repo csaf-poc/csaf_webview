@@ -59,7 +59,7 @@
   class="droparea"
   class:hover
   class:bg-error={valid == false}
-  class:bg-success={valid == true}
+  class:bg-primary={valid == true}
   on:dragover|preventDefault={() => {
     hover = true;
   }}
