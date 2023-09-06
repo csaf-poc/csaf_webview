@@ -55,6 +55,12 @@
 </div>
 
 <style>
+  .switchbutton {
+    box-shadow: 1px 3px 3px #c1c1c1;
+  }
+  .header > h1 {
+    font-weight: bold;
+  }
   .content {
     margin-left: 3rem;
     margin-right: 3rem;

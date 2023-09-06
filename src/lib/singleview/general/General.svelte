@@ -71,29 +71,39 @@
 
 {#if $appStore.doc?.isRevisionHistoryPresent}
   <Collapsible header="Revision history" level="3" open={$appStore.ui.isRevisionHistoryVisible}>
-    <table class="striped">
-      <thead>
-        <tr
-          ><th>Date</th>
-          <th>Number</th>
-          <th>Summary</th>
-          <th>Legacy_version</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each $appStore.doc?.revisionHistory as entry}
-          <tr>
-            <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
-              >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
-            >
+    <div class="revisionhistory">
+      <table class="striped">
+        <thead>
+          <tr
+            ><th>Date</th>
+            <th>Number</th>
+            <th>Summary</th>
+            <th>Legacy_version</th>
           </tr>
-        {/each}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {#each $appStore.doc?.revisionHistory as entry}
+            <tr>
+              <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
+                >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
+              >
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
   </Collapsible>
 {/if}
 
 <style>
+  .documentdata {
+    width: 60vw;
+    min-width: 80rem;
+  }
+  .revisionhistory {
+    width: 30vw;
+    min-width: 50rem;
+  }
   dt {
     float: left;
     clear: left;

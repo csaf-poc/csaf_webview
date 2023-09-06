@@ -62,4 +62,7 @@
   h4 {
     margin-bottom: 0;
   }
+  h2 {
+    font-weight: bold;
+  }
 </style>
