@@ -74,10 +74,10 @@
     <table class="striped">
       <thead>
         <tr
-          ><th>date</th>
-          <th>number</th>
-          <th>summary</th>
-          <th>legacy_version</th>
+          ><th>Date</th>
+          <th>Number</th>
+          <th>Summary</th>
+          <th>Legacy_version</th>
         </tr>
       </thead>
       <tbody>
