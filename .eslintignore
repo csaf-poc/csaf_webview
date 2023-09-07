@@ -11,6 +11,10 @@ node_modules
 /build
 /.svelte-kit
 /package
+/.github
+/docs
+/coverage
+/src/lib/schema
 .env
 .env.*
 !.env.example

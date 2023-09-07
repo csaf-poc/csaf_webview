@@ -9,6 +9,10 @@
 .DS_Store
 node_modules
 /build
+/.github
+/docs
+/src/lib/schema
+/coverage
 /.svelte-kit
 /package
 .env
