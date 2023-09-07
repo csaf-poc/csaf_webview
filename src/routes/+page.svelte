@@ -40,7 +40,7 @@
 
 <svelte:window on:dragover={disable} on:drop={disable} />
 
-<div class="container">
+<div class="content">
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <div class="header">
     <h1 role="heading" class="text-center">CSAF Webview+</h1>
@@ -55,6 +55,16 @@
 </div>
 
 <style>
+  .switchbutton {
+    box-shadow: 1px 3px 3px #c1c1c1;
+  }
+  .header > h1 {
+    font-weight: bold;
+  }
+  .content {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
   .header {
     display: flex;
     align-items: center;

@@ -11,11 +11,25 @@ import type { DocModel } from "./singleview/general/docmodeltypes";
 
 type AppStore = {
   doc: DocModel | null;
+  ui: {
+    isGeneralSectionVisible: boolean;
+    isRevisionHistoryVisible: boolean;
+    isVulnerabilisiesOverviewVisible: boolean;
+    isVulnerabilitiesSectionVisible: boolean;
+    selectedCVE: string;
+  };
 };
 
 function createStore() {
   const appDefault: AppStore = {
-    doc: null
+    doc: null,
+    ui: {
+      isGeneralSectionVisible: true,
+      isRevisionHistoryVisible: false,
+      isVulnerabilisiesOverviewVisible: false,
+      isVulnerabilitiesSectionVisible: false,
+      selectedCVE: ""
+    }
   };
   const { subscribe, set, update } = writable({ ...appDefault });
 
@@ -26,6 +40,30 @@ function createStore() {
         settings.doc = data;
         return settings;
       }),
+    setSelectedCVE: (cve: string) => {
+      update((settings) => {
+        settings.ui.selectedCVE = cve;
+        return settings;
+      });
+    },
+    resetSelectedCVE: () => {
+      update((settings) => {
+        settings.ui.selectedCVE = "";
+        return settings;
+      });
+    },
+    setVulnerabilitiesSectionVisible: () => {
+      update((settings) => {
+        settings.ui.isVulnerabilitiesSectionVisible = true;
+        return settings;
+      });
+    },
+    setVulnerabilitiesSectionInvisible: () => {
+      update((settings) => {
+        settings.ui.isVulnerabilitiesSectionVisible = false;
+        return settings;
+      });
+    },
     reset: () => set({ ...appDefault })
   };
 }

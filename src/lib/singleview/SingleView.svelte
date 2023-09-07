@@ -26,29 +26,26 @@
   </div>
 </div>
 {#if $appStore.doc}
-  <div class="row">
-    <div class="col">
-      <Collapsible header="General">
-        <General />
-      </Collapsible>
-    </div>
-  </div>
+  <Collapsible header="General" open={$appStore.ui.isGeneralSectionVisible}>
+    <General />
+  </Collapsible>
 {/if}
 {#if isDocumentASecurityAdvisory}
-  <div class="row">
-    <div class="col">
-      <Collapsible header="Vulnerabilities overview" open={false}>
-        <ProductVulnerabilities />
-      </Collapsible>
-    </div>
-  </div>
+  <Collapsible
+    header="Vulnerabilities overview"
+    open={$appStore.ui.isVulnerabilisiesOverviewVisible}
+  >
+    <ProductVulnerabilities />
+  </Collapsible>
 {/if}
 {#if $appStore.doc?.isVulnerabilitiesPresent}
-  <div class="row">
-    <div class="col">
-      <Collapsible header="Vulnerabilities" open={false}>
-        <Vulnerabilities />
-      </Collapsible>
-    </div>
-  </div>
+  <Collapsible
+    header="Vulnerabilities"
+    open={$appStore.ui.isVulnerabilitiesSectionVisible}
+    onClose={() => {
+      appStore.setVulnerabilitiesSectionInvisible();
+    }}
+  >
+    <Vulnerabilities />
+  </Collapsible>
 {/if}

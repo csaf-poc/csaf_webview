@@ -18,6 +18,7 @@
   let text: string = "Drop your CSAF-file here";
   const fileDropped = (e: DragEvent) => {
     if (e.dataTransfer) {
+      appStore.setDocument(null);
       const csafFile: File = e.dataTransfer.files[0];
       const type: string = csafFile.type;
       if (type == "application/json") {
@@ -59,7 +60,7 @@
   class="droparea"
   class:hover
   class:bg-error={valid == false}
-  class:bg-success={valid == true}
+  class:bg-primary={valid == true}
   on:dragover|preventDefault={() => {
     hover = true;
   }}

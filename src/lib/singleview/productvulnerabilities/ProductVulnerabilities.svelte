@@ -18,6 +18,12 @@
     headerColumns = vulnerabilities.shift()!;
     productLines = vulnerabilities;
   }
+  const openCVE = (e: Event) => {
+    let CVE: string = (e.target as Element).getAttribute("href")!;
+    appStore.setSelectedCVE(CVE);
+    appStore.setVulnerabilitiesSectionVisible();
+    e.preventDefault();
+  };
 </script>
 
 <div>
@@ -29,7 +35,7 @@
             {#if index < 2}
               <th>{column}</th>
             {:else}
-              <th><a href={column}>{column}</a></th>
+              <th><a on:click={openCVE} href={column}>{column}</a></th>
             {/if}
           {/each}
         </tr>
@@ -93,9 +99,12 @@
     font-size: large;
     float: left;
     clear: left;
-    width: 1rem;
+    width: 3rem;
   }
   dd {
     margin-bottom: 0.3em;
+  }
+  th {
+    font-weight: 100;
   }
 </style>

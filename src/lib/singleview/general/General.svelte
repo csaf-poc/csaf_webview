@@ -8,6 +8,7 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
+  import Collapsible from "$lib/Collapsible.svelte";
   import { Status, TLP } from "$lib/singleview/general/docmodeltypes";
   import { appStore } from "$lib/store";
   let tlpStyle: string = "";
@@ -42,7 +43,7 @@
     <dt>CSAF-Version</dt>
     <dd>{csafVersion}</dd>
     <dt>TLP</dt>
-    <dd><span class={tlpStyle}>{tlp}</span></dd>
+    <dd><span class={tlpStyle}>{tlp}&nbsp;</span></dd>
     <dt>Category</dt>
     <dd>{category}</dd>
     <dt>Title</dt>
@@ -54,7 +55,7 @@
     <dt>Publisher namespace</dt>
     <dd>{publisherNamespace}</dd>
     <dt>Language</dt>
-    <dd>{lang}</dd>
+    <dd>{lang}&nbsp;</dd>
     <dt>Published</dt>
     <dd>{published}</dd>
     <dt>Last update</dt>
@@ -69,39 +70,48 @@
 </div>
 
 {#if $appStore.doc?.isRevisionHistoryPresent}
-  <div>
-    <h3>Revision History</h3>
-    <table class="striped">
-      <thead>
-        <tr
-          ><th>date</th>
-          <th>number</th>
-          <th>summary</th>
-          <th>legacy_version</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each $appStore.doc?.revisionHistory as entry}
-          <tr>
-            <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
-              >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
-            >
+  <Collapsible header="Revision history" level="3" open={$appStore.ui.isRevisionHistoryVisible}>
+    <div class="revisionhistory">
+      <table class="striped">
+        <thead>
+          <tr
+            ><th>Date</th>
+            <th>Number</th>
+            <th>Summary</th>
+            <th>Legacy_version</th>
           </tr>
-        {/each}
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          {#each $appStore.doc?.revisionHistory as entry}
+            <tr>
+              <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
+                >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
+              >
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+  </Collapsible>
 {/if}
 
 <style>
+  .documentdata {
+    width: 60vw;
+    min-width: 80rem;
+  }
+  .revisionhistory {
+    width: 40vw;
+    min-width: 70rem;
+  }
   dt {
-    font-size: large;
     float: left;
     clear: left;
-    width: 20%;
+    width: 21rem;
+    font-weight: 100;
   }
   dd {
-    margin-bottom: 0.3em;
+    margin-bottom: 0.1em;
   }
   .tlpclear {
     background: #000;
@@ -118,5 +128,8 @@
   .tlpgreen {
     background: #33ff00;
     color: #fff;
+  }
+  th {
+    font-weight: 100;
   }
 </style>
