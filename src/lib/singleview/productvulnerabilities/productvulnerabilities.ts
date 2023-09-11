@@ -133,7 +133,7 @@ const isProduct = (branch: any) => {
 };
 
 const generateDictFrom = (productStatus: ProductStatus_t, section: ProductStatus_t_Key) => {
-  return productStatus[section]!.reduce((o: any, n: string) => {
+  return productStatus[section]?.reduce((o: any, n: string) => {
     o[n] = n;
     return o;
   }, {});

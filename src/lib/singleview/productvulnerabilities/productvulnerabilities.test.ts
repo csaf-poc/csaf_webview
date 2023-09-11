@@ -12,7 +12,7 @@ import {
   extractVulnerabilities,
   generateProductVulnerabilities
 } from "./productvulnerabilities";
-import { ProductStatusSymbol, type Vulnerability } from "./productvulnerabilitiestypes";
+import { ProductStatusSymbol } from "./productvulnerabilitiestypes";
 
 const emptyObject = {};
 
@@ -294,6 +294,7 @@ describe("Productvulnerabilities test", () => {
   it("Vulnerability: parses vulnerability with empty known_affected", () => {
     const { vulnerabilities } = extractVulnerabilities(vulnerability_known_affected_empty);
     expect(vulnerabilities.length).toBe(1);
+    // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     expect(Object.keys(vulnerabilities[0].known_affected!).length).toBe(0);
   });
 });
@@ -303,8 +304,11 @@ describe("Productvulnerabilities test", () => {
     const { vulnerabilities } = extractVulnerabilities(vulnerability_known_affected_filled);
     const value = vulnerabilities[0];
     expect(vulnerabilities.length).toBe(1);
+    // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     expect(Object.keys(value.known_affected!).length).toBe(2);
+    // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     expect(value.known_affected!["123"]).toBe("123");
+    // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     expect(value.known_affected!["456"]).toBe("456");
   });
 });

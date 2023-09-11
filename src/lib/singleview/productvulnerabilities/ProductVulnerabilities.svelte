@@ -15,10 +15,12 @@
   let productLines: string[][];
   $: if ($appStore.doc) {
     const vulnerabilities = [...$appStore.doc.productVulnerabilities];
+    // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     headerColumns = vulnerabilities.shift()!;
     productLines = vulnerabilities;
   }
   const openCVE = (e: Event) => {
+    // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     let CVE: string = (e.target as Element).getAttribute("href")!;
     appStore.setSelectedCVE(CVE);
     appStore.setVulnerabilitiesSectionVisible();
@@ -41,7 +43,7 @@
         </tr>
       </thead>
       <tbody>
-        {#each productLines as line, index}
+        {#each productLines as line}
           <tr>
             {#each line as column, index}
               {#if index < 1}
