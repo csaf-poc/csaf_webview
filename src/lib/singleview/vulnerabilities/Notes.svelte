@@ -1,0 +1,32 @@
+<script lang="ts">
+  import Collapsible from "$lib/Collapsible.svelte";
+  export let vulnerability: any;
+</script>
+
+<Collapsible header="Notes" level="4">
+  <div class="spacer" />
+  {#each vulnerability.notes as note}
+    <div class="note">
+      <h6>{note.title}</h6>
+      <p>{note.text}</p>
+    </div>
+  {/each}
+</Collapsible>
+
+<style>
+  .spacer {
+    margin-top: 1em;
+  }
+  .note {
+    text-align: justify;
+  }
+  h6 {
+    line-height: 0.3em;
+    font-size: large;
+  }
+  p {
+    margin-left: 4rem;
+    font-size: small;
+    font-family: monospace;
+  }
+</style>
