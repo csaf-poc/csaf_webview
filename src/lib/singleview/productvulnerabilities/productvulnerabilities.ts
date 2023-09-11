@@ -38,7 +38,7 @@ const generateCrossTableFrom = (products: Product[], vulnerabilities: Vulnerabil
   header = header.concat(getCVE);
   result.push(header);
   const productLines = products.map((product: Product) => {
-    let line = [product.name];
+    let line = [`${product.name} (${product.product_id})`];
     line = line.concat(generateLineWith(product, vulnerabilities));
     return line;
   });
