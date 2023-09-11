@@ -12,10 +12,10 @@
   import { convertToDocModel } from "$lib/singleview/general/docmodel";
   import { generateProductVulnerabilities } from "./productvulnerabilities/productvulnerabilities";
 
-  let hover: boolean = false;
+  let hover = false;
   let valid: boolean | null = null;
   $: invalid = valid === false;
-  let text: string = "Drop your CSAF-file here";
+  let text = "Drop your CSAF-file here";
   const fileDropped = (e: DragEvent) => {
     if (e.dataTransfer) {
       appStore.setDocument(null);

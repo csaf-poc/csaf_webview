@@ -17,40 +17,35 @@ import {
 } from "$lib/singleview/general/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
-  return csafDoc.hasOwnProperty(CSAFDocProps.DOCUMENT);
+  return csafDoc[CSAFDocProps.DOCUMENT];
 };
 
 const checkTrackingPresent = (csafDoc: any): boolean => {
-  return checkDocumentPresent(csafDoc) && csafDoc.document.hasOwnProperty(CSAFDocProps.TRACKING);
+  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.TRACKING];
 };
 
 const checkDistributionPresent = (csafDoc: any): boolean => {
-  return (
-    checkDocumentPresent(csafDoc) && csafDoc.document.hasOwnProperty(CSAFDocProps.DISTRIBUTION)
-  );
+  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.DISTRIBUTION];
 };
 
 const checkTLPPresent = (csafDoc: any): boolean => {
   return (
     checkDistributionPresent(csafDoc) &&
-    csafDoc.document.distribution.hasOwnProperty(CSAFDocProps.TLP) &&
-    csafDoc.document.distribution[CSAFDocProps.TLP].hasOwnProperty(CSAFDocProps.LABEL)
+    csafDoc.document.distribution[CSAFDocProps.TLP] &&
+    csafDoc.document.distribution[CSAFDocProps.TLP][CSAFDocProps.LABEL]
   );
 };
 
 const checkPublisher = (csafDoc: any): boolean => {
-  return checkDocumentPresent(csafDoc) && csafDoc.document.hasOwnProperty(CSAFDocProps.PUBLISHER);
+  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.PUBLISHER];
 };
 
 const checkVulnerabilities = (csafDoc: any): boolean => {
-  return csafDoc.hasOwnProperty(CSAFDocProps.VULNERABILITIES);
+  return csafDoc[CSAFDocProps.VULNERABILITIES];
 };
 
 const checkRevisionHistoryPresent = (csafDoc: any): boolean => {
-  return (
-    checkTrackingPresent(csafDoc) &&
-    csafDoc.document.tracking.hasOwnProperty(CSAFDocProps.REVISIONHISTORY)
-  );
+  return checkTrackingPresent(csafDoc) && csafDoc.document.tracking[CSAFDocProps.REVISIONHISTORY];
 };
 
 const getTitle = (csafDoc: any): string => {

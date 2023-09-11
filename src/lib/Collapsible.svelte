@@ -1,9 +1,11 @@
 <script lang="ts">
   export let header: string;
-  export let open: boolean = false;
-  export let level: string = "2";
-  export let class_: string = "";
-  export let onClose: Function = () => {};
+  export let open = false;
+  export let level = "2";
+  export let class_ = "";
+  export let onClose = () => {
+    //default: Do notthing
+  };
   let visibility = "none";
   $: if (open) {
     visibility = "block";
@@ -11,7 +13,7 @@
     visibility = "none";
   }
   let icon = "bx-chevron-down";
-  const toggle = (e: Event) => {
+  const toggle = () => {
     if (visibility === "block") {
       onClose();
       visibility = "none";

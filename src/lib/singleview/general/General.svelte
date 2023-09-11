@@ -11,7 +11,7 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import { Status, TLP } from "$lib/singleview/general/docmodeltypes";
   import { appStore } from "$lib/store";
-  let tlpStyle: string = "";
+  let tlpStyle = "";
   $: trackingVersion = $appStore.doc?.trackingVersion;
   $: publisherName = $appStore.doc?.publisher.name;
   $: publisherCategory = $appStore.doc?.publisher.category;

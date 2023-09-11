@@ -374,7 +374,7 @@ describe("docmodel test", () => {
 
 describe("docmodel test", () => {
   it("converts an object with document property and distribution and TLP and wrong label", () => {
-    const tlpLabel: string = "bananas";
+    const tlpLabel = "bananas";
     const doc = {
       [CSAFDocProps.DOCUMENT]: {
         [CSAFDocProps.DISTRIBUTION]: { [CSAFDocProps.TLP]: { [CSAFDocProps.LABEL]: tlpLabel } }
