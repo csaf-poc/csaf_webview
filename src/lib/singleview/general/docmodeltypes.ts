@@ -37,7 +37,7 @@ export const TLP = {
   ERROR: "Invalid TLP"
 } as const;
 
-export const EMPTY: string = "";
+export const EMPTY = "";
 
 export type TLPKeys = (typeof TLP)[keyof typeof TLP];
 

@@ -18,7 +18,7 @@ import {
 
 const generateProductVulnerabilities = (jsonDocument: any) => {
   let products = extractProducts(jsonDocument);
-  let { vulnerabilities, relevantProducts } = extractVulnerabilities(jsonDocument);
+  const { vulnerabilities, relevantProducts } = extractVulnerabilities(jsonDocument);
   products = products.filter((product: Product) => {
     return relevantProducts[product.product_id];
   });
@@ -37,7 +37,7 @@ const generateCrossTableFrom = (products: Product[], vulnerabilities: Vulnerabil
   const getCVE = vulnerabilities.map((vulnerability: Vulnerability) => vulnerability.cve);
   header = header.concat(getCVE);
   result.push(header);
-  let productLines = products.map((product: Product) => {
+  const productLines = products.map((product: Product) => {
     let line = [product.name];
     line = line.concat(generateLineWith(product, vulnerabilities));
     return line;
