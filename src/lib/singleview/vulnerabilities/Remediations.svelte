@@ -5,12 +5,8 @@
 
 <Collapsible header="Remediations" level="4">
   {#each vulnerability.remediations as remediation}
-    <Collapsible header={remediation.category} level="5">
+    <Collapsible header="Category: {remediation.category}" level="5">
       <div class="spacer" />
-      <div class="">
-        <h6>Category</h6>
-        <p>{remediation.category}</p>
-      </div>
       {#if remediation.date}
         <div class="">
           <h6>Date</h6>
