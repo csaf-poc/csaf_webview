@@ -51,6 +51,7 @@
   }
   ul {
     list-style-type: none;
+    margin-block-end: 0px;
   }
   p {
     margin-left: 4rem;

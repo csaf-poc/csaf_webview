@@ -50,6 +50,13 @@
       <h4><i class="bx {icon}" />{header}</h4>
     </div>
   {/if}
+  {#if level == "5"}
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+      <h6><i class="bx {icon}" />{header}</h6>
+    </div>
+  {/if}
   <div style="display:{visibility}" class="body">
     <slot />
   </div>
@@ -66,5 +73,9 @@
   }
   h2 {
     font-weight: bold;
+  }
+  h6 {
+    line-height: 0.3em;
+    font-size: large;
   }
 </style>

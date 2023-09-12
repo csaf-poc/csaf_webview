@@ -5,23 +5,86 @@
 
 <Collapsible header="Remediations" level="4">
   {#each vulnerability.remediations as remediation}
-    <dl>
-      <dt>Category</dt>
-      <dd>{remediation.category}</dd>
-      <dt>Details</dt>
-      <dd>{remediation.details}</dd>
-    </dl>
+    <Collapsible header={remediation.category} level="5">
+      <div class="spacer" />
+      <div class="">
+        <h6>Category</h6>
+        <p>{remediation.category}</p>
+      </div>
+      {#if remediation.date}
+        <div class="">
+          <h6>Date</h6>
+          <p>{remediation.date}</p>
+        </div>
+      {/if}
+      <div class="">
+        <h6>Details</h6>
+        <p>{remediation.details}</p>
+      </div>
+      {#if remediation.entitlements}
+        <div class="">
+          <h6>Entitlements</h6>
+          <ul>
+            {#each remediation.entitlements as entitlement}
+              <li>{entitlement}</li>
+            {/each}
+          </ul>
+        </div>
+      {/if}
+      {#if remediation.group_ids}
+        <div class="">
+          <h6>Group IDs</h6>
+          <ul>
+            {#each remediation.group_ids as gid}
+              <li>{gid}</li>
+            {/each}
+          </ul>
+        </div>
+      {/if}
+      {#if remediation.product_ids}
+        <div class="">
+          <h6>Product IDs</h6>
+          <ul>
+            {#each remediation.product_ids as pid}
+              <li>{pid}</li>
+            {/each}
+          </ul>
+        </div>
+      {/if}
+      {#if remediation.restart_required}
+        <div class="">
+          <h6>Restart_required</h6>
+          <p>{remediation.restart_required.category}</p>
+          {#if remediation.restart_required.details}
+            <p>{remediation.restart_required.details}</p>
+          {/if}
+        </div>
+      {/if}
+      {#if remediation.url}
+        <div class="">
+          <h6>Url</h6>
+          <p>{remediation.url}</p>
+        </div>
+      {/if}
+    </Collapsible>
   {/each}
 </Collapsible>
 
 <style>
-  dt {
-    float: left;
-    clear: left;
-    font-weight: 100;
-    width: 14rem;
+  .spacer {
+    margin-top: 2em;
   }
-  dd {
-    margin-bottom: 0.1em;
+  h6 {
+    line-height: 0.3em;
+    font-size: large;
+  }
+  p {
+    margin-left: 4rem;
+    font-size: small;
+    font-family: monospace;
+  }
+  ul {
+    list-style-type: none;
+    margin-block-end: 0px;
   }
 </style>
