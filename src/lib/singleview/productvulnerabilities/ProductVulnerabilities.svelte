@@ -75,7 +75,7 @@
       </table>
     </div>
     <div class="legend col col-2">
-      <div class="card">
+      <div class="">
         <h6>Legend</h6>
         <dl>
           <dt><i class="bx bx-check" /></dt>
@@ -116,5 +116,8 @@
   }
   th {
     font-weight: 100;
+  }
+  h6 {
+    font-weight: 600;
   }
 </style>

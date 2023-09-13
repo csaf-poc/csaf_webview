@@ -31,9 +31,8 @@
       <h1>{$appStore.doc?.id}: {$appStore.doc?.title}</h1>
     </div>
   </div>
-  <Collapsible header="General" open={$appStore.ui.isGeneralSectionVisible}>
-    <General />
-  </Collapsible>
+  <h2>General</h2>
+  <General />
 {/if}
 {#if isDocumentASecurityAdvisory}
   <Collapsible
@@ -54,3 +53,10 @@
     <Vulnerabilities />
   </Collapsible>
 {/if}
+
+<style>
+  h2 {
+    font-weight: bold;
+    margin-left: 3rem;
+  }
+</style>

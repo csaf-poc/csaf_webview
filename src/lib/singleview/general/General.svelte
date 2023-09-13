@@ -70,35 +70,41 @@
 </div>
 
 {#if $appStore.doc?.isRevisionHistoryPresent}
-  <Collapsible header="Revision history" level="3" open={$appStore.ui.isRevisionHistoryVisible}>
-    <div class="revisionhistory">
-      <table class="striped">
-        <thead>
-          <tr
-            ><th>Date</th>
-            <th>Number</th>
-            <th>Summary</th>
-            <th>Legacy_version</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each $appStore.doc?.revisionHistory as entry}
-            <tr>
-              <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
-                >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
-              >
+  <div class="revisionhistorysection">
+    <Collapsible header="Revision history" level="3" open={$appStore.ui.isRevisionHistoryVisible}>
+      <div class="revisionhistory">
+        <table class="striped">
+          <thead>
+            <tr
+              ><th>Date</th>
+              <th>Number</th>
+              <th>Summary</th>
+              <th>Legacy_version</th>
             </tr>
-          {/each}
-        </tbody>
-      </table>
-    </div>
-  </Collapsible>
+          </thead>
+          <tbody>
+            {#each $appStore.doc?.revisionHistory as entry}
+              <tr>
+                <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
+                  >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
+                >
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+    </Collapsible>
+  </div>
 {/if}
 
 <style>
+  .revisionhistorysection {
+    margin-left: 3rem;
+  }
   .documentdata {
     width: 60vw;
     min-width: 80rem;
+    margin-left: 3rem;
   }
   .revisionhistory {
     width: 40vw;
