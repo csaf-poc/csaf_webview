@@ -26,6 +26,11 @@
   </div>
 </div>
 {#if $appStore.doc}
+  <div class="row">
+    <div class="col">
+      <h1>{$appStore.doc?.id}: {$appStore.doc?.title}</h1>
+    </div>
+  </div>
   <Collapsible header="General" open={$appStore.ui.isGeneralSectionVisible}>
     <General />
   </Collapsible>
