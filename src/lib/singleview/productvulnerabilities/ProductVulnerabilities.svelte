@@ -28,64 +28,68 @@
   };
 </script>
 
-<div>
+<div class="row">
   {#if productLines.length > 0}
-    <table class="striped">
-      <thead>
-        <tr>
-          {#each headerColumns as column, index}
-            {#if index < 2}
-              <th>{column}</th>
-            {:else}
-              <th><a on:click={openCVE} href={column}>{column}</a></th>
-            {/if}
-          {/each}
-        </tr>
-      </thead>
-      <tbody>
-        {#each productLines as line}
+    <div class="col col-10">
+      <table class="striped">
+        <thead>
           <tr>
-            {#each line as column, index}
-              {#if index < 1}
-                <td><a href={column}>{column}</a></td>
-              {:else if column === "N.A"}
-                <td>{column}</td>
+            {#each headerColumns as column, index}
+              {#if index < 2}
+                <th>{column}</th>
               {:else}
-                <td>
-                  {#if column === ProductStatusSymbol.NOT_AFFECTED + ProductStatusSymbol.RECOMMENDED}
-                    <i class="bx bx-heart" />
-                    <i class="bx b-minus" />
-                  {:else}
-                    <i
-                      class:bx={true}
-                      class:bx-x={column === ProductStatusSymbol.KNOWN_AFFECTED}
-                      class:bx-check={column === ProductStatusSymbol.FIXED}
-                      class:bx-error={column === ProductStatusSymbol.UNDER_INVESTIGATION}
-                      class:bx-minus={column === ProductStatusSymbol.NOT_AFFECTED}
-                      class:bx-heart={column === ProductStatusSymbol.RECOMMENDED}
-                    />
-                  {/if}
-                </td>
+                <th><a on:click={openCVE} href={column}>{column}</a></th>
               {/if}
             {/each}
           </tr>
-        {/each}
-      </tbody>
-    </table>
-    <div class="legend">
-      <h6>Legend</h6>
-      <dl>
-        <dt><i class="bx bx-check" /></dt>
-        <dd>Fixed</dd>
-        <dt><i class="bx bx-error" /></dt>
-        <dd>Under investigation</dd>
-        <dt><i class="bx bx-x" /></dt>
-        <dd>Known affected</dd>
-        <dt><i class="bx bx-minus" /></dt>
-        <dd>Not affected</dd>
-        <dt><i class="bx bx-heart" /></dt>
-        <dd>Recommended</dd>
-      </dl>
+        </thead>
+        <tbody>
+          {#each productLines as line}
+            <tr>
+              {#each line as column, index}
+                {#if index < 1}
+                  <td><a href={column}>{column}</a></td>
+                {:else if column === "N.A"}
+                  <td>{column}</td>
+                {:else}
+                  <td>
+                    {#if column === ProductStatusSymbol.NOT_AFFECTED + ProductStatusSymbol.RECOMMENDED}
+                      <i class="bx bx-heart" />
+                      <i class="bx b-minus" />
+                    {:else}
+                      <i
+                        class:bx={true}
+                        class:bx-x={column === ProductStatusSymbol.KNOWN_AFFECTED}
+                        class:bx-check={column === ProductStatusSymbol.FIXED}
+                        class:bx-error={column === ProductStatusSymbol.UNDER_INVESTIGATION}
+                        class:bx-minus={column === ProductStatusSymbol.NOT_AFFECTED}
+                        class:bx-heart={column === ProductStatusSymbol.RECOMMENDED}
+                      />
+                    {/if}
+                  </td>
+                {/if}
+              {/each}
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+    <div class="legend col col-2">
+      <div class="card">
+        <h6>Legend</h6>
+        <dl>
+          <dt><i class="bx bx-check" /></dt>
+          <dd>Fixed</dd>
+          <dt><i class="bx bx-error" /></dt>
+          <dd>Under investigation</dd>
+          <dt><i class="bx bx-x" /></dt>
+          <dd>Known affected</dd>
+          <dt><i class="bx bx-minus" /></dt>
+          <dd>Not affected</dd>
+          <dt><i class="bx bx-heart" /></dt>
+          <dd>Recommended</dd>
+        </dl>
+      </div>
     </div>
   {/if}
 </div>
@@ -95,7 +99,7 @@
     line-height: 2rem;
   }
   .legend {
-    margin-top: 2rem;
+    margin-top: auto;
   }
   dt {
     font-size: large;
@@ -105,6 +109,10 @@
   }
   dd {
     margin-bottom: 0.3em;
+  }
+
+  dd:last-of-type {
+    margin-bottom: 0;
   }
   th {
     font-weight: 100;
