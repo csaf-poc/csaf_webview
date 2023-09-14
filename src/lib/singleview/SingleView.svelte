@@ -15,12 +15,16 @@
   import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
   import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
   import { CSAFDocProps, DocumentCategory } from "./general/docmodeltypes";
+  import Upload from "./Upload.svelte";
   $: isDocumentASecurityAdvisory =
     $appStore.doc &&
     $appStore.doc[CSAFDocProps.CATEGORY] === DocumentCategory.CSAF_SECURITY_ADVISORY;
 </script>
 
 <div class="row">
+  <!-- <div class="col col-3">
+    <Upload />
+  </div> -->
   <div class="col">
     <Droparea />
   </div>
