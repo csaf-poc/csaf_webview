@@ -22,10 +22,10 @@
 </script>
 
 <div class="row">
-  <!-- <div class="col col-3">
+  <div class="col col-3">
     <Upload />
-  </div> -->
-  <div class="col">
+  </div>
+  <div class="col col-9">
     <Droparea />
   </div>
 </div>

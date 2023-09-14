@@ -1,17 +1,19 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
-  const fileSelected = (e: any) => {
-    const file = e.target.files[0];
-    console.log(file);
-    if (file.type === "application/json") {
-      appStore.setDocument(null);
-    }
-  };
+  import { loadFile } from "./loadFile";
+  let files: FileList | null;
+  let input: any;
+  $: if (files) {
+    appStore.setUploadedFile();
+    appStore.setDocument(null);
+    loadFile(files[0]);
+  }
+  $: if (!$appStore.ui.uploadedFile) {
+    if (input) input.value = "";
+  }
 </script>
 
-<form>
-  <input type="file" on:change={fileSelected} />
-</form>
+<input type="file" accept="application/json" bind:files bind:this={input} />
 
 <style>
   input[type="file"]::file-selector-button {

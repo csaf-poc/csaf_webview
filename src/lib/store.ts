@@ -17,6 +17,7 @@ type AppStore = {
     isVulnerabilisiesOverviewVisible: boolean;
     isVulnerabilitiesSectionVisible: boolean;
     selectedCVE: string;
+    uploadedFile: boolean;
   };
 };
 
@@ -28,7 +29,8 @@ function createStore() {
       isRevisionHistoryVisible: false,
       isVulnerabilisiesOverviewVisible: false,
       isVulnerabilitiesSectionVisible: false,
-      selectedCVE: ""
+      selectedCVE: "",
+      uploadedFile: false
     }
   };
   const { subscribe, set, update } = writable({ ...appDefault });
@@ -61,6 +63,18 @@ function createStore() {
     setVulnerabilitiesSectionInvisible: () => {
       update((settings) => {
         settings.ui.isVulnerabilitiesSectionVisible = false;
+        return settings;
+      });
+    },
+    setUploadedFile: () => {
+      update((settings) => {
+        settings.ui.uploadedFile = true;
+        return settings;
+      });
+    },
+    clearUploadedFile: () => {
+      update((settings) => {
+        settings.ui.uploadedFile = false;
         return settings;
       });
     },
