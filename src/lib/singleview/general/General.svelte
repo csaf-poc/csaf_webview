@@ -37,36 +37,62 @@
 </script>
 
 <div class="documentdata">
-  <dl>
-    <dt>ID</dt>
-    <dd>{id}</dd>
-    <dt>CSAF-Version</dt>
-    <dd>{csafVersion}</dd>
-    <dt>TLP</dt>
-    <dd><span class={tlpStyle}>{tlp}&nbsp;</span></dd>
-    <dt>Category</dt>
-    <dd>{category}</dd>
-    <dt>Title</dt>
-    <dd>{title}</dd>
-    <dt>Publisher name</dt>
-    <dd>{publisherName}</dd>
-    <dt>Publisher category</dt>
-    <dd>{publisherCategory}</dd>
-    <dt>Publisher namespace</dt>
-    <dd>{publisherNamespace}</dd>
-    <dt>Language</dt>
-    <dd>{lang}&nbsp;</dd>
-    <dt>Published</dt>
-    <dd>{published}</dd>
-    <dt>Last update</dt>
-    <dd>{lastUpdate}</dd>
-    <dt>Tracking Version</dt>
-    <dd>{trackingVersion}</dd>
+  <table>
+    <tr>
+      <td class="key">ID</td>
+      <td class="value">{id}</td>
+    </tr>
+    <tr>
+      <td class="key">CSAF-Version</td>
+      <td class="value">{csafVersion}</td>
+    </tr>
+    <tr>
+      <td class="key">TLP</td>
+      <td class="value"><span class={tlpStyle}>{tlp}&nbsp;</span></td>
+    </tr>
+    <tr>
+      <td class="key">Category</td>
+      <td class="value">{category}</td>
+    </tr>
+    <tr>
+      <td class="key">Title</td>
+      <td class="value">{title}</td>
+    </tr>
+    <tr>
+      <td class="key">Publisher name</td>
+      <td class="value">{publisherName}</td>
+    </tr>
+    <tr>
+      <td class="key">Publisher category</td>
+      <td class="value">{publisherCategory}</td>
+    </tr>
+    <tr>
+      <td class="key">Publisher namespace</td>
+      <td class="value">{publisherNamespace}</td>
+    </tr>
+    <tr>
+      <td class="key">Language</td>
+      <td class="value">{lang}</td>
+    </tr>
+    <tr>
+      <td class="key">Published</td>
+      <td class="value">{published}</td>
+    </tr>
+    <tr>
+      <td class="key">Last update</td>
+      <td class="value">{lastUpdate}</td>
+    </tr>
+    <tr>
+      <td class="key">Tracking Version</td>
+      <td class="value">{trackingVersion}</td>
+    </tr>
     {#if $appStore.doc?.status !== Status.final}
-      <dt>Status</dt>
-      <dd>{status}</dd>
+      <tr>
+        <td class="key">Status</td>
+        <td class="value">{status}</td>
+      </tr>
     {/if}
-  </dl>
+  </table>
 </div>
 
 {#if $appStore.doc?.isRevisionHistoryPresent}
@@ -98,6 +124,13 @@
 {/if}
 
 <style>
+  .key {
+    width: 21rem;
+    padding: 0.2rem;
+  }
+  .value {
+    padding: 0.2rem;
+  }
   .revisionhistorysection {
     margin-left: 3rem;
   }
@@ -109,15 +142,6 @@
   .revisionhistory {
     width: 40vw;
     min-width: 70rem;
-  }
-  dt {
-    float: left;
-    clear: left;
-    width: 21rem;
-    font-weight: 100;
-  }
-  dd {
-    margin-bottom: 0.1em;
   }
   .tlpclear {
     background: #000;
