@@ -38,13 +38,13 @@ const generateCrossTableFrom = (products: Product[], vulnerabilities: Vulnerabil
   header = header.concat(getCVE);
   result.push(header);
   const productLines = products.map((product: Product) => {
-    let line = [`${product.name} (${product.product_id})`];
+    let line = [{ name: `${product.name}`, id: `${product.product_id}` }];
     line = line.concat(generateLineWith(product, vulnerabilities));
     return line;
   });
-  productLines.sort((line1: string[], line2: string[]) => {
-    if (line1[0] < line2[0]) return -1;
-    if (line1[0] > line2[0]) return 1;
+  productLines.sort((line1: any, line2: any) => {
+    if (line1[0].name < line2[0].name) return -1;
+    if (line1[0].name > line2[0].name) return 1;
     return 0;
   });
   result = [...result, ...productLines];

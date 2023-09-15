@@ -44,6 +44,10 @@ const checkVulnerabilities = (csafDoc: any): boolean => {
   return csafDoc[CSAFDocProps.VULNERABILITIES];
 };
 
+const checkproducTree = (csafDoc: any): boolean => {
+  return csafDoc[CSAFDocProps.PRODUCTTREE];
+};
+
 const checkRevisionHistoryPresent = (csafDoc: any): boolean => {
   return checkTrackingPresent(csafDoc) && csafDoc.document.tracking[CSAFDocProps.REVISIONHISTORY];
 };
@@ -150,6 +154,11 @@ const getRevisionHistory = (csafDoc: any): RevisionHistoryEntry[] => {
   return result;
 };
 
+const getProductTree = (csafDoc: any) => {
+  if (!checkproducTree(csafDoc)) return [];
+  return csafDoc[CSAFDocProps.PRODUCTTREE];
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
     title: getTitle(csafDoc),
@@ -166,10 +175,12 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     lastUpdate: getLastUpdate(csafDoc),
     vulnerabilities: getVulnerabilities(csafDoc),
     productVulnerabilities: [],
+    productTree: getProductTree(csafDoc),
     isDocPresent: checkDocumentPresent(csafDoc),
     isTrackingPresent: checkTrackingPresent(csafDoc),
     isDistributionPresent: checkDistributionPresent(csafDoc),
     isTLPPresent: checkTLPPresent(csafDoc),
+    isProductTreePresent: checkproducTree(csafDoc),
     isPublisherPresent: checkPublisher(csafDoc),
     isVulnerabilitiesPresent: checkVulnerabilities(csafDoc),
     isRevisionHistoryPresent: checkRevisionHistoryPresent(csafDoc)

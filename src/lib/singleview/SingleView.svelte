@@ -16,6 +16,7 @@
   import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
   import { CSAFDocProps, DocumentCategory } from "./general/docmodeltypes";
   import Upload from "./Upload.svelte";
+  import ProductTree from "./producttree/ProductTree.svelte";
   $: isDocumentASecurityAdvisory =
     $appStore.doc &&
     $appStore.doc[CSAFDocProps.CATEGORY] === DocumentCategory.CSAF_SECURITY_ADVISORY;
@@ -44,6 +45,11 @@
     open={$appStore.ui.isVulnerabilisiesOverviewVisible}
   >
     <ProductVulnerabilities />
+  </Collapsible>
+{/if}
+{#if $appStore.doc?.isProductTreePresent}
+  <Collapsible header="Product tree" open={$appStore.ui.isProductTreeVisible}>
+    <ProductTree />
   </Collapsible>
 {/if}
 {#if $appStore.doc?.isVulnerabilitiesPresent}

@@ -19,6 +19,13 @@
     headerColumns = vulnerabilities.shift()!;
     productLines = vulnerabilities;
   }
+  const openProduct = (e: Event) => {
+    // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
+    let product: string = (e.target as Element).getAttribute("href")!;
+    appStore.setProductTreeSectionVisible();
+    appStore.setSelectedProduct(product);
+    e.preventDefault();
+  };
   const openCVE = (e: Event) => {
     // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     let CVE: string = (e.target as Element).getAttribute("href")!;
@@ -48,7 +55,8 @@
             <tr>
               {#each line as column, index}
                 {#if index < 1}
-                  <td><a href={column}>{column}</a></td>
+                  <td><a on:click={openProduct} href={column.id}>{column.name} ({column.id})</a></td
+                  >
                 {:else if column === "N.A"}
                   <td>{column}</td>
                 {:else}

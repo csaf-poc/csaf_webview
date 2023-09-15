@@ -26,7 +26,8 @@ export const CSAFDocProps = {
   PUBLISHER_NAMESPACE: "namespace",
   TRACKINGVERSION: "version",
   REVISIONHISTORY: "revision_history",
-  VULNERABILITIES: "vulnerabilities"
+  VULNERABILITIES: "vulnerabilities",
+  PRODUCTTREE: "product_tree"
 } as const;
 
 export const TLP = {
@@ -82,11 +83,13 @@ export type DocModel = {
   trackingVersion: string;
   revisionHistory: RevisionHistoryEntry[];
   vulnerabilities: any;
-  productVulnerabilities: Array<Array<string>>;
+  productVulnerabilities: any;
+  productTree: any;
   isDocPresent: boolean;
   isTrackingPresent: boolean;
   isDistributionPresent: boolean;
   isTLPPresent: boolean;
+  isProductTreePresent: boolean;
   isPublisherPresent: boolean;
   isVulnerabilitiesPresent: boolean;
   isRevisionHistoryPresent: boolean;

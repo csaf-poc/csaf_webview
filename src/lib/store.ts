@@ -16,7 +16,9 @@ type AppStore = {
     isRevisionHistoryVisible: boolean;
     isVulnerabilisiesOverviewVisible: boolean;
     isVulnerabilitiesSectionVisible: boolean;
+    isProductTreeVisible: boolean;
     selectedCVE: string;
+    selectedProduct: string;
     uploadedFile: boolean;
   };
 };
@@ -29,7 +31,9 @@ function createStore() {
       isRevisionHistoryVisible: false,
       isVulnerabilisiesOverviewVisible: false,
       isVulnerabilitiesSectionVisible: false,
+      isProductTreeVisible: false,
       selectedCVE: "",
+      selectedProduct: "",
       uploadedFile: false
     }
   };
@@ -54,9 +58,33 @@ function createStore() {
         return settings;
       });
     },
+    setSelectedProduct: (product: string) => {
+      update((settings) => {
+        settings.ui.selectedProduct = product;
+        return settings;
+      });
+    },
+    resetSelectedProduct: () => {
+      update((settings) => {
+        settings.ui.selectedProduct = "";
+        return settings;
+      });
+    },
     setVulnerabilitiesSectionVisible: () => {
       update((settings) => {
         settings.ui.isVulnerabilitiesSectionVisible = true;
+        return settings;
+      });
+    },
+    setProductTreeSectionVisible: () => {
+      update((settings) => {
+        settings.ui.isProductTreeVisible = true;
+        return settings;
+      });
+    },
+    setProductTreeSectionInVisible: () => {
+      update((settings) => {
+        settings.ui.isProductTreeVisible = false;
         return settings;
       });
     },
