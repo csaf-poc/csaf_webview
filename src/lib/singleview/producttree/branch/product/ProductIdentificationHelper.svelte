@@ -1,6 +1,6 @@
 <script lang="ts">
-  import KeyValue from "../KeyValue.svelte";
-  import ValueList from "../ValueList.svelte";
+  import KeyValue from "$lib/singleview/KeyValue.svelte";
+  import ValueList from "$lib/singleview/ValueList.svelte";
   import FileHash from "./FileHash.svelte";
   import XGenericUri from "./XGenericURI.svelte";
   export let helper: any;

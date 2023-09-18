@@ -1,6 +1,6 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
-  import Branch from "./Branch.svelte";
+  import Branch from "./branch/Branch.svelte";
   import Collapsible from "$lib/Collapsible.svelte";
 </script>
 

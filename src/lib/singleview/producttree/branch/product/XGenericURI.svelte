@@ -1,6 +1,6 @@
 <script lang="ts">
-  import KeyValue from "../KeyValue.svelte";
-  import type { xGenericURI } from "./producttreetypes";
+  import KeyValue from "$lib/singleview/KeyValue.svelte";
+  import type { xGenericURI } from "./producttypes";
 
   export let x_generic_uris: xGenericURI[];
 </script>

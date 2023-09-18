@@ -1,6 +1,6 @@
 <script lang="ts">
-  import KeyValue from "../KeyValue.svelte";
-  import type { hashEntry } from "./producttreetypes";
+  import KeyValue from "$lib/singleview/KeyValue.svelte";
+  import type { hashEntry } from "./producttypes";
 
   export let hash: hashEntry[];
 </script>
