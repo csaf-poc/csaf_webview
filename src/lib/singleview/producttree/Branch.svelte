@@ -2,6 +2,7 @@
   import Branch from "./Branch.svelte";
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
+  import ProductIdentificationHelper from "./ProductIdentificationHelper.svelte";
   export let branch: any;
   let highlight = false;
   async function updateUI() {
@@ -27,8 +28,11 @@
     {/each}
   {/if}
   {#if branch.product}
-    <div id={branch.product.product_id} class:bg-light={highlight}>
+    <div id={branch.product.product_id} class:bg-light={highlight} style="margin-top:1rem;">
       {branch.product.name} <a href={branch.product.product_id}>({branch.product.product_id})</a>
+      {#if branch.product.product_identification_helper}
+        <ProductIdentificationHelper helper={branch.product.product_identification_helper} />
+      {/if}
     </div>
   {/if}
 </div>
