@@ -32,7 +32,7 @@ const generateProductVulnerabilities = (jsonDocument: any) => {
 };
 
 const generateCrossTableFrom = (products: Product[], vulnerabilities: Vulnerability[]) => {
-  let result = [];
+  let result: any = [];
   let header = ["Product", "Total result"];
   const getCVE = vulnerabilities.map((vulnerability: Vulnerability) => vulnerability.cve);
   header = header.concat(getCVE);
