@@ -16,10 +16,6 @@
 {/each}
 
 <style>
-  .key {
-    padding: 0.2rem;
-    width: 21rem;
-  }
   .value {
     padding: 0.2rem;
   }
