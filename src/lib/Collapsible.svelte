@@ -3,6 +3,7 @@
   export let open = false;
   export let level = "2";
   export let class_ = "";
+  export let highlight = false;
   export let onClose = () => {
     //default: Do notthing
   };
@@ -28,7 +29,7 @@
   }
 </script>
 
-<div class="collapsible">
+<div class:collapsible={true} class:bg-light={highlight}>
   {#if level == "2"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
