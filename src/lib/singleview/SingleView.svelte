@@ -47,8 +47,16 @@
     <ProductVulnerabilities />
   </Collapsible>
 {/if}
+
 {#if $appStore.doc?.isProductTreePresent}
-  <Collapsible header="Product tree" open={$appStore.ui.isProductTreeVisible}>
+  <Collapsible
+    header="Product tree"
+    open={$appStore.ui.isProductTreeVisible}
+    onClose={() => {
+      appStore.setProductTreeSectionInVisible();
+      appStore.resetSelectedProduct();
+    }}
+  >
     <ProductTree />
   </Collapsible>
 {/if}
