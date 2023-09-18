@@ -3,6 +3,7 @@
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
   import Collapsible from "$lib/Collapsible.svelte";
+  import KeyValue from "$lib/singleview/KeyValue.svelte";
   export let product: any;
   let highlight = false;
   async function updateUI() {
@@ -29,7 +30,7 @@
   }}
 >
   <div id={product.product_id}>
-    {product.name} <a href={product.product_id}>({product.product_id})</a>
+    <KeyValue keys={["Name", "Product ID"]} values={[product.name, product.product_id]} />
     {#if product.product_identification_helper}
       <ProductIdentificationHelper helper={product.product_identification_helper} />
     {/if}

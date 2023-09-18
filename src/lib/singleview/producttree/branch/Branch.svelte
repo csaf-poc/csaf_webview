@@ -1,6 +1,6 @@
 <script lang="ts">
   import Branch from "./Branch.svelte";
-  import Product from "./product/Product.svelte";
+  import Product from "$lib/singleview/producttree/product/Product.svelte";
 
   export let branch: any;
 </script>
