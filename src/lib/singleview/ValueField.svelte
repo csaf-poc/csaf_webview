@@ -15,6 +15,5 @@
   }
   p {
     margin-left: 4rem;
-    text-align: justify;
   }
 </style>
