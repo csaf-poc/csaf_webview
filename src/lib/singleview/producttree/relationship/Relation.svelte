@@ -40,11 +40,12 @@
 >
   <div id={relation.full_product_name.product_id} class="relation">
     <KeyValue
-      keys={["Category", "Name", "Product ID"]}
+      keys={["Category", "Name", "Product ID", "Product reference"]}
       values={[
         relation.category,
         relation.full_product_name.name,
-        relation.full_product_name.product_id
+        relation.full_product_name.product_id,
+        relation.product_reference
       ]}
     />
     <table>
