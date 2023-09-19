@@ -4,6 +4,7 @@
   import ValueField from "$lib/singleview/ValueField.svelte";
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
+  import ProductIdentificationHelper from "../product/ProductIdentificationHelper.svelte";
   export let relation: any;
   let highlight = false;
   const openProduct = (e: Event) => {
@@ -47,6 +48,11 @@
         relation.full_product_name.product_id
       ]}
     />
+    {#if relation.full_product_name.product_identification_helper}
+      <ProductIdentificationHelper
+        helper={relation.full_product_name.product_identification_helper}
+      />
+    {/if}
     <table>
       <tbody>
         <tr>
