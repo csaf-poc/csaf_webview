@@ -24,12 +24,14 @@
     let product: string = (e.target as Element).getAttribute("href")!;
     appStore.setProductTreeSectionVisible();
     appStore.setSelectedProduct(product);
+    appStore.unshiftHistory(window.scrollY);
     e.preventDefault();
   };
   const openCVE = (e: Event) => {
     // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     let CVE: string = (e.target as Element).getAttribute("href")!;
     appStore.setSelectedCVE(CVE);
+    appStore.unshiftHistory(window.scrollY);
     appStore.setVulnerabilitiesSectionVisible();
     e.preventDefault();
   };

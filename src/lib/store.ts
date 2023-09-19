@@ -20,6 +20,7 @@ type AppStore = {
     selectedCVE: string;
     selectedProduct: string;
     uploadedFile: boolean;
+    history: number[];
   };
 };
 
@@ -34,7 +35,8 @@ function createStore() {
       isProductTreeVisible: false,
       selectedCVE: "",
       selectedProduct: "",
-      uploadedFile: false
+      uploadedFile: false,
+      history: []
     }
   };
   const { subscribe, set, update } = writable({ ...appDefault });
@@ -103,6 +105,21 @@ function createStore() {
     clearUploadedFile: () => {
       update((settings) => {
         settings.ui.uploadedFile = false;
+        return settings;
+      });
+    },
+    unshiftHistory: (yPosition: number) => {
+      update((settings) => {
+        settings.ui.history.unshift(yPosition);
+        console.log(settings.ui.history);
+        return settings;
+      });
+    },
+    shiftHistory: () => {
+      update((settings) => {
+        if (settings.ui.history.length > 0) {
+          settings.ui.history.shift();
+        }
         return settings;
       });
     },

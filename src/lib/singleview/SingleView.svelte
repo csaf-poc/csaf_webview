@@ -17,6 +17,7 @@
   import { CSAFDocProps, DocumentCategory } from "./general/docmodeltypes";
   import Upload from "./Upload.svelte";
   import ProductTree from "./producttree/ProductTree.svelte";
+  import Back from "./Back.svelte";
   $: isDocumentASecurityAdvisory =
     $appStore.doc &&
     $appStore.doc[CSAFDocProps.CATEGORY] === DocumentCategory.CSAF_SECURITY_ADVISORY;
@@ -71,6 +72,8 @@
     <Vulnerabilities />
   </Collapsible>
 {/if}
+
+<!-- <Back /> -->
 
 <style>
   h2 {

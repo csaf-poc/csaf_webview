@@ -12,6 +12,7 @@
     let product: string = (e.target as Element).getAttribute("href")!;
     appStore.setProductTreeSectionVisible();
     appStore.setSelectedProduct(product);
+    appStore.unshiftHistory(window.scrollY);
     e.preventDefault();
   };
   async function updateUI() {
