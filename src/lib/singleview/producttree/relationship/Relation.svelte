@@ -40,16 +40,23 @@
 >
   <div id={relation.full_product_name.product_id} class="relation">
     <KeyValue
-      keys={["Category", "Name", "Product ID", "Product reference"]}
+      keys={["Category", "Name", "Product ID"]}
       values={[
         relation.category,
         relation.full_product_name.name,
-        relation.full_product_name.product_id,
-        relation.product_reference
+        relation.full_product_name.product_id
       ]}
     />
     <table>
       <tbody>
+        <tr>
+          <td class="key">Product reference</td>
+          <td
+            ><a on:click={openProduct} href={relation.product_reference}
+              >{relation.product_reference}</a
+            ></td
+          >
+        </tr>
         <tr>
           <td class="key">Relates to</td>
           <td
