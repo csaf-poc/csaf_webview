@@ -16,7 +16,7 @@
   async function updateUI() {
     await tick();
     document
-      .querySelector(`#${relation.full_product_name.product_id}`)
+      .getElementById(`${relation.full_product_name.product_id}`)
       ?.scrollIntoView({ behavior: "smooth" });
   }
   $: if ($appStore.ui.selectedProduct === relation.full_product_name.product_id) {

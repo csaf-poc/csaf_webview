@@ -8,7 +8,7 @@
   let highlight = false;
   async function updateUI() {
     await tick();
-    document.querySelector(`#${product?.product_id}`)?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(`${product?.product_id}`)?.scrollIntoView({ behavior: "smooth" });
   }
   $: if ($appStore.ui.selectedProduct === product?.product_id) {
     highlight = true;
