@@ -10,8 +10,6 @@
   let visibility = "none";
   $: if (open) {
     visibility = "block";
-  } else {
-    visibility = "none";
   }
   let icon = "bx-chevron-down";
   const toggle = () => {
