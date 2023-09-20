@@ -18,6 +18,7 @@ export const CSAFDocProps = {
   ISSUING_AUTHORITY: "issuing_authority",
   LABEL: "label",
   LANG: "lang",
+  NOTES: "notes",
   PRODUCTTREE: "product_tree",
   PUBLISHER_CATEGORY: "category",
   PUBLISHER_NAME: "name",
@@ -87,6 +88,7 @@ export type DocModel = {
   isVulnerabilitiesPresent: boolean;
   lang: string;
   lastUpdate: string;
+  notes: Note[];
   productTree: any;
   productVulnerabilities: any;
   published: string;
@@ -104,4 +106,11 @@ export type DocModelKey = keyof DocModel;
 export type TLP = {
   label: string;
   url?: string;
+};
+
+export type Note = {
+  category: string;
+  text: string;
+  audience?: string;
+  title?: string;
 };

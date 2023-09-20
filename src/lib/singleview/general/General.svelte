@@ -11,6 +11,7 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import { Status, TLP } from "$lib/singleview/general/docmodeltypes";
   import { appStore } from "$lib/store";
+  import RevisionHistory from "./RevisionHistory.svelte";
   let tlpStyle = "";
   $: trackingVersion = $appStore.doc?.trackingVersion;
   $: publisherName = $appStore.doc?.publisher.name;
@@ -123,27 +124,7 @@
 {#if $appStore.doc?.isRevisionHistoryPresent}
   <div class="revisionhistorysection">
     <Collapsible header="Revision history" level="3" open={$appStore.ui.isRevisionHistoryVisible}>
-      <div class="revisionhistory">
-        <table class="striped">
-          <thead>
-            <tr
-              ><th class="date">Date</th>
-              <th class="number">Number</th>
-              <th class="summary">Summary</th>
-              <th>Legacy_version</th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each $appStore.doc?.revisionHistory as entry}
-              <tr>
-                <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
-                  >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
-                >
-              </tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
+      <RevisionHistory />
     </Collapsible>
   </div>
 {/if}
@@ -153,15 +134,6 @@
     width: 21rem;
     padding: 0.2rem;
     vertical-align: top;
-  }
-  .date {
-    width: 20%;
-  }
-  .number {
-    width: 5%;
-  }
-  .summary {
-    width: 80%;
   }
   .value {
     padding: 0.2rem;
@@ -173,10 +145,6 @@
     width: 60vw;
     min-width: 80rem;
     margin-left: 3rem;
-  }
-  .revisionhistory {
-    width: 60vw;
-    min-width: 70rem;
   }
   .tlpclear {
     background: #000;

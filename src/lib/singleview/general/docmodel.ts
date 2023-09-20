@@ -13,7 +13,8 @@ import {
   EMPTY,
   CSAFDocProps,
   type Publisher,
-  type RevisionHistoryEntry
+  type RevisionHistoryEntry,
+  type Note
 } from "$lib/singleview/general/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
@@ -168,6 +169,11 @@ const getProductTree = (csafDoc: any) => {
   return csafDoc[CSAFDocProps.PRODUCTTREE];
 };
 
+const getNotes = (csafDoc: any): Note[] => {
+  if (!checkDocumentPresent(csafDoc)) return [];
+  return csafDoc[CSAFDocProps.NOTES];
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
     category: getCategory(csafDoc),
@@ -183,6 +189,7 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     isVulnerabilitiesPresent: checkVulnerabilities(csafDoc),
     lang: getLanguage(csafDoc),
     lastUpdate: getLastUpdate(csafDoc),
+    notes: getNotes(csafDoc),
     productTree: getProductTree(csafDoc),
     productVulnerabilities: [],
     published: getPublished(csafDoc),
