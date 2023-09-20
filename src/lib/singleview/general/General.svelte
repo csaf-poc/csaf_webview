@@ -49,10 +49,12 @@
       <td class="key">CSAF-Version</td>
       <td class="value">{csafVersion}</td>
     </tr>
-    <tr>
-      <td class="key">TLP</td>
-      <td class="value"><span class={tlpStyle}>{tlp?.label}</span></td>
-    </tr>
+    {#if tlp?.label}
+      <tr>
+        <td class="key">TLP</td>
+        <td class="value"><span class={tlpStyle}>{tlp?.label}</span></td>
+      </tr>
+    {/if}
     {#if tlp?.url}
       <tr>
         <td class="key">TLP URL</td>
@@ -91,10 +93,12 @@
         <td class="value">{publisherContactDetails}</td>
       </tr>
     {/if}
-    <tr>
-      <td class="key">Language</td>
-      <td class="value">{lang}</td>
-    </tr>
+    {#if lang}
+      <tr>
+        <td class="key">Language</td>
+        <td class="value">{lang}</td>
+      </tr>
+    {/if}
     <tr>
       <td class="key">Published</td>
       <td class="value">{published}</td>
@@ -148,6 +152,7 @@
   .key {
     width: 21rem;
     padding: 0.2rem;
+    vertical-align: top;
   }
   .value {
     padding: 0.2rem;
