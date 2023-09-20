@@ -21,13 +21,14 @@
   $: lang = $appStore.doc?.lang;
   $: csafVersion = $appStore.doc?.csafVersion;
   $: tlp = $appStore.doc?.tlp;
-  $: if (tlp === TLP.WHITE) {
+  $: tlpurl = $appStore.doc?.tlp.url;
+  $: if (tlp?.label === TLP.WHITE) {
     tlpStyle = "tlpclear";
-  } else if (tlp === TLP.RED) {
+  } else if (tlp?.label === TLP.RED) {
     tlpStyle = "tlred";
-  } else if (tlp === TLP.AMBER) {
+  } else if (tlp?.label === TLP.AMBER) {
     tlpStyle = "tlamber";
-  } else if (tlp === TLP.GREEN) {
+  } else if (tlp?.label === TLP.GREEN) {
     tlpStyle = "tlgreen";
   }
   $: id = $appStore.doc?.id;
@@ -48,8 +49,14 @@
     </tr>
     <tr>
       <td class="key">TLP</td>
-      <td class="value"><span class={tlpStyle}>{tlp}&nbsp;</span></td>
+      <td class="value"><span class={tlpStyle}>{tlp?.label}</span></td>
     </tr>
+    {#if tlp?.url}
+      <tr>
+        <td class="key">TLP URL</td>
+        <td class="value"><a href={tlpurl}>{tlp?.url}</a></td>
+      </tr>
+    {/if}
     <tr>
       <td class="key">Category</td>
       <td class="value">{category}</td>

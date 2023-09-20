@@ -72,20 +72,27 @@ const getId = (csafDoc: any): string => {
   return csafDoc.document.tracking[CSAFDocProps.ID] || EMPTY;
 };
 
-const getTlp = (csafDoc: any): string => {
-  if (!checkTLPPresent(csafDoc)) return EMPTY;
+const getTlp = (csafDoc: any): TLP => {
+  if (!checkTLPPresent(csafDoc)) return { label: "" };
+  let label = "TLP.ERROR;";
   switch (csafDoc.document.distribution.tlp[CSAFDocProps.LABEL]) {
     case TLP.AMBER:
-      return TLP.AMBER;
+      label = TLP.AMBER;
+      break;
     case TLP.GREEN:
-      return TLP.AMBER;
+      label = TLP.AMBER;
+      break;
     case TLP.WHITE:
-      return TLP.WHITE;
+      label = TLP.WHITE;
+      break;
     case TLP.RED:
-      return TLP.RED;
+      label = TLP.RED;
+      break;
     default:
-      return TLP.ERROR;
+      label = TLP.ERROR;
+      break;
   }
+  return { label: label, url: csafDoc.document.distribution.tlp.url };
 };
 
 const getStatus = (csafDoc: any): string => {

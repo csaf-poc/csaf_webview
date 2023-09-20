@@ -90,9 +90,14 @@ export type DocModel = {
   revisionHistory: RevisionHistoryEntry[];
   status: string;
   title: string;
-  tlp: string;
+  tlp: TLP;
   trackingVersion: string;
   vulnerabilities: any;
 };
 
 export type DocModelKey = keyof DocModel;
+
+export type TLP = {
+  label: string;
+  url?: string;
+};
