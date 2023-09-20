@@ -12,7 +12,7 @@
     let product: string = (e.target as Element).getAttribute("href")!;
     appStore.setProductTreeSectionVisible();
     appStore.setSelectedProduct(product);
-    appStore.unshiftHistory(window.scrollY);
+    appStore.unshiftHistory((e.target as Element).id);
     e.preventDefault();
   };
   async function updateUI() {
@@ -59,7 +59,7 @@
         <tr>
           <td class="key">Product reference</td>
           <td
-            ><a on:click={openProduct} href={relation.product_reference}
+            ><a id={crypto.randomUUID()} on:click={openProduct} href={relation.product_reference}
               >{relation.product_reference}</a
             ></td
           >
@@ -67,7 +67,10 @@
         <tr>
           <td class="key">Relates to</td>
           <td
-            ><a on:click={openProduct} href={relation.relates_to_product_reference}
+            ><a
+              id={crypto.randomUUID()}
+              on:click={openProduct}
+              href={relation.relates_to_product_reference}
               >{relation.relates_to_product_reference}</a
             ></td
           >

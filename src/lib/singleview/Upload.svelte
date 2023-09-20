@@ -5,7 +5,7 @@
   let input: any;
   $: if (files) {
     appStore.setUploadedFile();
-    appStore.setDocument(null);
+    appStore.reset();
     loadFile(files[0]);
   }
   $: if (!$appStore.ui.uploadedFile) {

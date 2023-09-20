@@ -20,7 +20,7 @@ type AppStore = {
     selectedCVE: string;
     selectedProduct: string;
     uploadedFile: boolean;
-    history: number[];
+    history: string[];
   };
 };
 
@@ -108,10 +108,9 @@ function createStore() {
         return settings;
       });
     },
-    unshiftHistory: (yPosition: number) => {
+    unshiftHistory: (id: string) => {
       update((settings) => {
-        settings.ui.history.unshift(yPosition);
-        console.log(settings.ui.history);
+        settings.ui.history.unshift(id);
         return settings;
       });
     },
@@ -123,7 +122,21 @@ function createStore() {
         return settings;
       });
     },
-    reset: () => set({ ...appDefault })
+    reset: () =>
+      set({
+        doc: null,
+        ui: {
+          isGeneralSectionVisible: true,
+          isRevisionHistoryVisible: false,
+          isVulnerabilisiesOverviewVisible: false,
+          isVulnerabilitiesSectionVisible: false,
+          isProductTreeVisible: false,
+          selectedCVE: "",
+          selectedProduct: "",
+          uploadedFile: false,
+          history: []
+        }
+      })
   };
 }
 

@@ -73,7 +73,9 @@
   </Collapsible>
 {/if}
 
-<!-- <Back /> -->
+{#if $appStore.ui.history.length > 0}
+  <Back />
+{/if}
 
 <style>
   h2 {

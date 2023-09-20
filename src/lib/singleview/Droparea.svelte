@@ -22,7 +22,7 @@
   }
   const fileDropped = (e: DragEvent) => {
     if (e.dataTransfer) {
-      appStore.setDocument(null);
+      appStore.reset();
       appStore.clearUploadedFile();
       const csafFile: File = e.dataTransfer.files[0];
       const type: string = csafFile.type;
@@ -33,7 +33,7 @@
       } else {
         text = `File "${csafFile.name}" has an invalid format.`;
         valid = false;
-        appStore.setDocument(null);
+        appStore.reset();
       }
     }
   };

@@ -24,14 +24,14 @@
     let product: string = (e.target as Element).getAttribute("href")!;
     appStore.setProductTreeSectionVisible();
     appStore.setSelectedProduct(product);
-    appStore.unshiftHistory(window.scrollY);
+    appStore.unshiftHistory((e.target as Element).id);
     e.preventDefault();
   };
   const openCVE = (e: Event) => {
     // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     let CVE: string = (e.target as Element).getAttribute("href")!;
     appStore.setSelectedCVE(CVE);
-    appStore.unshiftHistory(window.scrollY);
+    appStore.unshiftHistory((e.target as Element).id);
     appStore.setVulnerabilitiesSectionVisible();
     e.preventDefault();
   };
@@ -47,7 +47,7 @@
               {#if index < 2}
                 <th>{column}</th>
               {:else}
-                <th><a on:click={openCVE} href={column}>{column}</a></th>
+                <th><a id={crypto.randomUUID()} on:click={openCVE} href={column}>{column}</a></th>
               {/if}
             {/each}
           </tr>
@@ -57,7 +57,10 @@
             <tr>
               {#each line as column, index}
                 {#if index < 1}
-                  <td><a on:click={openProduct} href={column.id}>{column.name} ({column.id})</a></td
+                  <td
+                    ><a id={crypto.randomUUID()} on:click={openProduct} href={column.id}
+                      >{column.name} ({column.id})</a
+                    ></td
                   >
                 {:else if column === "N.A"}
                   <td>{column}</td>

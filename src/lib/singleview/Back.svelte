@@ -1,9 +1,11 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
-  import { tick } from "svelte";
-  async function updateUI(yPosition: number) {
-    await tick();
-    window.scrollTo({ top: yPosition, behavior: "smooth" });
+  async function updateUI(id: string) {
+    setTimeout(() => {
+      const element = document.getElementById(`${id}`);
+      const y = element!.getBoundingClientRect().top + window.scrollY - 150;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }, 200);
   }
   const backPressed = (e: Event) => {
     const lastElement = $appStore.ui.history[0];
@@ -14,7 +16,9 @@
 </script>
 
 {#if $appStore.ui.history.length > 0}
-  <a class="back button dark" href="#top" on:click={backPressed}>Back <i class="bx bx-undo" /></a>
+  <a class="back button dark" href="#top" on:click={backPressed}
+    >Last pos. <i class="bx bx-undo" /></a
+  >
 {/if}
 
 <style>
@@ -22,11 +26,11 @@
     background-color: black;
     color: white;
     text-align: center;
-    width: 9rem;
+    width: 11rem;
     padding: 1rem;
     position: sticky;
     bottom: 1rem;
-    right: 1rem;
+    margin-left: 90vw;
     cursor: pointer;
   }
 </style>
