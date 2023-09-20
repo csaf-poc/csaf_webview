@@ -12,6 +12,7 @@
   import { Status, TLP } from "$lib/singleview/general/docmodeltypes";
   import { appStore } from "$lib/store";
   import RevisionHistory from "./RevisionHistory.svelte";
+  import Notes from "$lib/singleview/notes/Notes.svelte";
   let tlpStyle = "";
   $: trackingVersion = $appStore.doc?.trackingVersion;
   $: publisherName = $appStore.doc?.publisher.name;
@@ -122,9 +123,17 @@
 </div>
 
 {#if $appStore.doc?.isRevisionHistoryPresent}
-  <div class="revisionhistorysection">
+  <div class="subsection">
     <Collapsible header="Revision history" level="3" open={$appStore.ui.isRevisionHistoryVisible}>
       <RevisionHistory />
+    </Collapsible>
+  </div>
+{/if}
+
+{#if $appStore.doc?.notes}
+  <div class="subsection">
+    <Collapsible header="Notes" level="3">
+      <Notes notes={$appStore.doc?.notes} />
     </Collapsible>
   </div>
 {/if}
@@ -138,7 +147,7 @@
   .value {
     padding: 0.2rem;
   }
-  .revisionhistorysection {
+  .subsection {
     margin-left: 3rem;
   }
   .documentdata {
@@ -161,8 +170,5 @@
   .tlpgreen {
     background: #33ff00;
     color: #fff;
-  }
-  th {
-    font-weight: 100;
   }
 </style>

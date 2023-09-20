@@ -27,6 +27,9 @@
 {/if}
 
 <style>
+  th {
+    font-weight: 100;
+  }
   .revisionhistory {
     width: 60vw;
     min-width: 70rem;

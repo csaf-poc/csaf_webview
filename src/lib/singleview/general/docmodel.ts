@@ -171,7 +171,7 @@ const getProductTree = (csafDoc: any) => {
 
 const getNotes = (csafDoc: any): Note[] => {
   if (!checkDocumentPresent(csafDoc)) return [];
-  return csafDoc[CSAFDocProps.NOTES];
+  return csafDoc.document[CSAFDocProps.NOTES];
 };
 
 const convertToDocModel = (csafDoc: any): DocModel => {
