@@ -112,13 +112,16 @@ describe("docmodel test", () => {
     const publisherName = "ABC";
     const publisherCategory = "coordinator";
     const publisherNameSpace = "https://www.example.com";
+    const publisherIssuingAuthority =
+      "This service is provided as it is. It is free for everybody.";
     const doc = {
       [CSAFDocProps.DOCUMENT]: {
         [CSAFDocProps.CSAFVERSION]: version,
         [CSAFDocProps.PUBLISHER]: {
           [CSAFDocProps.PUBLISHER_NAME]: publisherName,
           [CSAFDocProps.PUBLISHER_CATEGORY]: publisherCategory,
-          [CSAFDocProps.PUBLISHER_NAMESPACE]: publisherNameSpace
+          [CSAFDocProps.PUBLISHER_NAMESPACE]: publisherNameSpace,
+          [CSAFDocProps.ISSUING_AUTHORITY]: publisherIssuingAuthority
         }
       }
     };
@@ -131,6 +134,7 @@ describe("docmodel test", () => {
     expect(publisher.name).toBe(publisherName);
     expect(publisher.category).toBe(publisherCategory);
     expect(publisher.namespace).toBe(publisherNameSpace);
+    expect(publisher.issuing_authority).toBe(publisherIssuingAuthority);
     expect(docModel.trackingVersion).toBe("");
     expect(docModel.tlp.label).toBe(EMPTY);
   });

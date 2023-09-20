@@ -16,6 +16,8 @@
   $: publisherName = $appStore.doc?.publisher.name;
   $: publisherCategory = $appStore.doc?.publisher.category;
   $: publisherNamespace = $appStore.doc?.publisher.namespace;
+  $: publisherIssuingAuthority = $appStore.doc?.publisher.issuing_authority;
+  $: publisherContactDetails = $appStore.doc?.publisher.contact_details;
   $: category = $appStore.doc?.category;
   $: title = $appStore.doc?.title;
   $: lang = $appStore.doc?.lang;
@@ -77,6 +79,18 @@
       <td class="key">Publisher namespace</td>
       <td class="value">{publisherNamespace}</td>
     </tr>
+    {#if publisherIssuingAuthority}
+      <tr>
+        <td class="key">Publisher issuing authority</td>
+        <td class="value">{publisherIssuingAuthority}</td>
+      </tr>
+    {/if}
+    {#if publisherContactDetails}
+      <tr>
+        <td class="key">Publisher contact details</td>
+        <td class="value">{publisherContactDetails}</td>
+      </tr>
+    {/if}
     <tr>
       <td class="key">Language</td>
       <td class="value">{lang}</td>

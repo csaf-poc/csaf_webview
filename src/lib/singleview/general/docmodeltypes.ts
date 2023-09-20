@@ -8,12 +8,14 @@
 
 export const CSAFDocProps = {
   CATEGORY: "category",
+  CONTACT_DETAILS: "contact_details",
   CSAFVERSION: "csaf_version",
   CURRENTRELEASEDATE: "current_release_date",
   DISTRIBUTION: "distribution",
   DOCUMENT: "document",
   ID: "id",
   INITIALRELEASEDATE: "initial_release_date",
+  ISSUING_AUTHORITY: "issuing_authority",
   LABEL: "label",
   LANG: "lang",
   PRODUCTTREE: "product_tree",
@@ -60,6 +62,8 @@ export type Publisher = {
   category: string;
   name: string;
   namespace: string;
+  contact_details?: string;
+  issuing_authority?: string;
 };
 
 export type RevisionHistoryEntry = {

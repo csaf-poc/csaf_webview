@@ -136,7 +136,9 @@ const getPublisher = (csafDoc: any): Publisher => {
   return {
     category: publisher[CSAFDocProps.PUBLISHER_CATEGORY],
     name: publisher[CSAFDocProps.PUBLISHER_NAME],
-    namespace: publisher[CSAFDocProps.PUBLISHER_NAMESPACE]
+    namespace: publisher[CSAFDocProps.PUBLISHER_NAMESPACE],
+    contact_details: publisher[CSAFDocProps.CONTACT_DETAILS],
+    issuing_authority: publisher[CSAFDocProps.ISSUING_AUTHORITY]
   };
 };
 
