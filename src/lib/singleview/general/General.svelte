@@ -14,7 +14,7 @@
   import RevisionHistory from "./RevisionHistory.svelte";
   import Notes from "$lib/singleview/notes/Notes.svelte";
   import References from "$lib/singleview/references/References.svelte";
-  import Acknowledgements from "$lib/singleview/acknowledgements/Acknowledgements.svelte";
+  import Acknowledgments from "$lib/singleview/acknowledgments/Acknowledgments.svelte";
   let tlpStyle = "";
   $: trackingVersion = $appStore.doc?.trackingVersion;
   $: publisherName = $appStore.doc?.publisher.name;
@@ -150,7 +150,7 @@
 {#if $appStore.doc?.acknowledgements}
   <div class="subsection">
     <Collapsible header="Acknowledgements" level="3">
-      <Acknowledgements acknowledegments={$appStore.doc?.acknowledgements} />
+      <Acknowledgments acknowledgments={$appStore.doc?.acknowledgements} />
     </Collapsible>
   </div>
 {/if}
