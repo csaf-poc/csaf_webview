@@ -127,9 +127,9 @@
         <table class="striped">
           <thead>
             <tr
-              ><th>Date</th>
-              <th>Number</th>
-              <th>Summary</th>
+              ><th class="date">Date</th>
+              <th class="number">Number</th>
+              <th class="summary">Summary</th>
               <th>Legacy_version</th>
             </tr>
           </thead>
@@ -154,6 +154,15 @@
     padding: 0.2rem;
     vertical-align: top;
   }
+  .date {
+    width: 20%;
+  }
+  .number {
+    width: 5%;
+  }
+  .summary {
+    width: 80%;
+  }
   .value {
     padding: 0.2rem;
   }
@@ -166,7 +175,7 @@
     margin-left: 3rem;
   }
   .revisionhistory {
-    width: 40vw;
+    width: 60vw;
     min-width: 70rem;
   }
   .tlpclear {
