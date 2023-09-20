@@ -7,6 +7,7 @@
 //
 
 export const CSAFDocProps = {
+  ACKNOWLEDGEMENTS: "acknowledgements",
   CATEGORY: "category",
   CONTACT_DETAILS: "contact_details",
   CSAFVERSION: "csaf_version",
@@ -24,6 +25,7 @@ export const CSAFDocProps = {
   PUBLISHER_NAME: "name",
   PUBLISHER_NAMESPACE: "namespace",
   PUBLISHER: "publisher",
+  REFERENCES: "references",
   REVISIONHISTORY: "revision_history",
   STATUS: "status",
   TITLE: "title",
@@ -75,6 +77,7 @@ export type RevisionHistoryEntry = {
 };
 
 export type DocModel = {
+  acknowledgements: Acknowledgement[];
   category: string;
   csafVersion: string;
   id: string;
@@ -93,6 +96,7 @@ export type DocModel = {
   productVulnerabilities: any;
   published: string;
   publisher: Publisher;
+  references: Reference[];
   revisionHistory: RevisionHistoryEntry[];
   status: string;
   title: string;
@@ -113,4 +117,17 @@ export type Note = {
   text: string;
   audience?: string;
   title?: string;
+};
+
+export type Acknowledgement = {
+  names: string[];
+  organization: string;
+  summary: string;
+  urls: string[];
+};
+
+export type Reference = {
+  url: string;
+  summary: string;
+  category: string;
 };

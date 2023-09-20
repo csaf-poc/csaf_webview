@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let values = "";
+  export let values: any = [];
   export let label = "";
 </script>
 

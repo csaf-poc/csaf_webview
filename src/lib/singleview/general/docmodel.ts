@@ -14,7 +14,8 @@ import {
   CSAFDocProps,
   type Publisher,
   type RevisionHistoryEntry,
-  type Note
+  type Note,
+  type Reference
 } from "$lib/singleview/general/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
@@ -174,8 +175,19 @@ const getNotes = (csafDoc: any): Note[] => {
   return csafDoc.document[CSAFDocProps.NOTES];
 };
 
+const getAcknowledgements = (csafDoc: any) => {
+  if (!checkDocumentPresent(csafDoc)) return [];
+  return csafDoc.document[CSAFDocProps.ACKNOWLEDGEMENTS];
+};
+
+const getReferences = (csafDoc: any): Reference[] => {
+  if (!checkDocumentPresent(csafDoc)) return [];
+  return csafDoc.document[CSAFDocProps.REFERENCES];
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
+    acknowledgements: getAcknowledgements(csafDoc),
     category: getCategory(csafDoc),
     csafVersion: getCSAFVersion(csafDoc),
     id: getId(csafDoc),
@@ -194,6 +206,7 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     productVulnerabilities: [],
     published: getPublished(csafDoc),
     publisher: getPublisher(csafDoc),
+    references: getReferences(csafDoc),
     revisionHistory: getRevisionHistory(csafDoc),
     status: getStatus(csafDoc),
     title: getTitle(csafDoc),

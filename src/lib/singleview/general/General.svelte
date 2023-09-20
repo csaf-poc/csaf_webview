@@ -13,6 +13,8 @@
   import { appStore } from "$lib/store";
   import RevisionHistory from "./RevisionHistory.svelte";
   import Notes from "$lib/singleview/notes/Notes.svelte";
+  import References from "$lib/singleview/references/References.svelte";
+  import Acknowledgements from "$lib/singleview/acknowledgements/Acknowledgements.svelte";
   let tlpStyle = "";
   $: trackingVersion = $appStore.doc?.trackingVersion;
   $: publisherName = $appStore.doc?.publisher.name;
@@ -134,6 +136,22 @@
   <div class="subsection">
     <Collapsible header="Notes" level="3">
       <Notes notes={$appStore.doc?.notes} />
+    </Collapsible>
+  </div>
+{/if}
+
+{#if $appStore.doc?.acknowledgements}
+  <div class="subsection">
+    <Collapsible header="Acknowledgements" level="3">
+      <Acknowledgements acknowledgments={$appStore.doc?.acknowledgements} />
+    </Collapsible>
+  </div>
+{/if}
+
+{#if $appStore.doc?.references}
+  <div class="subsection">
+    <Collapsible header="References" level="3">
+      <References references={$appStore.doc?.references} />
     </Collapsible>
   </div>
 {/if}
