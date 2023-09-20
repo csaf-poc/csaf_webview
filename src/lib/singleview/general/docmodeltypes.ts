@@ -7,27 +7,27 @@
 //
 
 export const CSAFDocProps = {
-  DOCUMENT: "document",
   CATEGORY: "category",
-  TRACKING: "tracking",
-  DISTRIBUTION: "distribution",
-  TLP: "tlp",
-  TITLE: "title",
-  LANG: "lang",
   CSAFVERSION: "csaf_version",
-  ID: "id",
-  LABEL: "label",
-  STATUS: "status",
-  INITIALRELEASEDATE: "initial_release_date",
   CURRENTRELEASEDATE: "current_release_date",
-  PUBLISHER: "publisher",
+  DISTRIBUTION: "distribution",
+  DOCUMENT: "document",
+  ID: "id",
+  INITIALRELEASEDATE: "initial_release_date",
+  LABEL: "label",
+  LANG: "lang",
+  PRODUCTTREE: "product_tree",
   PUBLISHER_CATEGORY: "category",
   PUBLISHER_NAME: "name",
   PUBLISHER_NAMESPACE: "namespace",
-  TRACKINGVERSION: "version",
+  PUBLISHER: "publisher",
   REVISIONHISTORY: "revision_history",
-  VULNERABILITIES: "vulnerabilities",
-  PRODUCTTREE: "product_tree"
+  STATUS: "status",
+  TITLE: "title",
+  TLP: "tlp",
+  TRACKING: "tracking",
+  TRACKINGVERSION: "version",
+  VULNERABILITIES: "vulnerabilities"
 } as const;
 
 export const TLP = {
@@ -70,29 +70,29 @@ export type RevisionHistoryEntry = {
 };
 
 export type DocModel = {
-  title: string;
-  lang: string;
-  csafVersion: string;
   category: string;
-  tlp: string;
+  csafVersion: string;
   id: string;
-  status: string;
-  published: string;
-  lastUpdate: string;
-  publisher: Publisher;
-  trackingVersion: string;
-  revisionHistory: RevisionHistoryEntry[];
-  vulnerabilities: any;
-  productVulnerabilities: any;
-  productTree: any;
-  isDocPresent: boolean;
-  isTrackingPresent: boolean;
   isDistributionPresent: boolean;
-  isTLPPresent: boolean;
+  isDocPresent: boolean;
   isProductTreePresent: boolean;
   isPublisherPresent: boolean;
-  isVulnerabilitiesPresent: boolean;
   isRevisionHistoryPresent: boolean;
+  isTLPPresent: boolean;
+  isTrackingPresent: boolean;
+  isVulnerabilitiesPresent: boolean;
+  lang: string;
+  lastUpdate: string;
+  productTree: any;
+  productVulnerabilities: any;
+  published: string;
+  publisher: Publisher;
+  revisionHistory: RevisionHistoryEntry[];
+  status: string;
+  title: string;
+  tlp: string;
+  trackingVersion: string;
+  vulnerabilities: any;
 };
 
 export type DocModelKey = keyof DocModel;

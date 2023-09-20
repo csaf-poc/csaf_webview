@@ -161,29 +161,29 @@ const getProductTree = (csafDoc: any) => {
 
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
-    title: getTitle(csafDoc),
-    lang: getLanguage(csafDoc),
-    csafVersion: getCSAFVersion(csafDoc),
     category: getCategory(csafDoc),
-    tlp: getTlp(csafDoc),
+    csafVersion: getCSAFVersion(csafDoc),
     id: getId(csafDoc),
-    status: getStatus(csafDoc),
-    published: getPublished(csafDoc),
-    publisher: getPublisher(csafDoc),
-    trackingVersion: getTrackingVersion(csafDoc),
-    revisionHistory: getRevisionHistory(csafDoc),
-    lastUpdate: getLastUpdate(csafDoc),
-    vulnerabilities: getVulnerabilities(csafDoc),
-    productVulnerabilities: [],
-    productTree: getProductTree(csafDoc),
-    isDocPresent: checkDocumentPresent(csafDoc),
-    isTrackingPresent: checkTrackingPresent(csafDoc),
     isDistributionPresent: checkDistributionPresent(csafDoc),
-    isTLPPresent: checkTLPPresent(csafDoc),
+    isDocPresent: checkDocumentPresent(csafDoc),
     isProductTreePresent: checkproducTree(csafDoc),
     isPublisherPresent: checkPublisher(csafDoc),
+    isRevisionHistoryPresent: checkRevisionHistoryPresent(csafDoc),
+    isTLPPresent: checkTLPPresent(csafDoc),
+    isTrackingPresent: checkTrackingPresent(csafDoc),
     isVulnerabilitiesPresent: checkVulnerabilities(csafDoc),
-    isRevisionHistoryPresent: checkRevisionHistoryPresent(csafDoc)
+    lang: getLanguage(csafDoc),
+    lastUpdate: getLastUpdate(csafDoc),
+    productTree: getProductTree(csafDoc),
+    productVulnerabilities: [],
+    published: getPublished(csafDoc),
+    publisher: getPublisher(csafDoc),
+    revisionHistory: getRevisionHistory(csafDoc),
+    status: getStatus(csafDoc),
+    title: getTitle(csafDoc),
+    tlp: getTlp(csafDoc),
+    trackingVersion: getTrackingVersion(csafDoc),
+    vulnerabilities: getVulnerabilities(csafDoc)
   };
   return docModel;
 };
