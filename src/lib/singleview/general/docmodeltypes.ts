@@ -28,6 +28,7 @@ export const CSAFDocProps = {
   REFERENCES: "references",
   REVISIONHISTORY: "revision_history",
   STATUS: "status",
+  SOURCELANG: "sourcelang",
   TITLE: "title",
   TLP: "tlp",
   TRACKING: "tracking",
@@ -99,6 +100,7 @@ export type DocModel = {
   references: Reference[];
   revisionHistory: RevisionHistoryEntry[];
   status: string;
+  sourceLang: string;
   title: string;
   tlp: TLP;
   trackingVersion: string;

@@ -4,6 +4,8 @@
   export let notes: Note[];
 </script>
 
-{#each notes as note}
-  <SingleNote {note} />
-{/each}
+{#if notes}
+  {#each notes as note}
+    <SingleNote {note} />
+  {/each}
+{/if}

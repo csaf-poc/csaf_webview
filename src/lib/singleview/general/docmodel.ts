@@ -180,6 +180,11 @@ const getAcknowledgements = (csafDoc: any) => {
   return csafDoc.document[CSAFDocProps.ACKNOWLEDGEMENTS];
 };
 
+const getSourceLang = (csafDoc: any): string => {
+  if (!checkDocumentPresent(csafDoc)) return EMPTY;
+  return csafDoc.document[CSAFDocProps.SOURCELANG] || EMPTY;
+};
+
 const getReferences = (csafDoc: any): Reference[] => {
   if (!checkDocumentPresent(csafDoc)) return [];
   return csafDoc.document[CSAFDocProps.REFERENCES];
@@ -209,6 +214,7 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     references: getReferences(csafDoc),
     revisionHistory: getRevisionHistory(csafDoc),
     status: getStatus(csafDoc),
+    sourceLang: getSourceLang(csafDoc),
     title: getTitle(csafDoc),
     tlp: getTlp(csafDoc),
     trackingVersion: getTrackingVersion(csafDoc),

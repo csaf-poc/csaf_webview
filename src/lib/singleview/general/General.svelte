@@ -25,6 +25,7 @@
   $: category = $appStore.doc?.category;
   $: title = $appStore.doc?.title;
   $: lang = $appStore.doc?.lang;
+  $: sourceLang = $appStore.doc?.sourceLang;
   $: csafVersion = $appStore.doc?.csafVersion;
   $: tlp = $appStore.doc?.tlp;
   $: tlpurl = $appStore.doc?.tlp.url;
@@ -103,6 +104,12 @@
         <td class="value">{lang}</td>
       </tr>
     {/if}
+    {#if sourceLang}
+      <tr>
+        <td class="key">Source lang</td>
+        <td class="value">{sourceLang}</td>
+      </tr>
+    {/if}
     <tr>
       <td class="key">Published</td>
       <td class="value">{published}</td>
@@ -143,7 +150,7 @@
 {#if $appStore.doc?.acknowledgements}
   <div class="subsection">
     <Collapsible header="Acknowledgements" level="3">
-      <Acknowledgements acknowledgments={$appStore.doc?.acknowledgements} />
+      <Acknowledgements acknowledegments={$appStore.doc?.acknowledgements} />
     </Collapsible>
   </div>
 {/if}

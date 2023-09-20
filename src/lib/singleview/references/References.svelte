@@ -3,6 +3,8 @@
   export let references: any;
 </script>
 
-{#each references as reference}
-  <Reference {reference} />
-{/each}
+{#if references}
+  {#each references as reference}
+    <Reference {reference} />
+  {/each}
+{/if}
