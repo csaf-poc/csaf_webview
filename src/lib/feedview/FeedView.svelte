@@ -7,8 +7,8 @@
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
-<div class="row">
-  <div class="col">
-    <h2>Rolie Feeds</h2>
-  </div>
-</div>
+<script lang="ts">
+  import Loader from "./Loader.svelte";
+</script>
+
+<Loader />
