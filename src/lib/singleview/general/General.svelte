@@ -54,6 +54,18 @@
       <td class="key">CSAF-Version</td>
       <td class="value">{csafVersion}</td>
     </tr>
+    {#if $appStore.doc?.aggregateSeverity}
+      <tr>
+        <td class="key">Aggregate severity text</td>
+        <td class="value"><span>{$appStore.doc?.aggregateSeverity.text}</span></td>
+      </tr>
+      {#if $appStore.doc?.aggregateSeverity.namespace}
+        <tr>
+          <td class="key">Aggregate severity namespace</td>
+          <td class="value"><span>{$appStore.doc?.aggregateSeverity.namespace}</span></td>
+        </tr>
+      {/if}
+    {/if}
     {#if tlp?.label}
       <tr>
         <td class="key">TLP</td>

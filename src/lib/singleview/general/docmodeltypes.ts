@@ -8,6 +8,7 @@
 
 export const CSAFDocProps = {
   ACKNOWLEDGEMENTS: "acknowledgements",
+  AGGREGATE_SEVERITY: "aggregate_severity",
   CATEGORY: "category",
   CONTACT_DETAILS: "contact_details",
   CSAFVERSION: "csaf_version",
@@ -79,6 +80,7 @@ export type RevisionHistoryEntry = {
 
 export type DocModel = {
   acknowledgements: Acknowledgement[];
+  aggregateSeverity: AggregateSeverity | null;
   category: string;
   csafVersion: string;
   id: string;
@@ -132,4 +134,9 @@ export type Reference = {
   url: string;
   summary: string;
   category: string;
+};
+
+export type AggregateSeverity = {
+  namespace?: string;
+  text: string;
 };

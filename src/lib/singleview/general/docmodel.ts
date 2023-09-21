@@ -15,7 +15,8 @@ import {
   type Publisher,
   type RevisionHistoryEntry,
   type Note,
-  type Reference
+  type Reference,
+  type AggregateSeverity
 } from "$lib/singleview/general/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
@@ -187,11 +188,17 @@ const getSourceLang = (csafDoc: any): string => {
 
 const getReferences = (csafDoc: any): Reference[] => {
   if (!checkDocumentPresent(csafDoc)) return [];
-  return csafDoc.document[CSAFDocProps.REFERENCES];
+  return csafDoc.document[CSAFDocProps.REFERENCES] || [];
+};
+
+const getAggregateSeverity = (csafDoc: any): AggregateSeverity | null => {
+  if (!checkDocumentPresent(csafDoc)) return null;
+  return csafDoc.document[CSAFDocProps.AGGREGATE_SEVERITY] || null;
 };
 
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
+    aggregateSeverity: getAggregateSeverity(csafDoc),
     acknowledgements: getAcknowledgements(csafDoc),
     category: getCategory(csafDoc),
     csafVersion: getCSAFVersion(csafDoc),
