@@ -15,7 +15,9 @@
   import Notes from "$lib/singleview/notes/Notes.svelte";
   import References from "$lib/singleview/references/References.svelte";
   import Acknowledgments from "$lib/singleview/acknowledgments/Acknowledgments.svelte";
+  import ValueList from "../ValueList.svelte";
   let tlpStyle = "";
+  $: aliases = $appStore.doc?.aliases;
   $: trackingVersion = $appStore.doc?.trackingVersion;
   $: generator = $appStore.doc?.generator;
   $: publisherName = $appStore.doc?.publisher.name;
@@ -161,6 +163,10 @@
     {/if}
   </table>
 </div>
+
+{#if aliases}
+  <ValueList label="Aliases" values={aliases} />
+{/if}
 
 {#if $appStore.doc?.isRevisionHistoryPresent}
   <div class="subsection">
