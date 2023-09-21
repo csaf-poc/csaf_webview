@@ -17,6 +17,7 @@
   import Acknowledgments from "$lib/singleview/acknowledgments/Acknowledgments.svelte";
   let tlpStyle = "";
   $: trackingVersion = $appStore.doc?.trackingVersion;
+  $: generator = $appStore.doc?.generator;
   $: publisherName = $appStore.doc?.publisher.name;
   $: publisherCategory = $appStore.doc?.publisher.category;
   $: publisherNamespace = $appStore.doc?.publisher.namespace;
@@ -138,6 +139,24 @@
       <tr>
         <td class="key">Status</td>
         <td class="value">{status}</td>
+      </tr>
+    {/if}
+    {#if generator}
+      <tr>
+        <td class="key">Generator engine</td>
+        <td class="value"><span>{$appStore.doc?.generator.engine.name}</span></td>
+      </tr>
+    {/if}
+    {#if generator.engine.version}
+      <tr>
+        <td class="key">Generator engine version</td>
+        <td class="value"><span>{$appStore.doc?.generator.engine.version}</span></td>
+      </tr>
+    {/if}
+    {#if generator.date}
+      <tr>
+        <td class="key">Generator date</td>
+        <td class="value"><span>{generator.date}</span></td>
       </tr>
     {/if}
   </table>

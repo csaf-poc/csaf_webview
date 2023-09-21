@@ -196,12 +196,18 @@ const getAggregateSeverity = (csafDoc: any): AggregateSeverity | null => {
   return csafDoc.document[CSAFDocProps.AGGREGATE_SEVERITY] || null;
 };
 
+const getGenerator = (csafDoc: any) => {
+  if (!checkTrackingPresent) return null;
+  return csafDoc.document.tracking[CSAFDocProps.GENERATOR] || null;
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
     aggregateSeverity: getAggregateSeverity(csafDoc),
     acknowledgements: getAcknowledgements(csafDoc),
     category: getCategory(csafDoc),
     csafVersion: getCSAFVersion(csafDoc),
+    generator: getGenerator(csafDoc),
     id: getId(csafDoc),
     isDistributionPresent: checkDistributionPresent(csafDoc),
     isDocPresent: checkDocumentPresent(csafDoc),

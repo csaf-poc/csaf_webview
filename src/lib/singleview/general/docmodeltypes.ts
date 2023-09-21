@@ -15,6 +15,7 @@ export const CSAFDocProps = {
   CURRENTRELEASEDATE: "current_release_date",
   DISTRIBUTION: "distribution",
   DOCUMENT: "document",
+  GENERATOR: "generator",
   ID: "id",
   INITIALRELEASEDATE: "initial_release_date",
   ISSUING_AUTHORITY: "issuing_authority",
@@ -83,6 +84,7 @@ export type DocModel = {
   aggregateSeverity: AggregateSeverity | null;
   category: string;
   csafVersion: string;
+  generator: any;
   id: string;
   isDistributionPresent: boolean;
   isDocPresent: boolean;
@@ -139,4 +141,14 @@ export type Reference = {
 export type AggregateSeverity = {
   namespace?: string;
   text: string;
+};
+
+export type Engine = {
+  name: string;
+  version?: string;
+};
+
+export type Generator = {
+  engine: Engine;
+  date?: string;
 };
