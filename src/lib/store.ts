@@ -11,6 +11,7 @@ import type { DocModel } from "./singleview/general/docmodeltypes";
 
 type AppStore = {
   doc: DocModel | null;
+  providerMetadata: any;
   ui: {
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
@@ -25,8 +26,9 @@ type AppStore = {
 };
 
 function createStore() {
-  const appDefault: AppStore = {
+  const { subscribe, set, update } = writable({
     doc: null,
+    providerMetadata: null,
     ui: {
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
@@ -38,8 +40,7 @@ function createStore() {
       uploadedFile: false,
       history: []
     }
-  };
-  const { subscribe, set, update } = writable({ ...appDefault });
+  });
 
   return {
     subscribe,
@@ -122,9 +123,16 @@ function createStore() {
         return settings;
       });
     },
+    setProviderMetadata: (providerMetadata: any) => {
+      update((settings) => {
+        settings.providerMetadata = providerMetadata;
+        return settings;
+      });
+    },
     reset: () =>
       set({
         doc: null,
+        providerMetadata: null,
         ui: {
           isGeneralSectionVisible: true,
           isRevisionHistoryVisible: false,

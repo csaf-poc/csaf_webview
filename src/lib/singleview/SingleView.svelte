@@ -34,7 +34,7 @@
 {#if $appStore.doc}
   <div class="row">
     <div class="col">
-      <h1>{$appStore.doc?.id}: {$appStore.doc?.title}</h1>
+      <h1>{$appStore.doc["id"]}: {$appStore.doc["title"]}</h1>
     </div>
   </div>
   <h2>General</h2>
@@ -49,7 +49,7 @@
   </Collapsible>
 {/if}
 
-{#if $appStore.doc?.isProductTreePresent}
+{#if $appStore.doc && $appStore.doc["isProductTreePresent"]}
   <Collapsible
     header="Product tree"
     open={$appStore.ui.isProductTreeVisible}
@@ -61,7 +61,7 @@
     <ProductTree />
   </Collapsible>
 {/if}
-{#if $appStore.doc?.isVulnerabilitiesPresent}
+{#if $appStore.doc && $appStore.doc["isVulnerabilitiesPresent"]}
   <Collapsible
     header="Vulnerabilities"
     open={$appStore.ui.isVulnerabilitiesSectionVisible}

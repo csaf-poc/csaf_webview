@@ -9,6 +9,8 @@
 -->
 <script lang="ts">
   import Loader from "./Loader.svelte";
+  import Overview from "./Overview.svelte";
 </script>
 
 <Loader />
+<Overview />
