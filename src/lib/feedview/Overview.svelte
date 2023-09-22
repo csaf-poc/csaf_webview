@@ -7,11 +7,17 @@
   <h2>Feed information</h2>
   <div>
     <KeyValue
-      keys={["last_updated", "metadata_version", "list_on_CSAF_aggregators"]}
+      keys={[
+        "last_updated",
+        "metadata_version",
+        "list_on_CSAF_aggregators",
+        "mirror_on_CSAF_aggregators"
+      ]}
       values={[
         $appStore.providerMetadata["last_updated"],
         $appStore.providerMetadata["metadata_version"],
-        $appStore.providerMetadata["list_on_CSAF_aggregators"]
+        $appStore.providerMetadata["list_on_CSAF_aggregators"],
+        $appStore.providerMetadata["mirror_on_CSAF_aggregators"]
       ]}
     />
   </div>

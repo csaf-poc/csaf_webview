@@ -202,7 +202,7 @@
 
 <style>
   .key {
-    width: 21rem;
+    width: 15vw;
     padding: 0.2rem;
     vertical-align: top;
   }

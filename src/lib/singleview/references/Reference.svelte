@@ -14,7 +14,7 @@
 </script>
 
 <div class="reference">
-  <KeyValue {keys} {values} />
+  <KeyValue compact={true} {keys} {values} />
 </div>
 
 <style>
