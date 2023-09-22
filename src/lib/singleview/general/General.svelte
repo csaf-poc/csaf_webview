@@ -146,19 +146,19 @@
     {#if generator}
       <tr>
         <td class="key">Generator engine</td>
-        <td class="value"><span>{$appStore.doc?.generator.engine.name}</span></td>
+        <td class="value"><span>{$appStore.doc?.generator?.engine.name}</span></td>
       </tr>
     {/if}
-    {#if generator.engine.version}
+    {#if generator?.engine?.version}
       <tr>
         <td class="key">Generator engine version</td>
-        <td class="value"><span>{$appStore.doc?.generator.engine.version}</span></td>
+        <td class="value"><span>{$appStore.doc?.generator?.engine.version}</span></td>
       </tr>
     {/if}
-    {#if generator.date}
+    {#if generator?.date}
       <tr>
         <td class="key">Generator date</td>
-        <td class="value"><span>{generator.date}</span></td>
+        <td class="value"><span>{generator?.date}</span></td>
       </tr>
     {/if}
   </table>
