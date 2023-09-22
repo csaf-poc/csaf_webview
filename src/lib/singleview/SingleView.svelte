@@ -37,8 +37,9 @@
       <h1>{$appStore.doc["id"]}: {$appStore.doc["title"]}</h1>
     </div>
   </div>
-  <h2>General</h2>
-  <General />
+  <Collapsible header="General" open={true}>
+    <General />
+  </Collapsible>
 {/if}
 {#if isDocumentASecurityAdvisory}
   <Collapsible
@@ -78,8 +79,7 @@
 {/if}
 
 <style>
-  h2 {
-    font-weight: bold;
-    margin-left: 3rem;
+  h1 {
+    padding: 0;
   }
 </style>
