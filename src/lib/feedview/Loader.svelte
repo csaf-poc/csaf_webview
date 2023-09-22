@@ -13,6 +13,10 @@
   const load = () => {
     loadProviderMetaData();
   };
+
+  const keydown = (e: KeyboardEvent) => {
+    if (e.key === "Enter") loadProviderMetaData();
+  };
 </script>
 
 <div class="row">
@@ -21,7 +25,7 @@
       <button {disabled} class="loadbutton" on:click={load}
         ><i class="bx bx-book-open" />View feed</button
       >
-      <input class="url" type="text" bind:value={url} />
+      <input class="url" type="text" bind:value={url} on:keydown={keydown} />
     </div>
   </div>
 </div>
