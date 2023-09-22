@@ -4,8 +4,8 @@
   let files: FileList | null;
   let input: any;
   $: if (files) {
-    appStore.setUploadedFile();
     appStore.reset();
+    appStore.setUploadedFile();
     loadFile(files[0]);
   }
   $: if (!$appStore.ui.uploadedFile) {
