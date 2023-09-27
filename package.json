@@ -1,11 +1,11 @@
 {
   "name": "csaf-typescript",
-  "version": "0.0.1",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "build:ghpage": "BASE_PATH=/csaf_webview git vite build",
+    "build:ghpage": "BASE_PATH=/csaf_webview vite build",
     "deploy": "git subtree push --prefix build origin gh-pages",
     "preview": "vite preview",
     "test": "npm run test:integration && npm run test:unit",
