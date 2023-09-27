@@ -9,27 +9,28 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="./favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		
-		<link href="./_app/immutable/assets/2.b343fdde.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.e80b24e4.js">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    
+		<link href="./_app/immutable/assets/2.052123a4.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.e23a94e3.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.8b5db029.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.c2bdda46.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.764e891d.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.a6c99fb1.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.b85dd442.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.f96093cf.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/stores.f16ae7a9.js">
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">     <div class="container"> <div class="header svelte-t1xvt1"><h1 role="heading" class="text-center" data-svelte-h="svelte-1obxzj0">CSAF Webview+</h1> <h4>v. 0.0.1</h4></div> <div class="row"><div class="col">   <div class="droparea svelte-n060w0">Drop your CSAF-file here </div></div></div> <div class="row"><div class="col">  </div></div> </div> 
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.975f1d40.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.57b7d35f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.f41e123a.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.6217f6c2.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.1453ab19.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/stores.335cef67.js">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">     <div class="content svelte-t3fuw3"> <div class="header svelte-t3fuw3"><h1 role="heading" class="text-center svelte-t3fuw3" data-svelte-h="svelte-1obxzj0">CSAF Webview+</h1> <button class="switchbutton button svelte-t3fuw3">Switch to ROLIE-feed</button> <h4>v. 0.5.0</h4></div>   <div class="row"><div class="col col-3"><input type="file" accept="application/json" class="svelte-1ex0acp"></div> <div class="col col-9">   <div class="droparea svelte-1ekvw1c">Drop your CSAF-file here </div></div></div>      </div> 
 			
 			<script>
 				{
-					__sveltekit_yfcfof = {
+					__sveltekit_5w2pk = {
+						assets: "/csaf_webview",
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -39,8 +40,8 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.e80b24e4.js"),
-						import("./_app/immutable/entry/app.764e891d.js")
+						import("./_app/immutable/entry/start.e23a94e3.js"),
+						import("./_app/immutable/entry/app.57b7d35f.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2],
@@ -52,5 +53,10 @@
 				}
 			</script>
 		</div>
-	</body>
+  </body>
+  <style>
+    body {
+      font-family: Helvetica;
+    }
+  </style>
 </html>
