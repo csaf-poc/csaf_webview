@@ -17,19 +17,19 @@ const json = readFileSync(file, "utf8");
 const pkg = JSON.parse(json);
 
 export default defineConfig({
-	plugins: [sveltekit()],
-	test: {
-		include: ["src/**/*.{test,spec}.{js,ts}"],
-		coverage: {
-			provider: "istanbul",
-			reporter: ["text", "json-summary", "json", "html"],
-			lines: 60,
-			branches: 60,
-			functions: 60,
-			statements: 60
-		}
-	},
-	define: {
-		__APP_VERSION__: `${JSON.stringify(pkg.version)}`
-	}
+  plugins: [sveltekit()],
+  test: {
+    include: ["src/**/*.{test,spec}.{js,ts}"],
+    coverage: {
+      provider: "istanbul",
+      reporter: ["text", "json-summary", "json", "html"],
+      lines: 60,
+      branches: 60,
+      functions: 60,
+      statements: 60
+    }
+  },
+  define: {
+    __APP_VERSION__: `${JSON.stringify(pkg.version)}`
+  }
 });

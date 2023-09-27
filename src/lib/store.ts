@@ -11,27 +11,36 @@ import type { DocModel } from "./singleview/general/docmodeltypes";
 
 type AppStore = {
   doc: DocModel | null;
+  providerMetadata: any;
   ui: {
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
     isVulnerabilisiesOverviewVisible: boolean;
     isVulnerabilitiesSectionVisible: boolean;
+    isProductTreeVisible: boolean;
     selectedCVE: string;
+    selectedProduct: string;
+    uploadedFile: boolean;
+    history: string[];
   };
 };
 
 function createStore() {
-  const appDefault: AppStore = {
+  const { subscribe, set, update } = writable({
     doc: null,
+    providerMetadata: null,
     ui: {
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
       isVulnerabilisiesOverviewVisible: false,
       isVulnerabilitiesSectionVisible: false,
-      selectedCVE: ""
+      isProductTreeVisible: false,
+      selectedCVE: "",
+      selectedProduct: "",
+      uploadedFile: false,
+      history: []
     }
-  };
-  const { subscribe, set, update } = writable({ ...appDefault });
+  });
 
   return {
     subscribe,
@@ -52,9 +61,33 @@ function createStore() {
         return settings;
       });
     },
+    setSelectedProduct: (product: string) => {
+      update((settings) => {
+        settings.ui.selectedProduct = product;
+        return settings;
+      });
+    },
+    resetSelectedProduct: () => {
+      update((settings) => {
+        settings.ui.selectedProduct = "";
+        return settings;
+      });
+    },
     setVulnerabilitiesSectionVisible: () => {
       update((settings) => {
         settings.ui.isVulnerabilitiesSectionVisible = true;
+        return settings;
+      });
+    },
+    setProductTreeSectionVisible: () => {
+      update((settings) => {
+        settings.ui.isProductTreeVisible = true;
+        return settings;
+      });
+    },
+    setProductTreeSectionInVisible: () => {
+      update((settings) => {
+        settings.ui.isProductTreeVisible = false;
         return settings;
       });
     },
@@ -64,7 +97,54 @@ function createStore() {
         return settings;
       });
     },
-    reset: () => set({ ...appDefault })
+    setUploadedFile: () => {
+      update((settings) => {
+        settings.ui.uploadedFile = true;
+        return settings;
+      });
+    },
+    clearUploadedFile: () => {
+      update((settings) => {
+        settings.ui.uploadedFile = false;
+        return settings;
+      });
+    },
+    unshiftHistory: (id: string) => {
+      update((settings) => {
+        settings.ui.history.unshift(id);
+        return settings;
+      });
+    },
+    shiftHistory: () => {
+      update((settings) => {
+        if (settings.ui.history.length > 0) {
+          settings.ui.history.shift();
+        }
+        return settings;
+      });
+    },
+    setProviderMetadata: (providerMetadata: any) => {
+      update((settings) => {
+        settings.providerMetadata = providerMetadata;
+        return settings;
+      });
+    },
+    reset: () =>
+      set({
+        doc: null,
+        providerMetadata: null,
+        ui: {
+          isGeneralSectionVisible: true,
+          isRevisionHistoryVisible: false,
+          isVulnerabilisiesOverviewVisible: false,
+          isVulnerabilitiesSectionVisible: false,
+          isProductTreeVisible: false,
+          selectedCVE: "",
+          selectedProduct: "",
+          uploadedFile: false,
+          history: []
+        }
+      })
   };
 }
 

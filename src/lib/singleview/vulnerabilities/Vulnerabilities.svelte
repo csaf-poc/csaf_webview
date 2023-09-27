@@ -9,7 +9,7 @@
 -->
 <script lang="ts">
   import { appStore } from "$lib/store";
-  import Vulnerability from "./Vulnerability.svelte";
+  import Vulnerability from "./vulnerability/Vulnerability.svelte";
   $: vulnerabilities = $appStore.doc?.vulnerabilities;
 </script>
 

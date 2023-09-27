@@ -18,7 +18,7 @@ import {
 
 const generateProductVulnerabilities = (jsonDocument: any) => {
   let products = extractProducts(jsonDocument);
-  let { vulnerabilities, relevantProducts } = extractVulnerabilities(jsonDocument);
+  const { vulnerabilities, relevantProducts } = extractVulnerabilities(jsonDocument);
   products = products.filter((product: Product) => {
     return relevantProducts[product.product_id];
   });
@@ -32,19 +32,19 @@ const generateProductVulnerabilities = (jsonDocument: any) => {
 };
 
 const generateCrossTableFrom = (products: Product[], vulnerabilities: Vulnerability[]) => {
-  let result = [];
+  let result: any = [];
   let header = ["Product", "Total result"];
   const getCVE = vulnerabilities.map((vulnerability: Vulnerability) => vulnerability.cve);
   header = header.concat(getCVE);
   result.push(header);
-  let productLines = products.map((product: Product) => {
-    let line = [product.name];
+  const productLines = products.map((product: Product) => {
+    let line = [{ name: `${product.name}`, id: `${product.product_id}` }];
     line = line.concat(generateLineWith(product, vulnerabilities));
     return line;
   });
-  productLines.sort((line1: string[], line2: string[]) => {
-    if (line1[0] < line2[0]) return -1;
-    if (line1[0] > line2[0]) return 1;
+  productLines.sort((line1: any, line2: any) => {
+    if (line1[0].name < line2[0].name) return -1;
+    if (line1[0].name > line2[0].name) return 1;
     return 0;
   });
   result = [...result, ...productLines];
@@ -133,7 +133,7 @@ const isProduct = (branch: any) => {
 };
 
 const generateDictFrom = (productStatus: ProductStatus_t, section: ProductStatus_t_Key) => {
-  return productStatus[section]!.reduce((o: any, n: string) => {
+  return productStatus[section]?.reduce((o: any, n: string) => {
     o[n] = n;
     return o;
   }, {});

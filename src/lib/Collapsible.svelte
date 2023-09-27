@@ -1,17 +1,18 @@
 <script lang="ts">
   export let header: string;
-  export let open: boolean = false;
-  export let level: string = "2";
-  export let class_: string = "";
-  export let onClose: Function = () => {};
+  export let open = false;
+  export let level = "2";
+  export let class_ = "";
+  export let highlight = false;
+  export let onClose = () => {
+    //default: Do notthing
+  };
   let visibility = "none";
   $: if (open) {
     visibility = "block";
-  } else {
-    visibility = "none";
   }
   let icon = "bx-chevron-down";
-  const toggle = (e: Event) => {
+  const toggle = () => {
     if (visibility === "block") {
       onClose();
       visibility = "none";
@@ -26,7 +27,7 @@
   }
 </script>
 
-<div class="collapsible">
+<div class:collapsible={true} class:bg-light={highlight}>
   {#if level == "2"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -48,6 +49,13 @@
       <h4><i class="bx {icon}" />{header}</h4>
     </div>
   {/if}
+  {#if level == "5"}
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+      <h6><i class="bx {icon}" />{header}</h6>
+    </div>
+  {/if}
   <div style="display:{visibility}" class="body">
     <slot />
   </div>
@@ -64,5 +72,9 @@
   }
   h2 {
     font-weight: bold;
+  }
+  h6 {
+    line-height: 0.3em;
+    font-size: large;
   }
 </style>

@@ -7,25 +7,35 @@
 //
 
 export const CSAFDocProps = {
-  DOCUMENT: "document",
+  ACKNOWLEDGEMENTS: "acknowledgements",
+  AGGREGATE_SEVERITY: "aggregate_severity",
+  ALIASES: "aliases",
   CATEGORY: "category",
-  TRACKING: "tracking",
-  DISTRIBUTION: "distribution",
-  TLP: "tlp",
-  TITLE: "title",
-  LANG: "lang",
+  CONTACT_DETAILS: "contact_details",
   CSAFVERSION: "csaf_version",
-  ID: "id",
-  LABEL: "label",
-  STATUS: "status",
-  INITIALRELEASEDATE: "initial_release_date",
   CURRENTRELEASEDATE: "current_release_date",
-  PUBLISHER: "publisher",
+  DISTRIBUTION: "distribution",
+  DOCUMENT: "document",
+  GENERATOR: "generator",
+  ID: "id",
+  INITIALRELEASEDATE: "initial_release_date",
+  ISSUING_AUTHORITY: "issuing_authority",
+  LABEL: "label",
+  LANG: "lang",
+  NOTES: "notes",
+  PRODUCTTREE: "product_tree",
   PUBLISHER_CATEGORY: "category",
   PUBLISHER_NAME: "name",
   PUBLISHER_NAMESPACE: "namespace",
-  TRACKINGVERSION: "version",
+  PUBLISHER: "publisher",
+  REFERENCES: "references",
   REVISIONHISTORY: "revision_history",
+  STATUS: "status",
+  SOURCELANG: "sourcelang",
+  TITLE: "title",
+  TLP: "tlp",
+  TRACKING: "tracking",
+  TRACKINGVERSION: "version",
   VULNERABILITIES: "vulnerabilities"
 } as const;
 
@@ -37,7 +47,7 @@ export const TLP = {
   ERROR: "Invalid TLP"
 } as const;
 
-export const EMPTY: string = "";
+export const EMPTY = "";
 
 export type TLPKeys = (typeof TLP)[keyof typeof TLP];
 
@@ -59,6 +69,8 @@ export type Publisher = {
   category: string;
   name: string;
   namespace: string;
+  contact_details?: string;
+  issuing_authority?: string;
 };
 
 export type RevisionHistoryEntry = {
@@ -69,27 +81,76 @@ export type RevisionHistoryEntry = {
 };
 
 export type DocModel = {
-  title: string;
-  lang: string;
-  csafVersion: string;
+  acknowledgements: Acknowledgement[];
+  aggregateSeverity: AggregateSeverity | null;
+  aliases: string[];
   category: string;
-  tlp: string;
+  csafVersion: string;
+  generator: any;
   id: string;
-  status: string;
-  published: string;
-  lastUpdate: string;
-  publisher: Publisher;
-  trackingVersion: string;
-  revisionHistory: RevisionHistoryEntry[];
-  vulnerabilities: any;
-  productVulnerabilities: Array<Array<string>>;
-  isDocPresent: boolean;
-  isTrackingPresent: boolean;
   isDistributionPresent: boolean;
-  isTLPPresent: boolean;
+  isDocPresent: boolean;
+  isProductTreePresent: boolean;
   isPublisherPresent: boolean;
-  isVulnerabilitiesPresent: boolean;
   isRevisionHistoryPresent: boolean;
+  isTLPPresent: boolean;
+  isTrackingPresent: boolean;
+  isVulnerabilitiesPresent: boolean;
+  lang: string;
+  lastUpdate: string;
+  notes: Note[];
+  productTree: any;
+  productVulnerabilities: any;
+  published: string;
+  publisher: Publisher;
+  references: Reference[];
+  revisionHistory: RevisionHistoryEntry[];
+  status: string;
+  sourceLang: string;
+  title: string;
+  tlp: TLP;
+  trackingVersion: string;
+  vulnerabilities: any;
 };
 
 export type DocModelKey = keyof DocModel;
+
+export type TLP = {
+  label: string;
+  url?: string;
+};
+
+export type Note = {
+  category: string;
+  text: string;
+  audience?: string;
+  title?: string;
+};
+
+export type Acknowledgement = {
+  names: string[];
+  organization: string;
+  summary: string;
+  urls: string[];
+};
+
+export type Reference = {
+  url: string;
+  summary: string;
+  category: string;
+};
+
+export type AggregateSeverity = {
+  namespace?: string;
+  text: string;
+};
+
+export type Engine = {
+  name: string;
+  version?: string;
+};
+
+export type Generator = {
+  engine: Engine;
+  date?: string;
+};

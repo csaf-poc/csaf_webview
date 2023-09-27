@@ -15,18 +15,29 @@
   import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
   import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
   import { CSAFDocProps, DocumentCategory } from "./general/docmodeltypes";
+  import Upload from "./Upload.svelte";
+  import ProductTree from "./producttree/ProductTree.svelte";
+  import Back from "./Back.svelte";
   $: isDocumentASecurityAdvisory =
     $appStore.doc &&
     $appStore.doc[CSAFDocProps.CATEGORY] === DocumentCategory.CSAF_SECURITY_ADVISORY;
 </script>
 
 <div class="row">
-  <div class="col">
+  <div class="col col-3">
+    <Upload />
+  </div>
+  <div class="col col-9">
     <Droparea />
   </div>
 </div>
 {#if $appStore.doc}
-  <Collapsible header="General" open={$appStore.ui.isGeneralSectionVisible}>
+  <div class="row">
+    <div class="col">
+      <h1>{$appStore.doc["id"]}: {$appStore.doc["title"]}</h1>
+    </div>
+  </div>
+  <Collapsible header="General" open={true}>
     <General />
   </Collapsible>
 {/if}
@@ -38,7 +49,20 @@
     <ProductVulnerabilities />
   </Collapsible>
 {/if}
-{#if $appStore.doc?.isVulnerabilitiesPresent}
+
+{#if $appStore.doc && $appStore.doc["isProductTreePresent"]}
+  <Collapsible
+    header="Product tree"
+    open={$appStore.ui.isProductTreeVisible}
+    onClose={() => {
+      appStore.setProductTreeSectionInVisible();
+      appStore.resetSelectedProduct();
+    }}
+  >
+    <ProductTree />
+  </Collapsible>
+{/if}
+{#if $appStore.doc && $appStore.doc["isVulnerabilitiesPresent"]}
   <Collapsible
     header="Vulnerabilities"
     open={$appStore.ui.isVulnerabilitiesSectionVisible}
@@ -49,3 +73,13 @@
     <Vulnerabilities />
   </Collapsible>
 {/if}
+
+{#if $appStore.ui.history.length > 0}
+  <Back />
+{/if}
+
+<style>
+  h1 {
+    padding: 0;
+  }
+</style>

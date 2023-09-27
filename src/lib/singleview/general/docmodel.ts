@@ -13,44 +13,46 @@ import {
   EMPTY,
   CSAFDocProps,
   type Publisher,
-  type RevisionHistoryEntry
+  type RevisionHistoryEntry,
+  type Note,
+  type Reference,
+  type AggregateSeverity
 } from "$lib/singleview/general/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
-  return csafDoc.hasOwnProperty(CSAFDocProps.DOCUMENT);
+  return csafDoc[CSAFDocProps.DOCUMENT];
 };
 
 const checkTrackingPresent = (csafDoc: any): boolean => {
-  return checkDocumentPresent(csafDoc) && csafDoc.document.hasOwnProperty(CSAFDocProps.TRACKING);
+  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.TRACKING];
 };
 
 const checkDistributionPresent = (csafDoc: any): boolean => {
-  return (
-    checkDocumentPresent(csafDoc) && csafDoc.document.hasOwnProperty(CSAFDocProps.DISTRIBUTION)
-  );
+  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.DISTRIBUTION];
 };
 
 const checkTLPPresent = (csafDoc: any): boolean => {
   return (
     checkDistributionPresent(csafDoc) &&
-    csafDoc.document.distribution.hasOwnProperty(CSAFDocProps.TLP) &&
-    csafDoc.document.distribution[CSAFDocProps.TLP].hasOwnProperty(CSAFDocProps.LABEL)
+    csafDoc.document.distribution[CSAFDocProps.TLP] &&
+    csafDoc.document.distribution[CSAFDocProps.TLP][CSAFDocProps.LABEL]
   );
 };
 
 const checkPublisher = (csafDoc: any): boolean => {
-  return checkDocumentPresent(csafDoc) && csafDoc.document.hasOwnProperty(CSAFDocProps.PUBLISHER);
+  return checkDocumentPresent(csafDoc) && csafDoc.document[CSAFDocProps.PUBLISHER];
 };
 
 const checkVulnerabilities = (csafDoc: any): boolean => {
-  return csafDoc.hasOwnProperty(CSAFDocProps.VULNERABILITIES);
+  return csafDoc[CSAFDocProps.VULNERABILITIES];
+};
+
+const checkproducTree = (csafDoc: any): boolean => {
+  return csafDoc[CSAFDocProps.PRODUCTTREE];
 };
 
 const checkRevisionHistoryPresent = (csafDoc: any): boolean => {
-  return (
-    checkTrackingPresent(csafDoc) &&
-    csafDoc.document.tracking.hasOwnProperty(CSAFDocProps.REVISIONHISTORY)
-  );
+  return checkTrackingPresent(csafDoc) && csafDoc.document.tracking[CSAFDocProps.REVISIONHISTORY];
 };
 
 const getTitle = (csafDoc: any): string => {
@@ -73,20 +75,27 @@ const getId = (csafDoc: any): string => {
   return csafDoc.document.tracking[CSAFDocProps.ID] || EMPTY;
 };
 
-const getTlp = (csafDoc: any): string => {
-  if (!checkTLPPresent(csafDoc)) return EMPTY;
+const getTlp = (csafDoc: any): TLP => {
+  if (!checkTLPPresent(csafDoc)) return { label: "" };
+  let label = "TLP.ERROR;";
   switch (csafDoc.document.distribution.tlp[CSAFDocProps.LABEL]) {
     case TLP.AMBER:
-      return TLP.AMBER;
+      label = TLP.AMBER;
+      break;
     case TLP.GREEN:
-      return TLP.AMBER;
+      label = TLP.AMBER;
+      break;
     case TLP.WHITE:
-      return TLP.WHITE;
+      label = TLP.WHITE;
+      break;
     case TLP.RED:
-      return TLP.RED;
+      label = TLP.RED;
+      break;
     default:
-      return TLP.ERROR;
+      label = TLP.ERROR;
+      break;
   }
+  return { label: label, url: csafDoc.document.distribution.tlp.url };
 };
 
 const getStatus = (csafDoc: any): string => {
@@ -130,7 +139,9 @@ const getPublisher = (csafDoc: any): Publisher => {
   return {
     category: publisher[CSAFDocProps.PUBLISHER_CATEGORY],
     name: publisher[CSAFDocProps.PUBLISHER_NAME],
-    namespace: publisher[CSAFDocProps.PUBLISHER_NAMESPACE]
+    namespace: publisher[CSAFDocProps.PUBLISHER_NAMESPACE],
+    contact_details: publisher[CSAFDocProps.CONTACT_DETAILS],
+    issuing_authority: publisher[CSAFDocProps.ISSUING_AUTHORITY]
   };
 };
 
@@ -155,29 +166,78 @@ const getRevisionHistory = (csafDoc: any): RevisionHistoryEntry[] => {
   return result;
 };
 
+const getProductTree = (csafDoc: any) => {
+  if (!checkproducTree(csafDoc)) return [];
+  return csafDoc[CSAFDocProps.PRODUCTTREE];
+};
+
+const getNotes = (csafDoc: any): Note[] => {
+  if (!checkDocumentPresent(csafDoc)) return [];
+  return csafDoc.document[CSAFDocProps.NOTES];
+};
+
+const getAcknowledgements = (csafDoc: any) => {
+  if (!checkDocumentPresent(csafDoc)) return [];
+  return csafDoc.document[CSAFDocProps.ACKNOWLEDGEMENTS];
+};
+
+const getSourceLang = (csafDoc: any): string => {
+  if (!checkDocumentPresent(csafDoc)) return EMPTY;
+  return csafDoc.document[CSAFDocProps.SOURCELANG] || EMPTY;
+};
+
+const getReferences = (csafDoc: any): Reference[] => {
+  if (!checkDocumentPresent(csafDoc)) return [];
+  return csafDoc.document[CSAFDocProps.REFERENCES] || [];
+};
+
+const getAggregateSeverity = (csafDoc: any): AggregateSeverity | null => {
+  if (!checkDocumentPresent(csafDoc)) return null;
+  return csafDoc.document[CSAFDocProps.AGGREGATE_SEVERITY] || null;
+};
+
+const getGenerator = (csafDoc: any) => {
+  if (!checkTrackingPresent(csafDoc)) return null;
+  return csafDoc.document.tracking[CSAFDocProps.GENERATOR] || null;
+};
+
+const getAliases = (csafDoc: any) => {
+  if (!checkTrackingPresent(csafDoc)) return null;
+  return csafDoc.document.tracking[CSAFDocProps.ALIASES] || null;
+};
+
 const convertToDocModel = (csafDoc: any): DocModel => {
   const docModel: DocModel = {
-    title: getTitle(csafDoc),
-    lang: getLanguage(csafDoc),
-    csafVersion: getCSAFVersion(csafDoc),
+    aggregateSeverity: getAggregateSeverity(csafDoc),
+    acknowledgements: getAcknowledgements(csafDoc),
+    aliases: getAliases(csafDoc),
     category: getCategory(csafDoc),
-    tlp: getTlp(csafDoc),
+    csafVersion: getCSAFVersion(csafDoc),
+    generator: getGenerator(csafDoc),
     id: getId(csafDoc),
-    status: getStatus(csafDoc),
+    isDistributionPresent: checkDistributionPresent(csafDoc),
+    isDocPresent: checkDocumentPresent(csafDoc),
+    isProductTreePresent: checkproducTree(csafDoc),
+    isPublisherPresent: checkPublisher(csafDoc),
+    isRevisionHistoryPresent: checkRevisionHistoryPresent(csafDoc),
+    isTLPPresent: checkTLPPresent(csafDoc),
+    isTrackingPresent: checkTrackingPresent(csafDoc),
+    isVulnerabilitiesPresent: checkVulnerabilities(csafDoc),
+    lang: getLanguage(csafDoc),
+    lastUpdate: getLastUpdate(csafDoc),
+    notes: getNotes(csafDoc),
+    productTree: getProductTree(csafDoc),
+    productVulnerabilities: [],
     published: getPublished(csafDoc),
     publisher: getPublisher(csafDoc),
-    trackingVersion: getTrackingVersion(csafDoc),
+    references: getReferences(csafDoc),
     revisionHistory: getRevisionHistory(csafDoc),
-    lastUpdate: getLastUpdate(csafDoc),
-    vulnerabilities: getVulnerabilities(csafDoc),
-    productVulnerabilities: [],
-    isDocPresent: checkDocumentPresent(csafDoc),
-    isTrackingPresent: checkTrackingPresent(csafDoc),
-    isDistributionPresent: checkDistributionPresent(csafDoc),
-    isTLPPresent: checkTLPPresent(csafDoc),
-    isPublisherPresent: checkPublisher(csafDoc),
-    isVulnerabilitiesPresent: checkVulnerabilities(csafDoc),
-    isRevisionHistoryPresent: checkRevisionHistoryPresent(csafDoc)
+    status: getStatus(csafDoc),
+    sourceLang: getSourceLang(csafDoc),
+    title: getTitle(csafDoc),
+    tlp: getTlp(csafDoc),
+    trackingVersion: getTrackingVersion(csafDoc),
+    vulnerabilities: getVulnerabilities(csafDoc)
   };
   return docModel;
 };
