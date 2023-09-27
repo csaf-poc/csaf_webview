@@ -10,7 +10,7 @@
   <Collapsible header="Feed information" level="2" open={true}>
     <FeedInformation />
   </Collapsible>
-  <Collapsible header="Public open PGP keys" level="2">
+  <Collapsible header="Public OpenPGP keys" level="2">
     {#each $appStore.providerMetadata["public_openpgp_keys"] as key}
       <KeyValue keys={["fingerprint", "url"]} values={[key.fingerprint, key.url]} />
     {/each}
