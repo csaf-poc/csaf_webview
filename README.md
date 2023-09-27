@@ -63,6 +63,26 @@ and thus maybe behind the latest developments.
 `npm run build:ghpage`
 `npm run deploy`
 
+## Configure a local proxysetup
+
+In order to configure a proxy server use `vite.config.js`.
+The default configuration is:
+
+```javascript
+...
+server: {
+    proxy: {
+      "/proxy": {
+        target: "http://localhost:8080",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/proxy/, "")
+      }
+    }
+  },
+...
+```
+For more information look [here](https://vitejs.dev/config/server-options.html#server-proxy).
+
 ## License
 
 - csaf_webview is licensed as Free Software under MIT License.
