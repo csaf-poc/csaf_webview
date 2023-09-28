@@ -30,6 +30,7 @@ const loadFile = (csafFile: File) => {
         products,
         productLookup
       );
+      console.log(docModel);
       appStore.setDocument(docModel);
     }
   };

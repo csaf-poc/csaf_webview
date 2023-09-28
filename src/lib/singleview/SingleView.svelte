@@ -41,7 +41,7 @@
     <General />
   </Collapsible>
 {/if}
-{#if isDocumentASecurityAdvisory}
+{#if $appStore.doc?.productVulnerabilities.length > 0}
   <Collapsible
     header="Vulnerabilities overview"
     open={$appStore.ui.isVulnerabilisiesOverviewVisible}
