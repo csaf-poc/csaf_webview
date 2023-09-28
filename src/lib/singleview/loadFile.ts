@@ -1,5 +1,8 @@
 import { convertToDocModel } from "$lib/singleview/general/docmodel";
-import { generateProductVulnerabilities } from "./productvulnerabilities/productvulnerabilities";
+import {
+  extractProducts,
+  generateProductVulnerabilities
+} from "./productvulnerabilities/productvulnerabilities";
 import { appStore } from "$lib/store";
 const loadFile = (csafFile: File) => {
   const fileReader: FileReader = new FileReader();
@@ -16,7 +19,17 @@ const loadFile = (csafFile: File) => {
 					*/
       }
       const docModel = convertToDocModel(jsonDocument);
-      docModel.productVulnerabilities = generateProductVulnerabilities(jsonDocument);
+      const products = extractProducts(jsonDocument);
+      const productLookup = products.reduce((o: any, n: any) => {
+        o[n.product_id] = n.name;
+        return o;
+      }, {});
+      docModel.productsByID = productLookup;
+      docModel.productVulnerabilities = generateProductVulnerabilities(
+        jsonDocument,
+        products,
+        productLookup
+      );
       appStore.setDocument(docModel);
     }
   };

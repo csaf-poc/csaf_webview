@@ -226,6 +226,7 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     lang: getLanguage(csafDoc),
     lastUpdate: getLastUpdate(csafDoc),
     notes: getNotes(csafDoc),
+    productsByID: {},
     productTree: getProductTree(csafDoc),
     productVulnerabilities: [],
     published: getPublished(csafDoc),

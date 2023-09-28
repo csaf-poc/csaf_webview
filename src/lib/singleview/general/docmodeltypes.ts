@@ -99,6 +99,7 @@ export type DocModel = {
   lang: string;
   lastUpdate: string;
   notes: Note[];
+  productsByID: any;
   productTree: any;
   productVulnerabilities: any;
   published: string;
