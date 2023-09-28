@@ -1,9 +1,9 @@
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/singleview/KeyValue.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
   import FeedInformation from "./FeedInformation.svelte";
-  import Feeds from "./Feeds.svelte";
+  import Distributions from "./distributions/Distributions.svelte";
 </script>
 
 {#if $appStore.providerMetadata}
@@ -15,7 +15,7 @@
       <KeyValue keys={["fingerprint", "url"]} values={[key.fingerprint, key.url]} />
     {/each}
   </Collapsible>
-  <Collapsible header="Feeds" level="2" open={true}>
-    <Feeds />
+  <Collapsible header="Distributions" level="2" open={true}>
+    <Distributions />
   </Collapsible>
 {/if}

@@ -4,7 +4,7 @@
 </script>
 
 {#if $appStore.providerMetadata}
-  {#each $appStore.providerMetadata.distributions as distribution}
+  {#each $appStore.providerMetadata["distributions"] as distribution}
     <Distribution {distribution} />
   {/each}
 {/if}

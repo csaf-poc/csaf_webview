@@ -1,6 +1,6 @@
 <script lang="ts">
   import ProductIdentificationHelper from "./ProductIdentificationHelper.svelte";
-  import KeyValue from "$lib/singleview/KeyValue.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
   export let productNames: any;
 </script>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import KeyValue from "$lib/singleview/KeyValue.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
   export let reference: any;
   let keys: string[] = [];
   let values: string[] = [];

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import ValueField from "$lib/singleview/ValueField.svelte";
-  import ValueList from "$lib/singleview/ValueList.svelte";
+  import ValueField from "$lib/ValueField.svelte";
+  import ValueList from "$lib/ValueList.svelte";
   export let productGroup: any;
 </script>
 

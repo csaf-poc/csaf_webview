@@ -1,7 +1,7 @@
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/singleview/KeyValue.svelte";
-  import ValueField from "$lib/singleview/ValueField.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
+  import ValueField from "$lib/ValueField.svelte";
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
   import ProductIdentificationHelper from "../product/ProductIdentificationHelper.svelte";

@@ -15,7 +15,7 @@
   import Notes from "$lib/singleview/notes/Notes.svelte";
   import References from "$lib/singleview/references/References.svelte";
   import Acknowledgments from "$lib/singleview/acknowledgments/Acknowledgments.svelte";
-  import ValueList from "../ValueList.svelte";
+  import ValueList from "../../ValueList.svelte";
   let tlpStyle = "";
   $: aliases = $appStore.doc?.aliases;
   $: trackingVersion = $appStore.doc?.trackingVersion;

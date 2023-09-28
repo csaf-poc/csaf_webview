@@ -3,7 +3,7 @@
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
   import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/singleview/KeyValue.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
   export let product: any;
   let highlight = false;
   async function updateUI() {

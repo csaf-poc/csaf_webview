@@ -1,8 +1,8 @@
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
   import type { Note } from "$lib/singleview/general/docmodeltypes";
-  import KeyValue from "../KeyValue.svelte";
-  import ValueField from "../ValueField.svelte";
+  import KeyValue from "../../KeyValue.svelte";
+  import ValueField from "../../ValueField.svelte";
   export let note: Note;
   let keys: string[] = [];
   let values: string[] = [];
