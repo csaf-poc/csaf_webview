@@ -222,15 +222,15 @@
     color: #fff;
   }
   .tlpred {
-    background: #ff2b2b;
-    color: #fff;
+    background: #000;
+    color: #ff2b2b;
   }
   .tlpamber {
-    background: #ffc000;
-    color: #fff;
+    background: #000;
+    color: #ffc000;
   }
   .tlpgreen {
-    background: #33ff00;
-    color: #fff;
+    background: #000;
+    color: #33ff00;
   }
 </style>
