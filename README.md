@@ -72,7 +72,7 @@ The default configuration is:
 ...
 server: {
     proxy: {
-      "/proxy": {
+      "/proxy/": {
         target: "http://localhost:8080",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/proxy/, "")
@@ -82,6 +82,12 @@ server: {
 ...
 ```
 For more information look [here](https://vitejs.dev/config/server-options.html#server-proxy).
+
+In order to access the configured URL in a development setup you prefix the URL like
+
+`/proxy/http://localhost:8080/.well-known/csaf/provider-metadata.json`
+
+instead of entering `http://localhost:8080/.well-known/csaf/provider-metadata.json`.
 
 ## License
 

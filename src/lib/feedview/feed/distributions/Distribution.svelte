@@ -1,5 +1,8 @@
 <script lang="ts">
   export let distribution: any;
+  const openFeed = (e: Event) => {
+    e.preventDefault();
+  };
 </script>
 
 {#if distribution.rolie && distribution.rolie.feeds}
@@ -22,7 +25,11 @@
               ></td
             ></tr
           >
-          <tr><td class="key">URL</td><td class="value"><a href={feed.url}>{feed.url}</a></td></tr>
+          <tr
+            ><td class="key">URL</td><td class="value"
+              ><a on:click={openFeed} href={feed.url}>{feed.url}</a></td
+            ></tr
+          >
         </tbody>
       </table>
     </div>

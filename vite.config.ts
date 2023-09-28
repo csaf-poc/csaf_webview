@@ -19,10 +19,10 @@ const pkg = JSON.parse(json);
 export default defineConfig({
   server: {
     proxy: {
-      "/proxy": {
+      "/proxy/": {
         target: "http://localhost:8080",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/proxy/, "")
+        rewrite: (path) => path.replace(/^\/proxy\//, "")
       }
     }
   },
