@@ -19,7 +19,7 @@
 </script>
 
 <Collapsible
-  header={product.product_id}
+  header={product.name}
   level="5"
   {highlight}
   open={$appStore.ui.selectedProduct === product.product_id}
@@ -30,11 +30,7 @@
   }}
 >
   <div id={product.product_id}>
-    <KeyValue
-      compact={true}
-      keys={["Name", "Product ID"]}
-      values={[product.name, product.product_id]}
-    />
+    <KeyValue compact={true} keys={["Product ID"]} values={[product.name, product.product_id]} />
     {#if product.product_identification_helper}
       <ProductIdentificationHelper helper={product.product_identification_helper} />
     {/if}
