@@ -19,18 +19,6 @@ const loadFile = (csafFile: File) => {
 					*/
       }
       const docModel = convertToDocModel(jsonDocument);
-      const products = extractProducts(jsonDocument);
-      const productLookup = products.reduce((o: any, n: any) => {
-        o[n.product_id] = n.name;
-        return o;
-      }, {});
-      docModel.productsByID = productLookup;
-      docModel.productVulnerabilities = generateProductVulnerabilities(
-        jsonDocument,
-        products,
-        productLookup
-      );
-      console.log(docModel);
       appStore.setDocument(docModel);
     }
   };

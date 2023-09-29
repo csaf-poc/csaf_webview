@@ -18,6 +18,10 @@ import {
   type Reference,
   type AggregateSeverity
 } from "$lib/singleview/docmodel/docmodeltypes";
+import {
+  extractProducts,
+  generateProductVulnerabilities
+} from "../productvulnerabilities/productvulnerabilities";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
   return csafDoc[CSAFDocProps.DOCUMENT];
@@ -240,6 +244,17 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     trackingVersion: getTrackingVersion(csafDoc),
     vulnerabilities: getVulnerabilities(csafDoc)
   };
+  const products = extractProducts(csafDoc);
+  const productLookup = products.reduce((o: any, n: any) => {
+    o[n.product_id] = n.name;
+    return o;
+  }, {});
+  docModel.productsByID = productLookup;
+  docModel.productVulnerabilities = generateProductVulnerabilities(
+    csafDoc,
+    products,
+    productLookup
+  );
   return docModel;
 };
 
