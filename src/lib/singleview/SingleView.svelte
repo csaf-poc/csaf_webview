@@ -14,7 +14,7 @@
   import Droparea from "$lib/singleview/Droparea.svelte";
   import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
   import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
-  import { CSAFDocProps, DocumentCategory } from "./general/docmodeltypes";
+  import { CSAFDocProps, DocumentCategory } from "./docmodel/docmodeltypes";
   import Upload from "./Upload.svelte";
   import ProductTree from "./producttree/ProductTree.svelte";
   import Back from "./Back.svelte";

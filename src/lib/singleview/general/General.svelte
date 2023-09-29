@@ -9,7 +9,7 @@
 -->
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
-  import { Status, TLP } from "$lib/singleview/general/docmodeltypes";
+  import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
   import { appStore } from "$lib/store";
   import RevisionHistory from "./RevisionHistory.svelte";
   import Notes from "$lib/singleview/notes/Notes.svelte";

@@ -17,7 +17,7 @@ import {
   type Note,
   type Reference,
   type AggregateSeverity
-} from "$lib/singleview/general/docmodeltypes";
+} from "$lib/singleview/docmodel/docmodeltypes";
 
 const checkDocumentPresent = (csafDoc: any): boolean => {
   return csafDoc[CSAFDocProps.DOCUMENT];

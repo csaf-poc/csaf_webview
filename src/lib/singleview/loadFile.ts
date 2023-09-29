@@ -1,4 +1,4 @@
-import { convertToDocModel } from "$lib/singleview/general/docmodel";
+import { convertToDocModel } from "$lib/singleview/docmodel/docmodel";
 import {
   extractProducts,
   generateProductVulnerabilities

@@ -1,7 +1,7 @@
 <script lang="ts">
   import KeyValue from "$lib/KeyValue.svelte";
   import ValueList from "$lib/ValueList.svelte";
-  import type { Acknowledgement } from "../general/docmodeltypes";
+  import type { Acknowledgement } from "../docmodel/docmodeltypes";
   export let ack: Acknowledgement;
   const keys: Array<String> = [];
   const values: any = [];
