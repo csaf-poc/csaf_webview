@@ -13,6 +13,8 @@ type AppStore = {
   doc: DocModel | null;
   providerMetadata: any;
   ui: {
+    currentFeed: any;
+    errorMsg: string;
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
     isVulnerabilisiesOverviewVisible: boolean;
@@ -29,7 +31,9 @@ function createStore() {
   const { subscribe, set, update } = writable({
     doc: null,
     providerMetadata: null,
+    currentFeed: null,
     ui: {
+      errorMsg: "",
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
       isVulnerabilisiesOverviewVisible: false,
@@ -44,6 +48,18 @@ function createStore() {
 
   return {
     subscribe,
+    setCurrentFeed: (feed: any) => {
+      update((settings) => {
+        settings.currentFeed = feed;
+        return settings;
+      });
+    },
+    setErrorMsg: (msg: string) => {
+      update((settings) => {
+        settings.ui.errorMsg = msg;
+        return settings;
+      });
+    },
     setDocument: (data: any) =>
       update((settings) => {
         settings.doc = data;

@@ -1,6 +1,30 @@
 <script lang="ts">
+  import { appStore } from "$lib/store";
   export let distribution: any;
+  async function loadFeed(feedURL: string) {
+    appStore.setErrorMsg("");
+    try {
+      const response = await fetch(`${feedURL}`);
+      if (response.ok) {
+        const feedJSON = await response.json();
+        appStore.setCurrentFeed(feedJSON);
+        setTimeout(() => {
+          const el = document.getElementById(`${feedURL}`);
+          console.log(feedURL);
+          el?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+      if (response.status === 404) {
+        appStore.setErrorMsg("The resource you requested was not found on the server.");
+      }
+    } catch (error) {
+      appStore.setErrorMsg(
+        "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
+      );
+    }
+  }
   const openFeed = (e: Event) => {
+    loadFeed((e.target as Element).getAttribute("href")!);
     e.preventDefault();
   };
 </script>

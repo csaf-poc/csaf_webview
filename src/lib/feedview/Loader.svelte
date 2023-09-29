@@ -1,9 +1,8 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
   let url = "";
-  let errorMsg = "";
   async function loadProviderMetaData() {
-    errorMsg = "";
+    appStore.setErrorMsg("");
     appStore.reset();
     try {
       const response = await fetch(`${url}`);
@@ -12,11 +11,12 @@
         appStore.setProviderMetadata(providerMetadata);
       }
       if (response.status === 404) {
-        errorMsg = "The resource you requested was not found on the server.";
+        appStore.setErrorMsg("The resource you requested was not found on the server.");
       }
     } catch (error) {
-      errorMsg =
-        "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions.";
+      appStore.setErrorMsg(
+        "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
+      );
     }
   }
 
@@ -37,9 +37,11 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col"><div class="errors text-error">{errorMsg}</div></div>
-</div>
+{#if $appStore.ui.errorMsg}
+  <div class="row">
+    <div class="col"><div class="errors text-error">{$appStore.ui.errorMsg}</div></div>
+  </div>
+{/if}
 
 <style>
   .errors {
