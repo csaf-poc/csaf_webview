@@ -18,7 +18,13 @@
 <Loader />
 <Overview />
 {#if $appStore.currentFeed}
-  <Collapsible header={$appStore.currentFeed?.feed.title} open={true}>
+  <Collapsible
+    header={$appStore.currentFeed?.feed.title}
+    open={$appStore.ui.isFeedSectionOpen}
+    onClose={() => {
+      appStore.setFeedSectionClosed();
+    }}
+  >
     <Feed />
   </Collapsible>
 {/if}

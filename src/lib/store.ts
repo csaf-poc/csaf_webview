@@ -15,6 +15,7 @@ type AppStore = {
   ui: {
     currentFeed: any;
     errorMsg: string;
+    isFeedSectionOpen: boolean;
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
     isVulnerabilisiesOverviewVisible: boolean;
@@ -39,6 +40,7 @@ function createStore() {
       isVulnerabilisiesOverviewVisible: false,
       isVulnerabilitiesSectionVisible: false,
       isProductTreeVisible: false,
+      isFeedSectionOpen: false,
       selectedCVE: "",
       selectedProduct: "",
       uploadedFile: false,
@@ -48,6 +50,18 @@ function createStore() {
 
   return {
     subscribe,
+    setFeedSectionOpen: () => {
+      update((settings) => {
+        settings.ui.isFeedSectionOpen = true;
+        return settings;
+      });
+    },
+    setFeedSectionClosed: () => {
+      update((settings) => {
+        settings.ui.isFeedSectionOpen = false;
+        return settings;
+      });
+    },
     setCurrentFeed: (feed: any) => {
       update((settings) => {
         settings.currentFeed = feed;

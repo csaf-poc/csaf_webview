@@ -8,10 +8,10 @@
       if (response.ok) {
         const feedJSON = await response.json();
         appStore.setCurrentFeed(feedJSON);
+        appStore.setFeedSectionOpen();
         setTimeout(() => {
           const el = document.getElementById(`${feedURL}`);
-          console.log(feedURL);
-          el?.scrollIntoView({ behavior: "smooth" });
+          el?.scrollIntoView({ block: "end", behavior: "smooth" });
         }, 100);
       }
       if (response.status === 404) {
