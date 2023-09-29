@@ -13,6 +13,7 @@
   import { appStore } from "$lib/store";
   import Feed from "./feed/Feed.svelte";
   import Collapsible from "$lib/Collapsible.svelte";
+  import Back from "$lib/Back.svelte";
 </script>
 
 <Loader />
@@ -27,4 +28,8 @@
   >
     <Feed />
   </Collapsible>
+{/if}
+
+{#if $appStore.ui.history.length > 0}
+  <Back />
 {/if}

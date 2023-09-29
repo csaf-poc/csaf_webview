@@ -7,6 +7,10 @@
 
 {#if feed}
   <div id={link.href}>
-    <KeyValue keys={["ID", "Title"]} values={[feed?.id, feed?.title]} compact={true} />
+    <KeyValue
+      keys={["ID", "Title", "Updated"]}
+      values={[feed?.id, feed?.title, feed?.updated]}
+      compact={true}
+    />
   </div>
 {/if}

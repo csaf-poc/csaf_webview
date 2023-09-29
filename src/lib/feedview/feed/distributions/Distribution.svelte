@@ -1,7 +1,7 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
   export let distribution: any;
-  async function loadFeed(feedURL: string) {
+  async function loadFeed(feedURL: string, e: Event) {
     appStore.setErrorMsg("");
     try {
       const response = await fetch(`${feedURL}`);
@@ -9,6 +9,7 @@
         const feedJSON = await response.json();
         appStore.setCurrentFeed(feedJSON);
         appStore.setFeedSectionOpen();
+        appStore.unshiftHistory((e.target as Element).id);
         setTimeout(() => {
           const el = document.getElementById(`${feedURL}`);
           el?.scrollIntoView({ block: "end", behavior: "smooth" });
@@ -24,7 +25,7 @@
     }
   }
   const openFeed = (e: Event) => {
-    loadFeed((e.target as Element).getAttribute("href")!);
+    loadFeed((e.target as Element).getAttribute("href")!, e);
     e.preventDefault();
   };
 </script>
@@ -51,7 +52,7 @@
           >
           <tr
             ><td class="key">URL</td><td class="value"
-              ><a on:click={openFeed} href={feed.url}>{feed.url}</a></td
+              ><a id={crypto.randomUUID()} on:click={openFeed} href={feed.url}>{feed.url}</a></td
             ></tr
           >
         </tbody>

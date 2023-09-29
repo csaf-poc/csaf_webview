@@ -17,7 +17,7 @@
   import { CSAFDocProps, DocumentCategory } from "./docmodel/docmodeltypes";
   import Upload from "./Upload.svelte";
   import ProductTree from "./producttree/ProductTree.svelte";
-  import Back from "./Back.svelte";
+  import Back from "../Back.svelte";
   $: isDocumentASecurityAdvisory =
     $appStore.doc &&
     $appStore.doc[CSAFDocProps.CATEGORY] === DocumentCategory.CSAF_SECURITY_ADVISORY;
