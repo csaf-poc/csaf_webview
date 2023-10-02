@@ -15,15 +15,39 @@
   import { page } from "$app/stores";
   import SingleView from "$lib/singleview/SingleView.svelte";
   import FeedView from "$lib/feedview/FeedView.svelte";
+  import { convertToDocModel } from "$lib/singleview/docmodel/docmodel";
   /*global __APP_VERSION__*/
   const version: string = __APP_VERSION__;
-  const externalReference = browser && $page.url.searchParams.get("ref");
+  const externalReference = browser && /#\/\?q=/.test($page.url.hash);
   const MODE = {
     SINGLE: "Switch to ROLIE-feed",
     FEED: "Switch to single view"
   };
   let mode = MODE.SINGLE;
-  $: noRef = !externalReference;
+  async function loadSingleCSAF(url: string) {
+    appStore.setErrorMsg("");
+    appStore.reset();
+    try {
+      const response = await fetch(`${url}`);
+      if (response.ok) {
+        const csafDoc = await response.json();
+        appStore.clearUploadedFile();
+        const docModel = convertToDocModel(csafDoc);
+        appStore.setDocument(docModel);
+      }
+      if (response.status === 404) {
+        appStore.setErrorMsg("The resource you requested was not found on the server.");
+      }
+    } catch (error) {
+      appStore.setErrorMsg(
+        "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
+      );
+    }
+  }
+  $: if (externalReference) {
+    const URL = $page.url.hash.replace("#/?q=", "");
+    loadSingleCSAF(URL);
+  }
   const switchView = () => {
     if (mode === MODE.SINGLE) {
       mode = MODE.FEED;
@@ -47,7 +71,7 @@
     <button class="switchbutton button" on:click={switchView}>{mode}</button>
     <h4>v. {version}</h4>
   </div>
-  {#if noRef && mode === MODE.SINGLE}
+  {#if mode === MODE.SINGLE}
     <SingleView />
   {:else}
     <FeedView />
