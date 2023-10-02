@@ -18,9 +18,7 @@
   import Upload from "./Upload.svelte";
   import ProductTree from "./producttree/ProductTree.svelte";
   import Back from "../Back.svelte";
-  $: isDocumentASecurityAdvisory =
-    $appStore.doc &&
-    $appStore.doc[CSAFDocProps.CATEGORY] === DocumentCategory.CSAF_SECURITY_ADVISORY;
+  import LoadFromUrl from "./LoadFromURL.svelte";
 </script>
 
 <div class="row">
@@ -31,6 +29,7 @@
     <Droparea />
   </div>
 </div>
+<LoadFromUrl />
 {#if $appStore.doc}
   <div class="row">
     <div class="col">
