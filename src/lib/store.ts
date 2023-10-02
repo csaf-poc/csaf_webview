@@ -41,7 +41,8 @@ function createStore() {
     currentFeed: null,
     ui: {
       appMode: MODE.SINGLE,
-      errorMsg: "",
+      feedErrorMsg: "",
+      singleErrorMsg: "",
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
       isVulnerabilisiesOverviewVisible: false,
@@ -87,9 +88,15 @@ function createStore() {
         return settings;
       });
     },
-    setErrorMsg: (msg: string) => {
+    setSingleErrorMsg: (msg: string) => {
       update((settings) => {
-        settings.ui.errorMsg = msg;
+        settings.ui.singleErrorMsg = msg;
+        return settings;
+      });
+    },
+    setFeedErrorMsg: (msg: string) => {
+      update((settings) => {
+        settings.ui.feedErrorMsg = msg;
         return settings;
       });
     },

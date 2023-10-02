@@ -10,32 +10,14 @@
 
 <script lang="ts">
   import { appStore } from "$lib/store";
+  import { loadProviderMetaData } from "$lib/urlloader";
   let url = "";
-  async function loadProviderMetaData() {
-    appStore.setErrorMsg("");
-    appStore.reset();
-    try {
-      const response = await fetch(`${url}`);
-      if (response.ok) {
-        const providerMetadata = await response.json();
-        appStore.setProviderMetadata(providerMetadata);
-      }
-      if (response.status === 404) {
-        appStore.setErrorMsg("The resource you requested was not found on the server.");
-      }
-    } catch (error) {
-      appStore.setErrorMsg(
-        "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
-      );
-    }
-  }
-
   const load = () => {
-    loadProviderMetaData();
+    loadProviderMetaData(url);
   };
 
   const keydown = (e: KeyboardEvent) => {
-    if (e.key === "Enter") loadProviderMetaData();
+    if (e.key === "Enter") loadProviderMetaData(url);
   };
 </script>
 
@@ -47,9 +29,9 @@
     </div>
   </div>
 </div>
-{#if $appStore.ui.errorMsg}
+{#if $appStore.ui.feedErrorMsg}
   <div class="row">
-    <div class="col"><div class="errors text-error">{$appStore.ui.errorMsg}</div></div>
+    <div class="col"><div class="errors text-error">{$appStore.ui.feedErrorMsg}</div></div>
   </div>
 {/if}
 

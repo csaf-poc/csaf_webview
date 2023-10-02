@@ -16,6 +16,7 @@
   import SingleView from "$lib/singleview/SingleView.svelte";
   import FeedView from "$lib/feedview/FeedView.svelte";
   import { loadSingleCSAF } from "$lib/urlloader";
+  import { tick } from "svelte";
 
   /*global __APP_VERSION__*/
   const version: string = __APP_VERSION__;
@@ -25,10 +26,23 @@
     SINGLE: "Switch to ROLIE-feed",
     FEED: "Switch to single view"
   };
+  async function switchFeedMode() {
+    await tick();
+    appStore.setFeedMode();
+  }
+  async function switchSingleMode() {
+    await tick();
+    appStore.setSingleMode();
+  }
   $: mode = $appStore.ui.appMode;
   $: if (externalReference) {
-    const URL = $page.url.hash.replace("#/single?q=", "");
-    loadSingleCSAF(URL);
+    if (/#\/single\?q=/.test($page.url.hash)) {
+      const URL = $page.url.hash.replace("#/single?q=", "");
+      loadSingleCSAF(URL);
+    }
+    if (/#\/feed\?q=/.test($page.url.hash)) {
+      switchFeedMode();
+    }
   }
   const switchView = () => {
     if (mode === MODE.SINGLE) {

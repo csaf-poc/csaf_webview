@@ -12,13 +12,13 @@
   import { appStore } from "$lib/store";
   import { loadSingleCSAF } from "$lib/urlloader";
   let URL = "";
-  const load = () => {
+  const loads = () => {
     window.location.hash = `#/single?q=${URL}`;
     loadSingleCSAF(URL);
   };
   const keydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
-      load();
+      loads();
     }
   };
 </script>
@@ -26,14 +26,14 @@
 <div class="row">
   <div class="col">
     <div style="display:flex">
-      <button class="loadbutton" on:click={load}><i class="bx bx-book-open" />URL</button>
+      <button class="loadbutton" on:click={loads}><i class="bx bx-book-open" />URL</button>
       <input class="url" type="text" bind:value={URL} on:keydown={keydown} />
     </div>
   </div>
 </div>
-{#if $appStore.ui.errorMsg}
+{#if $appStore.ui.singleErrorMsg}
   <div class="row">
-    <div class="col"><div class="errors text-error">{$appStore.ui.errorMsg}</div></div>
+    <div class="col"><div class="errors text-error">{$appStore.ui.singleErrorMsg}</div></div>
   </div>
 {/if}
 
