@@ -23,7 +23,7 @@
     SINGLE: "Switch to ROLIE-feed",
     FEED: "Switch to single view"
   };
-  let mode = MODE.SINGLE;
+  $: mode = $appStore.ui.appMode;
   async function loadSingleCSAF(url: string) {
     appStore.setErrorMsg("");
     appStore.reset();
@@ -50,11 +50,9 @@
   }
   const switchView = () => {
     if (mode === MODE.SINGLE) {
-      mode = MODE.FEED;
-      appStore.reset();
+      appStore.setFeedMode();
     } else {
-      mode = MODE.SINGLE;
-      appStore.reset();
+      appStore.setSingleMode();
     }
   };
   const disable = (e: Event) => {

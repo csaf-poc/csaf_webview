@@ -13,6 +13,7 @@ type AppStore = {
   doc: DocModel | null;
   providerMetadata: any;
   ui: {
+    appMode: string;
     currentFeed: any;
     errorMsg: string;
     isFeedSectionOpen: boolean;
@@ -28,12 +29,18 @@ type AppStore = {
   };
 };
 
+const MODE = {
+  SINGLE: "Switch to ROLIE-feed",
+  FEED: "Switch to single view"
+};
+
 function createStore() {
   const { subscribe, set, update } = writable({
     doc: null,
     providerMetadata: null,
     currentFeed: null,
     ui: {
+      appMode: MODE.SINGLE,
       errorMsg: "",
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
@@ -50,6 +57,18 @@ function createStore() {
 
   return {
     subscribe,
+    setSingleMode: () => {
+      update((settings) => {
+        settings.ui.appMode = MODE.SINGLE;
+        return settings;
+      });
+    },
+    setFeedMode: () => {
+      update((settings) => {
+        settings.ui.appMode = MODE.FEED;
+        return settings;
+      });
+    },
     setFeedSectionOpen: () => {
       update((settings) => {
         settings.ui.isFeedSectionOpen = true;
@@ -163,12 +182,16 @@ function createStore() {
       set({
         doc: null,
         providerMetadata: null,
+        currentFeed: null,
         ui: {
+          appMode: MODE.SINGLE,
+          errorMsg: "",
           isGeneralSectionVisible: true,
           isRevisionHistoryVisible: false,
           isVulnerabilisiesOverviewVisible: false,
           isVulnerabilitiesSectionVisible: false,
           isProductTreeVisible: false,
+          isFeedSectionOpen: false,
           selectedCVE: "",
           selectedProduct: "",
           uploadedFile: false,
