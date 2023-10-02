@@ -15,7 +15,7 @@
   import { page } from "$app/stores";
   import SingleView from "$lib/singleview/SingleView.svelte";
   import FeedView from "$lib/feedview/FeedView.svelte";
-  import { loadSingleCSAF } from "$lib/urlloader";
+  import { loadProviderMetaData, loadSingleCSAF } from "$lib/urlloader";
   import { tick } from "svelte";
 
   /*global __APP_VERSION__*/
@@ -41,6 +41,8 @@
       loadSingleCSAF(URL);
     }
     if (/#\/feed\?q=/.test($page.url.hash)) {
+      const URL = $page.url.hash.replace("#/feed?q=", "");
+      loadProviderMetaData(URL);
       switchFeedMode();
     }
   }

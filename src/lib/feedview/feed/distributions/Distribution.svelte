@@ -12,7 +12,7 @@
   import { appStore } from "$lib/store";
   export let distribution: any;
   async function loadFeed(feedURL: string, e: Event) {
-    appStore.setErrorMsg("");
+    appStore.setSingleErrorMsg("");
     try {
       const response = await fetch(`${feedURL}`);
       if (response.ok) {
@@ -22,14 +22,14 @@
         appStore.unshiftHistory((e.target as Element).id);
         setTimeout(() => {
           const el = document.getElementById(`${feedURL}`);
-          el?.scrollIntoView({ block: "end", behavior: "smooth" });
+          el?.scrollIntoView({ block: "start", behavior: "smooth" });
         }, 100);
       }
       if (response.status === 404) {
-        appStore.setErrorMsg("The resource you requested was not found on the server.");
+        appStore.setSingleErrorMsg("The resource you requested was not found on the server.");
       }
     } catch (error) {
-      appStore.setErrorMsg(
+      appStore.setSingleErrorMsg(
         "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
       );
     }

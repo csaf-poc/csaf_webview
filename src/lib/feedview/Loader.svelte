@@ -14,6 +14,7 @@
   let url = "";
   const load = () => {
     loadProviderMetaData(url);
+    window.location.hash = `#/feed?q=${url}`;
   };
 
   const keydown = (e: KeyboardEvent) => {

@@ -11,6 +11,8 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
+  import FeedView from "../FeedView.svelte";
+  import Entries from "../entries/Entries.svelte";
   import Category from "./Category.svelte";
   import Links from "./Links.svelte";
   $: feed = $appStore.currentFeed?.feed;
@@ -30,5 +32,8 @@
   </Collapsible>
   <Collapsible header="Category" level="3">
     <Category categories={feed.category} />
+  </Collapsible>
+  <Collapsible header="Entries" level="3">
+    <Entries entries={feed.entry} />
   </Collapsible>
 {/if}
