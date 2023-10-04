@@ -45,6 +45,17 @@
   $: published = $appStore.doc?.published;
   $: lastUpdate = $appStore.doc?.lastUpdate;
   $: status = $appStore.doc?.status;
+  $: if (
+    !$appStore.doc?.isRevisionHistoryPresent &&
+    !$appStore.doc?.isDocPresent &&
+    !$appStore.doc?.isProductTreePresent &&
+    !$appStore.doc?.isPublisherPresent &&
+    !$appStore.doc?.isTLPPresent &&
+    !$appStore.doc?.isTrackingPresent &&
+    !$appStore.doc?.isVulnerabilitiesPresent
+  ) {
+    appStore.setSingleErrorMsg("Are you sure the URL refers to a CSAF document?");
+  }
 </script>
 
 <div class="documentdata">
