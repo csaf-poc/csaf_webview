@@ -25,5 +25,6 @@
   }
   p {
     margin-left: 4rem;
+    width: 80vw;
   }
 </style>

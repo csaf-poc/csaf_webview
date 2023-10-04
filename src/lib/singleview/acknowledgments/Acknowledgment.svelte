@@ -29,7 +29,7 @@
   }
 </script>
 
-<KeyValue {keys} {values} />
+<KeyValue compact={true} {keys} {values} />
 {#if ack.urls}
   <ValueList label="URLs" values={ack.urls} />
 {/if}
