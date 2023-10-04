@@ -31,11 +31,13 @@ async function loadProviderMetaData(url: string) {
     }
     if (response.status === 404) {
       appStore.setFeedErrorMsg("The resource you requested was not found on the server.");
+      appStore.setProviderMetadata(null);
     }
   } catch (error) {
     appStore.setFeedErrorMsg(
       "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
     );
+    appStore.setProviderMetadata(null);
   }
 }
 
@@ -56,11 +58,13 @@ async function loadFeed(feedURL: string, e?: Event) {
     }
     if (response.status === 404) {
       appStore.setSingleErrorMsg("The resource you requested was not found on the server.");
+      appStore.setCurrentFeed(null);
     }
   } catch (error) {
     appStore.setSingleErrorMsg(
       "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
     );
+    appStore.setCurrentFeed(null);
   }
 }
 
