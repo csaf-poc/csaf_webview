@@ -18,6 +18,7 @@
       window.location.hash = `#/feed?q=${url}`;
     } else {
       loadFeed(url);
+      window.location.hash = `#/feed?q=${url}`;
     }
   };
 

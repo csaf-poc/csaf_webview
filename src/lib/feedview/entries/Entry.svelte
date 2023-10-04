@@ -10,6 +10,7 @@
 
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
   import { loadSingleCSAF } from "$lib/urlloader";
   import { tick } from "svelte";
@@ -27,8 +28,28 @@
   };
 </script>
 
-<table>
-  <Collapsible header="Links" level="5">
+<KeyValue
+  compact={true}
+  keys={["ID", "Published", "Title", "Updated"]}
+  values={[entry.id, entry.published, entry.title, entry.updated]}
+/>
+<Collapsible header="Content" level="5">
+  <KeyValue
+    compact={true}
+    keys={["Type", "Src"]}
+    values={[entry.content.type, entry.content.src]}
+  />
+</Collapsible>
+<Collapsible header="Format" level="5">
+  <KeyValue
+    compact={true}
+    keys={["Schema", "Version"]}
+    values={[entry.format.schema, entry.format.version]}
+  />
+</Collapsible>
+
+<Collapsible header="Links" level="5">
+  <table>
     {#each entry.link as link}
       <tr>
         <td class="key">{link.rel}: </td>
@@ -41,8 +62,8 @@
         </td>
       </tr>
     {/each}
-  </Collapsible>
-</table>
+  </table>
+</Collapsible>
 
 <style>
   .key {

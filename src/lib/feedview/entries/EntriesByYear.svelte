@@ -57,7 +57,7 @@
         <h4>
           <i class="bx {icon}" on:click={toggle} /><a
             href={entryIDURLLookup[entry.id]}
-            on:click={open}>{entry.title}</a
+            on:click={open}>{entry.id}: {entry.title}</a
           >
         </h4>
       </div>
@@ -71,6 +71,7 @@
 <style>
   h4 {
     padding: 0;
+    margin-bottom: 0;
   }
   .body {
     margin-left: 3rem;
