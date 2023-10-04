@@ -10,6 +10,7 @@
 
 <script lang="ts">
   import { appStore } from "$lib/store";
+  import { tick } from "svelte";
   export let distribution: any;
   async function loadFeed(feedURL: string, e: Event) {
     appStore.setSingleErrorMsg("");
@@ -17,6 +18,8 @@
       const response = await fetch(`${feedURL}`);
       if (response.ok) {
         const feedJSON = await response.json();
+        appStore.setCurrentFeed(null);
+        await tick();
         appStore.setCurrentFeed(feedJSON);
         appStore.setFeedSectionOpen();
         appStore.unshiftHistory((e.target as Element).id);

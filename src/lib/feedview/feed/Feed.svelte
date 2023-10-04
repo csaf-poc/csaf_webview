@@ -11,7 +11,6 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
-  import FeedView from "../FeedView.svelte";
   import Entries from "../entries/Entries.svelte";
   import Category from "./Category.svelte";
   import Links from "./Links.svelte";
