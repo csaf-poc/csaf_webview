@@ -10,11 +10,15 @@
 
 <script lang="ts">
   import { appStore } from "$lib/store";
-  import { loadProviderMetaData } from "$lib/urlloader";
+  import { loadFeed, loadProviderMetaData } from "$lib/urlloader";
   let url = "";
   const load = () => {
-    loadProviderMetaData(url);
-    window.location.hash = `#/feed?q=${url}`;
+    if (/provider-metadata\.json/.test(url)) {
+      loadProviderMetaData(url);
+      window.location.hash = `#/feed?q=${url}`;
+    } else {
+      loadFeed(url);
+    }
   };
 
   const keydown = (e: KeyboardEvent) => {

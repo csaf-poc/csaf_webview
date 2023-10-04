@@ -9,34 +9,8 @@
 -->
 
 <script lang="ts">
-  import { appStore } from "$lib/store";
-  import { tick } from "svelte";
+  import { loadFeed } from "$lib/urlloader";
   export let distribution: any;
-  async function loadFeed(feedURL: string, e: Event) {
-    appStore.setSingleErrorMsg("");
-    try {
-      const response = await fetch(`${feedURL}`);
-      if (response.ok) {
-        const feedJSON = await response.json();
-        appStore.setCurrentFeed(null);
-        await tick();
-        appStore.setCurrentFeed(feedJSON);
-        appStore.setFeedSectionOpen();
-        appStore.unshiftHistory((e.target as Element).id);
-        setTimeout(() => {
-          const el = document.getElementById(`${feedURL}`);
-          el?.scrollIntoView({ block: "start", behavior: "smooth" });
-        }, 100);
-      }
-      if (response.status === 404) {
-        appStore.setSingleErrorMsg("The resource you requested was not found on the server.");
-      }
-    } catch (error) {
-      appStore.setSingleErrorMsg(
-        "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
-      );
-    }
-  }
   const openFeed = (e: Event) => {
     loadFeed((e.target as Element).getAttribute("href")!, e);
     e.preventDefault();
