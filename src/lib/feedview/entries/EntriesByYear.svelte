@@ -11,22 +11,14 @@
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
   import Entry from "./Entry.svelte";
-  import { appStore } from "$lib/store";
-  import { loadSingleCSAF } from "$lib/urlloader";
-  import { tick } from "svelte";
+  import { goto } from "$app/navigation";
   export let entries: any = [];
   export let year: string;
   let visibility = "none";
   let icon = "bx-chevron-down";
-  async function switchSingleMode() {
-    await tick();
-    appStore.setSingleMode();
-  }
   const open = (e: Event) => {
     let url: string = (e.target as Element).getAttribute("href")!;
-    switchSingleMode();
-    loadSingleCSAF(url);
-    window.location.hash = `#/single?q=${url}`;
+    goto(`/?q=${url}`);
     e.preventDefault();
   };
   const toggle = () => {

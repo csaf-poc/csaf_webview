@@ -10,11 +10,19 @@
 
 <script lang="ts">
   import { appStore } from "$lib/store";
+  import { goto } from "$app/navigation";
+  import { onMount } from "svelte";
   import { loadSingleCSAF } from "$lib/urlloader";
+  import { page } from "$app/stores";
   let URL = "";
+  onMount(() => {
+    if (/^\?q=/.test($page.url.search)) {
+      URL = $page.url.search.replace("?q=", "");
+    }
+  });
   const loads = () => {
-    window.location.hash = `#/single?q=${URL}`;
     loadSingleCSAF(URL);
+    goto(`/?q=${URL}`);
   };
   const keydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") {

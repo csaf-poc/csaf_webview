@@ -23,7 +23,6 @@
     let url: string = (e.target as Element).getAttribute("href")!;
     switchSingleMode();
     loadSingleCSAF(url);
-    window.location.hash = `#/single?q=${url}`;
     e.preventDefault();
   };
 </script>

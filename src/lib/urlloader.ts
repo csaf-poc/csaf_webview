@@ -26,6 +26,8 @@ async function loadProviderMetaData(url: string) {
   try {
     const response = await fetch(`${url}`);
     if (response.ok) {
+      appStore.setCurrentFeed(null);
+      appStore.setProviderMetadata(null);
       const providerMetadata = await response.json();
       appStore.setProviderMetadata(providerMetadata);
     }
@@ -42,7 +44,7 @@ async function loadProviderMetaData(url: string) {
 }
 
 async function loadFeed(feedURL: string, e?: Event) {
-  appStore.setSingleErrorMsg("");
+  appStore.setFeedErrorMsg("");
   try {
     const response = await fetch(`${feedURL}`);
     if (response.ok) {
@@ -57,11 +59,11 @@ async function loadFeed(feedURL: string, e?: Event) {
       }, 100);
     }
     if (response.status === 404) {
-      appStore.setSingleErrorMsg("The resource you requested was not found on the server.");
+      appStore.setFeedErrorMsg("The resource you requested was not found on the server.");
       appStore.setCurrentFeed(null);
     }
   } catch (error) {
-    appStore.setSingleErrorMsg(
+    appStore.setFeedErrorMsg(
       "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
     );
     appStore.setCurrentFeed(null);

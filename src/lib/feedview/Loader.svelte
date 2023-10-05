@@ -11,15 +11,22 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
   import { loadFeed, loadProviderMetaData } from "$lib/urlloader";
+  import { goto } from "$app/navigation";
+  import { onMount } from "svelte";
+  import { page } from "$app/stores";
   let url = "";
+  onMount(() => {
+    if (/^\?q=/.test($page.url.search)) {
+      url = $page.url.search.replace("?q=", "");
+    }
+  });
   const load = () => {
     if (/provider-metadata\.json/.test(url)) {
       loadProviderMetaData(url);
-      window.location.hash = `#/feed?q=${url}`;
     } else {
       loadFeed(url);
-      window.location.hash = `#/feed?q=${url}`;
     }
+    goto(`/feed?q=${url}`);
   };
 
   const keydown = (e: KeyboardEvent) => {
