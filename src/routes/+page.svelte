@@ -13,11 +13,14 @@
   import { onMount } from "svelte";
   import { loadSingleCSAF } from "$lib/urlloader";
   import { appStore } from "$lib/store";
-  $: if (/^\?q=/.test($page.url.search)) {
-    const url = $page.url.search.replace("?q=", "");
-    loadSingleCSAF(url);
-  } else {
-    appStore.setDocument(null);
+  import { browser } from "$app/environment";
+  $: if (browser) {
+    if (/^\?q=/.test($page.url.search)) {
+      const url = $page.url.search.replace("?q=", "");
+      loadSingleCSAF(url);
+    } else {
+      appStore.setDocument(null);
+    }
   }
   onMount(() => {
     if (/^\?q=/.test($page.url.search)) {
