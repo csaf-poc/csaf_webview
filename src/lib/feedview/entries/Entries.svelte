@@ -10,9 +10,10 @@
 
 <script lang="ts">
   import EntriesByYear from "./EntriesByYear.svelte";
+  import type { Entry, EntriesByYearRecord } from "./entrytypes";
 
-  export let entries: any = [];
-  const entriesByYear = entries.reduce((acc: any, entry: any) => {
+  export let entries: Entry[] = [];
+  const entriesByYear = entries.reduce((acc: EntriesByYearRecord, entry: Entry) => {
     const published = new Date(entry.published);
     if (!acc[published.getFullYear()]) acc[published.getFullYear()] = [];
     acc[published.getFullYear()].push(entry);
