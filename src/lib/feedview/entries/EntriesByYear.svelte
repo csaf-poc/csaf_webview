@@ -12,7 +12,8 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import Entry from "./Entry.svelte";
   import { goto } from "$app/navigation";
-  export let entries: any = [];
+  import type { EntryIDURLLookup, EntryType, Link } from "./entrytypes";
+  export let entries: EntryType[] = [];
   export let year: string;
   let visibility = "none";
   let icon = "bx-chevron-down";
@@ -28,9 +29,9 @@
       visibility = "block";
     }
   };
-  const entryIDURLLookup = entries.reduce((acc: any, entry: any) => {
-    const selfURL = entry.link.find((link: any) => link.rel === "self");
-    acc[entry.id] = selfURL.href;
+  const entryIDURLLookup = entries.reduce((acc: EntryIDURLLookup, entry: EntryType) => {
+    const selfURL = entry.link.find((link: Link) => link.rel === "self");
+    acc[entry.id] = selfURL!.href;
     return acc;
   }, {});
   $: if (visibility === "block") {

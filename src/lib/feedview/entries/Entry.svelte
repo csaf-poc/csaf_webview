@@ -14,7 +14,8 @@
   import { appStore } from "$lib/store";
   import { loadSingleCSAF } from "$lib/urlloader";
   import { tick } from "svelte";
-  export let entry: any;
+  import type { Entry } from "./entrytypes";
+  export let entry: Entry;
   async function switchSingleMode() {
     await tick();
     appStore.setSingleMode();

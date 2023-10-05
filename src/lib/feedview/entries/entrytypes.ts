@@ -13,7 +13,7 @@ export type Format = {
   version: string;
 };
 
-export type Entry = {
+export type EntryType = {
   id: string;
   title: string;
   link: Link[];
@@ -23,4 +23,6 @@ export type Entry = {
   format: Format;
 };
 
-export type EntriesByYearRecord = Record<string, Entry[]>;
+export type EntriesByYearRecord = Record<string, EntryType[]>;
+
+export type EntryIDURLLookup = Record<string, string>;
