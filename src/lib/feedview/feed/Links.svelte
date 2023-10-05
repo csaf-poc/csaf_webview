@@ -9,13 +9,25 @@
 -->
 
 <script lang="ts">
-  import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
-  import SingleNote from "$lib/singleview/notes/Note.svelte";
-  export let notes: Note[];
+  import type { Link } from "./feedTypes";
+  export let links: Link[] = [];
 </script>
 
-{#if notes}
-  {#each notes as note}
-    <SingleNote {note} />
+<table>
+  {#each links as link}
+    <tr>
+      <td class="key">{link.rel}: </td><td
+        ><a id={crypto.randomUUID()} target="_blank" href={link.href}>{link.href}</a></td
+      >
+    </tr>
   {/each}
-{/if}
+</table>
+
+<style>
+  .key {
+    width: 8vw;
+  }
+  td {
+    padding: 0.3rem;
+  }
+</style>

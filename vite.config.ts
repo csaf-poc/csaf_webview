@@ -17,6 +17,15 @@ const json = readFileSync(file, "utf8");
 const pkg = JSON.parse(json);
 
 export default defineConfig({
+  server: {
+    proxy: {
+      "/proxy/": {
+        target: "http://localhost:8080",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/proxy\//, "")
+      }
+    }
+  },
   plugins: [sveltekit()],
   test: {
     include: ["src/**/*.{test,spec}.{js,ts}"],

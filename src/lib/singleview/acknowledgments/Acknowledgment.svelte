@@ -1,7 +1,17 @@
+<!--
+ This file is Free Software under the MIT License
+ without warranty, see README.md and LICENSES/MIT.txt for details.
+
+ SPDX-License-Identifier: MIT
+
+ SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+-->
+
 <script lang="ts">
-  import KeyValue from "$lib/singleview/KeyValue.svelte";
-  import ValueList from "$lib/singleview/ValueList.svelte";
-  import type { Acknowledgement } from "../general/docmodeltypes";
+  import KeyValue from "$lib/KeyValue.svelte";
+  import ValueList from "$lib/ValueList.svelte";
+  import type { Acknowledgement } from "../docmodel/docmodeltypes";
   export let ack: Acknowledgement;
   const keys: Array<String> = [];
   const values: any = [];
@@ -19,7 +29,7 @@
   }
 </script>
 
-<KeyValue {keys} {values} />
+<KeyValue compact={true} {keys} {values} />
 {#if ack.urls}
   <ValueList label="URLs" values={ack.urls} />
 {/if}

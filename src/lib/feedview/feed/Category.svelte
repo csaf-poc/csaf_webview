@@ -7,15 +7,12 @@
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
-
 <script lang="ts">
-  import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
-  import SingleNote from "$lib/singleview/notes/Note.svelte";
-  export let notes: Note[];
+  import KeyValue from "$lib/KeyValue.svelte";
+  import type { Category } from "./feedTypes";
+  export let categories: Category[] = [];
 </script>
 
-{#if notes}
-  {#each notes as note}
-    <SingleNote {note} />
-  {/each}
-{/if}
+{#each categories as category}
+  <KeyValue keys={["scheme", "term"]} values={[category.scheme, category.term]} compact={true} />
+{/each}

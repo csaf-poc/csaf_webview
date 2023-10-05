@@ -58,8 +58,8 @@
               {#each line as column, index}
                 {#if index < 1}
                   <td
-                    ><a id={crypto.randomUUID()} on:click={openProduct} href={column.id}
-                      >{column.name} ({column.id})</a
+                    ><a id={crypto.randomUUID()} on:click={openProduct} href={column}
+                      >{$appStore.doc.productsByID[column]} ({column})</a
                     ></td
                   >
                 {:else if column === "N.A"}

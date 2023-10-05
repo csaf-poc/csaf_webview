@@ -10,7 +10,26 @@
 <script lang="ts">
   import Loader from "./Loader.svelte";
   import Overview from "./feed/Overview.svelte";
+  import { appStore } from "$lib/store";
+  import Feed from "./feed/Feed.svelte";
+  import Collapsible from "$lib/Collapsible.svelte";
+  import Back from "$lib/Back.svelte";
 </script>
 
 <Loader />
 <Overview />
+{#if $appStore.currentFeed}
+  <Collapsible
+    header={$appStore.currentFeed?.feed.title}
+    open={$appStore.ui.isFeedSectionOpen}
+    onClose={() => {
+      appStore.setFeedSectionClosed();
+    }}
+  >
+    <Feed />
+  </Collapsible>
+{/if}
+
+{#if $appStore.ui.history.length > 0}
+  <Back />
+{/if}

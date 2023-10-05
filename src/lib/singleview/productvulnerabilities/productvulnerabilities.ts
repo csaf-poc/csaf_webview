@@ -16,8 +16,7 @@ import {
   type VulnerabilitesExtractionResult
 } from "./productvulnerabilitiestypes";
 
-const generateProductVulnerabilities = (jsonDocument: any) => {
-  let products = extractProducts(jsonDocument);
+const generateProductVulnerabilities = (jsonDocument: any, products: any, productLookup: any) => {
   const { vulnerabilities, relevantProducts } = extractVulnerabilities(jsonDocument);
   products = products.filter((product: Product) => {
     return relevantProducts[product.product_id];
@@ -27,24 +26,28 @@ const generateProductVulnerabilities = (jsonDocument: any) => {
     if (vuln1.cve > vuln2.cve) return 1;
     return 0;
   });
-  const result = generateCrossTableFrom(products, vulnerabilities);
+  const result = generateCrossTableFrom(products, vulnerabilities, productLookup);
   return result;
 };
 
-const generateCrossTableFrom = (products: Product[], vulnerabilities: Vulnerability[]) => {
+const generateCrossTableFrom = (
+  products: Product[],
+  vulnerabilities: Vulnerability[],
+  productLookup: any
+) => {
   let result: any = [];
   let header = ["Product", "Total result"];
   const getCVE = vulnerabilities.map((vulnerability: Vulnerability) => vulnerability.cve);
   header = header.concat(getCVE);
   result.push(header);
   const productLines = products.map((product: Product) => {
-    let line = [{ name: `${product.name}`, id: `${product.product_id}` }];
+    let line = [`${product.product_id}`];
     line = line.concat(generateLineWith(product, vulnerabilities));
     return line;
   });
   productLines.sort((line1: any, line2: any) => {
-    if (line1[0].name < line2[0].name) return -1;
-    if (line1[0].name > line2[0].name) return 1;
+    if (productLookup[line1[0]] < productLookup[line2[0]]) return -1;
+    if (productLookup[line1[0]] > productLookup[line2[0]]) return 1;
     return 0;
   });
   result = [...result, ...productLines];

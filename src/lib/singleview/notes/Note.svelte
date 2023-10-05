@@ -1,8 +1,18 @@
+<!--
+ This file is Free Software under the MIT License
+ without warranty, see README.md and LICENSES/MIT.txt for details.
+
+ SPDX-License-Identifier: MIT
+
+ SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+-->
+
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
-  import type { Note } from "$lib/singleview/general/docmodeltypes";
-  import KeyValue from "../KeyValue.svelte";
-  import ValueField from "../ValueField.svelte";
+  import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
+  import KeyValue from "../../KeyValue.svelte";
+  import ValueField from "../../ValueField.svelte";
   export let note: Note;
   let keys: string[] = [];
   let values: string[] = [];

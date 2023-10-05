@@ -7,12 +7,16 @@
 // Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 
 import { writable } from "svelte/store";
-import type { DocModel } from "./singleview/general/docmodeltypes";
+import type { DocModel } from "./singleview/docmodel/docmodeltypes";
 
 type AppStore = {
   doc: DocModel | null;
   providerMetadata: any;
   ui: {
+    appMode: string;
+    currentFeed: any;
+    errorMsg: string;
+    isFeedSectionOpen: boolean;
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
     isVulnerabilisiesOverviewVisible: boolean;
@@ -25,16 +29,26 @@ type AppStore = {
   };
 };
 
+const MODE = {
+  SINGLE: "Switch to ROLIE-feed",
+  FEED: "Switch to single view"
+};
+
 function createStore() {
   const { subscribe, set, update } = writable({
     doc: null,
     providerMetadata: null,
+    currentFeed: null,
     ui: {
+      appMode: MODE.SINGLE,
+      feedErrorMsg: "",
+      singleErrorMsg: "",
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
       isVulnerabilisiesOverviewVisible: false,
       isVulnerabilitiesSectionVisible: false,
       isProductTreeVisible: false,
+      isFeedSectionOpen: false,
       selectedCVE: "",
       selectedProduct: "",
       uploadedFile: false,
@@ -44,6 +58,48 @@ function createStore() {
 
   return {
     subscribe,
+    setSingleMode: () => {
+      update((settings) => {
+        settings.ui.appMode = MODE.SINGLE;
+        return settings;
+      });
+    },
+    setFeedMode: () => {
+      update((settings) => {
+        settings.ui.appMode = MODE.FEED;
+        return settings;
+      });
+    },
+    setFeedSectionOpen: () => {
+      update((settings) => {
+        settings.ui.isFeedSectionOpen = true;
+        return settings;
+      });
+    },
+    setFeedSectionClosed: () => {
+      update((settings) => {
+        settings.ui.isFeedSectionOpen = false;
+        return settings;
+      });
+    },
+    setCurrentFeed: (feed: any) => {
+      update((settings) => {
+        settings.currentFeed = feed;
+        return settings;
+      });
+    },
+    setSingleErrorMsg: (msg: string) => {
+      update((settings) => {
+        settings.ui.singleErrorMsg = msg;
+        return settings;
+      });
+    },
+    setFeedErrorMsg: (msg: string) => {
+      update((settings) => {
+        settings.ui.feedErrorMsg = msg;
+        return settings;
+      });
+    },
     setDocument: (data: any) =>
       update((settings) => {
         settings.doc = data;
@@ -133,12 +189,16 @@ function createStore() {
       set({
         doc: null,
         providerMetadata: null,
+        currentFeed: null,
         ui: {
+          appMode: MODE.SINGLE,
+          errorMsg: "",
           isGeneralSectionVisible: true,
           isRevisionHistoryVisible: false,
           isVulnerabilisiesOverviewVisible: false,
           isVulnerabilitiesSectionVisible: false,
           isProductTreeVisible: false,
+          isFeedSectionOpen: false,
           selectedCVE: "",
           selectedProduct: "",
           uploadedFile: false,

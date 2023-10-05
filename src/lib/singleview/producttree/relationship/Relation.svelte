@@ -1,7 +1,17 @@
+<!--
+ This file is Free Software under the MIT License
+ without warranty, see README.md and LICENSES/MIT.txt for details.
+
+ SPDX-License-Identifier: MIT
+
+ SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+-->
+
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/singleview/KeyValue.svelte";
-  import ValueField from "$lib/singleview/ValueField.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
+  import ValueField from "$lib/ValueField.svelte";
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
   import ProductIdentificationHelper from "../product/ProductIdentificationHelper.svelte";

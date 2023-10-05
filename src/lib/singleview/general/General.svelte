@@ -9,13 +9,13 @@
 -->
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
-  import { Status, TLP } from "$lib/singleview/general/docmodeltypes";
+  import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
   import { appStore } from "$lib/store";
   import RevisionHistory from "./RevisionHistory.svelte";
   import Notes from "$lib/singleview/notes/Notes.svelte";
   import References from "$lib/singleview/references/References.svelte";
   import Acknowledgments from "$lib/singleview/acknowledgments/Acknowledgments.svelte";
-  import ValueList from "../ValueList.svelte";
+  import ValueList from "../../ValueList.svelte";
   let tlpStyle = "";
   $: aliases = $appStore.doc?.aliases;
   $: trackingVersion = $appStore.doc?.trackingVersion;
@@ -45,6 +45,17 @@
   $: published = $appStore.doc?.published;
   $: lastUpdate = $appStore.doc?.lastUpdate;
   $: status = $appStore.doc?.status;
+  $: if (
+    !$appStore.doc?.isRevisionHistoryPresent &&
+    !$appStore.doc?.isDocPresent &&
+    !$appStore.doc?.isProductTreePresent &&
+    !$appStore.doc?.isPublisherPresent &&
+    !$appStore.doc?.isTLPPresent &&
+    !$appStore.doc?.isTrackingPresent &&
+    !$appStore.doc?.isVulnerabilitiesPresent
+  ) {
+    appStore.setSingleErrorMsg("Are you sure the URL refers to a CSAF document?");
+  }
 </script>
 
 <div class="documentdata">
@@ -192,7 +203,7 @@
   </div>
 {/if}
 
-{#if $appStore.doc?.references}
+{#if $appStore.doc.references.length > 0}
   <div class="subsection">
     <Collapsible header="References" level="3">
       <References references={$appStore.doc?.references} />
@@ -222,15 +233,15 @@
     color: #fff;
   }
   .tlpred {
-    background: #ff2b2b;
-    color: #fff;
+    background: #000;
+    color: #ff2b2b;
   }
   .tlpamber {
-    background: #ffc000;
-    color: #fff;
+    background: #000;
+    color: #ffc000;
   }
   .tlpgreen {
-    background: #33ff00;
-    color: #fff;
+    background: #000;
+    color: #33ff00;
   }
 </style>

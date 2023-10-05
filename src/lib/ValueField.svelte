@@ -9,13 +9,22 @@
 -->
 
 <script lang="ts">
-  import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
-  import SingleNote from "$lib/singleview/notes/Note.svelte";
-  export let notes: Note[];
+  export let value = "";
+  export let label = "";
 </script>
 
-{#if notes}
-  {#each notes as note}
-    <SingleNote {note} />
-  {/each}
-{/if}
+<div class="">
+  <h6>{label}</h6>
+  <p>{value}</p>
+</div>
+
+<style>
+  h6 {
+    line-height: 0.3em;
+    font-size: large;
+  }
+  p {
+    margin-left: 4rem;
+    width: 80vw;
+  }
+</style>
