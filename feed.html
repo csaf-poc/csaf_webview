@@ -14,27 +14,28 @@
     <link rel="icon" href="./favicon.png" />
     <meta name="viewport" content="width=device-width" />
     
-		<link href="./_app/immutable/assets/0.bbfcb1a0.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/0.1289d606.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/3.bf0f8f46.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/urlloader.428dde91.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.94c8022d.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.01776f25.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.8b5db029.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.71bd54bb.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.ee0540d2.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.1399ed0b.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.fc57cc30.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.eb95c22c.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.44400810.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.0646f6aa.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.3e65c7c7.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/store.b21f0027.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/3.c9313b37.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/urlloader.e0cdc67f.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/stores.4c67f187.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.a9e143c9.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/store.f3c48713.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/3.d0284bbf.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/urlloader.8aac326d.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/stores.d41b293c.js">
   </head>
   <body data-sveltekit-preload-data="hover">
-    <div style="display: contents">   <div class="content svelte-t3fuw3"> <div class="header svelte-t3fuw3"><h1 role="heading" class="text-center svelte-t3fuw3" data-svelte-h="svelte-1obxzj0">CSAF Webview+</h1> <a href="/feed" class="switchbutton button svelte-t3fuw3">Switch to ROLIE-feed</a> <h4>v. 0.5.0</h4></div>     <div class="row"><div class="col"><div style="display:flex"><button class="loadbutton svelte-18cw6lv" data-svelte-h="svelte-iw660s"><i class="bx bx-book-open svelte-18cw6lv"></i>View feed</button> <input class="url svelte-18cw6lv" type="text" value=""></div></div></div>       </div> 
+    <div style="display: contents">   <div class="content svelte-t3fuw3"> <div class="header svelte-t3fuw3"><h1 role="heading" class="text-center svelte-t3fuw3" data-svelte-h="svelte-1obxzj0">CSAF Webview+</h1> <a href="/csaf_webview/feed" class="switchbutton button svelte-t3fuw3">Switch to ROLIE-feed</a> <h4>v. 0.6.0</h4></div>     <div class="row"><div class="col"><div style="display:flex"><button class="loadbutton svelte-18cw6lv" data-svelte-h="svelte-iw660s"><i class="bx bx-book-open svelte-18cw6lv"></i>View feed</button> <input class="url svelte-18cw6lv" type="text" value=""></div></div></div>       </div> 
 			
 			<script>
 				{
-					__sveltekit_1t8aeot = {
+					__sveltekit_1dxn8gv = {
+						assets: "/csaf_webview",
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -44,8 +45,8 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.94c8022d.js"),
-						import("./_app/immutable/entry/app.1399ed0b.js")
+						import("./_app/immutable/entry/start.01776f25.js"),
+						import("./_app/immutable/entry/app.44400810.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 3],
