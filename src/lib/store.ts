@@ -12,16 +12,17 @@ import type { DocModel } from "./singleview/docmodel/docmodeltypes";
 type AppStore = {
   doc: DocModel | null;
   providerMetadata: any;
+  currentFeed: any;
   ui: {
     appMode: string;
-    currentFeed: any;
-    errorMsg: string;
-    isFeedSectionOpen: boolean;
+    feedErrorMsg: string;
+    singleErrorMsg: string;
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
     isVulnerabilisiesOverviewVisible: boolean;
     isVulnerabilitiesSectionVisible: boolean;
     isProductTreeVisible: boolean;
+    isFeedSectionOpen: boolean;
     selectedCVE: string;
     selectedProduct: string;
     uploadedFile: boolean;
@@ -34,8 +35,8 @@ const MODE = {
   FEED: "Switch to single view"
 };
 
-function createStore() {
-  const { subscribe, set, update } = writable({
+const generateInitialState = (): AppStore => {
+  const state: AppStore = {
     doc: null,
     providerMetadata: null,
     currentFeed: null,
@@ -54,7 +55,12 @@ function createStore() {
       uploadedFile: false,
       history: []
     }
-  });
+  };
+  return state;
+};
+
+function createStore() {
+  const { subscribe, set, update } = writable(generateInitialState());
 
   return {
     subscribe,
@@ -185,26 +191,7 @@ function createStore() {
         return settings;
       });
     },
-    reset: () =>
-      set({
-        doc: null,
-        providerMetadata: null,
-        currentFeed: null,
-        ui: {
-          appMode: MODE.SINGLE,
-          errorMsg: "",
-          isGeneralSectionVisible: true,
-          isRevisionHistoryVisible: false,
-          isVulnerabilisiesOverviewVisible: false,
-          isVulnerabilitiesSectionVisible: false,
-          isProductTreeVisible: false,
-          isFeedSectionOpen: false,
-          selectedCVE: "",
-          selectedProduct: "",
-          uploadedFile: false,
-          history: []
-        }
-      })
+    reset: () => set(generateInitialState())
   };
 }
 
