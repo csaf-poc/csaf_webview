@@ -4,7 +4,7 @@ SPDX-FileCopyrightText: 2022 German Federal Office for Information Security (BSI
 Software-Engineering: 2022 Intevation GmbH <https://intevation.de>
 -->
 
-CSAF Webview+ is built with the following components:
+_CSAF Webview_ is built with the following components:
 
 - Framework: [Svelte (SvelteKit)](https://kit.svelte.dev/)
 - CSS-Miniframework: [Chota](https://jenil.github.io/chota/)

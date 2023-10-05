@@ -13,7 +13,7 @@ import { readFileSync } from "fs";
 
 test("index page has expected h1", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "CSAF Webview+" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "CSAF Webview" })).toBeVisible();
 });
 
 test("index page has dropbox", async ({ page }) => {

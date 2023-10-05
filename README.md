@@ -17,8 +17,7 @@ A browser based web app to:
 - Browse the tree of CSAF documents offered by a CSAF Provider or Aggregator
   via the ROLIE feed.
 
-Status: pre-alpha
-(early functionality to display parts of a CSAF document)
+Status: the display part is in beta, the browsing part not yet implemented.
 
 ![](docs/app.png)
 
