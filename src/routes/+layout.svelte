@@ -2,7 +2,7 @@
   import "chota/dist/chota.min.css";
   import "boxicons/css/boxicons.min.css";
   import { appStore } from "$lib/store";
-
+  import { base } from "$app/paths";
   /*global __APP_VERSION__*/
   const version: string = __APP_VERSION__;
   const MODE = {
@@ -10,7 +10,7 @@
     FEED: "Switch to single view"
   };
   $: mode = $appStore.ui.appMode;
-  $: switchToRoute = mode === MODE.SINGLE ? "/feed" : "/";
+  $: switchToRoute = mode === MODE.SINGLE ? `${base}/feed` : `${base}/`;
   const disable = (e: Event) => {
     e.preventDefault();
   };
