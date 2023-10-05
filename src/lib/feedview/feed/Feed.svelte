@@ -14,8 +14,9 @@
   import Entries from "../entries/Entries.svelte";
   import Category from "./Category.svelte";
   import Links from "./Links.svelte";
+  import type { Link } from "./feedTypes";
   $: feed = $appStore.currentFeed?.feed;
-  $: link = feed.link.find((l: any) => l.rel === "self");
+  $: link = feed.link.find((l: Link) => l.rel === "self");
 </script>
 
 {#if feed}
