@@ -78,7 +78,7 @@
   h2,
   h3,
   h4 {
-    margin-bottom: 0;
+    margin: 0;
   }
   h2 {
     font-weight: bold;
@@ -86,5 +86,6 @@
   h6 {
     line-height: 0.3em;
     font-size: large;
+    margin: 0.6rem;
   }
 </style>

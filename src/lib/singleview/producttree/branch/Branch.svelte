@@ -33,6 +33,6 @@
   .branch {
     margin-left: 3rem;
     margin-bottom: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 0.6rem;
   }
 </style>
