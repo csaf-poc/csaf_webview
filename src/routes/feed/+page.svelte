@@ -1,10 +1,10 @@
 <script lang="ts">
-  import FeedView from "$lib/feedview/FeedView.svelte";
-  import { onMount } from "svelte";
   import { appStore } from "$lib/store";
-  import { page } from "$app/stores";
   import { browser } from "$app/environment";
   import { loadFeed, loadProviderMetaData } from "$lib/urlloader";
+  import { onMount } from "svelte";
+  import { page } from "$app/stores";
+  import FeedView from "$lib/feedview/FeedView.svelte";
   $: if (browser) {
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");

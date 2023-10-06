@@ -8,11 +8,11 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
-  import Entries from "../entries/Entries.svelte";
   import Category from "./Category.svelte";
+  import Collapsible from "$lib/Collapsible.svelte";
+  import Entries from "../entries/Entries.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
   import Links from "./Links.svelte";
   import type { Link } from "./feedTypes";
   $: feed = $appStore.currentFeed?.feed;

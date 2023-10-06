@@ -7,16 +7,16 @@
 //
 
 import {
-  TLP,
-  type DocModel,
-  Status,
-  EMPTY,
   CSAFDocProps,
-  type Publisher,
-  type RevisionHistoryEntry,
+  EMPTY,
+  Status,
+  TLP,
+  type AggregateSeverity,
+  type DocModel,
   type Note,
+  type Publisher,
   type Reference,
-  type AggregateSeverity
+  type RevisionHistoryEntry
 } from "$lib/singleview/docmodel/docmodeltypes";
 import {
   extractProducts,

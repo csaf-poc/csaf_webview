@@ -9,9 +9,9 @@
 -->
 
 <script lang="ts">
+  import { goto } from "$app/navigation";
   import Collapsible from "$lib/Collapsible.svelte";
   import Entry from "./Entry.svelte";
-  import { goto } from "$app/navigation";
   import type { EntryIDURLLookup, EntryType, Link } from "./entrytypes";
   export let entries: EntryType[] = [];
   export let year: string;

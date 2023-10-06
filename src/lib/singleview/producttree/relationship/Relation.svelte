@@ -9,10 +9,10 @@
 -->
 
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
+  import Collapsible from "$lib/Collapsible.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
   import ProductIdentificationHelper from "../product/ProductIdentificationHelper.svelte";
   import type { Relationship } from "$lib/types";
   export let relation: Relationship;

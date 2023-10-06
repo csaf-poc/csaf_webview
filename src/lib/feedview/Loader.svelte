@@ -10,8 +10,8 @@
 
 <script lang="ts">
   import { appStore } from "$lib/store";
-  import { loadFeed, loadProviderMetaData } from "$lib/urlloader";
   import { goto } from "$app/navigation";
+  import { loadFeed, loadProviderMetaData } from "$lib/urlloader";
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   let url = "";

@@ -8,13 +8,13 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
-  import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
   import { appStore } from "$lib/store";
-  import RevisionHistory from "./RevisionHistory.svelte";
+  import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
+  import Acknowledgments from "$lib/singleview/acknowledgments/Acknowledgments.svelte";
+  import Collapsible from "$lib/Collapsible.svelte";
   import Notes from "$lib/singleview/notes/Notes.svelte";
   import References from "$lib/singleview/references/References.svelte";
-  import Acknowledgments from "$lib/singleview/acknowledgments/Acknowledgments.svelte";
+  import RevisionHistory from "./RevisionHistory.svelte";
   import ValueList from "../../ValueList.svelte";
   let tlpStyle = "";
   $: aliases = $appStore.doc?.aliases;

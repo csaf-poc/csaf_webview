@@ -9,11 +9,11 @@
 -->
 
 <script lang="ts">
-  import ProductIdentificationHelper from "./ProductIdentificationHelper.svelte";
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
   import Collapsible from "$lib/Collapsible.svelte";
   import KeyValue from "$lib/KeyValue.svelte";
+  import ProductIdentificationHelper from "./ProductIdentificationHelper.svelte";
   import type { FullProductName } from "$lib/types";
   export let product: FullProductName;
   let highlight = false;

@@ -9,8 +9,8 @@
 -->
 
 <script lang="ts">
-  import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
+  import KeyValue from "$lib/KeyValue.svelte";
 </script>
 
 {#if $appStore.providerMetadata}
