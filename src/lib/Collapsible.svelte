@@ -80,6 +80,10 @@
   h4 {
     margin: 0;
   }
+  h3,
+  h4 {
+    line-height: 3rem;
+  }
   h2 {
     font-weight: bold;
   }
