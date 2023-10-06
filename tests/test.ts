@@ -16,6 +16,31 @@ test("index page has expected h1", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "CSAF Webview" })).toBeVisible();
 });
 
+test("index page has expected version", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole('heading', { name: 'v. 0.6.0' })).toBeVisible();
+});
+
+test("index page has file input", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator('input[type="file"]')).toBeVisible();
+});
+
+test("index page has URL Button", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole('button', { name: ' URL' })).toBeVisible();
+});
+
+test("index page has Switch to ROLIE-feed Button", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole('link', { name: 'Switch to ROLIE-feed' })).toBeVisible();
+});
+
+test("index page has textbox", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator('input[type="text"]')).toBeVisible();
+});
+
 test("index page has dropbox", async ({ page }) => {
   await page.goto("/");
   const dropzoneElement = await page.waitForSelector("div.droparea");
