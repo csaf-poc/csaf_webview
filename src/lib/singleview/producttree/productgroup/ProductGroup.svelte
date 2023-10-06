@@ -11,7 +11,8 @@
 <script lang="ts">
   import ValueField from "$lib/ValueField.svelte";
   import ValueList from "$lib/ValueList.svelte";
-  export let productGroup: any;
+  import type { ProductGroup } from "$lib/types";
+  export let productGroup: ProductGroup;
 </script>
 
 <ValueList label="Group IDs" values={productGroup.group_ids} />

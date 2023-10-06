@@ -14,7 +14,8 @@
   import { tick } from "svelte";
   import Collapsible from "$lib/Collapsible.svelte";
   import KeyValue from "$lib/KeyValue.svelte";
-  export let product: any;
+  import type { FullProductName } from "$lib/types";
+  export let product: FullProductName;
   let highlight = false;
   async function updateUI() {
     await tick();

@@ -9,8 +9,9 @@
 -->
 
 <script lang="ts">
+  import type { Relationship } from "$lib/types";
   import Relation from "./Relation.svelte";
-  export let relationships: any;
+  export let relationships: Relationship[];
 </script>
 
 {#each relationships as relation}
