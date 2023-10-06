@@ -10,7 +10,8 @@
 
 <script lang="ts">
   import { loadFeed } from "$lib/urlloader";
-  export let distribution: any;
+  import type { Distribution } from "./distributiontype";
+  export let distribution: Distribution;
   const openFeed = (e: Event) => {
     loadFeed((e.target as Element).getAttribute("href")!, e);
     e.preventDefault();

@@ -7,3 +7,15 @@
 // Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 
 // place files you want to import through the `$lib` alias in this folder.
+
+export type Feed = {
+  summary: string;
+  tlp_label: string;
+  url: string;
+};
+
+export type Distribution = {
+  rolie: {
+    feeds: Feed[];
+  };
+};

@@ -14,7 +14,7 @@
   import type { Acknowledgement } from "../docmodel/docmodeltypes";
   export let ack: Acknowledgement;
   const keys: Array<String> = [];
-  const values: any = [];
+  const values: string[] = [];
   if (ack.names) {
     keys.push("Names");
     values.push(ack.names.join(", "));
