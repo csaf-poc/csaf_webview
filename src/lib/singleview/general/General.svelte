@@ -203,7 +203,7 @@
   </div>
 {/if}
 
-{#if $appStore.doc.references.length > 0}
+{#if $appStore.doc && $appStore.doc.references.length > 0}
   <div class="subsection">
     <Collapsible header="References" level="3">
       <References references={$appStore.doc?.references} />
