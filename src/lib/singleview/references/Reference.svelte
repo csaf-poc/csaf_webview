@@ -10,7 +10,8 @@
 
 <script lang="ts">
   import KeyValue from "$lib/KeyValue.svelte";
-  export let reference: any;
+  import type { Reference } from "$lib/types";
+  export let reference: Reference;
   let keys: string[] = [];
   let values: string[] = [];
   if (reference.category) {
