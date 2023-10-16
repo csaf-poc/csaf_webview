@@ -16,8 +16,11 @@
     "test:unit": "vitest",
     "coverage": "vitest run --coverage"
   },
+  "engines": {
+    "node": "^18.18.2"
+  },
   "devDependencies": {
-    "@playwright/test": "^1.28.1",
+    "@playwright/test": "^1.39.0",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "^1.20.4",

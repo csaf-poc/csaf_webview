@@ -36,6 +36,11 @@ and thus maybe behind the latest developments.
 
 ### Install dependencies
 
+Install current LTS version of NodeJS, e.g. see
+https://github.com/nodesource/distributions/blob/master/README.md .
+Upgrade to the latest version of npm if you can.
+Development has been started with Node 18 and npm 10.2.
+
 `npm install`
 `npx playwright install`
 
