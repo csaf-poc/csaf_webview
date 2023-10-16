@@ -9,13 +9,13 @@
 -->
 
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
   import { loadSingleCSAF } from "$lib/urlloader";
   import { tick } from "svelte";
-  import type { Entry } from "./entrytypes";
-  export let entry: Entry;
+  import Collapsible from "$lib/Collapsible.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
+  import type { EntryType } from "./entrytypes";
+  export let entry: EntryType;
   async function switchSingleMode() {
     await tick();
     appStore.setSingleMode();

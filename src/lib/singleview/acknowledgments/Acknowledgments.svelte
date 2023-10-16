@@ -9,8 +9,8 @@
 -->
 
 <script lang="ts">
-  import type { Acknowledgement } from "../docmodel/docmodeltypes";
   import AcknowledgementComponent from "./Acknowledgment.svelte";
+  import type { Acknowledgement } from "../docmodel/docmodeltypes";
   export let acknowledegments: Acknowledgement[];
 </script>
 

@@ -12,9 +12,9 @@
   import { appStore } from "$lib/store";
   import Branch from "./branch/Branch.svelte";
   import Collapsible from "$lib/Collapsible.svelte";
-  import Relationships from "./relationship/Relationships.svelte";
   import ProductGroups from "./productgroup/ProductGroups.svelte";
   import ProductNames from "./product/ProductNames.svelte";
+  import Relationships from "./relationship/Relationships.svelte";
 </script>
 
 {#each $appStore.doc?.productTree.branches as branch}

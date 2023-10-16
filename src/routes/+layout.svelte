@@ -1,6 +1,6 @@
 <script lang="ts">
-  import "chota/dist/chota.min.css";
   import "boxicons/css/boxicons.min.css";
+  import "chota/dist/chota.min.css";
   import { appStore } from "$lib/store";
   import { base } from "$app/paths";
   /*global __APP_VERSION__*/

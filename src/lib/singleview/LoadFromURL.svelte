@@ -11,8 +11,8 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
   import { goto } from "$app/navigation";
-  import { onMount } from "svelte";
   import { loadSingleCSAF } from "$lib/urlloader";
+  import { onMount } from "svelte";
   import { page } from "$app/stores";
   let URL = "";
   onMount(() => {

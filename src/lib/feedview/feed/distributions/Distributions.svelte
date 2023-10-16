@@ -8,8 +8,8 @@
  Software-Engineering: 2023 Intevation GmbH <https://intevation.de
 -->
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
   import { appStore } from "$lib/store";
+  import Collapsible from "$lib/Collapsible.svelte";
   import Distribution from "./Distribution.svelte";
 </script>
 

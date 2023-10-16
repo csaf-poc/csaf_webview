@@ -9,11 +9,11 @@
 -->
 
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
-  import GeneralInformation from "./GeneralInformation.svelte";
+  import Collapsible from "$lib/Collapsible.svelte";
   import Distributions from "./distributions/Distributions.svelte";
+  import GeneralInformation from "./GeneralInformation.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
 </script>
 
 {#if $appStore.providerMetadata}

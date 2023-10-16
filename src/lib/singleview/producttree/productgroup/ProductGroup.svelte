@@ -9,9 +9,9 @@
 -->
 
 <script lang="ts">
+  import type { ProductGroup } from "$lib/types";
   import ValueField from "$lib/ValueField.svelte";
   import ValueList from "$lib/ValueList.svelte";
-  import type { ProductGroup } from "$lib/types";
   export let productGroup: ProductGroup;
 </script>
 

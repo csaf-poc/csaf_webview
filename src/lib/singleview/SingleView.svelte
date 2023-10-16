@@ -9,15 +9,15 @@
 -->
 <script lang="ts">
   import { appStore } from "$lib/store";
-  import Collapsible from "$lib/Collapsible.svelte";
-  import General from "$lib/singleview/general/General.svelte";
-  import Droparea from "$lib/singleview/Droparea.svelte";
-  import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
-  import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
-  import Upload from "./Upload.svelte";
-  import ProductTree from "./producttree/ProductTree.svelte";
   import Back from "../Back.svelte";
+  import Collapsible from "$lib/Collapsible.svelte";
+  import Droparea from "$lib/singleview/Droparea.svelte";
+  import General from "$lib/singleview/general/General.svelte";
   import LoadFromUrl from "./LoadFromURL.svelte";
+  import ProductTree from "./producttree/ProductTree.svelte";
+  import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
+  import Upload from "./Upload.svelte";
+  import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
   $: isCSAF = !(
     !$appStore.doc?.isRevisionHistoryPresent &&
     !$appStore.doc?.isDocPresent &&
