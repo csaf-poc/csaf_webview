@@ -41,10 +41,13 @@ https://github.com/nodesource/distributions/blob/master/README.md .
 Upgrade to the latest version of npm if you can.
 Development has been started with Node 18 and npm 10.2.
 
-`npm install`
-`npx playwright install`
+```sh
+npm install
+npx playwright install
+```
 
-### Run development server and `--open` a browser.
+### Run development server
+Optionally add `-- --open` to directly open a browser.
 
 `npm run dev -- --open`
 
