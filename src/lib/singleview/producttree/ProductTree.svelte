@@ -17,11 +17,13 @@
   import Relationships from "./relationship/Relationships.svelte";
 </script>
 
-{#each $appStore.doc?.productTree.branches as branch}
-  <Collapsible header="Branches" open={$appStore.ui.isProductTreeVisible}>
-    <Branch {branch} />
-  </Collapsible>
-{/each}
+{#if $appStore.doc?.productTree.branches}
+  {#each $appStore.doc?.productTree.branches as branch}
+    <Collapsible header="Branches" open={$appStore.ui.isProductTreeVisible}>
+      <Branch {branch} />
+    </Collapsible>
+  {/each}
+{/if}
 
 {#if $appStore.doc?.productTree.relationships}
   <Collapsible header="Relationships" open={$appStore.ui.isProductTreeVisible}>
