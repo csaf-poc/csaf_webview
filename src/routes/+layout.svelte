@@ -21,7 +21,7 @@
 <div class="content">
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <div class="header">
-    <h1 role="heading" class="text-center">CSAF Webview+</h1>
+    <h1 role="heading" class="text-center">CSAF Webview</h1>
     <a href={switchToRoute} class="switchbutton button">{mode}</a>
     <h4>v{version}</h4>
   </div>
