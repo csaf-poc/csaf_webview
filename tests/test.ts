@@ -90,3 +90,11 @@ test("Test dropbox", async ({ page }) => {
   const divTextContent = await dropzoneElement.innerText();
   expect(divTextContent).toContain('Displaying file "bsi-2022-0001.json".');
 });
+
+test('test select file button', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('input[type="file"]').click();
+  await page.locator('input[type="file"]').setInputFiles('./docs/bsi-2022-0001.json');
+  
+  await expect(page.getByRole('heading', { name: 'BSI-2022-0001: CVRF-CSAF-Converter: XML External Entities Vulnerability' })).toBeVisible()
+  });
