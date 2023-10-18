@@ -50,13 +50,16 @@
       <General />
     </Collapsible>
   {/if}
-  {#if $appStore.doc?.productVulnerabilities.length > 0}
+  {#if $appStore.doc?.productVulnerabilities.length > 1}
     <Collapsible
       header="Vulnerabilities overview"
       open={$appStore.ui.isVulnerabilisiesOverviewVisible}
     >
       <ProductVulnerabilities />
     </Collapsible>
+  {:else}
+      <h2>No Vulnerabilities overview</h2>
+      (As no products are connected to vulnerabilities.)
   {/if}
 
   {#if $appStore.doc && $appStore.doc["isProductTreePresent"]}
@@ -92,5 +95,9 @@
   h1 {
     padding: 0;
     margin-top: 3rem;
+  }
+  h2 { /* style similar to h2 in Collapsible.svelte */
+    margin: 0;
+    font-weight: bold;
   }
 </style>
