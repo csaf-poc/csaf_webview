@@ -66,9 +66,11 @@
       <h6><i class="bx {icon}" />{header}</h6>
     </div>
   {/if}
-  <div style="display:{visibility}" class="body">
-    <slot />
-  </div>
+  {#if visibility === "block"}
+    <div class="body">
+      <slot />
+    </div>
+  {/if}
 </div>
 
 <style>

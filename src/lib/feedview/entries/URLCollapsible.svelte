@@ -10,7 +10,6 @@
 
 <script lang="ts">
   import { goto } from "$app/navigation";
-  export let header: string;
   export let open = false;
   export let level = "2";
   export let class_ = "";
@@ -49,37 +48,28 @@
   {#if level == "4"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div style="cursor:pointer" id={entry.id} on:click={toggle} class={class_}>
       <h4>
         <i class="bx {icon}" />
         <a href={lookupID} on:click={openLink}>{entry.id}: {entry.title}</a>
       </h4>
     </div>
   {/if}
-  <div style="display:{visibility}" class="body">
-    <slot />
-  </div>
+  {#if visibility === "block"}
+    <div class="body">
+      <slot />
+    </div>
+  {/if}
 </div>
 
 <style>
   .body {
     padding-left: 3rem;
   }
-  h2,
-  h3,
   h4 {
     margin: 0;
   }
-  h3,
   h4 {
     line-height: 3rem;
-  }
-  h2 {
-    font-weight: bold;
-  }
-  h6 {
-    line-height: 0.3em;
-    font-size: large;
-    margin: 0.6rem;
   }
 </style>

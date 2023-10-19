@@ -10,7 +10,7 @@
 
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
-  import UrlCollapsible from "$lib/URLCollapsible.svelte";
+  import UrlCollapsible from "$lib/feedview/entries/URLCollapsible.svelte";
   import Entry from "./Entry.svelte";
   import type { EntryIDURLLookup, EntryType, Link } from "./entrytypes";
   export let entries: EntryType[] = [];
@@ -24,7 +24,7 @@
 
 <Collapsible header={year} level="4">
   {#each entries as entry}
-    <UrlCollapsible {entry} lookupID={entryIDURLLookup[entry.id]} header={"bananas"} level="4">
+    <UrlCollapsible {entry} lookupID={entryIDURLLookup[entry.id]} level="4">
       <Entry {entry} />
     </UrlCollapsible>
   {/each}
