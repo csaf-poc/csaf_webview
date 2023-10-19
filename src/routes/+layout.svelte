@@ -21,9 +21,15 @@
 <div class="content">
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <div class="header">
-    <h1 role="heading" class="text-center">CSAF Webview</h1>
-    <a href={switchToRoute} class="switchbutton button">{mode}</a>
-    <h4>v{version}</h4>
+    <div class="programname">
+      <h1 role="heading">CSAF Webview</h1>
+    </div>
+    <div>
+      <a href={switchToRoute} class="switchbutton button">{mode}</a>
+    </div>
+    <div class="version">
+      <h4>v{version}</h4>
+    </div>
   </div>
   <slot />
 </div>
@@ -32,9 +38,6 @@
   .switchbutton {
     box-shadow: 1px 3px 3px #c1c1c1;
   }
-  .header > h1 {
-    font-weight: bold;
-  }
   .content {
     margin-left: 3rem;
     margin-right: 3rem;
@@ -42,10 +45,14 @@
   .header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin-bottom: 1.5rem;
   }
-  .switchbutton {
-    position: relative;
-    left: -90px;
+  .programname {
+    min-width: 45vw;
+  }
+  .version {
+    min-width: 20vw;
+    text-align: right;
+    margin-left: auto;
   }
 </style>
