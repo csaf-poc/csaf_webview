@@ -13,6 +13,14 @@ async function loadSingleCSAF(url: string) {
       appStore.setDocument(docModel);
       appStore.setCSAFLoading(false);
     }
+    if (response.status === 401) {
+      appStore.setSingleErrorMsg("You are unauthorized to access the resource on the server.");
+      appStore.setCSAFLoading(false);
+    }
+    if (response.status === 403) {
+      appStore.setSingleErrorMsg("You are forbidden to access the resource on the server.");
+      appStore.setCSAFLoading(false);
+    }
     if (response.status === 404) {
       appStore.setSingleErrorMsg("The resource you requested was not found on the server.");
       appStore.setCSAFLoading(false);
@@ -35,6 +43,16 @@ async function loadProviderMetaData(url: string) {
       appStore.setProviderMetadata(null);
       const providerMetadata = await response.json();
       appStore.setProviderMetadata(providerMetadata);
+      appStore.setFeedLoading(false);
+    }
+    if (response.status === 401) {
+      appStore.setFeedErrorMsg("You are unauthorized to access the resource on the server.");
+      appStore.setProviderMetadata(null);
+      appStore.setFeedLoading(false);
+    }
+    if (response.status === 403) {
+      appStore.setFeedErrorMsg("You are forbidden to access the resource on the server.");
+      appStore.setProviderMetadata(null);
       appStore.setFeedLoading(false);
     }
     if (response.status === 404) {
@@ -67,6 +85,16 @@ async function loadFeed(feedURL: string, e?: Event) {
         const el = document.getElementById(`${feedURL}`);
         el?.scrollIntoView({ block: "start", behavior: "smooth" });
       }, 100);
+    }
+    if (response.status === 401) {
+      appStore.setFeedErrorMsg("You are unauthorized to access the resource on the server.");
+      appStore.setCurrentFeed(null);
+      appStore.setFeedLoading(false);
+    }
+    if (response.status === 403) {
+      appStore.setFeedErrorMsg("You are forbidden to access the resource on the server.");
+      appStore.setCurrentFeed(null);
+      appStore.setFeedLoading(false);
     }
     if (response.status === 404) {
       appStore.setFeedErrorMsg("The resource you requested was not found on the server.");
