@@ -15,7 +15,9 @@ type AppStore = {
   currentFeed: any;
   ui: {
     appMode: string;
+    csafLoading: boolean;
     feedErrorMsg: string;
+    feedLoading: boolean;
     singleErrorMsg: string;
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
@@ -42,7 +44,9 @@ const generateInitialState = (): AppStore => {
     currentFeed: null,
     ui: {
       appMode: MODE.SINGLE,
+      csafLoading: false,
       feedErrorMsg: "",
+      feedLoading: false,
       singleErrorMsg: "",
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
@@ -64,6 +68,12 @@ function createStore() {
 
   return {
     subscribe,
+    setCSAFLoading: (option: boolean) => {
+      update((settings) => {
+        settings.ui.csafLoading = option;
+        return settings;
+      });
+    },
     setSingleMode: () => {
       update((settings) => {
         settings.ui.appMode = MODE.SINGLE;
@@ -85,6 +95,12 @@ function createStore() {
     setFeedSectionClosed: () => {
       update((settings) => {
         settings.ui.isFeedSectionOpen = false;
+        return settings;
+      });
+    },
+    setFeedLoading: (option: boolean) => {
+      update((settings) => {
+        settings.ui.feedLoading = option;
         return settings;
       });
     },

@@ -5,6 +5,7 @@
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   import FeedView from "$lib/feedview/FeedView.svelte";
+  import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");
@@ -36,3 +37,4 @@
 </script>
 
 <FeedView />
+<Spinner open={$appStore.ui.feedLoading} />

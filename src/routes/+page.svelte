@@ -14,6 +14,7 @@
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   import SingleView from "$lib/singleview/SingleView.svelte";
+  import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");
@@ -34,3 +35,4 @@
 </script>
 
 <SingleView />
+<Spinner open={$appStore.ui.csafLoading} />
