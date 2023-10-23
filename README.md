@@ -92,9 +92,8 @@ For more information look [here](https://vitejs.dev/config/server-options.html#s
 
 In order to access the configured URL in a development setup you prefix the URL like
 
-`/proxy/http://localhost:8080/.well-known/csaf/provider-metadata.json`
-
-instead of entering `http://localhost:8080/.well-known/csaf/provider-metadata.json`.
+Then you could set `PUBLIC_PROXY_PATH=/proxy/` in the `.env`-File.
+After that all requests are prefixed with the `PUBLIC_PROXY_PATH`.
 
 ## License
 

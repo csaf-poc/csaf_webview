@@ -1,7 +1,9 @@
 import { appStore } from "$lib/store";
 import { convertToDocModel } from "$lib/singleview/docmodel/docmodel";
+import { PUBLIC_PROXY_PATH } from "$env/static/public";
 
 async function loadSingleCSAF(url: string) {
+  url = `${PUBLIC_PROXY_PATH}${url}`;
   appStore.setSingleErrorMsg("");
   try {
     appStore.setCSAFLoading(true);
@@ -33,6 +35,7 @@ const displayErrorMsg = (response: Response) => {
 };
 
 async function loadProviderMetaData(url: string) {
+  url = `${PUBLIC_PROXY_PATH}${url}`;
   appStore.setFeedErrorMsg("");
   try {
     appStore.setFeedLoading(true);
@@ -56,6 +59,7 @@ async function loadProviderMetaData(url: string) {
 }
 
 async function loadFeed(feedURL: string, e?: Event) {
+  feedURL = `${PUBLIC_PROXY_PATH}${feedURL}`;
   appStore.setFeedErrorMsg("");
   try {
     appStore.setFeedLoading(true);
