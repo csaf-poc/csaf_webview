@@ -16,6 +16,13 @@ import {
   type VulnerabilitesExtractionResult
 } from "./productvulnerabilitiestypes";
 
+/**
+ * generateProductVulnerabilities generates data for product vulnerabilites overview.
+ * @param jsonDocument
+ * @param products all products
+ * @param productLookup
+ * @returns product vulnerabilities crosstable as [[]]
+ */
 const generateProductVulnerabilities = (jsonDocument: any, products: any, productLookup: any) => {
   const { vulnerabilities, relevantProducts } = extractVulnerabilities(jsonDocument);
   products = products.filter((product: Product) => {
@@ -54,6 +61,12 @@ const generateCrossTableFrom = (
   return result;
 };
 
+/**
+ * generateLineWith generates columns for a line for the crosstable with symbols.
+ * @param product
+ * @param vulnerabilities
+ * @returns Array of columns for the line.
+ */
 const generateLineWith = (product: Product, vulnerabilities: Vulnerability[]) => {
   const DUMMY_TOTAL = "N.A";
   const line: any = [DUMMY_TOTAL];
@@ -99,6 +112,11 @@ const generateLineWith = (product: Product, vulnerabilities: Vulnerability[]) =>
   return line;
 };
 
+/**
+ * extractProducts retrieves all products from the product tree and adds those defined in relationships.
+ * @param jsonDocument
+ * @returns An array of products [{product_id:"", name}]
+ */
 const extractProducts = (jsonDocument: any): Product[] => {
   if (!jsonDocument.product_tree || !jsonDocument.product_tree.branches) {
     return [];
@@ -108,6 +126,11 @@ const extractProducts = (jsonDocument: any): Product[] => {
   return productsFromBranches.concat(productsFromRelationships);
 };
 
+/**
+ * getProductsFromRelationships retrieves the products from relationships.
+ * @param jsonDocument
+ * @returns An array of products [{product_id:"", name}]
+ */
 const getProductsFromRelationships = (jsonDocument: any): Product[] => {
   if (!jsonDocument.product_tree.relationships) return [];
   return jsonDocument.product_tree.relationships.map((relationship: Relationship) => {
@@ -118,6 +141,12 @@ const getProductsFromRelationships = (jsonDocument: any): Product[] => {
   });
 };
 
+/**
+ * parseBranch parses recursively branches of the product tree for products.
+ * @param acc an array of products [{product_id:"", name}]
+ * @param branch branch element of product tree
+ * @returns acc as an array of products [{product_id:"", name}]
+ */
 const parseBranch = (acc: Product[], branch: any) => {
   if (branch.branches) {
     branch.branches.forEach((subbranch: any) => {
@@ -131,10 +160,21 @@ const parseBranch = (acc: Product[], branch: any) => {
   return acc;
 };
 
+/**
+ * isProduct determines when a branch is a product branch.
+ * @param branch
+ * @returns true | false
+ */
 const isProduct = (branch: any) => {
   return branch.product && branch.product.product_id && branch.product.name;
 };
 
+/**
+ * generateDictFrom generates a lookup from productstatus and section.
+ * @param productStatus
+ * @param section
+ * @returns dict
+ */
 const generateDictFrom = (productStatus: ProductStatus_t, section: ProductStatus_t_Key) => {
   return productStatus[section]?.reduce((o: any, n: string) => {
     o[n] = n;
@@ -142,6 +182,11 @@ const generateDictFrom = (productStatus: ProductStatus_t, section: ProductStatus
   }, {});
 };
 
+/**
+ * extractVulnerabilities retrieves the vulnerabilites from a CSAF document and collects relevant products (IDs).
+ * @param jsonDocument
+ * @returns vulnerabilities
+ */
 const extractVulnerabilities = (jsonDocument: any): VulnerabilitesExtractionResult => {
   const extractionResult: VulnerabilitesExtractionResult = {
     vulnerabilities: [],

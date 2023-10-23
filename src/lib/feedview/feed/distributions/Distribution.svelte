@@ -12,6 +12,10 @@
   import { loadFeed } from "$lib/urlloader";
   import type { Distribution } from "./distributiontype";
   export let distribution: Distribution;
+  /**
+   * openFeed opens a feed from a distribution.
+   * @param e
+   */
   const openFeed = (e: Event) => {
     loadFeed((e.target as Element).getAttribute("href")!, e);
     e.preventDefault();

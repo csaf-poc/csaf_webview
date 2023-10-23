@@ -17,6 +17,9 @@
   import type { FullProductName } from "$lib/types";
   export let product: FullProductName;
   let highlight = false;
+  /**
+   * updateUI waits for the UI to settle and scrolls to given ProductID.
+   */
   async function updateUI() {
     await tick();
     document.getElementById(`${product?.product_id}`)?.scrollIntoView({ behavior: "smooth" });

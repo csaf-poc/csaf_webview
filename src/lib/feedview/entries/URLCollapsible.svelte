@@ -24,6 +24,10 @@
     visibility = "block";
   }
   let icon = "bx-chevron-down";
+  /**
+   * openLink opens a single document given via link in single view mode.
+   * @param e
+   */
   const openLink = (e: Event) => {
     let url: string = (e.target as Element).getAttribute("href")!;
     goto(`/?q=${url}`);

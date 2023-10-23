@@ -16,10 +16,17 @@
   import KeyValue from "$lib/KeyValue.svelte";
   import type { EntryType } from "./entrytypes";
   export let entry: EntryType;
+  /**
+   * switchSingleMode waits for UI to settle and switches to single mode.
+   */
   async function switchSingleMode() {
     await tick();
     appStore.setSingleMode();
   }
+  /**
+   * open opens document in the single view mode via given link.
+   * @param e
+   */
   const open = (e: Event) => {
     let url: string = (e.target as Element).getAttribute("href")!;
     switchSingleMode();

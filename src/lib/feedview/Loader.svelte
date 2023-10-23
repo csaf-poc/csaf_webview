@@ -15,11 +15,18 @@
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   let url = "";
+  /**
+   * onMount set url if given via query param.
+   */
   onMount(() => {
     if (/^\?q=/.test($page.url.search)) {
       url = $page.url.search.replace("?q=", "");
     }
   });
+
+  /**
+   * load loads provider metadata / feed and reroute to given URL.
+   */
   const load = () => {
     if (/provider-metadata\.json/.test(url)) {
       loadProviderMetaData(url);
@@ -29,6 +36,10 @@
     goto(`/feed?q=${url}`);
   };
 
+  /**
+   * keydown loads provider metadata when "Enter"-key was pressed.
+   * @param e
+   */
   const keydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") loadProviderMetaData(url);
   };

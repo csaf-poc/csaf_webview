@@ -19,6 +19,10 @@
     headerColumns = vulnerabilities.shift()!;
     productLines = vulnerabilities;
   }
+  /**
+   * openProduct opens the according product given via href.
+   * @param e
+   */
   const openProduct = (e: Event) => {
     // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     let product: string = (e.target as Element).getAttribute("href")!;
@@ -27,6 +31,11 @@
     appStore.unshiftHistory((e.target as Element).id);
     e.preventDefault();
   };
+
+  /**
+   * openCVE opens the CVE given via href.
+   * @param e
+   */
   const openCVE = (e: Event) => {
     // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
     let CVE: string = (e.target as Element).getAttribute("href")!;

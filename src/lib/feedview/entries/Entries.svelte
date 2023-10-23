@@ -13,6 +13,9 @@
   import type { EntryType, EntriesByYearRecord } from "./entrytypes";
 
   export let entries: EntryType[] = [];
+  /**
+   * entriesByYear contains etries grouped by years.
+   */
   const entriesByYear = entries.reduce((acc: EntriesByYearRecord, entry: EntryType) => {
     const published = new Date(entry.published);
     if (!acc[published.getFullYear()]) acc[published.getFullYear()] = [];
