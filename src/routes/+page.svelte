@@ -23,6 +23,9 @@
       appStore.setDocument(null);
     }
   }
+  /**
+   * onMount checks queryparams and loads a single document if applicable.
+   */
   onMount(() => {
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");

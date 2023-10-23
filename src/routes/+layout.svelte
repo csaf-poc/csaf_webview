@@ -11,6 +11,10 @@
   };
   $: mode = $appStore.ui.appMode;
   $: switchToRoute = mode === MODE.SINGLE ? `${base}/feed` : `${base}/`;
+  /**
+   * Disable disables dropping a JSON anywhere on the page.
+   * @param e
+   */
   const disable = (e: Event) => {
     e.preventDefault();
   };

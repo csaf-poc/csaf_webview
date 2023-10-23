@@ -20,6 +20,9 @@
     }
   }
   appStore.setFeedMode();
+  /**
+   * onMount checks whether there is a query parameter given to load a feed.
+   */
   onMount(() => {
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");

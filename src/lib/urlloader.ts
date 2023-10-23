@@ -2,6 +2,10 @@ import { appStore } from "$lib/store";
 import { convertToDocModel } from "$lib/singleview/docmodel/docmodel";
 import { PUBLIC_PROXY_PATH } from "$env/static/public";
 
+/**
+ * loadSingleCSAF loads a single CSAF document.
+ * @param url
+ */
 async function loadSingleCSAF(url: string) {
   url = `${PUBLIC_PROXY_PATH}${url}`;
   appStore.setSingleErrorMsg("");
@@ -27,6 +31,10 @@ async function loadSingleCSAF(url: string) {
   }
 }
 
+/**
+ * Displays an error message when loading provider metadata / feed failed.
+ * @param response
+ */
 const displayErrorMsg = (response: Response) => {
   const msg = `An Error occured: HTTP ${response.status} - ${response.statusText}`;
   appStore.setFeedErrorMsg(msg);
@@ -34,6 +42,10 @@ const displayErrorMsg = (response: Response) => {
   appStore.setFeedLoading(false);
 };
 
+/**
+ * loadProviderMetaData loads the provider metadata from the given URL.
+ * @param url
+ */
 async function loadProviderMetaData(url: string) {
   url = `${PUBLIC_PROXY_PATH}${url}`;
   appStore.setFeedErrorMsg("");
@@ -58,6 +70,11 @@ async function loadProviderMetaData(url: string) {
   }
 }
 
+/**
+ * loadFeed loads a single feed.
+ * @param feedURL
+ * @param e
+ */
 async function loadFeed(feedURL: string, e?: Event) {
   feedURL = `${PUBLIC_PROXY_PATH}${feedURL}`;
   appStore.setFeedErrorMsg("");
