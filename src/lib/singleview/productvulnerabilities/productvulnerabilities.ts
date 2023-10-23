@@ -20,8 +20,23 @@ import {
  * generateProductVulnerabilities generates data for product vulnerabilites overview.
  * @param jsonDocument
  * @param products all products
- * @param productLookup
+ * @param productLookup {id:name}
  * @returns product vulnerabilities crosstable as [[]]
+ * E.g. [
+ * [
+ *   'Product',
+ *   'Total result',
+ *   'CVE-2016-0173',
+ *   'CVE-2018-0172',
+ *   'CVE-2019-0171',
+ *   'CVE-2020-0174'
+ * ],
+ * [ '123', 'K', '', '', 'K', '' ],
+ * [ '3456', 'K', '', '', 'K', '' ],
+ * [ '8910', 'K', '', 'K', '', '' ],
+ * [ '1112', 'F', '', '', '', 'F' ],
+ * [ '1314', 'N', 'NR', '', '', '' ]
+ * ]
  */
 const generateProductVulnerabilities = (jsonDocument: any, products: any, productLookup: any) => {
   const { vulnerabilities, relevantProducts } = extractVulnerabilities(jsonDocument);
@@ -37,6 +52,28 @@ const generateProductVulnerabilities = (jsonDocument: any, products: any, produc
   return result;
 };
 
+/**
+ *
+ * @param products mentioned products
+ * @param vulnerabilities all vulnerabilites
+ * @param productLookup {id:name}
+ * @returns a crosstable as [[]]
+ * E.g. [
+ * [
+ *   'Product',
+ *   'Total result',
+ *   'CVE-2016-0173',
+ *   'CVE-2018-0172',
+ *   'CVE-2019-0171',
+ *   'CVE-2020-0174'
+ * ],
+ * [ '123', 'K', '', '', 'K', '' ],
+ * [ '3456', 'K', '', '', 'K', '' ],
+ * [ '8910', 'K', '', 'K', '', '' ],
+ * [ '1112', 'F', '', '', '', 'F' ],
+ * [ '1314', 'N', 'NR', '', '', '' ]
+ * ]
+ */
 const generateCrossTableFrom = (
   products: Product[],
   vulnerabilities: Vulnerability[],
@@ -89,6 +126,12 @@ const generateLineWith = (product: Product, vulnerabilities: Vulnerability[]) =>
     }
     line.push(column);
   });
+
+  /**
+   * calculateLineTotal calculates what final symbol should be displayed.
+   * @param line
+   * @returns final result
+   */
   const calculateLineTotal = (line: string[]) => {
     let result = DUMMY_TOTAL;
     switch (true) {
@@ -195,6 +238,9 @@ const extractVulnerabilities = (jsonDocument: any): VulnerabilitesExtractionResu
   if (!jsonDocument.vulnerabilities) {
     return extractionResult;
   }
+  /**
+   * vulnerabilities as a collection of all vulnerabilities found
+   */
   const vulnerabilities = jsonDocument.vulnerabilities.reduce(
     (acc: Vulnerability[], vulnerability: any) => {
       if (!vulnerability.cve) {

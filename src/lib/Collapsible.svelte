@@ -22,6 +22,9 @@
     visibility = "block";
   }
   let icon = "bx-chevron-down";
+  /**
+   * toggle toggles visibility of content.
+   */
   const toggle = () => {
     if (visibility === "block") {
       onClose();

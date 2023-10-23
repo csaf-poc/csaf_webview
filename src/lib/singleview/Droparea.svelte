@@ -20,6 +20,11 @@
     hover = false;
     valid = null;
   }
+  /**
+   * Handler when the file was dropped on the droparea.
+   * Loads and displays file
+   * @param e
+   */
   const fileDropped = (e: DragEvent) => {
     if (e.dataTransfer) {
       appStore.reset();
