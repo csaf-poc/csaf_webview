@@ -50,7 +50,7 @@
 
 <style>
   .errors {
-    margin-left: 200px;
+    margin-left: 210px;
     font-size: x-large;
     font-weight: bold;
   }

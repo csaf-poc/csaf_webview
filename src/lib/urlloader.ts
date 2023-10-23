@@ -12,17 +12,9 @@ async function loadSingleCSAF(url: string) {
       const docModel = convertToDocModel(csafDoc);
       appStore.setDocument(docModel);
       appStore.setCSAFLoading(false);
-    }
-    if (response.status === 401) {
-      appStore.setSingleErrorMsg("You are unauthorized to access the resource on the server.");
-      appStore.setCSAFLoading(false);
-    }
-    if (response.status === 403) {
-      appStore.setSingleErrorMsg("You are forbidden to access the resource on the server.");
-      appStore.setCSAFLoading(false);
-    }
-    if (response.status === 404) {
-      appStore.setSingleErrorMsg("The resource you requested was not found on the server.");
+    } else {
+      const msg = `An Error occured: HTTP ${response.status} - ${response.statusText}`;
+      appStore.setSingleErrorMsg(msg);
       appStore.setCSAFLoading(false);
     }
   } catch (error) {
@@ -32,6 +24,13 @@ async function loadSingleCSAF(url: string) {
     appStore.setCSAFLoading(false);
   }
 }
+
+const displayErrorMsg = (response: Response) => {
+  const msg = `An Error occured: HTTP ${response.status} - ${response.statusText}`;
+  appStore.setFeedErrorMsg(msg);
+  appStore.setProviderMetadata(null);
+  appStore.setFeedLoading(false);
+};
 
 async function loadProviderMetaData(url: string) {
   appStore.setFeedErrorMsg("");
@@ -44,21 +43,8 @@ async function loadProviderMetaData(url: string) {
       const providerMetadata = await response.json();
       appStore.setProviderMetadata(providerMetadata);
       appStore.setFeedLoading(false);
-    }
-    if (response.status === 401) {
-      appStore.setFeedErrorMsg("You are unauthorized to access the resource on the server.");
-      appStore.setProviderMetadata(null);
-      appStore.setFeedLoading(false);
-    }
-    if (response.status === 403) {
-      appStore.setFeedErrorMsg("You are forbidden to access the resource on the server.");
-      appStore.setProviderMetadata(null);
-      appStore.setFeedLoading(false);
-    }
-    if (response.status === 404) {
-      appStore.setFeedErrorMsg("The resource you requested was not found on the server.");
-      appStore.setProviderMetadata(null);
-      appStore.setFeedLoading(false);
+    } else {
+      displayErrorMsg(response);
     }
   } catch (error) {
     appStore.setFeedErrorMsg(
@@ -85,21 +71,8 @@ async function loadFeed(feedURL: string, e?: Event) {
         const el = document.getElementById(`${feedURL}`);
         el?.scrollIntoView({ block: "start", behavior: "smooth" });
       }, 100);
-    }
-    if (response.status === 401) {
-      appStore.setFeedErrorMsg("You are unauthorized to access the resource on the server.");
-      appStore.setCurrentFeed(null);
-      appStore.setFeedLoading(false);
-    }
-    if (response.status === 403) {
-      appStore.setFeedErrorMsg("You are forbidden to access the resource on the server.");
-      appStore.setCurrentFeed(null);
-      appStore.setFeedLoading(false);
-    }
-    if (response.status === 404) {
-      appStore.setFeedErrorMsg("The resource you requested was not found on the server.");
-      appStore.setCurrentFeed(null);
-      appStore.setFeedLoading(false);
+    } else {
+      displayErrorMsg(response);
     }
   } catch (error) {
     appStore.setFeedErrorMsg(

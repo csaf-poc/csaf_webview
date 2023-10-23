@@ -20,7 +20,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/proxy/": {
-        target: "http://localhost:8080",
+        target: "https://wid.cert-bund.de/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/proxy\//, "")
       }
