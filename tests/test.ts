@@ -8,6 +8,8 @@
 
 /// <reference lib="dom"/>
 
+// Test site for components visibility
+
 import { expect, test } from "@playwright/test";
 import { readFileSync } from "fs";
 
