@@ -161,12 +161,19 @@ const generateLineWith = (product: Product, vulnerabilities: Vulnerability[]) =>
  * @returns An array of products [{product_id:"", name}]
  */
 const extractProducts = (jsonDocument: any): Product[] => {
-  if (!jsonDocument.product_tree || !jsonDocument.product_tree.branches) {
+  if (!jsonDocument.product_tree) {
     return [];
   }
-  const productsFromBranches = jsonDocument.product_tree.branches.reduce(parseBranch, []);
+  let products: any = [];
+  if (jsonDocument.product_tree.branches) {
+    const productsFromBranches = jsonDocument.product_tree.branches.reduce(parseBranch, []);
+    products = products.concat(productsFromBranches);
+  }
+  if (jsonDocument.product_tree["full_product_names"]) {
+    products = products.concat(jsonDocument.product_tree["full_product_names"]);
+  }
   const productsFromRelationships: Product[] = getProductsFromRelationships(jsonDocument);
-  return productsFromBranches.concat(productsFromRelationships);
+  return products.concat(productsFromRelationships);
 };
 
 /**
