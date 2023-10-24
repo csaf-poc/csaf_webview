@@ -1,4 +1,4 @@
-name: 'Test'
+name: "Test"
 on:
   pull_request:
 
@@ -13,15 +13,15 @@ jobs:
       pull-requests: write
 
     steps:
-    - uses: actions/checkout@v4
-    - name: 'Install Node'
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
-    - name: 'Install Deps'
-      run: npm install
-    - name: 'Test'
-      run: npx vitest --coverage
-    - name: 'Report Coverage'
-      if: always() # Also generate the report if tests are failing
-      uses:  davelosert/vitest-coverage-report-action@v2
+      - uses: actions/checkout@v4
+      - name: "Install Node"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+      - name: "Install Deps"
+        run: npm install
+      - name: "Test"
+        run: npx vitest --coverage
+      - name: "Report Coverage"
+        if: always() # Also generate the report if tests are failing
+        uses: davelosert/vitest-coverage-report-action@v2
