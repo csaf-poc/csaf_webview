@@ -26,6 +26,17 @@ const noProduct = {
   }
 };
 
+const fullProductNames = {
+  product_tree: {
+    full_product_names: [
+      {
+        product_id: "123",
+        name: "Product A"
+      }
+    ]
+  }
+};
+
 const oneProductNotNested = {
   product_tree: {
     branches: [
@@ -243,6 +254,15 @@ describe("Productvulnerabilities test", () => {
 describe("Productvulnerabilities test", () => {
   it("Product: parses simple nested list of products", () => {
     const result = extractProducts(simpleNested);
+    expect(result.length).toBe(1);
+    expect(result[0].product_id).toBe("123");
+    expect(result[0].name).toBe("Product A");
+  });
+});
+
+describe("Productvulnerabilities test", () => {
+  it("Product: parses full_product_names", () => {
+    const result = extractProducts(fullProductNames);
     expect(result.length).toBe(1);
     expect(result[0].product_id).toBe("123");
     expect(result[0].name).toBe("Product A");
