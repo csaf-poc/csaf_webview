@@ -39,7 +39,7 @@ and thus maybe behind the latest developments.
 Install current LTS version of NodeJS, e.g. see
 https://github.com/nodesource/distributions/blob/master/README.md .
 Upgrade to the latest version of npm if you can.
-Development has been started with Node 18 and npm 10.2.
+Development has been started with Node v20 and npm 10.2.1
 
 ```sh
 npm install
