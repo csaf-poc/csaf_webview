@@ -20,7 +20,7 @@ test("index page has expected h1", async ({ page }) => {
 
 test("index page has expected version", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole('heading', { name: 'v. 0.6.0' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'v0.7.0-dev' })).toBeVisible();
 });
 
 test("index page has file input", async ({ page }) => {

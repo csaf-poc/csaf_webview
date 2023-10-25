@@ -74,7 +74,7 @@ test('Product tree collapsible product version tree entry 1 visibility', async (
   
   await page.getByRole('heading', { name: ' Product tree' }).click()
   await page.getByRole('heading', { name: ' Branches' }).click()
-  await expect(page.getByText('product_version 1.0.0-alpha CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha Product I')).toBeVisible()
+  await expect(page.getByText('product_version 1.0.0-alpha CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha')).toBeVisible()
 });
 
 
@@ -85,7 +85,7 @@ test('Product tree collapsible product version tree entry 2 visibility', async (
   
   await page.getByRole('heading', { name: ' Product tree' }).click()
   await page.getByRole('heading', { name: ' Branches' }).click()
-  await expect(page.getByText('product_version 1.0.0-dev1 CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1 Product IDC')).toBeVisible()
+  await expect(page.getByText('product_version 1.0.0-dev1 CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1')).toBeVisible()
 });
 
 test('Product tree collapsible product version 2 collapsible visibility', async ({ page }) => {
