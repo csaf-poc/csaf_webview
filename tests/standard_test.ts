@@ -13,14 +13,17 @@
 import { expect, test } from "@playwright/test";
 import { readFileSync } from "fs";
 
+
 test("index page has expected h1", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "CSAF Webview" })).toBeVisible();
 });
 
 test("index page has expected version", async ({ page }) => {
+  var versionnr = process.env.npm_package_version;
+  var version = "v"+versionnr;
   await page.goto("/");
-  await expect(page.getByRole('heading', { name: 'v0.7.0-dev' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: version })).toBeVisible();
 });
 
 test("index page has file input", async ({ page }) => {
