@@ -8,6 +8,8 @@
 
 /// <reference lib="dom"/>
 
+// This part tests the vulnerabilities overview collapsible section
+
 import { expect, test } from "@playwright/test";
 import { readFileSync } from "fs";
 
