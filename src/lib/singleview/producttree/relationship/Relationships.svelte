@@ -5,12 +5,13 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
+  import type { Relationship } from "$lib/types";
   import Relation from "./Relation.svelte";
-  export let relationships: any;
+  export let relationships: Relationship[];
 </script>
 
 {#each relationships as relation}

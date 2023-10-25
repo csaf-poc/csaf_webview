@@ -5,14 +5,15 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
-  import Branch from "./Branch.svelte";
+  import BranchComponent from "./Branch.svelte";
   import Product from "$lib/singleview/producttree/product/Product.svelte";
+  import type { Branch } from "$lib/types";
 
-  export let branch: any;
+  export let branch: Branch;
 </script>
 
 <div class="branch">
@@ -20,7 +21,7 @@
   {branch.name}
   {#if branch.branches}
     {#each branch.branches as b}
-      <Branch branch={b} />
+      <BranchComponent branch={b} />
     {/each}
   {/if}
   {#if branch.product}
@@ -32,6 +33,6 @@
   .branch {
     margin-left: 3rem;
     margin-bottom: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 0.6rem;
   }
 </style>

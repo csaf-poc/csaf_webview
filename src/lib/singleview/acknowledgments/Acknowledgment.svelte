@@ -5,7 +5,7 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
@@ -14,7 +14,7 @@
   import type { Acknowledgement } from "../docmodel/docmodeltypes";
   export let ack: Acknowledgement;
   const keys: Array<String> = [];
-  const values: any = [];
+  const values: string[] = [];
   if (ack.names) {
     keys.push("Names");
     values.push(ack.names.join(", "));

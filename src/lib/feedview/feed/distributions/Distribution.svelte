@@ -5,12 +5,17 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
   import { loadFeed } from "$lib/urlloader";
-  export let distribution: any;
+  import type { Distribution } from "./distributiontype";
+  export let distribution: Distribution;
+  /**
+   * openFeed opens a feed from a distribution.
+   * @param e
+   */
   const openFeed = (e: Event) => {
     loadFeed((e.target as Element).getAttribute("href")!, e);
     e.preventDefault();
@@ -65,17 +70,21 @@
   .tlpclear {
     background: #000;
     color: #fff;
+    padding: 0.3rem;
   }
   .tlpred {
     background: #000;
     color: #ff2b2b;
+    padding: 0.3rem;
   }
   .tlpamber {
     background: #000;
     color: #ffc000;
+    padding: 0.3rem;
   }
   .tlpgreen {
     background: #000;
     color: #33ff00;
+    padding: 0.3rem;
   }
 </style>

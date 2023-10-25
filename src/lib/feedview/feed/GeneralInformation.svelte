@@ -5,12 +5,12 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
-  import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
+  import KeyValue from "$lib/KeyValue.svelte";
 </script>
 
 {#if $appStore.providerMetadata}

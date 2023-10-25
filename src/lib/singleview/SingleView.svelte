@@ -5,19 +5,19 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 <script lang="ts">
   import { appStore } from "$lib/store";
-  import Collapsible from "$lib/Collapsible.svelte";
-  import General from "$lib/singleview/general/General.svelte";
-  import Droparea from "$lib/singleview/Droparea.svelte";
-  import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
-  import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
-  import Upload from "./Upload.svelte";
-  import ProductTree from "./producttree/ProductTree.svelte";
   import Back from "../Back.svelte";
+  import Collapsible from "$lib/Collapsible.svelte";
+  import Droparea from "$lib/singleview/Droparea.svelte";
+  import General from "$lib/singleview/general/General.svelte";
   import LoadFromUrl from "./LoadFromURL.svelte";
+  import ProductTree from "./producttree/ProductTree.svelte";
+  import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
+  import Upload from "./Upload.svelte";
+  import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
   $: isCSAF = !(
     !$appStore.doc?.isRevisionHistoryPresent &&
     !$appStore.doc?.isDocPresent &&
@@ -50,13 +50,16 @@
       <General />
     </Collapsible>
   {/if}
-  {#if $appStore.doc?.productVulnerabilities.length > 0}
+  {#if $appStore.doc?.productVulnerabilities.length > 1}
     <Collapsible
       header="Vulnerabilities overview"
       open={$appStore.ui.isVulnerabilisiesOverviewVisible}
     >
       <ProductVulnerabilities />
     </Collapsible>
+  {:else}
+      <h2>No Vulnerabilities overview</h2>
+      (As no products are connected to vulnerabilities.)
   {/if}
 
   {#if $appStore.doc && $appStore.doc["isProductTreePresent"]}
@@ -91,5 +94,10 @@
 <style>
   h1 {
     padding: 0;
+    margin-top: 3rem;
+  }
+  h2 { /* style similar to h2 in Collapsible.svelte */
+    margin: 0;
+    font-weight: bold;
   }
 </style>

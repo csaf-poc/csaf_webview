@@ -5,7 +5,7 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 # CSAF Webview
@@ -36,10 +36,18 @@ and thus maybe behind the latest developments.
 
 ### Install dependencies
 
-`npm install`
-`npx playwright install`
+Install current LTS version of NodeJS, e.g. see
+https://github.com/nodesource/distributions/blob/master/README.md .
+Upgrade to the latest version of npm if you can.
+Development has been started with Node v20 and npm 10.2.1
 
-### Run development server and `--open` a browser.
+```sh
+npm install
+npx playwright install
+```
+
+### Run development server
+Optionally add `-- --open` to directly open a browser.
 
 `npm run dev -- --open`
 
@@ -84,9 +92,8 @@ For more information look [here](https://vitejs.dev/config/server-options.html#s
 
 In order to access the configured URL in a development setup you prefix the URL like
 
-`/proxy/http://localhost:8080/.well-known/csaf/provider-metadata.json`
-
-instead of entering `http://localhost:8080/.well-known/csaf/provider-metadata.json`.
+Copy `.env` to `.env.development` and set `PUBLIC_PROXY_PATH=/proxy/`.
+After that all requests are prefixed with the `PUBLIC_PROXY_PATH`.
 
 ## License
 

@@ -5,13 +5,14 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
+  import type { ProductGroup } from "$lib/types";
   import ValueField from "$lib/ValueField.svelte";
   import ValueList from "$lib/ValueList.svelte";
-  export let productGroup: any;
+  export let productGroup: ProductGroup;
 </script>
 
 <ValueList label="Group IDs" values={productGroup.group_ids} />

@@ -5,13 +5,13 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
+  import FileHash from "./FileHash.svelte";
   import KeyValue from "$lib/KeyValue.svelte";
   import ValueList from "$lib/ValueList.svelte";
-  import FileHash from "./FileHash.svelte";
   import XGenericUri from "./XGenericURI.svelte";
   export let helper: any;
 </script>

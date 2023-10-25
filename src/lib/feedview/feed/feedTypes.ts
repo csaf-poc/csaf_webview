@@ -6,6 +6,8 @@
 // SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
 // Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 
+import type { EntryType } from "../entries/entrytypes";
+
 export type Category = {
   scheme: string;
   term: string;
@@ -22,5 +24,5 @@ export type Feed = {
   link: Link[];
   category: Category[];
   updated: string;
-  entry: any;
+  entry: EntryType[];
 };

@@ -8,6 +8,10 @@
 
 import { convertToDocModel } from "$lib/singleview/docmodel/docmodel";
 import { appStore } from "$lib/store";
+/**
+ * loadFile loads files via FileReader.
+ * @param csafFile
+ */
 const loadFile = (csafFile: File) => {
   const fileReader: FileReader = new FileReader();
   let jsonDocument = {};

@@ -1,10 +1,11 @@
 <script lang="ts">
-  import FeedView from "$lib/feedview/FeedView.svelte";
-  import { onMount } from "svelte";
   import { appStore } from "$lib/store";
-  import { page } from "$app/stores";
   import { browser } from "$app/environment";
   import { loadFeed, loadProviderMetaData } from "$lib/urlloader";
+  import { onMount } from "svelte";
+  import { page } from "$app/stores";
+  import FeedView from "$lib/feedview/FeedView.svelte";
+  import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");
@@ -19,6 +20,9 @@
     }
   }
   appStore.setFeedMode();
+  /**
+   * onMount checks whether there is a query parameter given to load a feed.
+   */
   onMount(() => {
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");
@@ -36,3 +40,4 @@
 </script>
 
 <FeedView />
+<Spinner open={$appStore.ui.feedLoading} />

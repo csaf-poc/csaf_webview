@@ -5,11 +5,15 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
   import { appStore } from "$lib/store";
+  /**
+   * updateUI waits until UI is settled and goes back to the last anchor.
+   * @param id
+   */
   async function updateUI(id: string) {
     setTimeout(() => {
       const element = document.getElementById(`${id}`);
@@ -17,6 +21,10 @@
       window.scrollTo({ top: y, behavior: "smooth" });
     }, 200);
   }
+  /**
+   * backpressed handles the history when the button was actually clicked.
+   * @param e
+   */
   const backPressed = (e: Event) => {
     const lastElement = $appStore.ui.history[0];
     appStore.shiftHistory();

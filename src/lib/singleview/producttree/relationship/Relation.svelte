@@ -5,17 +5,17 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/KeyValue.svelte";
-  import ValueField from "$lib/ValueField.svelte";
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
+  import Collapsible from "$lib/Collapsible.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
   import ProductIdentificationHelper from "../product/ProductIdentificationHelper.svelte";
-  export let relation: any;
+  import type { Relationship } from "$lib/types";
+  export let relation: Relationship;
   let highlight = false;
   const openProduct = (e: Event) => {
     // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion

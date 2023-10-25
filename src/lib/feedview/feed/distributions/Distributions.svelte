@@ -5,11 +5,11 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
   import { appStore } from "$lib/store";
+  import Collapsible from "$lib/Collapsible.svelte";
   import Distribution from "./Distribution.svelte";
 </script>
 

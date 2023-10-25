@@ -5,7 +5,7 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 <script lang="ts">
   import { appStore } from "$lib/store";
@@ -20,6 +20,11 @@
     hover = false;
     valid = null;
   }
+  /**
+   * Handler when the file was dropped on the droparea.
+   * Loads and displays file
+   * @param e
+   */
   const fileDropped = (e: DragEvent) => {
     if (e.dataTransfer) {
       appStore.reset();

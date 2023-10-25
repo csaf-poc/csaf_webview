@@ -5,16 +5,16 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
-  import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
   import { appStore } from "$lib/store";
-  import RevisionHistory from "./RevisionHistory.svelte";
+  import { Status, TLP } from "$lib/singleview/docmodel/docmodeltypes";
+  import Acknowledgments from "$lib/singleview/acknowledgments/Acknowledgments.svelte";
+  import Collapsible from "$lib/Collapsible.svelte";
   import Notes from "$lib/singleview/notes/Notes.svelte";
   import References from "$lib/singleview/references/References.svelte";
-  import Acknowledgments from "$lib/singleview/acknowledgments/Acknowledgments.svelte";
+  import RevisionHistory from "./RevisionHistory.svelte";
   import ValueList from "../../ValueList.svelte";
   let tlpStyle = "";
   $: aliases = $appStore.doc?.aliases;
@@ -203,7 +203,7 @@
   </div>
 {/if}
 
-{#if $appStore.doc.references.length > 0}
+{#if $appStore.doc && $appStore.doc.references.length > 0}
   <div class="subsection">
     <Collapsible header="References" level="3">
       <References references={$appStore.doc?.references} />
@@ -231,17 +231,21 @@
   .tlpclear {
     background: #000;
     color: #fff;
+    padding: 0.3rem;
   }
   .tlpred {
     background: #000;
     color: #ff2b2b;
+    padding: 0.3rem;
   }
   .tlpamber {
     background: #000;
     color: #ffc000;
+    padding: 0.3rem;
   }
   .tlpgreen {
     background: #000;
     color: #33ff00;
+    padding: 0.3rem;
   }
 </style>

@@ -1,7 +1,6 @@
 {
-  "name": "csaf-typescript",
-  "version": "0.6.0",
-  "private": true,
+  "name": "csaf-webview",
+  "version": "0.7.0-dev",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
@@ -17,8 +16,11 @@
     "test:unit": "vitest",
     "coverage": "vitest run --coverage"
   },
+  "engines": {
+    "node": "^20.5.1"
+  },
   "devDependencies": {
-    "@playwright/test": "^1.28.1",
+    "@playwright/test": "^1.39.0",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "^1.20.4",

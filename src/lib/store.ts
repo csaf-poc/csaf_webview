@@ -12,16 +12,19 @@ import type { DocModel } from "./singleview/docmodel/docmodeltypes";
 type AppStore = {
   doc: DocModel | null;
   providerMetadata: any;
+  currentFeed: any;
   ui: {
     appMode: string;
-    currentFeed: any;
-    errorMsg: string;
-    isFeedSectionOpen: boolean;
+    csafLoading: boolean;
+    feedErrorMsg: string;
+    feedLoading: boolean;
+    singleErrorMsg: string;
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
     isVulnerabilisiesOverviewVisible: boolean;
     isVulnerabilitiesSectionVisible: boolean;
     isProductTreeVisible: boolean;
+    isFeedSectionOpen: boolean;
     selectedCVE: string;
     selectedProduct: string;
     uploadedFile: boolean;
@@ -34,14 +37,16 @@ const MODE = {
   FEED: "Switch to single view"
 };
 
-function createStore() {
-  const { subscribe, set, update } = writable({
+const generateInitialState = (): AppStore => {
+  const state: AppStore = {
     doc: null,
     providerMetadata: null,
     currentFeed: null,
     ui: {
       appMode: MODE.SINGLE,
+      csafLoading: false,
       feedErrorMsg: "",
+      feedLoading: false,
       singleErrorMsg: "",
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
@@ -54,10 +59,21 @@ function createStore() {
       uploadedFile: false,
       history: []
     }
-  });
+  };
+  return state;
+};
+
+function createStore() {
+  const { subscribe, set, update } = writable(generateInitialState());
 
   return {
     subscribe,
+    setCSAFLoading: (option: boolean) => {
+      update((settings) => {
+        settings.ui.csafLoading = option;
+        return settings;
+      });
+    },
     setSingleMode: () => {
       update((settings) => {
         settings.ui.appMode = MODE.SINGLE;
@@ -79,6 +95,12 @@ function createStore() {
     setFeedSectionClosed: () => {
       update((settings) => {
         settings.ui.isFeedSectionOpen = false;
+        return settings;
+      });
+    },
+    setFeedLoading: (option: boolean) => {
+      update((settings) => {
+        settings.ui.feedLoading = option;
         return settings;
       });
     },
@@ -185,26 +207,7 @@ function createStore() {
         return settings;
       });
     },
-    reset: () =>
-      set({
-        doc: null,
-        providerMetadata: null,
-        currentFeed: null,
-        ui: {
-          appMode: MODE.SINGLE,
-          errorMsg: "",
-          isGeneralSectionVisible: true,
-          isRevisionHistoryVisible: false,
-          isVulnerabilisiesOverviewVisible: false,
-          isVulnerabilitiesSectionVisible: false,
-          isProductTreeVisible: false,
-          isFeedSectionOpen: false,
-          selectedCVE: "",
-          selectedProduct: "",
-          uploadedFile: false,
-          history: []
-        }
-      })
+    reset: () => set(generateInitialState())
   };
 }
 

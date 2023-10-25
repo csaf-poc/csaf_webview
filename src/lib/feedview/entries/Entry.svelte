@@ -5,20 +5,28 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
-  import Collapsible from "$lib/Collapsible.svelte";
-  import KeyValue from "$lib/KeyValue.svelte";
   import { appStore } from "$lib/store";
   import { loadSingleCSAF } from "$lib/urlloader";
   import { tick } from "svelte";
-  export let entry: any;
+  import Collapsible from "$lib/Collapsible.svelte";
+  import KeyValue from "$lib/KeyValue.svelte";
+  import type { EntryType } from "./entrytypes";
+  export let entry: EntryType;
+  /**
+   * switchSingleMode waits for UI to settle and switches to single mode.
+   */
   async function switchSingleMode() {
     await tick();
     appStore.setSingleMode();
   }
+  /**
+   * open opens document in the single view mode via given link.
+   * @param e
+   */
   const open = (e: Event) => {
     let url: string = (e.target as Element).getAttribute("href")!;
     switchSingleMode();

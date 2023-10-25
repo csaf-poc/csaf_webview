@@ -5,17 +5,21 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
-  import ProductIdentificationHelper from "./ProductIdentificationHelper.svelte";
   import { appStore } from "$lib/store";
   import { tick } from "svelte";
   import Collapsible from "$lib/Collapsible.svelte";
   import KeyValue from "$lib/KeyValue.svelte";
-  export let product: any;
+  import ProductIdentificationHelper from "./ProductIdentificationHelper.svelte";
+  import type { FullProductName } from "$lib/types";
+  export let product: FullProductName;
   let highlight = false;
+  /**
+   * updateUI waits for the UI to settle and scrolls to given ProductID.
+   */
   async function updateUI() {
     await tick();
     document.getElementById(`${product?.product_id}`)?.scrollIntoView({ behavior: "smooth" });

@@ -5,25 +5,35 @@
  SPDX-License-Identifier: MIT
 
  SPDX-FileCopyrightText: 2023 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
- Software-Engineering: 2023 Intevation GmbH <https://intevation.de
+ Software-Engineering: 2023 Intevation GmbH <https://intevation.de>
 -->
 
 <script lang="ts">
   import { appStore } from "$lib/store";
   import { goto } from "$app/navigation";
-  import { onMount } from "svelte";
   import { loadSingleCSAF } from "$lib/urlloader";
+  import { onMount } from "svelte";
   import { page } from "$app/stores";
   let URL = "";
+  /**
+   * onMount sets the URL when a query parameter was given.
+   */
   onMount(() => {
     if (/^\?q=/.test($page.url.search)) {
       URL = $page.url.search.replace("?q=", "");
     }
   });
+  /**
+   * loads a single CSAF document and routes to according URL.
+   */
   const loads = () => {
     loadSingleCSAF(URL);
     goto(`/?q=${URL}`);
   };
+  /**
+   * keydown listnes for "Enter" to start loading.
+   * @param e
+   */
   const keydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       loads();
