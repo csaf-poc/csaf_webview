@@ -22,12 +22,14 @@ async function loadSingleCSAF(url: string) {
       const msg = `An Error occured: HTTP ${response.status} - ${response.statusText}`;
       appStore.setSingleErrorMsg(msg);
       appStore.setCSAFLoading(false);
+      appStore.setDocument(null);
     }
   } catch (error) {
     appStore.setSingleErrorMsg(
       "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
     );
     appStore.setCSAFLoading(false);
+    appStore.setDocument(null);
   }
 }
 
@@ -39,6 +41,7 @@ const displayErrorMsg = (response: Response) => {
   const msg = `An Error occured: HTTP ${response.status} - ${response.statusText}`;
   appStore.setFeedErrorMsg(msg);
   appStore.setProviderMetadata(null);
+  appStore.setCurrentFeed(null);
   appStore.setFeedLoading(false);
 };
 
@@ -66,6 +69,7 @@ async function loadProviderMetaData(url: string) {
       "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
     );
     appStore.setProviderMetadata(null);
+    appStore.setCurrentFeed(null);
     appStore.setFeedLoading(false);
   }
 }
@@ -101,6 +105,7 @@ async function loadFeed(feedURL: string, e?: Event) {
     );
     appStore.setCurrentFeed(null);
     appStore.setFeedLoading(false);
+    appStore.setProviderMetadata(null);
   }
 }
 
