@@ -16,6 +16,7 @@
   import SingleView from "$lib/singleview/SingleView.svelte";
   import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
+    appStore.setLastDoc($page.url.search);
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");
       loadSingleCSAF(url);
@@ -27,6 +28,8 @@
    * onMount checks queryparams and loads a single document if applicable.
    */
   onMount(() => {
+    appStore.clearHistory();
+    appStore.setLastDoc($page.url.search);
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");
       loadSingleCSAF(url);

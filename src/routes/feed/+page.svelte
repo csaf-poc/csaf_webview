@@ -7,6 +7,7 @@
   import FeedView from "$lib/feedview/FeedView.svelte";
   import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
+    appStore.setLastFeed($page.url.search);
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");
       if (/provider-metadata\.json/.test(url)) {
@@ -24,6 +25,8 @@
    * onMount checks whether there is a query parameter given to load a feed.
    */
   onMount(() => {
+    appStore.clearHistory();
+    appStore.setLastFeed($page.url.search);
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.search.replace("?q=", "");
       if (/provider-metadata\.json/.test(url)) {

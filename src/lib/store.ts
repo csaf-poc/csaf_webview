@@ -25,6 +25,8 @@ type AppStore = {
     isVulnerabilitiesSectionVisible: boolean;
     isProductTreeVisible: boolean;
     isFeedSectionOpen: boolean;
+    lastFeed: string;
+    lastDoc: string;
     selectedCVE: string;
     selectedProduct: string;
     uploadedFile: boolean;
@@ -54,6 +56,8 @@ const generateInitialState = (): AppStore => {
       isVulnerabilitiesSectionVisible: false,
       isProductTreeVisible: false,
       isFeedSectionOpen: false,
+      lastFeed: "",
+      lastDoc: "",
       selectedCVE: "",
       selectedProduct: "",
       uploadedFile: false,
@@ -113,6 +117,18 @@ function createStore() {
     setSingleErrorMsg: (msg: string) => {
       update((settings) => {
         settings.ui.singleErrorMsg = msg;
+        return settings;
+      });
+    },
+    setLastFeed: (feed: string) => {
+      update((settings) => {
+        settings.ui.lastFeed = feed;
+        return settings;
+      });
+    },
+    setLastDoc: (doc: string) => {
+      update((settings) => {
+        settings.ui.lastDoc = doc;
         return settings;
       });
     },
@@ -184,6 +200,12 @@ function createStore() {
     clearUploadedFile: () => {
       update((settings) => {
         settings.ui.uploadedFile = false;
+        return settings;
+      });
+    },
+    clearHistory: () => {
+      update((settings) => {
+        settings.ui.history = [];
         return settings;
       });
     },

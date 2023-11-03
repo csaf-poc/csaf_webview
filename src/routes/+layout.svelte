@@ -10,7 +10,10 @@
     FEED: "Switch to single view"
   };
   $: mode = $appStore.ui.appMode;
-  $: switchToRoute = mode === MODE.SINGLE ? `${base}/feed` : `${base}/`;
+  $: switchToRoute =
+    mode === MODE.SINGLE
+      ? `${base}/feed${$appStore.ui.lastFeed}`
+      : `${base}/${$appStore.ui.lastDoc}`;
   /**
    * Disable disables dropping a JSON anywhere on the page.
    * @param e
