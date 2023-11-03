@@ -11,7 +11,6 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
   import { goto } from "$app/navigation";
-  import { loadFeed, loadProviderMetaData } from "$lib/urlloader";
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   let url = "";
@@ -20,7 +19,7 @@
    */
   onMount(() => {
     if (/^\?q=/.test($page.url.search)) {
-      url = $page.url.search.replace("?q=", "");
+      url = $page.url.searchParams.get("q") || "";
     }
   });
 
@@ -28,11 +27,6 @@
    * load loads provider metadata / feed and reroute to given URL.
    */
   const load = () => {
-    if (/provider-metadata\.json/.test(url)) {
-      loadProviderMetaData(url);
-    } else {
-      loadFeed(url);
-    }
     goto(`/feed?q=${url}`);
   };
 
@@ -41,7 +35,7 @@
    * @param e
    */
   const keydown = (e: KeyboardEvent) => {
-    if (e.key === "Enter") loadProviderMetaData(url);
+    if (e.key === "Enter") load();
   };
 </script>
 

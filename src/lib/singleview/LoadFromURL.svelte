@@ -11,7 +11,6 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
   import { goto } from "$app/navigation";
-  import { loadSingleCSAF } from "$lib/urlloader";
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   let URL = "";
@@ -20,14 +19,13 @@
    */
   onMount(() => {
     if (/^\?q=/.test($page.url.search)) {
-      URL = $page.url.search.replace("?q=", "");
+      URL = $page.url.searchParams.get("q") || "";
     }
   });
   /**
    * loads a single CSAF document and routes to according URL.
    */
   const loads = () => {
-    loadSingleCSAF(URL);
     goto(`/?q=${URL}`);
   };
   /**
