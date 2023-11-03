@@ -16,9 +16,10 @@
   import SingleView from "$lib/singleview/SingleView.svelte";
   import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
-    appStore.setLastDoc($page.url.search);
+    const doc = $page.url.searchParams.get("q") || "";
+    if (doc) appStore.setLastDoc(`?q=${doc}`);
     if (/^\?q=/.test($page.url.search)) {
-      const url = $page.url.search.replace("?q=", "");
+      const url = $page.url.searchParams.get("q")!;
       loadSingleCSAF(url);
     } else {
       appStore.setDocument(null);
@@ -29,9 +30,10 @@
    */
   onMount(() => {
     appStore.clearHistory();
-    appStore.setLastDoc($page.url.search);
+    const doc = $page.url.searchParams.get("q") || "";
+    if (doc) appStore.setLastDoc(`?q=${doc}`);
     if (/^\?q=/.test($page.url.search)) {
-      const url = $page.url.search.replace("?q=", "");
+      const url = $page.url.searchParams.get("q")!;
       loadSingleCSAF(url);
     } else {
       appStore.setDocument(null);

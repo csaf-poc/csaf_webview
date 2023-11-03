@@ -7,9 +7,10 @@
   import FeedView from "$lib/feedview/FeedView.svelte";
   import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
-    appStore.setLastFeed($page.url.search);
+    const feed = $page.url.searchParams.get("q") || "";
+    if (feed) appStore.setLastFeed(`?q=${feed}`);
     if (/^\?q=/.test($page.url.search)) {
-      const url = $page.url.search.replace("?q=", "");
+      const url = $page.url.searchParams.get("q")!;
       if (/provider-metadata\.json/.test(url)) {
         loadProviderMetaData(url);
       } else {
@@ -26,9 +27,10 @@
    */
   onMount(() => {
     appStore.clearHistory();
-    appStore.setLastFeed($page.url.search);
+    const feed = $page.url.searchParams.get("q") || "";
+    if (feed) appStore.setLastFeed(`?q=${feed}`);
     if (/^\?q=/.test($page.url.search)) {
-      const url = $page.url.search.replace("?q=", "");
+      const url = $page.url.searchParams.get("q")!;
       if (/provider-metadata\.json/.test(url)) {
         loadProviderMetaData(url);
       } else {
