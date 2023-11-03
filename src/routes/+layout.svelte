@@ -47,16 +47,26 @@
     margin-right: 3rem;
   }
   .header {
-    display: flex;
+    display: flex-column;
     align-items: center;
-    margin-bottom: 1.5rem;
   }
-  .programname {
-    min-width: 45vw;
+
+  h1 {
+    margin-bottom: 0;
   }
-  .version {
-    min-width: 20vw;
-    text-align: right;
-    margin-left: auto;
+  @media only screen and (min-width: 768px) {
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .programname {
+      min-width: 45vw;
+    }
+    .version {
+      min-width: 20vw;
+      text-align: right;
+      margin-left: auto;
+    }
   }
 </style>
