@@ -8,13 +8,14 @@
   import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
     const feed = $page.url.searchParams.get("q") || "";
-    if (feed) appStore.setLastFeed(`${feed}`);
-    if (/^\?q=/.test($page.url.search)) {
-      const url = $page.url.searchParams.get("q")!;
-      if (/provider-metadata\.json/.test(url)) {
-        loadProviderMetaData(url);
+    const doc = $page.url.searchParams.get("doc") || "";
+    if (doc) appStore.setLastDoc(`${doc}`);
+    if (feed) {
+      appStore.setLastFeed(`${feed}`);
+      if (/provider-metadata\.json/.test(feed)) {
+        loadProviderMetaData(feed);
       } else {
-        loadFeed(url);
+        loadFeed(feed);
       }
     } else {
       appStore.setCurrentFeed(null);
@@ -28,13 +29,14 @@
   onMount(() => {
     appStore.clearHistory();
     const feed = $page.url.searchParams.get("q") || "";
-    if (feed) appStore.setLastFeed(`${feed}`);
-    if (/^\?q=/.test($page.url.search)) {
-      const url = $page.url.searchParams.get("q")!;
-      if (/provider-metadata\.json/.test(url)) {
-        loadProviderMetaData(url);
+    const doc = $page.url.searchParams.get("doc") || "";
+    if (doc) appStore.setLastDoc(`${doc}`);
+    if (feed) {
+      appStore.setLastFeed(`${feed}`);
+      if (/provider-metadata\.json/.test(feed)) {
+        loadProviderMetaData(feed);
       } else {
-        loadFeed(url);
+        loadFeed(feed);
       }
     } else {
       appStore.setCurrentFeed(null);

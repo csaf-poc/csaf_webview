@@ -17,10 +17,11 @@
   import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
     const doc = $page.url.searchParams.get("q") || "";
-    if (doc) appStore.setLastDoc(`${doc}`);
-    if (/^\?q=/.test($page.url.search)) {
-      const url = $page.url.searchParams.get("q")!;
-      loadSingleCSAF(url);
+    const feed = $page.url.searchParams.get("feed") || "";
+    if (feed) appStore.setLastFeed(`${feed}`);
+    if (doc) {
+      appStore.setLastDoc(`${doc}`);
+      loadSingleCSAF(doc);
     } else {
       appStore.setDocument(null);
     }
@@ -31,10 +32,11 @@
   onMount(() => {
     appStore.clearHistory();
     const doc = $page.url.searchParams.get("q") || "";
-    if (doc) appStore.setLastDoc(`${doc}`);
-    if (/^\?q=/.test($page.url.search)) {
-      const url = $page.url.searchParams.get("q")!;
-      loadSingleCSAF(url);
+    const feed = $page.url.searchParams.get("feed") || "";
+    if (feed) appStore.setLastFeed(`${feed}`);
+    if (doc) {
+      appStore.setLastDoc(`${doc}`);
+      loadSingleCSAF(doc);
     } else {
       appStore.setDocument(null);
     }

@@ -14,15 +14,31 @@
   $: {
     if (mode === MODE.SINGLE) {
       if ($appStore.ui.lastFeed) {
-        switchToRoute = `${base}/feed?q=${$appStore.ui.lastFeed}`;
+        if ($appStore.ui.lastDoc) {
+          switchToRoute = `${base}/feed?q=${$appStore.ui.lastFeed}&doc=${$appStore.ui.lastDoc}`;
+        } else {
+          switchToRoute = `${base}/feed?q=${$appStore.ui.lastFeed}`;
+        }
       } else {
-        switchToRoute = `${base}/feed`;
+        if ($appStore.ui.lastDoc) {
+          switchToRoute = `${base}/feed?doc=${$appStore.ui.lastDoc}`;
+        } else {
+          switchToRoute = `${base}/feed`;
+        }
       }
     } else {
       if ($appStore.ui.lastDoc) {
-        switchToRoute = `${base}/?q=${$appStore.ui.lastDoc}`;
+        if ($appStore.ui.lastFeed) {
+          switchToRoute = `${base}/?q=${$appStore.ui.lastDoc}&feed=${$appStore.ui.lastFeed}`;
+        } else {
+          switchToRoute = `${base}/?q=${$appStore.ui.lastDoc}`;
+        }
       } else {
-        switchToRoute = `${base}/`;
+        if ($appStore.ui.lastFeed) {
+          switchToRoute = `${base}/?feed=${$appStore.ui.lastFeed}`;
+        } else {
+          switchToRoute = `${base}/`;
+        }
       }
     }
   }
