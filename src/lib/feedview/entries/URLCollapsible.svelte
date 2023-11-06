@@ -10,6 +10,7 @@
 
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
   export let open = false;
   export let level = "2";
   export let class_ = "";
@@ -30,7 +31,8 @@
    */
   const openLink = (e: Event) => {
     let url: string = (e.target as Element).getAttribute("href")!;
-    goto(`/?q=${url}`);
+    const feed = $page.url.searchParams.get("q") || "";
+    goto(`/?q=${url}&feed=${feed}`);
     e.preventDefault();
   };
   const toggle = () => {
