@@ -12,8 +12,12 @@
   $: mode = $appStore.ui.appMode;
   $: switchToRoute =
     mode === MODE.SINGLE
-      ? `${base}/feed${$appStore.ui.lastFeed}`
-      : `${base}/${$appStore.ui.lastDoc}`;
+      ? $appStore.ui.lastFeed
+        ? `${base}/feed?q=${$appStore.ui.lastFeed}`
+        : `${base}/feed`
+      : $appStore.ui.lastDoc
+      ? `${base}/?q=${$appStore.ui.lastDoc}`
+      : `${base}/`;
   /**
    * Disable disables dropping a JSON anywhere on the page.
    * @param e

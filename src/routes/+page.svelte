@@ -17,7 +17,7 @@
   import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
     const doc = $page.url.searchParams.get("q") || "";
-    if (doc) appStore.setLastDoc(`?q=${doc}`);
+    if (doc) appStore.setLastDoc(`${doc}`);
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.searchParams.get("q")!;
       loadSingleCSAF(url);
@@ -31,7 +31,7 @@
   onMount(() => {
     appStore.clearHistory();
     const doc = $page.url.searchParams.get("q") || "";
-    if (doc) appStore.setLastDoc(`?q=${doc}`);
+    if (doc) appStore.setLastDoc(`${doc}`);
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.searchParams.get("q")!;
       loadSingleCSAF(url);

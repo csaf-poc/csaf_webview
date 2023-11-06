@@ -8,7 +8,7 @@
   import Spinner from "$lib/Spinner.svelte";
   $: if (browser) {
     const feed = $page.url.searchParams.get("q") || "";
-    if (feed) appStore.setLastFeed(`?q=${feed}`);
+    if (feed) appStore.setLastFeed(`${feed}`);
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.searchParams.get("q")!;
       if (/provider-metadata\.json/.test(url)) {
@@ -28,7 +28,7 @@
   onMount(() => {
     appStore.clearHistory();
     const feed = $page.url.searchParams.get("q") || "";
-    if (feed) appStore.setLastFeed(`?q=${feed}`);
+    if (feed) appStore.setLastFeed(`${feed}`);
     if (/^\?q=/.test($page.url.search)) {
       const url = $page.url.searchParams.get("q")!;
       if (/provider-metadata\.json/.test(url)) {
