@@ -19,7 +19,9 @@ async function loadSingleCSAF(url: string) {
       appStore.setDocument(docModel);
       appStore.setCSAFLoading(false);
     } else {
-      const msg = `An Error occured: HTTP ${response.status} - ${response.statusText}`;
+      const msg = response.statusText
+        ? `An Error occured: HTTP ${response.status} - ${response.statusText}`
+        : `An Error occured: HTTP ${response.status}`;
       appStore.setSingleErrorMsg(msg);
       appStore.setCSAFLoading(false);
       appStore.setDocument(null);
@@ -38,7 +40,9 @@ async function loadSingleCSAF(url: string) {
  * @param response
  */
 const displayErrorMsg = (response: Response) => {
-  const msg = `An Error occured: HTTP ${response.status} - ${response.statusText}`;
+  const msg = response.statusText
+    ? `An Error occured: HTTP ${response.status} - ${response.statusText}`
+    : `An Error occured: HTTP ${response.status}`;
   appStore.setFeedErrorMsg(msg);
   appStore.setProviderMetadata(null);
   appStore.setCurrentFeed(null);
