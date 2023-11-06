@@ -9,15 +9,23 @@
     SINGLE: "Switch to ROLIE-feed",
     FEED: "Switch to single view"
   };
+  let switchToRoute = "";
   $: mode = $appStore.ui.appMode;
-  $: switchToRoute =
-    mode === MODE.SINGLE
-      ? $appStore.ui.lastFeed
-        ? `${base}/feed?q=${$appStore.ui.lastFeed}`
-        : `${base}/feed`
-      : $appStore.ui.lastDoc
-      ? `${base}/?q=${$appStore.ui.lastDoc}`
-      : `${base}/`;
+  $: {
+    if (mode === MODE.SINGLE) {
+      if ($appStore.ui.lastFeed) {
+        switchToRoute = `${base}/feed?q=${$appStore.ui.lastFeed}`;
+      } else {
+        switchToRoute = `${base}/feed`;
+      }
+    } else {
+      if ($appStore.ui.lastDoc) {
+        switchToRoute = `${base}/?q=${$appStore.ui.lastDoc}`;
+      } else {
+        switchToRoute = `${base}/`;
+      }
+    }
+  }
   /**
    * Disable disables dropping a JSON anywhere on the page.
    * @param e
