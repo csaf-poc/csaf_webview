@@ -46,57 +46,63 @@
   };
 </script>
 
-<div class="row">
+<div class="crosstable-overview">
   {#if productLines.length > 0}
-    <div class="col col-10">
-      <table class="striped">
-        <thead>
-          <tr>
-            {#each headerColumns as column, index}
-              {#if index < 2}
-                <th>{column}</th>
-              {:else}
-                <th><a id={crypto.randomUUID()} on:click={openCVE} href={column}>{column}</a></th>
-              {/if}
-            {/each}
-          </tr>
-        </thead>
-        <tbody>
-          {#each productLines as line}
+    <div class="crosstable-container">
+      <div class="crosstable">
+        <table class="striped">
+          <thead>
             <tr>
-              {#each line as column, index}
-                {#if index < 1}
-                  <td
-                    ><a id={crypto.randomUUID()} on:click={openProduct} href={column}
-                      >{$appStore.doc.productsByID[column]} ({column})</a
-                    ></td
-                  >
-                {:else if column === "N.A"}
-                  <td>{column}</td>
+              {#each headerColumns as column, index}
+                {#if index == 0}
+                  <th class="productname">{column}</th>
+                {:else if index == 1}
+                  <th class="total">{column}</th>
                 {:else}
-                  <td>
-                    {#if column === ProductStatusSymbol.NOT_AFFECTED + ProductStatusSymbol.RECOMMENDED}
-                      <i class="bx bx-heart" />
-                      <i class="bx b-minus" />
-                    {:else}
-                      <i
-                        class:bx={true}
-                        class:bx-x={column === ProductStatusSymbol.KNOWN_AFFECTED}
-                        class:bx-check={column === ProductStatusSymbol.FIXED}
-                        class:bx-error={column === ProductStatusSymbol.UNDER_INVESTIGATION}
-                        class:bx-minus={column === ProductStatusSymbol.NOT_AFFECTED}
-                        class:bx-heart={column === ProductStatusSymbol.RECOMMENDED}
-                      />
-                    {/if}
-                  </td>
+                  <th class="cve"
+                    ><a id={crypto.randomUUID()} on:click={openCVE} href={column}>{column}</a></th
+                  >
                 {/if}
               {/each}
             </tr>
-          {/each}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {#each productLines as line}
+              <tr>
+                {#each line as column, index}
+                  {#if index < 1}
+                    <td
+                      ><a id={crypto.randomUUID()} on:click={openProduct} href={column}
+                        >{$appStore.doc.productsByID[column]} ({column})</a
+                      ></td
+                    >
+                  {:else if column === "N.A"}
+                    <td class="affectionstate">{column}</td>
+                  {:else}
+                    <td class="affectionstate">
+                      {#if column === ProductStatusSymbol.NOT_AFFECTED + ProductStatusSymbol.RECOMMENDED}
+                        <i class="bx bx-heart" />
+                        <i class="bx b-minus" />
+                      {:else}
+                        <i
+                          class:bx={true}
+                          class:bx-x={column === ProductStatusSymbol.KNOWN_AFFECTED}
+                          class:bx-check={column === ProductStatusSymbol.FIXED}
+                          class:bx-error={column === ProductStatusSymbol.UNDER_INVESTIGATION}
+                          class:bx-minus={column === ProductStatusSymbol.NOT_AFFECTED}
+                          class:bx-heart={column === ProductStatusSymbol.RECOMMENDED}
+                        />
+                      {/if}
+                    </td>
+                  {/if}
+                {/each}
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="legend col col-2">
+    <div class="legend">
       <div class="">
         <h6>Legend</h6>
         <dl>
@@ -120,8 +126,11 @@
   tr {
     line-height: 2rem;
   }
+
   .legend {
     margin-top: auto;
+    padding-left: 2.5rem;
+    width: 11vw;
   }
   dt {
     font-size: large;
@@ -141,5 +150,28 @@
   }
   h6 {
     font-weight: 600;
+  }
+  .crosstable-overview {
+    display: flex;
+  }
+  .crosstable-container {
+    width: 84vw;
+  }
+  .crosstable {
+    overflow: auto;
+    max-height: 70vh;
+  }
+  .cve {
+    min-width: 14rem;
+  }
+  .total {
+    min-width: 15rem;
+    text-align: center;
+  }
+  .affectionstate {
+    text-align: center;
+  }
+  .productname {
+    min-width: 35rem;
   }
 </style>
