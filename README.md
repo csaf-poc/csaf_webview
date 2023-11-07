@@ -90,7 +90,7 @@ server: {
 ```
 For more information look [here](https://vitejs.dev/config/server-options.html#server-proxy).
 
-In order to access the configured URL in a development setup you prefix the URL like
+Change target to the URL to be proxied.
 
 Copy `.env` to `.env.development` and set `PUBLIC_PROXY_PATH=/proxy/`.
 After that all requests are prefixed with the `PUBLIC_PROXY_PATH`.
