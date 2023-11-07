@@ -1,4 +1,4 @@
-name: "Coverage Test"
+name: 'Coverage Test'
 on:
   pull_request:
 
