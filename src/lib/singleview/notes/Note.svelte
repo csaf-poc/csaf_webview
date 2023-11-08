@@ -26,7 +26,7 @@
   }
 </script>
 
-<Collapsible header={`Category:${note.category}`} level="4">
+<Collapsible header={`Category: ${note.category}`} level="4">
   <KeyValue compact={true} {keys} {values} />
   <p>
     <ValueField label="Text" value={note.text} />
