@@ -12,7 +12,7 @@
   export let keys: Array<String>;
   export let values: any;
   export let compact = false;
-  let width = compact ? "width:8vw" : "width: 15vw;";
+  let width = compact ? "width:10rem" : "width: 15vw;";
 
   $: keyStyle = `padding: 0.2rem; ${width}`;
 </script>
