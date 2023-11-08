@@ -13,6 +13,7 @@
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
   import { page } from "$app/stores";
+  import { base } from "$app/paths";
   let url = "";
   /**
    * onMount set url if given via query param.
@@ -27,7 +28,7 @@
    * load loads provider metadata / feed and reroute to given URL.
    */
   const load = () => {
-    goto(`/feed?q=${url}`);
+    goto(`${base}/feed?q=${url}`);
   };
 
   /**

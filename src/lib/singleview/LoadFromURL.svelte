@@ -11,6 +11,7 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
   import { goto } from "$app/navigation";
+  import { base } from "$app/paths";
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   let URL = "";
@@ -26,7 +27,7 @@
    * loads a single CSAF document and routes to according URL.
    */
   const loads = () => {
-    goto(`/?q=${URL}`);
+    goto(`${base}/?q=${URL}`);
   };
   /**
    * keydown listnes for "Enter" to start loading.
