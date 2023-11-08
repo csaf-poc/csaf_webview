@@ -12,7 +12,7 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import KeyValue from "../../KeyValue.svelte";
   import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
-  import ValueField from "../../ValueField.svelte";
+  import SvelteMarkdown from "svelte-markdown";
   export let note: Note;
   let keys: string[] = [];
   let values: string[] = [];
@@ -28,12 +28,21 @@
 
 <Collapsible header={`Category: ${note.category}`} level="4">
   <KeyValue compact={true} {keys} {values} />
-  <p>
-    <ValueField label="Text" value={note.text} />
-  </p>
+  <p />
+  <h6>Text</h6>
+  <div class="text">
+    <SvelteMarkdown source={note.text} options={{ gfm: true }} />
+  </div>
 </Collapsible>
 
 <style>
+  .text {
+    margin-left: 3rem;
+  }
+  h6 {
+    line-height: 0.3em;
+    font-size: large;
+  }
   p {
     margin-top: 2rem;
   }

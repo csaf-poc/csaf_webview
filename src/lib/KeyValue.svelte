@@ -9,6 +9,7 @@
 -->
 
 <script lang="ts">
+  import SvelteMarkdown from "svelte-markdown";
   export let keys: Array<String>;
   export let values: any;
   export let compact = false;
@@ -20,7 +21,15 @@
 {#each keys as key, index}
   <table>
     <tbody>
-      <tr><td style={keyStyle}>{key}</td><td class="value">{values[index]}</td></tr>
+      {#if key == "text" || key == "Text"}
+        <tr
+          ><td style={keyStyle}>{key}</td><td class="value"
+            ><SvelteMarkdown source={values[index]} options={{ gfm: true }} /></td
+          ></tr
+        >
+      {:else}
+        <tr><td style={keyStyle}>{key}</td><td class="value">{values[index]}</td></tr>
+      {/if}
     </tbody>
   </table>
 {/each}
