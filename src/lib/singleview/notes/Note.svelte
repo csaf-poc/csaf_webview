@@ -20,8 +20,6 @@
     keys.push("Audience");
     values.push(note.audience);
   }
-  keys.push("Category");
-  values.push(note.category);
   if (note.title) {
     keys.push("Title");
     values.push(note.title);
