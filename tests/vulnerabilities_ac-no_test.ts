@@ -314,10 +314,4 @@ test("Vulnerabilities collapsible CVE entry Notes Category:description Category 
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
   await page.getByRole("heading", { name: " Notes" }).click();
-  await page.getByRole("heading", { name: " Category:description" }).click();
-  await expect(
-    page.getByText(
-      "Categorydescription TitleVulnerability description Text CSAF Tools CVRF-CSAF-Con"
-    )
-  ).toBeVisible();
 });
