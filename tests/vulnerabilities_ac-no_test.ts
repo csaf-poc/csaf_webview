@@ -277,7 +277,7 @@ test("Vulnerabilities collapsible CVE entry Notes functionality", async ({ page 
   await expect(page.getByRole("heading", { name: " Notes" })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Notes Category:description visibility", async ({
+test("Vulnerabilities collapsible CVE entry Notes Category: description visibility", async ({
   page
 }) => {
   await page.goto("/");
@@ -287,10 +287,10 @@ test("Vulnerabilities collapsible CVE entry Notes Category:description visibilit
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
   await page.getByRole("heading", { name: " Notes" }).click();
-  await expect(page.getByRole("heading", { name: " Category:description" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: " Category: description" })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Notes Category:description functionality", async ({
+test("Vulnerabilities collapsible CVE entry Notes Category: description functionality", async ({
   page
 }) => {
   await page.goto("/");
@@ -300,11 +300,11 @@ test("Vulnerabilities collapsible CVE entry Notes Category:description functiona
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
   await page.getByRole("heading", { name: " Notes" }).click();
-  await page.getByRole("heading", { name: " Category:description" }).click();
-  await expect(page.getByRole("heading", { name: " Category:description" })).toBeVisible();
+  await page.getByRole("heading", { name: " Category: description" }).click();
+  await expect(page.getByRole("heading", { name: " Category: description" })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Notes Category:description Category table visibility", async ({
+test("Vulnerabilities collapsible CVE entry Notes Category: description Category table visibility", async ({
   page
 }) => {
   await page.goto("/");
