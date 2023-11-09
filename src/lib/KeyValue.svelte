@@ -15,7 +15,7 @@
   export let values: any;
   export let compact = false;
   let width = compact ? "width:10rem" : "width: 15vw;";
-
+  marked.use({ gfm: true });
   $: keyStyle = `padding: 0.2rem; ${width}`;
 </script>
 

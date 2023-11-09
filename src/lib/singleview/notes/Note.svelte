@@ -14,6 +14,7 @@
   import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
   import { marked } from "marked";
   import DOMPurify from "dompurify";
+  marked.use({ gfm: true });
   export let note: Note;
   let keys: string[] = [];
   let values: string[] = [];
