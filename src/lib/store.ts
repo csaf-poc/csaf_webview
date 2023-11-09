@@ -16,12 +16,13 @@ type AppStore = {
   ui: {
     appMode: string;
     csafLoading: boolean;
+    docToggleExpandAll: boolean;
     feedErrorMsg: string;
     feedLoading: boolean;
     singleErrorMsg: string;
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
-    isVulnerabilisiesOverviewVisible: boolean;
+    isVulnerabilitiesOverviewVisible: boolean;
     isVulnerabilitiesSectionVisible: boolean;
     isProductTreeVisible: boolean;
     isFeedSectionOpen: boolean;
@@ -47,12 +48,13 @@ const generateInitialState = (): AppStore => {
     ui: {
       appMode: MODE.SINGLE,
       csafLoading: false,
+      docToggleExpandAll: false,
       feedErrorMsg: "",
       feedLoading: false,
       singleErrorMsg: "",
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
-      isVulnerabilisiesOverviewVisible: false,
+      isVulnerabilitiesOverviewVisible: false,
       isVulnerabilitiesSectionVisible: false,
       isProductTreeVisible: false,
       isFeedSectionOpen: false,
@@ -75,6 +77,16 @@ function createStore() {
     setCSAFLoading: (option: boolean) => {
       update((settings) => {
         settings.ui.csafLoading = option;
+        return settings;
+      });
+    },
+    toggleDocExpandAll: () => {
+      update((settings) => {
+        if (settings.ui.docToggleExpandAll) {
+          settings.ui.docToggleExpandAll = false;
+        } else {
+          settings.ui.docToggleExpandAll = true;
+        }
         return settings;
       });
     },
@@ -167,9 +179,39 @@ function createStore() {
         return settings;
       });
     },
+    setGeneralSectionVisible: () => {
+      update((settings) => {
+        settings.ui.isGeneralSectionVisible = true;
+        return settings;
+      });
+    },
+    setGeneralSectionInvisible: () => {
+      update((settings) => {
+        settings.ui.isGeneralSectionVisible = false;
+        return settings;
+      });
+    },
     setVulnerabilitiesSectionVisible: () => {
       update((settings) => {
         settings.ui.isVulnerabilitiesSectionVisible = true;
+        return settings;
+      });
+    },
+    setVulnerabilitiesSectionInvisible: () => {
+      update((settings) => {
+        settings.ui.isVulnerabilitiesSectionVisible = false;
+        return settings;
+      });
+    },
+    setVulnerabilitiesOverviewVisible: () => {
+      update((settings) => {
+        settings.ui.isVulnerabilitiesOverviewVisible = true;
+        return settings;
+      });
+    },
+    setVulnerabilitiesOverviewInvisible: () => {
+      update((settings) => {
+        settings.ui.isVulnerabilitiesOverviewVisible = false;
         return settings;
       });
     },
@@ -182,12 +224,6 @@ function createStore() {
     setProductTreeSectionInVisible: () => {
       update((settings) => {
         settings.ui.isProductTreeVisible = false;
-        return settings;
-      });
-    },
-    setVulnerabilitiesSectionInvisible: () => {
-      update((settings) => {
-        settings.ui.isVulnerabilitiesSectionVisible = false;
         return settings;
       });
     },
