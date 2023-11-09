@@ -20,6 +20,9 @@ type AppStore = {
     feedErrorMsg: string;
     feedLoading: boolean;
     singleErrorMsg: string;
+    isFeedDistributionOpen: boolean;
+    isFeedGeneralSectionOpen: boolean;
+    isFeedPublicPGPSectionOpen: boolean;
     isGeneralSectionVisible: boolean;
     isRevisionHistoryVisible: boolean;
     isVulnerabilitiesOverviewVisible: boolean;
@@ -52,6 +55,9 @@ const generateInitialState = (): AppStore => {
       feedErrorMsg: "",
       feedLoading: false,
       singleErrorMsg: "",
+      isFeedDistributionOpen: true,
+      isFeedGeneralSectionOpen: true,
+      isFeedPublicPGPSectionOpen: false,
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
       isVulnerabilitiesOverviewVisible: false,
@@ -176,6 +182,42 @@ function createStore() {
     resetSelectedProduct: () => {
       update((settings) => {
         settings.ui.selectedProduct = "";
+        return settings;
+      });
+    },
+    setFeedDistributionOpen: () => {
+      update((settings) => {
+        settings.ui.isFeedDistributionOpen = true;
+        return settings;
+      });
+    },
+    setFeedDistributionClosed: () => {
+      update((settings) => {
+        settings.ui.isFeedDistributionOpen = false;
+        return settings;
+      });
+    },
+    setFeedGeneralSectionOpen: () => {
+      update((settings) => {
+        settings.ui.isFeedGeneralSectionOpen = true;
+        return settings;
+      });
+    },
+    setFeedGeneralSectionClosed: () => {
+      update((settings) => {
+        settings.ui.isFeedGeneralSectionOpen = false;
+        return settings;
+      });
+    },
+    setFeedPublicPGPSectionOpen: () => {
+      update((settings) => {
+        settings.ui.isFeedPublicPGPSectionOpen = true;
+        return settings;
+      });
+    },
+    setFeedPublicPGPSectionClosed: () => {
+      update((settings) => {
+        settings.ui.isFeedPublicPGPSectionOpen = false;
         return settings;
       });
     },

@@ -17,15 +17,19 @@
 </script>
 
 {#if $appStore.providerMetadata}
-  <Collapsible header="General information" level="2" open={true}>
+  <Collapsible header="General information" level="2" open={$appStore.ui.isFeedGeneralSectionOpen}>
     <GeneralInformation />
   </Collapsible>
-  <Collapsible header="Public OpenPGP keys" level="2">
+  <Collapsible
+    header="Public OpenPGP keys"
+    level="2"
+    open={$appStore.ui.isFeedPublicPGPSectionOpen}
+  >
     {#each $appStore.providerMetadata["public_openpgp_keys"] as key}
       <KeyValue keys={["fingerprint", "url"]} values={[key.fingerprint, key.url]} />
     {/each}
   </Collapsible>
-  <Collapsible header="Distributions" level="2" open={true}>
+  <Collapsible header="Distributions" level="2" open={$appStore.ui.isFeedDistributionOpen}>
     <Distributions />
   </Collapsible>
 {/if}

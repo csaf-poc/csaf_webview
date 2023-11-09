@@ -3,7 +3,7 @@
 </script>
 
 <input id="expandall" bind:checked type="checkbox" />
-<label for="expandall" class="expandall">Expand all sections</label>
+<label for="expandall" class="expandall">Expand sections</label>
 
 <style>
   .expandall {

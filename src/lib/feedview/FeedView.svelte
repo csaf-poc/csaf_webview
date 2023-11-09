@@ -14,9 +14,29 @@
   import Feed from "./feed/Feed.svelte";
   import Loader from "./Loader.svelte";
   import Overview from "./feed/Overview.svelte";
+  import ExpandAll from "$lib/ExpandAll.svelte";
+  let expand: boolean;
+  $: if (expand) {
+    if ($appStore.providerMetadata) {
+      appStore.setFeedGeneralSectionOpen();
+      appStore.setFeedPublicPGPSectionOpen();
+      appStore.setFeedDistributionOpen();
+    }
+    appStore.setFeedSectionOpen();
+  } else {
+    if (expand !== undefined && $appStore.providerMetadata) {
+      appStore.setFeedGeneralSectionClosed();
+      appStore.setFeedPublicPGPSectionClosed();
+      appStore.setFeedDistributionClosed();
+    }
+    if (expand !== undefined) appStore.setFeedSectionClosed();
+  }
 </script>
 
 <Loader />
+{#if $appStore.providerMetadata}
+  <ExpandAll bind:checked={expand} />
+{/if}
 <Overview />
 {#if $appStore.currentFeed}
   <Collapsible

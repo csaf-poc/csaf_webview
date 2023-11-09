@@ -27,11 +27,13 @@
     <div class="entry">
       <table>
         <tbody>
-          <tr
-            ><td class="key">Summary</td><td class="value"
-              ><span class="header">{feed.summary}</span></td
-            ></tr
-          >
+          {#if feed.summary}
+            <tr
+              ><td class="key">Summary</td><td class="value"
+                ><span class="header">{feed.summary}</span></td
+              ></tr
+            >
+          {/if}
           <tr
             ><td class="key">TLP-Label</td><td class="value"
               ><span
