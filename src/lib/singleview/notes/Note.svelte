@@ -12,6 +12,8 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import KeyValue from "../../KeyValue.svelte";
   import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
+  import { marked } from "marked";
+  import DOMPurify from "dompurify";
   export let note: Note;
   let keys: string[] = [];
   let values: string[] = [];
@@ -30,7 +32,9 @@
   <p />
   <h6>Text</h6>
   <div class="text">
-    {note.text}
+    {@html DOMPurify.sanitize(
+      marked.parse(note.text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))
+    )}
   </div>
 </Collapsible>
 

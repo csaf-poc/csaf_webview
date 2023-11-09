@@ -9,6 +9,8 @@
 -->
 
 <script lang="ts">
+  import { marked } from "marked";
+  import DOMPurify from "dompurify";
   export let keys: Array<String>;
   export let values: any;
   export let compact = false;
@@ -21,7 +23,13 @@
   <table>
     <tbody>
       {#if key == "text" || key == "Text"}
-        <tr><td style={keyStyle}>{key}</td><td class="value">{values[index]}</td></tr>
+        <tr
+          ><td style={keyStyle}>{key}</td><td class="value"
+            >{@html DOMPurify.sanitize(
+              marked.parse(values[index].replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))
+            )}</td
+          ></tr
+        >
       {:else}
         <tr><td style={keyStyle}>{key}</td><td class="value">{values[index]}</td></tr>
       {/if}
