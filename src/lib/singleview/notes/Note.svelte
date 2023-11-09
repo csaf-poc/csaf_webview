@@ -12,7 +12,6 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import KeyValue from "../../KeyValue.svelte";
   import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
-  import SvelteMarkdown from "svelte-markdown";
   export let note: Note;
   let keys: string[] = [];
   let values: string[] = [];
@@ -31,7 +30,7 @@
   <p />
   <h6>Text</h6>
   <div class="text">
-    <SvelteMarkdown source={note.text} options={{ gfm: true }} />
+    {note.text}
   </div>
 </Collapsible>
 
