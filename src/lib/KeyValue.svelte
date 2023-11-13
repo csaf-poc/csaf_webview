@@ -24,12 +24,15 @@
     <tbody>
       {#if key == "text" || key == "Text"}
         <tr
-          ><td style={keyStyle}>{key}</td><td class="value"
-            >{@html DOMPurify.sanitize(
-              marked.parse(values[index].replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))
-            )}</td
-          ></tr
-        >
+          ><td style={keyStyle}>{key}</td><td class="value">
+            <small class="hint bg-light">rendered Markdown</small>
+            <div class="bd-light display-markdown">
+              {@html DOMPurify.sanitize(
+                marked.parse(values[index].replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))
+              )}
+            </div>
+          </td>
+        </tr>
       {:else}
         <tr><td style={keyStyle}>{key}</td><td class="value">{values[index]}</td></tr>
       {/if}
@@ -40,5 +43,8 @@
 <style>
   .value {
     padding: 0.2rem;
+  }
+  .display-markdown {
+    padding: 0.5rem;
   }
 </style>

@@ -28,15 +28,24 @@
 </script>
 
 <KeyValue compact={true} {keys} {values} />
-<p />
-<h6>Text</h6>
-<div class="text">
+<div class="category-name">
+  <h6>Text</h6>
+</div>
+
+<small class="hint bg-light">rendered Markdown</small>
+<div class="text display-markdown bd-light">
   {@html DOMPurify.sanitize(
     marked.parse(note.text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))
   )}
 </div>
 
 <style>
+  .category-name {
+    margin-top: 1.5rem;
+  }
+  .hint {
+    margin-left: 3rem;
+  }
   .text {
     margin-left: 3rem;
   }
@@ -44,7 +53,7 @@
     line-height: 0.3em;
     font-size: large;
   }
-  p {
-    margin-top: 2rem;
+  .display-markdown {
+    padding: 0.5rem;
   }
 </style>
