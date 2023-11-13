@@ -44,6 +44,12 @@
   <div class="col">
     <div style="display:flex">
       <button class="loadbutton" on:click={loads}><i class="bx bx-book-open" />URL</button>
+      <button
+        class="clearbutton"
+        on:click={() => {
+          URL = "";
+        }}><i class="bx bx-trash" /> Clear</button
+      >
       <input class="url" type="text" bind:value={URL} on:keydown={keydown} />
     </div>
   </div>
@@ -61,7 +67,13 @@
     font-weight: bold;
   }
   .loadbutton {
-    width: 200px;
+    min-width: 200px;
+    height: 50px;
+    font-size: large;
+  }
+  .clearbutton {
+    margin-left: 1rem;
+    min-width: 140px;
     height: 50px;
     font-size: large;
   }
