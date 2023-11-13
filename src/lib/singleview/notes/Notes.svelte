@@ -9,6 +9,7 @@
 -->
 
 <script lang="ts">
+  import Collapsible from "$lib/Collapsible.svelte";
   import SingleNote from "$lib/singleview/notes/Note.svelte";
   import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
   export let notes: Note[];
@@ -16,6 +17,8 @@
 
 {#if notes}
   {#each notes as note}
-    <SingleNote {note} />
+    <Collapsible header={`Category: ${note.category}`} level="4" open={notes.length === 1}>
+      <SingleNote {note} />
+    </Collapsible>
   {/each}
 {/if}

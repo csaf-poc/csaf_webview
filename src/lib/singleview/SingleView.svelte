@@ -18,7 +18,6 @@
   import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
   import Upload from "./Upload.svelte";
   import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
-  import ExpandAll from "$lib/ExpandAll.svelte";
   $: isCSAF = !(
     !$appStore.doc?.isRevisionHistoryPresent &&
     !$appStore.doc?.isDocPresent &&
@@ -28,18 +27,6 @@
     !$appStore.doc?.isTrackingPresent &&
     !$appStore.doc?.isVulnerabilitiesPresent
   );
-  let expand: boolean;
-  $: if (expand) {
-    appStore.setGeneralSectionVisible();
-    appStore.setProductTreeSectionVisible();
-    appStore.setVulnerabilitiesSectionVisible();
-    appStore.setVulnerabilitiesOverviewVisible();
-  } else {
-    appStore.setGeneralSectionInvisible();
-    appStore.setProductTreeSectionInVisible();
-    appStore.setVulnerabilitiesSectionInvisible();
-    appStore.setVulnerabilitiesOverviewInvisible();
-  }
 </script>
 
 <div class="row">
@@ -58,9 +45,6 @@
       <div class="col">
         <h1>{$appStore.doc["id"]}: {$appStore.doc["title"]}</h1>
       </div>
-    </div>
-    <div style="margin-bottom:1rem;">
-      <ExpandAll bind:checked={expand} />
     </div>
     <Collapsible header="General" open={$appStore.ui.isGeneralSectionVisible}>
       <General />

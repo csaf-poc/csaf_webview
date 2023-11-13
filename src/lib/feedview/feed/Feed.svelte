@@ -27,10 +27,10 @@
       compact={true}
     />
   </div>
-  <Collapsible header="Links" level="3">
+  <Collapsible header="Links" level="3" open={true}>
     <Links links={feed.link} />
   </Collapsible>
-  <Collapsible header="Category" level="3">
+  <Collapsible header="Category" level="3" open={true}>
     <Category categories={feed.category} />
   </Collapsible>
   <Collapsible header="Entries" level="3">

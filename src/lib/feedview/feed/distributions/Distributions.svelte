@@ -15,7 +15,11 @@
 
 {#if $appStore.providerMetadata}
   {#each $appStore.providerMetadata["distributions"] as distribution, index}
-    <Collapsible header={`Distribution ${index + 1}`} level="3">
+    <Collapsible
+      header={`Distribution ${index + 1}`}
+      level="3"
+      open={$appStore.providerMetadata["distributions"].length === 1}
+    >
       <Distribution {distribution} />
     </Collapsible>
   {/each}
