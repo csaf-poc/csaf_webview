@@ -43,7 +43,7 @@
 <div class="row">
   <div class="col">
     <div style="display:flex">
-      <button class="loadbutton" on:click={load}><i class="bx bx-book-open" />View feed</button>
+      <button class="loadbutton" on:click={load}><i class="bx bx-book-open" />URL </button>
       <button
         class="clearbutton"
         on:click={() => {

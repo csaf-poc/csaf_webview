@@ -66,10 +66,22 @@
       <h4>v{version}</h4>
     </div>
   </div>
+  <div class="displaymode-name">
+    {#if mode === MODE.SINGLE}
+      Single document view
+    {:else}
+      ROLIE-Feed view
+    {/if}
+    <hr />
+  </div>
   <slot />
 </div>
 
 <style>
+  .displaymode-name {
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+  }
   .switchbutton {
     box-shadow: 1px 3px 3px #c1c1c1;
   }
@@ -89,7 +101,7 @@
     .header {
       display: flex;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     .programname {
       min-width: 45vw;
