@@ -8,11 +8,9 @@
 
 /// <reference lib="dom"/>
 
-
 // This part tests what is avaible without uploading any files
 import { expect, test } from "@playwright/test";
 import { readFileSync } from "fs";
-
 
 test("index page has expected h1", async ({ page }) => {
   await page.goto("/");
@@ -21,9 +19,9 @@ test("index page has expected h1", async ({ page }) => {
 
 test("index page has expected version", async ({ page }) => {
   var versionnr = process.env.npm_package_version;
-  var version = "v"+versionnr;
+  var version = "v" + versionnr;
   await page.goto("/");
-  await expect(page.getByRole('heading', { name: version })).toBeVisible();
+  await expect(page.getByRole("heading", { name: version })).toBeVisible();
 });
 
 test("index page has file input", async ({ page }) => {
@@ -33,7 +31,7 @@ test("index page has file input", async ({ page }) => {
 
 test("index page has URL Button", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole('button', { name: ' URL' })).toBeVisible();
+  await expect(page.getByRole("button", { name: " URL" })).toBeVisible();
 });
 
 test("index page has textbox", async ({ page }) => {
@@ -50,30 +48,30 @@ test("index page has dropbox", async ({ page }) => {
 
 test("index page has Switch to ROLIE-feed Button", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole('link', { name: 'Switch to ROLIE-feed' })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Switch to ROLIE-feed" })).toBeVisible();
 });
 
 test("index page Switch to ROLIE-feed Button works", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole('link', { name: 'Switch to ROLIE-feed' }).click();
-  await expect(page.getByRole('link', { name: 'Switch to Single View' })).toBeVisible();  
+  await page.getByRole("link", { name: "Switch to ROLIE-feed" }).click();
+  await expect(page.getByRole("link", { name: "Switch to Single View" })).toBeVisible();
 });
 
 test("index page ROLIE feed version has View feed button", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole('link', { name: 'Switch to ROLIE-feed' }).click();
-  await expect(page.getByRole('button', { name: ' View feed' })).toBeVisible();  
+  await page.getByRole("link", { name: "Switch to ROLIE-feed" }).click();
+  await expect(page.getByRole("button", { name: "URL" })).toBeVisible();
 });
 
 test("index page ROLIE feed version has switch to single view button", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole('link', { name: 'Switch to ROLIE-feed' }).click();
-  await expect(page.getByRole('link', { name: 'Switch to single view' })).toBeVisible();  
+  await page.getByRole("link", { name: "Switch to ROLIE-feed" }).click();
+  await expect(page.getByRole("link", { name: "Switch to single view" })).toBeVisible();
 });
 
 test("index page ROLIE feed version has working switch to single view button", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole('link', { name: 'Switch to ROLIE-feed' }).click();
-  await page.getByRole('link', { name: 'Switch to single view' }).click();
-  await expect(page.getByRole('link', { name: 'Switch to ROLIE-feed' })).toBeVisible();
+  await page.getByRole("link", { name: "Switch to ROLIE-feed" }).click();
+  await page.getByRole("link", { name: "Switch to single view" }).click();
+  await expect(page.getByRole("link", { name: "Switch to ROLIE-feed" })).toBeVisible();
 });

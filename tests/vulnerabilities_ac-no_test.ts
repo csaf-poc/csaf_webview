@@ -26,7 +26,7 @@ test("Vulnerabilities collapsible functionality", async ({ page }) => {
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await expect(page.getByRole("heading", { name: " Vulnerabilities" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: " Vulnerabilities", exact: true })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry visibility", async ({ page }) => {
@@ -263,7 +263,7 @@ test("Vulnerabilities collapsible CVE entry Notes visibility", async ({ page }) 
 
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
-  await expect(page.getByRole("heading", { name: " Notes" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Notes" })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Notes functionality", async ({ page }) => {
@@ -273,8 +273,8 @@ test("Vulnerabilities collapsible CVE entry Notes functionality", async ({ page 
 
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
-  await page.getByRole("heading", { name: " Notes" }).click();
-  await expect(page.getByRole("heading", { name: " Notes" })).toBeVisible();
+  await page.getByRole("heading", { name: "Notes" }).click();
+  await expect(page.getByRole("heading", { name: "Notes" })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Notes Category: description visibility", async ({
@@ -286,8 +286,8 @@ test("Vulnerabilities collapsible CVE entry Notes Category: description visibili
 
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
-  await page.getByRole("heading", { name: " Notes" }).click();
-  await expect(page.getByRole("heading", { name: " Category: description" })).toBeVisible();
+
+  await expect(page.getByRole("heading", { name: "Category: description" })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Notes Category: description functionality", async ({
@@ -299,9 +299,9 @@ test("Vulnerabilities collapsible CVE entry Notes Category: description function
 
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
-  await page.getByRole("heading", { name: " Notes" }).click();
-  await page.getByRole("heading", { name: " Category: description" }).click();
-  await expect(page.getByRole("heading", { name: " Category: description" })).toBeVisible();
+
+  await page.getByRole("heading", { name: "Category: description" }).click();
+  await expect(page.getByRole("heading", { name: "Category: description" })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Notes Category: description Category table visibility", async ({
@@ -313,5 +313,4 @@ test("Vulnerabilities collapsible CVE entry Notes Category: description Category
 
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
-  await page.getByRole("heading", { name: " Notes" }).click();
 });
