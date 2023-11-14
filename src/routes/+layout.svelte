@@ -58,12 +58,11 @@
   <div class="header">
     <div class="programname">
       <h1 role="heading">CSAF Webview</h1>
-    </div>
-    <div>
-      <a title={mode} href={switchToRoute} class="switchbutton button">{mode}</a>
-    </div>
-    <div class="version">
       <h4>v{version}</h4>
+    </div>
+    <div><h4>{mode === MODE.SINGLE ? "Single View" : "Multi-View"}</h4></div>
+    <div class="version">
+      <a title={mode} href={switchToRoute} class="switchbutton button">{mode}</a>
     </div>
   </div>
   <slot />
@@ -80,16 +79,23 @@
   .header {
     display: flex-column;
     align-items: center;
+    margin-block-end: 2rem;
+  }
+
+  .programname {
+    display: flex;
+    align-items: baseline;
   }
 
   h1 {
     margin-bottom: 0;
+    margin-right: 1rem;
   }
   @media only screen and (min-width: 768px) {
     .header {
       display: flex;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-block-end: 1rem;
     }
     .programname {
       min-width: 45vw;
