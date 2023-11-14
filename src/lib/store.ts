@@ -57,7 +57,7 @@ const generateInitialState = (): AppStore => {
       singleErrorMsg: "",
       isFeedDistributionOpen: true,
       isFeedGeneralSectionOpen: true,
-      isFeedPublicPGPSectionOpen: true,
+      isFeedPublicPGPSectionOpen: false,
       isGeneralSectionVisible: true,
       isRevisionHistoryVisible: false,
       isVulnerabilitiesOverviewVisible: true,
