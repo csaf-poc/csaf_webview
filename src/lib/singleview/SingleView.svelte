@@ -29,6 +29,7 @@
   );
 </script>
 
+<LoadFromUrl />
 <div class="row">
   <div class="col col-3">
     <Upload />
@@ -37,7 +38,6 @@
     <Droparea />
   </div>
 </div>
-<LoadFromUrl />
 
 {#if isCSAF}
   {#if $appStore.doc}

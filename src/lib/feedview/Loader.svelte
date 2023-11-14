@@ -77,7 +77,7 @@
   }
   .clearbutton {
     margin-left: 1rem;
-    min-width: 120px;
+    min-width: 140px;
     height: 50px;
     font-size: large;
   }

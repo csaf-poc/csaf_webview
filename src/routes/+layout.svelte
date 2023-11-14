@@ -60,9 +60,11 @@
       <h1 role="heading">CSAF Webview</h1>
       <h4>v{version}</h4>
     </div>
-    <div><h4>{mode === MODE.SINGLE ? "Single View" : "Multi-View"}</h4></div>
+    <div><h4>{mode === MODE.SINGLE ? "Single View" : "Multi View"}</h4></div>
     <div class="version">
-      <a title={mode} href={switchToRoute} class="switchbutton button">{mode}</a>
+      <a title={mode} href={switchToRoute} class="switchbutton button"
+        >{mode !== MODE.SINGLE ? "switch to Single View" : "Switch to Multi View"}</a
+      >
     </div>
   </div>
   <slot />
