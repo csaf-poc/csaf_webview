@@ -23,7 +23,13 @@
   }
 </script>
 
-<input type="file" accept="application/json" bind:files bind:this={input} />
+<input
+  title="Upload CSAF Document from your device"
+  type="file"
+  accept="application/json"
+  bind:files
+  bind:this={input}
+/>
 
 <style>
   input[type="file"]::file-selector-button {

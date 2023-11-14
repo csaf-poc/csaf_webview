@@ -46,6 +46,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
+  title="Drop a CSAF file here"
   class="droparea"
   class:hover
   class:bg-error={valid == false}

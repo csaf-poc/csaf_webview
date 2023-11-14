@@ -60,28 +60,16 @@
       <h1 role="heading">CSAF Webview</h1>
     </div>
     <div>
-      <a href={switchToRoute} class="switchbutton button">{mode}</a>
+      <a title={mode} href={switchToRoute} class="switchbutton button">{mode}</a>
     </div>
     <div class="version">
       <h4>v{version}</h4>
     </div>
   </div>
-  <div class="displaymode-name">
-    {#if mode === MODE.SINGLE}
-      Single document view
-    {:else}
-      ROLIE-Feed view
-    {/if}
-    <hr />
-  </div>
   <slot />
 </div>
 
 <style>
-  .displaymode-name {
-    margin-top: 1.5rem;
-    margin-bottom: 3rem;
-  }
   .switchbutton {
     box-shadow: 1px 3px 3px #c1c1c1;
   }

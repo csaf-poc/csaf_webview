@@ -43,9 +43,12 @@
 <div class="row">
   <div class="col">
     <div style="display:flex">
-      <button class="loadbutton" on:click={loads}><i class="bx bx-book-open" />URL</button>
+      <button class="loadbutton" title="URL to single CSAF document" on:click={loads}
+        ><i class="bx bx-book-open" />URL</button
+      >
       <button
         class="clearbutton"
+        title="Clear the URL field"
         on:click={() => {
           URL = "";
         }}><i class="bx bx-trash" /> Clear</button

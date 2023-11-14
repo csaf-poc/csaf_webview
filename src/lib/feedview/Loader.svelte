@@ -43,9 +43,12 @@
 <div class="row">
   <div class="col">
     <div style="display:flex">
-      <button class="loadbutton" on:click={load}><i class="bx bx-book-open" />URL </button>
+      <button class="loadbutton" title="URL to provider_metadata.json or ROLIE-feed" on:click={load}
+        ><i class="bx bx-book-open" />URL
+      </button>
       <button
         class="clearbutton"
+        title="Clear the URL field"
         on:click={() => {
           url = "";
         }}><i class="bx bx-trash" /> Clear</button
