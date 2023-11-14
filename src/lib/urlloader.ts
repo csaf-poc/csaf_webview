@@ -50,20 +50,33 @@ const displayErrorMsg = (response: Response) => {
 };
 
 /**
- * loadProviderMetaData loads the provider metadata from the given URL.
+ * load loads data from the given URL and sets providerMetadata or feed accordingly.
  * @param url
  */
-async function loadProviderMetaData(url: string) {
+async function load(url: string) {
   url = `${PUBLIC_PROXY_PATH}${url}`;
-  appStore.setFeedErrorMsg("");
   try {
     appStore.setFeedLoading(true);
     const response = await fetch(`${url}`);
     if (response.ok) {
       appStore.setCurrentFeed(null);
       appStore.setProviderMetadata(null);
-      const providerMetadata = await response.json();
-      appStore.setProviderMetadata(providerMetadata);
+      const json = await response.json();
+      const isProviderMetadata =
+        json.canonical_url &&
+        json.last_updated &&
+        json.list_on_CSAF_aggregators &&
+        json.mirror_on_CSAF_aggregators &&
+        json.metadata_version &&
+        json.publisher &&
+        json.role;
+      if (isProviderMetadata) {
+        appStore.setProviderMetadata(json);
+      } else {
+        appStore.setCurrentFeed(json);
+        appStore.setFeedSectionOpen();
+      }
+
       appStore.setFeedLoading(false);
     } else {
       displayErrorMsg(response);
@@ -78,39 +91,4 @@ async function loadProviderMetaData(url: string) {
   }
 }
 
-/**
- * loadFeed loads a single feed.
- * @param feedURL
- * @param e
- */
-async function loadFeed(feedURL: string, e?: Event) {
-  feedURL = `${PUBLIC_PROXY_PATH}${feedURL}`;
-  appStore.setFeedErrorMsg("");
-  try {
-    appStore.setFeedLoading(true);
-    const response = await fetch(`${feedURL}`);
-    if (response.ok) {
-      const feedJSON = await response.json();
-      appStore.setCurrentFeed(null);
-      appStore.setCurrentFeed(feedJSON);
-      appStore.setFeedSectionOpen();
-      if (e) appStore.unshiftHistory((e.target as Element).id);
-      appStore.setFeedLoading(false);
-      setTimeout(() => {
-        const el = document.getElementById(`${feedURL}`);
-        el?.scrollIntoView({ block: "start", behavior: "smooth" });
-      }, 100);
-    } else {
-      displayErrorMsg(response);
-    }
-  } catch (error) {
-    appStore.setFeedErrorMsg(
-      "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
-    );
-    appStore.setCurrentFeed(null);
-    appStore.setFeedLoading(false);
-    appStore.setProviderMetadata(null);
-  }
-}
-
-export { loadSingleCSAF, loadProviderMetaData, loadFeed };
+export { loadSingleCSAF, load };

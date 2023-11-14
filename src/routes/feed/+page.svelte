@@ -1,7 +1,7 @@
 <script lang="ts">
   import { appStore } from "$lib/store";
   import { browser } from "$app/environment";
-  import { loadFeed, loadProviderMetaData } from "$lib/urlloader";
+  import { load } from "$lib/urlloader";
   import { onMount } from "svelte";
   import { page } from "$app/stores";
   import FeedView from "$lib/feedview/FeedView.svelte";
@@ -12,11 +12,7 @@
     if (doc) appStore.setLastDoc(`${doc}`);
     if (feed) {
       appStore.setLastFeed(`${feed}`);
-      if (/provider-metadata\.json/.test(feed)) {
-        loadProviderMetaData(feed);
-      } else {
-        loadFeed(feed);
-      }
+      load(feed);
     } else {
       appStore.setCurrentFeed(null);
       appStore.setProviderMetadata(null);
@@ -33,11 +29,7 @@
     if (doc) appStore.setLastDoc(`${doc}`);
     if (feed) {
       appStore.setLastFeed(`${feed}`);
-      if (/provider-metadata\.json/.test(feed)) {
-        loadProviderMetaData(feed);
-      } else {
-        loadFeed(feed);
-      }
+      load(feed);
     } else {
       appStore.setCurrentFeed(null);
       appStore.setProviderMetadata(null);

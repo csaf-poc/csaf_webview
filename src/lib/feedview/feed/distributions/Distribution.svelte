@@ -9,15 +9,18 @@
 -->
 
 <script lang="ts">
-  import { loadFeed } from "$lib/urlloader";
   import type { Distribution } from "./distributiontype";
+  import { base } from "$app/paths";
+  import { goto } from "$app/navigation";
+  import { appStore } from "$lib/store";
   export let distribution: Distribution;
   /**
    * openFeed opens a feed from a distribution.
    * @param e
    */
   const openFeed = (e: Event) => {
-    loadFeed((e.target as Element).getAttribute("href")!, e);
+    const url = (e.target as Element).getAttribute("href")!;
+    goto(`${base}/feed?q=${url}`);
     e.preventDefault();
   };
 </script>
