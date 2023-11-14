@@ -20,7 +20,11 @@
 {#each keys as key, index}
   <table>
     <tbody>
-      <tr><td style={keyStyle}>{key}</td><td class="value">{values[index]}</td></tr>
+      {#if key == "text" || key == "Text"}
+        <tr><td style={keyStyle}>{key}</td><td class="value">{values[index]}</td></tr>
+      {:else}
+        <tr><td style={keyStyle}>{key}</td><td class="value">{values[index]}</td></tr>
+      {/if}
     </tbody>
   </table>
 {/each}

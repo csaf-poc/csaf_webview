@@ -80,7 +80,7 @@ The default configuration is:
 server: {
     proxy: {
       "/proxy/": {
-        target: "http://localhost:8080",
+        target: "https://wid.cert-bund.de/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/proxy/, "")
       }
@@ -91,9 +91,6 @@ server: {
 For more information look [here](https://vitejs.dev/config/server-options.html#server-proxy).
 
 Change target to the URL to be proxied.
-
-Copy `.env` to `.env.development` and set `PUBLIC_PROXY_PATH=/proxy/`.
-After that all requests are prefixed with the `PUBLIC_PROXY_PATH`.
 
 ## License
 
