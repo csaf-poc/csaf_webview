@@ -33,7 +33,7 @@
   <Collapsible header="Category" level="3" open={true}>
     <Category categories={feed.category} />
   </Collapsible>
-  <Collapsible header="Entries" level="3">
+  <Collapsible header="Entries" level="3" open={true}>
     <Entries entries={feed.entry} />
   </Collapsible>
 {/if}
