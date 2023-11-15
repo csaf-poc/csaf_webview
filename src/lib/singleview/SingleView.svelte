@@ -33,10 +33,10 @@
   <LoadFromUrl />
 </div>
 <div class="row">
-  <div class="col col-3">
+  <div class="col-6 col-3-lg">
     <Upload />
   </div>
-  <div class="col col-9">
+  <div class="col-6 col-9-lg">
     <Droparea />
   </div>
 </div>
