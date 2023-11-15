@@ -29,11 +29,6 @@ test("index page has file input", async ({ page }) => {
   await expect(page.locator('input[type="file"]')).toBeVisible();
 });
 
-test("index page has URL Button", async ({ page }) => {
-  await page.goto("/");
-  await expect(page.getByRole("button", { name: "URL" })).toBeVisible();
-});
-
 test("index page has textbox", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('input[type="text"]')).toBeVisible();
@@ -55,12 +50,6 @@ test("index page Switch to ROLIE-feed Button works", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("link", { name: "Switch to Overview" }).click();
   await expect(page.getByRole("link", { name: "Switch to Advisory" })).toBeVisible();
-});
-
-test("index page ROLIE feed version has View feed button", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("link", { name: "Switch to Overview" }).click();
-  await expect(page.getByRole("button", { name: "URL" })).toBeVisible();
 });
 
 test("index page ROLIE feed version has switch to single view button", async ({ page }) => {

@@ -41,30 +41,23 @@
 </script>
 
 <div class="row">
-  <div class="col-6 col-3-lg">
-    <div style="display:flex">
-      <button
-        class="loadbutton"
-        title="View provider_metadata.json or ROLIE-feed from URL"
-        on:click={load}
-        ><span style="white-space:nowrap"
-          ><i class="bx bx-file" /><span class="btnlabel">URL</span></span
-        >
-      </button>
-      <button
-        class="clearbutton"
-        title="Clear the URL field"
-        on:click={() => {
-          url = "";
-        }}
-        ><span style="white-space:nowrap"
-          ><i class="bx bx-trash" /><span class="btnlabel">Clear</span></span
-        ></button
-      >
+  <div class="col-12 outline">
+    <div class="urlcontainer" title="URL to fetch Advisory from">
+      <span class="prepend">
+        <i class="bx bx-file" />
+        <span class="prependtext">URL</span>
+      </span>
+      <input class="urlinput" type="text" bind:value={url} on:keydown={keydown} />
+      {#if url}
+        <span class="postpend" title="Discard search">
+          <button
+            on:click={() => {
+              url = "";
+            }}><i class="bx bx-x" /></button
+          >
+        </span>
+      {/if}
     </div>
-  </div>
-  <div class="col-6 col-9-lg">
-    <input class="url" type="text" bind:value={url} on:keydown={keydown} />
   </div>
 </div>
 {#if $appStore.ui.feedErrorMsg}
@@ -81,22 +74,43 @@
     font-size: x-large;
     font-weight: bold;
   }
-  .loadbutton {
-    height: 50px;
-    font-size: large;
-    width: 50%;
+  .outline {
+    padding: 0.5rem;
+    border: 1px solid #d2d6dd;
+    border-radius: 5px;
   }
-  .clearbutton {
-    margin-left: 1rem;
-    height: 50px;
-    font-size: large;
-    width: 50%;
+  .bx-x {
+    font-size: larger;
   }
-  .btnlabel {
-    margin-left: 0.5rem;
+  .postpend {
+    font-size: larger;
+    line-height: 1.1rem;
   }
-  .url {
-    height: 50px;
-    width: 100%;
+  .postpend button {
+    background: #fff;
+  }
+  .prepend {
+    padding-left: 1rem;
+    width: 7rem;
+    white-space: nowrap;
+  }
+  .prependtext {
+    margin-left: 0.1rem;
+  }
+  .urlinput {
+    border: 0;
+  }
+  input:focus {
+    outline: 0 !important;
+    border: 0;
+    border-color: #fff;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+  .urlcontainer {
+    display: flex;
+    align-items: center;
+    height: 40px;
   }
 </style>
