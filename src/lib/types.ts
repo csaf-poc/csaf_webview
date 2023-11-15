@@ -3,7 +3,7 @@
  */
 export type DocumentAcknowledgments = [Acknowledgment, ...Acknowledgment[]];
 /**
- * Contains the names of contributors being recognized.
+ * Contains the names of recognized contributors.
  */
 export type ListOfAcknowledgedNames = [NameOfTheContributor, ...NameOfTheContributor[]];
 /**
