@@ -9,11 +9,12 @@
 -->
 
 <script lang="ts">
-  import { appStore } from "$lib/store";
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
   import { page } from "$app/stores";
-  import { base } from "$app/paths";
+  export let baseroute: string;
+  export let tooltiptext: string;
+  export let errormessage: string;
   let url = "";
   /**
    * onMount set url if given via query param.
@@ -28,7 +29,7 @@
    * load loads provider metadata / feed and reroute to given URL.
    */
   const load = () => {
-    goto(`${base}/feed?q=${url}`);
+    goto(baseroute + url);
   };
 
   /**
@@ -42,7 +43,7 @@
 
 <div class="row">
   <div class="col-12 outline">
-    <div class="urlcontainer" title="URL to fetch Advisory from">
+    <div class="urlcontainer" title={tooltiptext}>
       <span class="prepend">
         <i class="bx bx-file" />
         <span class="prependtext">URL</span>
@@ -60,11 +61,10 @@
     </div>
   </div>
 </div>
-{#if $appStore.ui.feedErrorMsg}
+{#if errormessage}
   <div class="row">
-    <div class="col-6 col-3-lg" />
-    <div class="col-6 col-9-lg">
-      <div class="errors text-error">{$appStore.ui.feedErrorMsg}</div>
+    <div class="col">
+      <div class="errors text-error">{errormessage}</div>
     </div>
   </div>
 {/if}

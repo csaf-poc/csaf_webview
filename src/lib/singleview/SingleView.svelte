@@ -13,11 +13,12 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import Droparea from "$lib/singleview/Droparea.svelte";
   import General from "$lib/singleview/general/General.svelte";
-  import LoadFromUrl from "./LoadFromURL.svelte";
   import ProductTree from "./producttree/ProductTree.svelte";
   import ProductVulnerabilities from "$lib/singleview/productvulnerabilities/ProductVulnerabilities.svelte";
   import Upload from "./Upload.svelte";
   import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
+  import UrlLoader from "$lib/UrlLoader.svelte";
+  import { base } from "$app/paths";
   $: isCSAF = !(
     !$appStore.doc?.isRevisionHistoryPresent &&
     !$appStore.doc?.isDocPresent &&
@@ -30,7 +31,11 @@
 </script>
 
 <div class="loadfromurl">
-  <LoadFromUrl />
+  <UrlLoader
+    baseroute={`${base}/?q=`}
+    tooltiptext={"URL to fetch Advisory from"}
+    errormessage={$appStore.ui.singleErrorMsg}
+  />
 </div>
 <div class="row">
   <div class="col-6 col-3-lg">

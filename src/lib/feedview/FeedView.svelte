@@ -12,11 +12,16 @@
   import Back from "$lib/Back.svelte";
   import Collapsible from "$lib/Collapsible.svelte";
   import Feed from "./feed/Feed.svelte";
-  import Loader from "./Loader.svelte";
   import Overview from "./feed/Overview.svelte";
+  import UrlLoader from "$lib/UrlLoader.svelte";
+  import { base } from "$app/paths";
 </script>
 
-<Loader />
+<UrlLoader
+  baseroute={`${base}/feed?q=`}
+  tooltiptext={"URL to fetch provider metadata or ROLIE-feed"}
+  errormessage={$appStore.ui.feedErrorMsg}
+/>
 <Overview />
 {#if $appStore.currentFeed}
   <Collapsible
