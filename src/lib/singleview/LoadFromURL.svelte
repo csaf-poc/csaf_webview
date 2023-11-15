@@ -43,15 +43,20 @@
 <div class="row">
   <div class="col-3">
     <div style="display:flex">
-      <button class="loadbutton" title="View single CSAF document from URL" on:click={loads}
-        ><i class="bx bx-file" /><span class="btnlabel">URL</span></button
-      >
+      <button class="loadbutton" title="View single CSAF document from URL" on:click={loads}>
+        <span style="white-space:nowrap"
+          ><i class="bx bx-file" /><span class="btnlabel">URL</span></span
+        >
+      </button>
       <button
         class="clearbutton"
         title="Clear the URL field"
         on:click={() => {
           URL = "";
-        }}><i class="bx bx-trash" /><span class="btnlabel">Clear</span></button
+        }}
+        ><span style="white-space:nowrap"
+          ><i class="bx bx-trash" /><span class="btnlabel">Clear</span></span
+        ></button
       >
     </div>
   </div>
@@ -84,6 +89,7 @@
   }
   .url {
     height: 50px;
+    width: 100%;
   }
   .btnlabel {
     margin-left: 0.5rem;

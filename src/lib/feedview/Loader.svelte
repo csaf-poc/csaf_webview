@@ -47,14 +47,19 @@
         class="loadbutton"
         title="View provider_metadata.json or ROLIE-feed from URL"
         on:click={load}
-        ><i class="bx bx-file" /><span class="btnlabel">URL</span>
+        ><span style="white-space:nowrap"
+          ><i class="bx bx-file" /><span class="btnlabel">URL</span></span
+        >
       </button>
       <button
         class="clearbutton"
         title="Clear the URL field"
         on:click={() => {
           url = "";
-        }}><i class="bx bx-trash" /><span class="btnlabel">Clear</span></button
+        }}
+        ><span style="white-space:nowrap"
+          ><i class="bx bx-trash" /><span class="btnlabel">Clear</span></span
+        ></button
       >
     </div>
   </div>
@@ -75,21 +80,21 @@
     font-weight: bold;
   }
   .loadbutton {
-    min-width: 200px;
-    width: 50%;
     height: 50px;
     font-size: large;
+    width: 50%;
   }
   .clearbutton {
     margin-left: 1rem;
-    width: 50%;
     height: 50px;
     font-size: large;
+    width: 50%;
   }
   .btnlabel {
     margin-left: 0.5rem;
   }
   .url {
     height: 50px;
+    width: 100%;
   }
 </style>
