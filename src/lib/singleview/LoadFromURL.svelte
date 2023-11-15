@@ -41,7 +41,7 @@
 </script>
 
 <div class="row">
-  <div class="col-3">
+  <div class="col-6 col-3-lg">
     <div style="display:flex">
       <button class="loadbutton" title="View single CSAF document from URL" on:click={loads}>
         <span style="white-space:nowrap"
@@ -60,7 +60,7 @@
       >
     </div>
   </div>
-  <div class="col-9">
+  <div class="col-6 col-9-lg">
     <input class="url" type="text" bind:value={URL} on:keydown={keydown} />
   </div>
 </div>
