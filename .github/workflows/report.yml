@@ -1,6 +1,6 @@
 name: 'Test Report'
 on:
- workflow_run:
+  workflow_run:
     workflows: ['Coverage Test']
     types:
       - completed
@@ -18,15 +18,15 @@ jobs:
       run: |
         PR_NUMBER=$(cat pr_number)
         echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
-    - name: Test Report
-      uses: phoenix-actions/test-reporting@v12
+    - name: "Test Report"
+      uses: JanHoefelmeyer/vitest-coverage-report-action
       id: test-report
       with:
         artifact: test-results
-        name: Mocha Tests
+        name: Vitest coverage Tests
         path: test-results.json
         reporter: mocha-json
-    - name: c8 coverage report
+    - name: "coverage report"
       uses: Nef10/lcov-reporter-action@v0.4.0
       with:
         pr-number: ${{ env.PR_NUMBER }}
