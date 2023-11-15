@@ -25,7 +25,7 @@
       {#if key == "text" || key == "Text"}
         <tr
           ><td style={keyStyle}>{key}</td><td class="value">
-            <small class="hint bg-light">rendered Markdown</small>
+            <small class="hint bg-light">Markdown</small>
             <div class="bd-light display-markdown">
               {@html DOMPurify.sanitize(
                 marked.parse(values[index].replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))

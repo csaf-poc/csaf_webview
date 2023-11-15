@@ -32,7 +32,7 @@
   <h6>Text</h6>
 </div>
 
-<small class="hint bg-light">rendered Markdown</small>
+<small class="hint bg-light">Markdown</small>
 <div class="text display-markdown bd-light">
   {@html DOMPurify.sanitize(
     marked.parse(note.text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))
