@@ -48,30 +48,30 @@ test("index page has dropbox", async ({ page }) => {
 
 test("index page has Switch to ROLIE-feed Button", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("link", { name: "Switch to ROLIE-feed" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Switch to Multi View" })).toBeVisible();
 });
 
 test("index page Switch to ROLIE-feed Button works", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "Switch to ROLIE-feed" }).click();
+  await page.getByRole("link", { name: "Switch to Multi View" }).click();
   await expect(page.getByRole("link", { name: "Switch to Single View" })).toBeVisible();
 });
 
 test("index page ROLIE feed version has View feed button", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "Switch to ROLIE-feed" }).click();
+  await page.getByRole("link", { name: "Switch to Multi View" }).click();
   await expect(page.getByRole("button", { name: "URL" })).toBeVisible();
 });
 
 test("index page ROLIE feed version has switch to single view button", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "Switch to ROLIE-feed" }).click();
+  await page.getByRole("link", { name: "Switch to Multi View" }).click();
   await expect(page.getByRole("link", { name: "Switch to single view" })).toBeVisible();
 });
 
 test("index page ROLIE feed version has working switch to single view button", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "Switch to ROLIE-feed" }).click();
+  await page.getByRole("link", { name: "Switch to Multi View" }).click();
   await page.getByRole("link", { name: "Switch to single view" }).click();
-  await expect(page.getByRole("link", { name: "Switch to ROLIE-feed" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Switch to Multi View" })).toBeVisible();
 });
