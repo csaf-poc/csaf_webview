@@ -73,6 +73,7 @@
 <style>
   .switchbutton {
     box-shadow: 1px 3px 3px #c1c1c1;
+    color: rgb(63, 65, 68);
   }
   .content {
     margin-left: 3rem;
