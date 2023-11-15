@@ -79,8 +79,14 @@
 </div>
 
 <style>
+  .collapsible {
+    white-space: nowrap;
+    width: fit-content;
+    max-width: 95vw;
+  }
   .body {
     padding-left: 3rem;
+    white-space: normal;
   }
   h2,
   h3,
