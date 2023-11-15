@@ -163,6 +163,7 @@
   }
   .cve {
     min-width: 14rem;
+    text-align: center;
   }
   .total {
     min-width: 15rem;
