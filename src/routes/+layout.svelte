@@ -10,6 +10,13 @@
     FEED: "Switch to single view"
   };
   let switchToRoute = "";
+  let headerText = "Advisory";
+  $: if (mode === MODE.SINGLE) {
+    headerText = "Advisory";
+  } else {
+    if ($appStore.currentFeed) headerText = "ROLIE";
+    if ($appStore.providerMetadata) headerText = "Provider Metadata";
+  }
   $: mode = $appStore.ui.appMode;
   $: {
     if (mode === MODE.SINGLE) {
@@ -60,13 +67,13 @@
       <h1 role="heading">CSAF Webview</h1>
       <h4>v{version}</h4>
     </div>
-    <div><h4>{mode === MODE.SINGLE ? "Single View" : "Multi View"}</h4></div>
+    <div><h4>{headerText}</h4></div>
     <div class="switchbtn">
       <a
-        title={mode !== MODE.SINGLE ? "Switch to Single View" : "Switch to Multi View"}
+        title={mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}
         href={switchToRoute}
         class="switchbutton button"
-        >{mode !== MODE.SINGLE ? "Switch to Single View" : "Switch to Multi View"}</a
+        >{mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}</a
       >
     </div>
   </div>
