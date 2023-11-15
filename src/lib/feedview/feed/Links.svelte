@@ -25,7 +25,7 @@
 
 <style>
   .key {
-    width: 8vw;
+    width: 10rem;
   }
   td {
     padding: 0.3rem;
