@@ -62,7 +62,10 @@
     </div>
     <div><h4>{mode === MODE.SINGLE ? "Single View" : "Multi View"}</h4></div>
     <div class="switchbtn">
-      <a title={mode} href={switchToRoute} class="switchbutton button"
+      <a
+        title={mode !== MODE.SINGLE ? "Switch to Single View" : "Switch to Multi View"}
+        href={switchToRoute}
+        class="switchbutton button"
         >{mode !== MODE.SINGLE ? "Switch to Single View" : "Switch to Multi View"}</a
       >
     </div>
