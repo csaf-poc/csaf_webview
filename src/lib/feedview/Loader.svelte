@@ -41,20 +41,25 @@
 </script>
 
 <div class="row">
-  <div class="col">
+  <div class="col-3">
     <div style="display:flex">
-      <button class="loadbutton" title="URL to provider_metadata.json or ROLIE-feed" on:click={load}
-        ><i class="bx bx-book-open" />URL
+      <button
+        class="loadbutton"
+        title="View provider_metadata.json or ROLIE-feed from URL"
+        on:click={load}
+        ><i class="bx bx-file" /><span class="btnlabel">URL</span>
       </button>
       <button
         class="clearbutton"
         title="Clear the URL field"
         on:click={() => {
           url = "";
-        }}><i class="bx bx-trash" /> Clear</button
+        }}><i class="bx bx-trash" /><span class="btnlabel">Clear</span></button
       >
-      <input class="url" type="text" bind:value={url} on:keydown={keydown} />
     </div>
+  </div>
+  <div class="col-9">
+    <input class="url" type="text" bind:value={url} on:keydown={keydown} />
   </div>
 </div>
 {#if $appStore.ui.feedErrorMsg}
@@ -71,20 +76,20 @@
   }
   .loadbutton {
     min-width: 200px;
-    width: 200px;
+    width: 50%;
     height: 50px;
     font-size: large;
   }
   .clearbutton {
     margin-left: 1rem;
-    min-width: 140px;
+    width: 50%;
     height: 50px;
     font-size: large;
   }
-  .bx-book-open {
-    margin-right: 1rem;
+  .btnlabel {
+    margin-left: 0.5rem;
   }
   .url {
-    margin-left: 1rem;
+    height: 50px;
   }
 </style>

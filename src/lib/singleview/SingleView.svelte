@@ -29,7 +29,9 @@
   );
 </script>
 
-<LoadFromUrl />
+<div class="loadfromurl">
+  <LoadFromUrl />
+</div>
 <div class="row">
   <div class="col col-3">
     <Upload />
@@ -100,5 +102,8 @@
     /* style similar to h2 in Collapsible.svelte */
     margin: 0;
     font-weight: bold;
+  }
+  .loadfromurl {
+    margin-bottom: 1rem;
   }
 </style>

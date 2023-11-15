@@ -61,7 +61,7 @@
       <h4>v{version}</h4>
     </div>
     <div><h4>{mode === MODE.SINGLE ? "Single View" : "Multi View"}</h4></div>
-    <div class="version">
+    <div class="switchbtn">
       <a title={mode} href={switchToRoute} class="switchbutton button"
         >{mode !== MODE.SINGLE ? "switch to Single View" : "Switch to Multi View"}</a
       >
@@ -103,7 +103,7 @@
     .programname {
       min-width: 45vw;
     }
-    .version {
+    .switchbtn {
       min-width: 20vw;
       text-align: right;
       margin-left: auto;

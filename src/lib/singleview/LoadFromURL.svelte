@@ -41,20 +41,22 @@
 </script>
 
 <div class="row">
-  <div class="col">
+  <div class="col-3">
     <div style="display:flex">
-      <button class="loadbutton" title="URL to single CSAF document" on:click={loads}
-        ><i class="bx bx-book-open" />URL</button
+      <button class="loadbutton" title="View single CSAF document from URL" on:click={loads}
+        ><i class="bx bx-file" /><span class="btnlabel">URL</span></button
       >
       <button
         class="clearbutton"
         title="Clear the URL field"
         on:click={() => {
           URL = "";
-        }}><i class="bx bx-trash" /> Clear</button
+        }}><i class="bx bx-trash" /><span class="btnlabel">Clear</span></button
       >
-      <input class="url" type="text" bind:value={URL} on:keydown={keydown} />
     </div>
+  </div>
+  <div class="col-9">
+    <input class="url" type="text" bind:value={URL} on:keydown={keydown} />
   </div>
 </div>
 {#if $appStore.ui.singleErrorMsg}
@@ -70,20 +72,20 @@
     font-weight: bold;
   }
   .loadbutton {
-    min-width: 200px;
     height: 50px;
     font-size: large;
+    width: 50%;
   }
   .clearbutton {
     margin-left: 1rem;
-    min-width: 140px;
     height: 50px;
     font-size: large;
-  }
-  .bx-book-open {
-    margin-right: 1rem;
+    width: 50%;
   }
   .url {
-    margin-left: 1rem;
+    height: 50px;
+  }
+  .btnlabel {
+    margin-left: 0.5rem;
   }
 </style>
