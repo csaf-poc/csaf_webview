@@ -19,7 +19,7 @@ jobs:
         PR_NUMBER=$(cat pr_number)
         echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
     - name: "Test Report"
-      uses: JanHoefelmeyer/vitest-coverage-report-action
+      uses: JanHoefelmeyer/vitest-coverage-report-action@v2
       id: test-report
       with:
         artifact: test-results
