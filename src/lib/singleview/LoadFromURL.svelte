@@ -66,13 +66,15 @@
 </div>
 {#if $appStore.ui.singleErrorMsg}
   <div class="row">
-    <div class="col"><div class="errors text-error">{$appStore.ui.singleErrorMsg}</div></div>
+    <div class="col-6 col-3-lg" />
+    <div class="col-6 col-9-lg">
+      <div class="errors text-error">{$appStore.ui.singleErrorMsg}</div>
+    </div>
   </div>
 {/if}
 
 <style>
   .errors {
-    margin-left: 200px;
     font-size: x-large;
     font-weight: bold;
   }
