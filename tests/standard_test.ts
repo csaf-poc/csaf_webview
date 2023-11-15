@@ -31,7 +31,7 @@ test("index page has file input", async ({ page }) => {
 
 test("index page has URL Button", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("button", { name: " URL" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "URL" })).toBeVisible();
 });
 
 test("index page has textbox", async ({ page }) => {
