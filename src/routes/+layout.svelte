@@ -14,8 +14,13 @@
   $: if (mode === MODE.SINGLE) {
     headerText = "Advisory";
   } else {
-    if ($appStore.currentFeed) headerText = "ROLIE";
-    if ($appStore.providerMetadata) headerText = "Provider Metadata";
+    if ($appStore.currentFeed) {
+      headerText = "ROLIE-Feed";
+    } else if ($appStore.providerMetadata) {
+      headerText = "Provider Metadata";
+    } else {
+      headerText = "Overview";
+    }
   }
   $: mode = $appStore.ui.appMode;
   $: {
