@@ -52,28 +52,28 @@
   {#if level == "2"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
       <h2><i class="bx {icon}" />{header}</h2>
     </div>
   {/if}
   {#if level == "3"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
       <h3><i class="bx {icon}" />{header}</h3>
     </div>
   {/if}
   {#if level == "4"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
       <h4><i class="bx {icon}" />{header}</h4>
     </div>
   {/if}
   {#if level == "5"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
       <h6><i class="bx {icon}" />{header}</h6>
     </div>
   {/if}

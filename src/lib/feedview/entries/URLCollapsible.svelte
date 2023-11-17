@@ -55,7 +55,7 @@
   {#if level == "4"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div style="cursor:pointer" id={entry.id} on:click={toggle} class={class_}>
+    <div title={entry.title} style="cursor:pointer" id={entry.id} on:click={toggle} class={class_}>
       <h4>
         <i class="bx {icon}" />
         <a href={lookupID} on:click={openLink}>{entry.id}: {entry.title}</a>
@@ -70,6 +70,9 @@
 </div>
 
 <style>
+  .collapsible {
+    white-space: nowrap;
+  }
   .body {
     padding-left: 3rem;
   }
