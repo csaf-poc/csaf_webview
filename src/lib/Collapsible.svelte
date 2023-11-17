@@ -14,6 +14,7 @@
   export let level = "2";
   export let class_ = "";
   export let highlight = false;
+  const uuid = crypto.randomUUID();
   export let onClose = () => {
     //default: Do notthing
   };
@@ -37,6 +38,11 @@
   };
   $: if (visibility === "block") {
     icon = "bx-chevron-down";
+    setTimeout(() => {
+      const element = document.getElementById(`${uuid}`);
+      const y = element!.getBoundingClientRect().top + window.scrollY - 150;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }, 200);
   } else {
     icon = "bx-chevron-right";
   }
@@ -72,7 +78,7 @@
     </div>
   {/if}
   {#if visibility === "block"}
-    <div class="body">
+    <div id={uuid} class="body">
       <slot />
     </div>
   {/if}
