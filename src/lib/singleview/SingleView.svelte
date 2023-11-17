@@ -34,6 +34,7 @@
   <UrlLoader
     baseroute={`${base}/?q=`}
     tooltiptext={"URL to fetch Advisory from"}
+    placeholder={"URL to fetch Advisory from"}
     errormessage={$appStore.ui.singleErrorMsg}
   />
 </div>

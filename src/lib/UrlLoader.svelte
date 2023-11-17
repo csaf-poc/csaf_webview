@@ -15,6 +15,7 @@
   export let baseroute: string;
   export let tooltiptext: string;
   export let errormessage: string;
+  export let placeholder: string;
   let url = "";
   /**
    * onMount set url if given via query param.
@@ -48,7 +49,7 @@
         <i class="bx bx-file" />
         <span class="prependtext">URL</span>
       </span>
-      <input class="urlinput" type="text" bind:value={url} on:keydown={keydown} />
+      <input class="urlinput" {placeholder} type="text" bind:value={url} on:keydown={keydown} />
       {#if url}
         <span class="postpend" title="Discard search">
           <button
