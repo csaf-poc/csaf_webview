@@ -20,7 +20,7 @@
 <UrlLoader
   baseroute={`${base}/feed?q=`}
   tooltiptext={"URL to fetch provider metadata or ROLIE-feed"}
-  placeholder={"URL to fetch provider metadata or ROLIE-feed"}
+  placeholder={"ROLIE feed or provider metadata URL"}
   errormessage={$appStore.ui.feedErrorMsg}
 />
 <Overview />
