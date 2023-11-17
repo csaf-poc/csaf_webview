@@ -1,6 +1,6 @@
 {
   "name": "csaf-webview",
-  "version": "0.8.1-dev",
+  "version": "0.9.0-dev",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
