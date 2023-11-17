@@ -43,6 +43,7 @@
 <style>
   .value {
     padding: 0.2rem;
+    min-width: 50rem;
   }
   .display-markdown {
     padding: 0.5rem;

@@ -214,6 +214,7 @@
 <style>
   .key {
     width: 15vw;
+    min-width: 20rem;
     padding: 0.2rem;
     vertical-align: top;
   }
