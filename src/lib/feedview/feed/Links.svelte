@@ -22,12 +22,3 @@
     </tr>
   {/each}
 </table>
-
-<style>
-  .key {
-    width: 10rem;
-  }
-  td {
-    padding: 0.3rem;
-  }
-</style>

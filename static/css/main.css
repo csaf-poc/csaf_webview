@@ -1,0 +1,464 @@
+/* Sane CSS defaults*/
+::root {
+  font-size: 18px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 100;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 100;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+h6 {
+  font-size: 0.75rem;
+  font-weight: 100;
+}
+
+hr {
+  width: 66vw;
+  border-top: 1px solid lightgray;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+.programname {
+  display: flex;
+  align-items: baseline;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  box-shadow: 1px 3px 3px #c1c1c1;
+  color: rgb(63, 65, 68);
+  background: lightgrey;
+  padding: 0.5rem;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.loader {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.url-outline {
+  padding: 0.5rem;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.url-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.postpend {
+  position: absolute;
+  right: 0;
+}
+
+.postpend button {
+  background-color: white;
+  border: 0;
+}
+
+.url-input {
+  width: 85%;
+  margin-left: 1rem;
+}
+
+.url-input input {
+  width: 85%;
+}
+
+.url-outline input {
+  border: 0;
+}
+
+.url-outline input:focus {
+  outline: none;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.file-upload-container {
+  border: 1px solid lightgrey;
+  height: 50px;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.file-upload::file-selector-button {
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 34px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 16px;
+  transition: background-color 200ms;
+}
+
+.file-upload::file-selector-button:hover {
+  background-color: lightgrey;
+  color: white;
+}
+
+.file-upload::file-selector-button:active {
+  background-color: lightgrey;
+  color: white;
+}
+
+.droparea {
+  height: 50px;
+  width: 100%;
+  border: 1px dashed gray;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.droparea-error {
+  background: red;
+  color: white;
+}
+
+.droparea-okay {
+  background-color: green;
+  color: white;
+}
+
+.collapsible {
+  margin-bottom: 0.25rem;
+}
+
+.collapsible-body {
+  margin-left: 1.5rem;
+}
+
+.backbutton {
+  background-color: black;
+  color: white;
+  text-align: center;
+  width: 8rem;
+  padding: 0.5rem;
+  position: sticky;
+  bottom: 1rem;
+  cursor: pointer;
+  float: right;
+}
+
+.tag {
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding: 0.25rem;
+}
+
+.key {
+  width: 12rem;
+}
+
+.hint {
+  background: lightgray;
+}
+
+.display-markdown {
+  padding: 0.5rem;
+  border: 1px solid lightgray;
+}
+
+.revisionhistory {
+  width: 80vw;
+  overflow-y: scroll;
+  max-height: 40vh;
+}
+
+.revisionhistory table {
+  border-spacing: 0;
+}
+
+.revisionhistory tr {
+  text-align: left;
+}
+
+.revisionhistory th {
+  border-bottom: 1px solid lightgray;
+}
+
+.revisionhistory table tbody tr:first-child td {
+  padding-top: 1rem;
+}
+
+.revisionhistory tbody tr:last-child td {
+  padding-bottom: 1rem;
+}
+
+.history-date {
+  min-width: 17rem;
+}
+
+.history-number {
+  min-width: 5rem;
+}
+
+.history-summary {
+  min-width: 20rem;
+}
+
+.highlight-section {
+  background-color: lightgrey;
+}
+
+.valuelist {
+  list-style-type: none;
+  padding-inline-start: 1em;
+}
+
+.crosstable {
+  max-height: 70vh;
+  max-width: 85vw;
+  overflow: auto;
+}
+
+.crosstable table {
+  border-spacing: 0;
+}
+
+.crosstable td {
+  line-height: 1.5rem;
+}
+
+.crosstable table tbody tr:nth-of-type(2n) {
+  background: #f2f2f2;
+}
+
+.crosstable table tbody tr:first-child td {
+  padding-top: 1rem;
+}
+
+.crosstable table tbody tr:last-child td {
+  padding-bottom: 1rem;
+}
+
+.crosstable-header-row th {
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.productname {
+  text-align: left;
+  width: 30rem;
+  white-space: nowrap;
+}
+
+.total {
+  text-align: center;
+  width: 10rem;
+  white-space: nowrap;
+}
+
+.cve {
+  text-align: center;
+  width: 10rem;
+  white-space: nowrap;
+}
+
+.affectionstate {
+  text-align: center;
+}
+
+.crosstable-overview {
+  display: flex;
+  flex-direction: column;
+}
+
+.legend {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+}
+
+.legend dd {
+  display: inline;
+  margin: 0;
+}
+.legend dd:after {
+  display: block;
+  content: "";
+}
+.legend dt {
+  display: inline-block;
+  min-width: 30px;
+}
+.branch {
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+  margin-top: 0.6rem;
+}
+.xgeneric {
+  margin-left: 3rem;
+}
+
+.category-name {
+  margin-left: 1rem;
+}
+
+.markdowntext {
+  margin-left: 2rem;
+}
+
+.spinner {
+  font-size: xx-large;
+  animation-name: spin;
+  animation-duration: 750ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  /* transform: rotate(3deg); */
+  /* transform: rotate(0.3rad);/ */
+  /* transform: rotate(3grad); */
+  /* transform: rotate(.03turn);  */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tlpclear {
+  background: #000;
+  color: #fff;
+  padding: 0.3rem;
+}
+.tlpred {
+  background: #000;
+  color: #ff2b2b;
+  padding: 0.3rem;
+}
+.tlpamber {
+  background: #000;
+  color: #ffc000;
+  padding: 0.3rem;
+}
+.tlpgreen {
+  background: #000;
+  color: #33ff00;
+  padding: 0.3rem;
+}
+
+@media screen and (min-width: 1700px) {
+  .legend {
+    margin-top: auto;
+  }
+  .crosstable-overview {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .header {
+    flex-direction: row;
+    margin-bottom: 1rem;
+  }
+  .programname {
+    min-width: clamp(330px, 25vw, 25vw);
+  }
+  .title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .switchbtn {
+    min-width: clamp(130px, 25vw, 25vw);
+    text-align: right;
+  }
+  .upload {
+    flex-direction: row;
+  }
+  .file-upload-container {
+    width: 50%;
+  }
+  .droparea {
+    width: 50%;
+  }
+  .revisionhistory {
+    width: 50vw;
+  }
+}

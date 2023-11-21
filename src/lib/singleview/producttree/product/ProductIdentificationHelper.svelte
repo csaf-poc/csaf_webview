@@ -17,10 +17,14 @@
 </script>
 
 <div class="helperinfo">
-  <h5>Product Version Helper</h5>
+  <table>
+    <tr>
+      <td><h5>Product Version Helper</h5></td>
+    </tr>
+  </table>
   <div class="helperinfobody">
     {#if helper.cpe}
-      <KeyValue compact={true} keys={["cpe"]} values={helper.cpe} />
+      <KeyValue keys={["cpe"]} values={helper.cpe} />
     {/if}
     {#if helper.hashes}
       {#each helper.hashes as hash}
@@ -31,7 +35,7 @@
       <ValueList label="Model numbers" values={helper.model_numbers} />
     {/if}
     {#if helper.purl}
-      <KeyValue compact={true} keys={["purl"]} values={helper.purl} />
+      <KeyValue keys={["purl"]} values={helper.purl} />
     {/if}
     {#if helper.sbom_urls}
       <ValueList label="SBOM URLs" values={helper.sbom_urls} />
@@ -47,12 +51,3 @@
     {/if}
   </div>
 </div>
-
-<style>
-  .helperinfobody {
-    margin-left: 3rem;
-  }
-  h5 {
-    margin-bottom: 0;
-  }
-</style>

@@ -7,7 +7,6 @@ Software-Engineering: 2022 Intevation GmbH <https://intevation.de>
 _CSAF Webview_ is built with the following components:
 
 - Framework: [Svelte (SvelteKit)](https://kit.svelte.dev/)
-- CSS-Miniframework: [Chota](https://jenil.github.io/chota/)
 - Icons: [Boxicons](https://boxicons.com/)
 - Markdown: [marked.js](https://github.com/markedjs/marked) and [DOMPurify] (https://github.com/cure53/DOMPurify)
 

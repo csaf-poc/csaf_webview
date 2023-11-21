@@ -1,6 +1,5 @@
 <script lang="ts">
   import "boxicons/css/boxicons.min.css";
-  import "chota/dist/chota.min.css";
   import { appStore } from "$lib/store";
   import { base } from "$app/paths";
   /*global __APP_VERSION__*/
@@ -69,59 +68,21 @@
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <div class="header">
     <div class="programname">
-      <h1 role="heading">CSAF Webview</h1>
-      <h4>v{version}</h4>
+      <div>
+        <h1 role="heading">CSAF Webview</h1>
+      </div>
+      <div>
+        <h4>v{version}</h4>
+      </div>
     </div>
-    <div><h4>{headerText}</h4></div>
+    <div class="title"><h3>{headerText}</h3></div>
     <div class="switchbtn">
       <a
         title={mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}
         href={switchToRoute}
-        class="switchbutton button"
-        >{mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}</a
+        class="btn">{mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}</a
       >
     </div>
   </div>
   <slot />
 </div>
-
-<style>
-  .switchbutton {
-    box-shadow: 1px 3px 3px #c1c1c1;
-    color: rgb(63, 65, 68);
-  }
-  .content {
-    margin-left: 3rem;
-    margin-right: 3rem;
-  }
-  .header {
-    display: flex-column;
-    align-items: center;
-    margin-block-end: 2rem;
-  }
-
-  .programname {
-    display: flex;
-    align-items: baseline;
-  }
-
-  h1 {
-    margin-bottom: 0;
-    margin-right: 1rem;
-  }
-  @media only screen and (min-width: 768px) {
-    .header {
-      display: flex;
-      align-items: center;
-      margin-block-end: 1rem;
-    }
-    .programname {
-      min-width: 45vw;
-    }
-    .switchbtn {
-      min-width: 20vw;
-      text-align: right;
-      margin-left: auto;
-    }
-  }
-</style>

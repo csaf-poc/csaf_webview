@@ -34,21 +34,5 @@
 </script>
 
 {#if $appStore.ui.history.length > 0}
-  <a class="back button dark" href="#top" on:click={backPressed}
-    >Last pos. <i class="bx bx-undo" /></a
-  >
+  <a class="backbutton" href="#top" on:click={backPressed}>Last pos. <i class="bx bx-undo" /></a>
 {/if}
-
-<style>
-  .back {
-    background-color: black;
-    color: white;
-    text-align: center;
-    width: 11rem;
-    padding: 1rem;
-    position: sticky;
-    bottom: 1rem;
-    margin-left: 90vw;
-    cursor: pointer;
-  }
-</style>

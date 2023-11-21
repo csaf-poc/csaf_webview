@@ -17,14 +17,3 @@
   <h6>{label}</h6>
   <p>{value}</p>
 </div>
-
-<style>
-  h6 {
-    line-height: 0.3em;
-    font-size: large;
-  }
-  p {
-    margin-left: 4rem;
-    width: 80vw;
-  }
-</style>

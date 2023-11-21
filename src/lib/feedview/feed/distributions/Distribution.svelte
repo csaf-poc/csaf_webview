@@ -57,39 +57,3 @@
     </div>
   {/each}
 {/if}
-
-<style>
-  .entry {
-    padding: 0.5rem;
-  }
-  .header {
-    font-size: large;
-  }
-  .key {
-    padding: 0;
-    width: 8vw;
-  }
-  .value {
-    padding: 0;
-  }
-  .tlpclear {
-    background: #000;
-    color: #fff;
-    padding: 0.3rem;
-  }
-  .tlpred {
-    background: #000;
-    color: #ff2b2b;
-    padding: 0.3rem;
-  }
-  .tlpamber {
-    background: #000;
-    color: #ffc000;
-    padding: 0.3rem;
-  }
-  .tlpgreen {
-    background: #000;
-    color: #33ff00;
-    padding: 0.3rem;
-  }
-</style>

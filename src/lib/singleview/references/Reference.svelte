@@ -25,11 +25,5 @@
 </script>
 
 <div class="reference">
-  <KeyValue compact={true} {keys} {values} />
+  <KeyValue {keys} {values} />
 </div>
-
-<style>
-  .reference {
-    margin-bottom: 1rem;
-  }
-</style>

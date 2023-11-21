@@ -50,9 +50,9 @@
   {#if productLines.length > 0}
     <div class="crosstable-container">
       <div class="crosstable">
-        <table class="striped">
+        <table>
           <thead>
-            <tr>
+            <tr class="crosstable-header-row">
               {#each headerColumns as column, index}
                 {#if index == 0}
                   <th class="productname">{column}</th>
@@ -71,7 +71,7 @@
               <tr>
                 {#each line as column, index}
                   {#if index < 1}
-                    <td
+                    <td class="productname"
                       ><a id={crypto.randomUUID()} on:click={openProduct} href={column}
                         >{$appStore.doc.productsByID[column]} ({column})</a
                       ></td
@@ -103,76 +103,19 @@
       </div>
     </div>
     <div class="legend">
-      <div class="">
-        <h6>Legend</h6>
-        <dl>
-          <dt><i class="bx bx-check" /></dt>
-          <dd>Fixed</dd>
-          <dt><i class="bx bx-error" /></dt>
-          <dd>Under investigation</dd>
-          <dt><i class="bx bx-x" /></dt>
-          <dd>Known affected</dd>
-          <dt><i class="bx bx-minus" /></dt>
-          <dd>Not affected</dd>
-          <dt><i class="bx bx-heart" /></dt>
-          <dd>Recommended</dd>
-        </dl>
-      </div>
+      <h5>Legend</h5>
+      <dl>
+        <dt><i class="bx bx-check" /></dt>
+        <dd>Fixed</dd>
+        <dt><i class="bx bx-error" /></dt>
+        <dd>Under investigation</dd>
+        <dt><i class="bx bx-x" /></dt>
+        <dd>Known affected</dd>
+        <dt><i class="bx bx-minus" /></dt>
+        <dd>Not affected</dd>
+        <dt><i class="bx bx-heart" /></dt>
+        <dd>Recommended</dd>
+      </dl>
     </div>
   {/if}
 </div>
-
-<style>
-  tr {
-    line-height: 2rem;
-  }
-
-  .legend {
-    margin-top: auto;
-    padding-left: 2.5rem;
-    width: 11vw;
-  }
-  dt {
-    font-size: large;
-    float: left;
-    clear: left;
-    width: 3rem;
-  }
-  dd {
-    margin-bottom: 0.3em;
-  }
-
-  dd:last-of-type {
-    margin-bottom: 0;
-  }
-  th {
-    font-weight: 100;
-  }
-  h6 {
-    font-weight: 600;
-  }
-  .crosstable-overview {
-    display: flex;
-  }
-  .crosstable-container {
-    width: 84vw;
-  }
-  .crosstable {
-    overflow: auto;
-    max-height: 70vh;
-  }
-  .cve {
-    min-width: 14rem;
-    text-align: center;
-  }
-  .total {
-    min-width: 15rem;
-    text-align: center;
-  }
-  .affectionstate {
-    text-align: center;
-  }
-  .productname {
-    min-width: 35rem;
-  }
-</style>

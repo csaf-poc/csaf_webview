@@ -34,7 +34,7 @@
 
 <Collapsible
   header={product.name}
-  level="5"
+  level="4"
   {highlight}
   open={$appStore.ui.selectedProduct === product.product_id}
   onClose={() => {
@@ -44,7 +44,7 @@
   }}
 >
   <div id={product.product_id}>
-    <KeyValue compact={true} keys={["Product ID"]} values={[product.name, product.product_id]} />
+    <KeyValue keys={["Product ID"]} values={[product.name, product.product_id]} />
     {#if product.product_identification_helper}
       <ProductIdentificationHelper helper={product.product_identification_helper} />
     {/if}
