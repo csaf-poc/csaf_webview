@@ -11,7 +11,11 @@
   let switchToRoute = "";
   let headerText = "Advisory";
   $: if (mode === MODE.SINGLE) {
-    headerText = "Advisory";
+    if ($appStore.doc && $appStore.doc.title) {
+      headerText = `${$appStore.doc["id"]}: ${$appStore.doc["title"]}`;
+    } else {
+      headerText = "Advisory";
+    }
   } else {
     if ($appStore.currentFeed) {
       headerText = "ROLIE-Feed";
@@ -69,13 +73,13 @@
   <div class="header">
     <div class="programname">
       <div>
-        <h1 role="heading">CSAF Webview</h1>
+        <h4 role="heading">CSAF Webview</h4>
       </div>
       <div>
-        <h4>v{version}</h4>
+        <small class="versionstring">v{version}</small>
       </div>
     </div>
-    <div class="title"><h3>{headerText}</h3></div>
+    <div class="title">{headerText}</div>
     <div class="switchbtn">
       <a
         title={mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}

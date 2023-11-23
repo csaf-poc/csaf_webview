@@ -46,9 +46,6 @@
 
 {#if isCSAF}
   {#if $appStore.doc}
-    <div class="csaf-document-title">
-      <h2>{$appStore.doc["id"]}: {$appStore.doc["title"]}</h2>
-    </div>
     <Collapsible header="General" open={$appStore.ui.isGeneralSectionVisible}>
       <General />
     </Collapsible>
