@@ -17,6 +17,10 @@
   export let errormessage: string;
   export let placeholder: string;
   let url = "";
+  $: if (url === "") {
+    errormessage = "";
+  }
+
   /**
    * onMount set url if given via query param.
    */
