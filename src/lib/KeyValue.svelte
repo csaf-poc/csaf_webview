@@ -16,9 +16,9 @@
   marked.use({ gfm: true });
 </script>
 
-{#each keys as key, index}
-  <table class="keyvalue">
-    <tbody>
+<table class="keyvalue">
+  <tbody>
+    {#each keys as key, index}
       {#if key == "text" || key == "Text"}
         <tr
           ><td class="key">{key}</td><td class="value">
@@ -33,6 +33,6 @@
       {:else}
         <tr><td class="key">{key}</td><td class="value">{values[index]}</td></tr>
       {/if}
-    </tbody>
-  </table>
-{/each}
+    {/each}
+  </tbody>
+</table>

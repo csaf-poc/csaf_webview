@@ -109,6 +109,10 @@ hr {
   border-radius: 3px;
 }
 
+.key {
+  width: 5rem;
+}
+
 .loader {
   margin-bottom: 1rem;
   width: 100%;
