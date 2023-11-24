@@ -14,7 +14,6 @@
   import { base } from "$app/paths";
   export let open = false;
   export let level = "2";
-  export let class_ = "";
   export let highlight = false;
   export let entry: any;
   export let lookupID: string;
@@ -55,8 +54,14 @@
   {#if level == "4"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={entry.title} style="cursor:pointer" id={entry.id} on:click={toggle} class={class_}>
-      <h5>
+    <div
+      title={entry.title}
+      style="cursor:pointer"
+      id={entry.id}
+      on:click={toggle}
+      class="url-collapsible-title"
+    >
+      <h5 class="url-collapsible-titletext">
         <i class="bx {icon}" />
         <a href={lookupID} on:click={openLink}>{entry.id}: {entry.title}</a>
       </h5>

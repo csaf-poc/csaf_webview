@@ -217,6 +217,16 @@ hr {
   margin-left: 0.25rem;
 }
 
+.url-collapsible-title {
+  width: 95%;
+}
+
+.url-collapsible-titletext {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .backbutton {
   background-color: black;
   color: white;
@@ -367,10 +377,6 @@ hr {
 .legend dt {
   display: inline-block;
   min-width: 30px;
-}
-
-.key {
-  width: max-content;
 }
 
 .branch {
