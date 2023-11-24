@@ -10,14 +10,15 @@
 
 # CSAF Webview
 
-**WIP**:
 A browser based web app to:
 
-- Display the contents of a CSAF document.
-- Browse the tree of CSAF documents offered by a CSAF Provider or Aggregator
+- Display the contents of a
+  [CSAF 2.0](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html)
+  document.
+- Browse the tree of documents offered by a CSAF Provider or Aggregator
   via the ROLIE feed.
 
-Status: the display part is in beta, the browsing part not yet implemented.
+Status: in beta
 
 ![](docs/app.png)
 
