@@ -17,7 +17,7 @@
 </script>
 
 {#each keys as key, index}
-  <table>
+  <table class="keyvalue">
     <tbody>
       {#if key == "text" || key == "Text"}
         <tr

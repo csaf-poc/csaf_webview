@@ -227,6 +227,15 @@ hr {
   overflow: hidden;
 }
 
+.documentdata {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.documentdata .key {
+  white-space: nowrap;
+}
+
 .backbutton {
   background-color: black;
   color: white;
@@ -249,14 +258,21 @@ hr {
   background: lightgray;
 }
 
+.keyvalue {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .display-markdown {
   padding: 0.5rem;
   border: 1px solid lightgray;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .revisionhistory {
-  width: 80vw;
-  overflow-y: scroll;
+  width: 90vw;
+  overflow-y: auto;
   max-height: 40vh;
 }
 
