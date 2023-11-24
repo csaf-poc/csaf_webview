@@ -109,6 +109,13 @@ hr {
   border-radius: 3px;
 }
 
+.error-message {
+  margin-left: 1rem;
+  color: red;
+  font-size: large;
+  font-weight: bold;
+}
+
 .key {
   width: 5rem;
 }
