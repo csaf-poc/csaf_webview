@@ -338,9 +338,18 @@ hr {
 }
 
 .crosstable {
-  max-height: 70vh;
-  max-width: 85vw;
   overflow: auto;
+}
+
+.crosstable-overview {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: 1rem;
+}
+
+.crosstable-container {
+  max-width: 100%;
 }
 
 .crosstable table {
@@ -390,13 +399,8 @@ hr {
   text-align: center;
 }
 
-.crosstable-overview {
-  display: flex;
-  flex-direction: column;
-}
-
 .legend {
-  margin-left: 1rem;
+  margin-left: 0rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
   white-space: nowrap;
@@ -479,12 +483,15 @@ hr {
   padding: 0.3rem;
 }
 
-@media screen and (min-width: 1700px) {
-  .legend {
-    margin-top: auto;
+@media screen and (min-width: 1782px) {
+  .crosstable-container {
+    max-width: 89%;
   }
-  .crosstable-overview {
-    flex-direction: row;
+  .legend {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    white-space: nowrap;
   }
 }
 
