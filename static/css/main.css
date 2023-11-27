@@ -267,6 +267,9 @@ hr {
 
 .hint {
   background: lightgray;
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0.25rem;
 }
 
 .keyvalue {
@@ -274,11 +277,13 @@ hr {
   overflow-x: auto;
 }
 
-.display-markdown {
+.markdown-text {
+  margin-left: 1rem;
   padding: 0.5rem;
   border: 1px solid lightgray;
   width: 100%;
   overflow-x: auto;
+  position: relative;
 }
 
 .revisionhistory {

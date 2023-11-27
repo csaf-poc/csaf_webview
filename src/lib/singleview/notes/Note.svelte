@@ -32,11 +32,12 @@
   <h5>Text</h5>
 </div>
 
-<div class="markdowntext">
-  <small class="hint">Markdown</small>
+<div class="markdown-text">
   <div class="display-markdown">
     {@html DOMPurify.sanitize(
       marked.parse(note.text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))
     )}
+    <br />
   </div>
+  <small class="hint">Markdown</small>
 </div>
