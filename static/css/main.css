@@ -222,6 +222,7 @@ hr {
 
 .collapsible {
   margin-bottom: 0.25rem;
+  cursor: pointer;
 }
 
 .collapsible-body {
@@ -236,6 +237,10 @@ hr {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.collapsible-wait {
+  cursor: progress;
 }
 
 .documentdata {

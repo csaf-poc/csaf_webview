@@ -15,6 +15,9 @@
   export let class_ = "";
   export let highlight = false;
   const uuid = crypto.randomUUID();
+  export let onOpen = () => {
+    //default: Do notthing
+  };
   export let onClose = () => {
     //default: Do notthing
   };
@@ -33,6 +36,7 @@
       onClose();
       visibility = "none";
     } else {
+      onOpen();
       visibility = "block";
     }
   };
@@ -52,28 +56,28 @@
   {#if level == "2"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} id={header} on:click={toggle} class={class_}>
       <h2><i class="bx {icon}" />{header}</h2>
     </div>
   {/if}
   {#if level == "3"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} id={header} on:click={toggle} class={class_}>
       <h3><i class="bx {icon}" />{header}</h3>
     </div>
   {/if}
   {#if level == "4"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} id={header} on:click={toggle} class={class_}>
       <h4><i class="bx {icon}" />{header}</h4>
     </div>
   {/if}
   {#if level == "5"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} id={header} on:click={toggle} class={class_}>
       <h5><i class="bx {icon}" />{header}</h5>
     </div>
   {/if}

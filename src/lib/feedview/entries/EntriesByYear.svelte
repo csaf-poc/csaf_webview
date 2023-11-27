@@ -15,6 +15,7 @@
   import type { EntryIDURLLookup, EntryType, Link } from "./entrytypes";
   export let entries: EntryType[] = [];
   export let year: string;
+  let rendered = false;
   /**
    * entryIDURLLookup is a Lookup to link entry IDs to the URL referenced with "self".
    */
@@ -23,12 +24,26 @@
     acc[entry.id] = selfURL!.href;
     return acc;
   }, {});
+  const ready = (_) => {
+    rendered = false;
+    console.log("finished");
+  };
 </script>
 
-<Collapsible header={year} level="4">
-  {#each entries as entry}
-    <UrlCollapsible {entry} lookupID={entryIDURLLookup[entry.id]} level="4">
-      <Entry {entry} />
-    </UrlCollapsible>
-  {/each}
-</Collapsible>
+<div class:collapsible-wait={rendered === true}>
+  <Collapsible
+    header={year}
+    level="4"
+    onOpen={() => {
+      rendered = true;
+    }}
+  >
+    <section use:ready>
+      {#each entries as entry}
+        <UrlCollapsible {entry} lookupID={entryIDURLLookup[entry.id]} level="4">
+          <Entry {entry} />
+        </UrlCollapsible>
+      {/each}
+    </section>
+  </Collapsible>
+</div>
