@@ -12,8 +12,12 @@
   import type { Distribution } from "./distributiontype";
   import { base } from "$app/paths";
   import { goto } from "$app/navigation";
-  import { appStore } from "$lib/store";
   export let distribution: Distribution;
+  const sortedFeeds = distribution.rolie.feeds.sort((entry1: any, entry2: any) => {
+    if (entry1.url < entry2.url) return 1;
+    if (entry1.url > entry2.url) return -1;
+    return 0;
+  });
   /**
    * openFeed opens a feed from a distribution.
    * @param e
@@ -26,7 +30,7 @@
 </script>
 
 {#if distribution.rolie && distribution.rolie.feeds}
-  {#each distribution.rolie.feeds as feed}
+  {#each sortedFeeds as feed}
     <div class="entry">
       <table>
         <tbody>
