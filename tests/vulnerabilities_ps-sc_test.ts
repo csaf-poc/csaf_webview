@@ -232,9 +232,8 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible Category en
   await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
   await page.getByRole("heading", { name: " Remediations" }).click();
   await page.getByRole("heading", { name: " Category: vendor_fix" }).click();
-  await expect(
-    page.getByText("Date2022-03-14T13:10:55.000+01:00 URLhttps://github.com/csaf-tools/")
-  ).toBeVisible();
+  await expect(page.getByText("Date2022-03-14T13:10:55.000+01:00")).toBeVisible();
+  await expect(page.getByText("URLhttps://github.com/csaf-tools/")).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Remediations collapsible Category Product ID links visible", async ({
@@ -337,11 +336,11 @@ test("Vulnerabilities collapsible CVE entry Scores Score CVSS  visibility", asyn
   await page.getByRole("heading", { name: " Scores" }).click();
   await page.getByRole("heading", { name: "Score 1" }).click();
   await page.getByRole("heading", { name: "CVSS V3.1" }).click();
-  await expect(
-    page.getByText(
-      "attackComplexityLOW attackVectorLOCAL availabilityImpactLOW baseScore6.1 baseSev"
-    )
-  ).toBeVisible();
+  await expect(page.getByText("attackComplexityLOW")).toBeVisible();
+  await expect(page.getByText("attackVectorLOCAL")).toBeVisible();
+  await expect(page.getByText("availabilityImpactLOW")).toBeVisible();
+  await expect(page.getByText("baseScore6.1")).toBeVisible();
+  await expect(page.getByText("baseSev")).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Scores Score ID list visibility", async ({ page }) => {
