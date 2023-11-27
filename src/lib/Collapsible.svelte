@@ -37,16 +37,16 @@
       visibility = "none";
     } else {
       onOpen();
+      setTimeout(() => {
+        const element = document.getElementById(`${uuid}`);
+        const y = element!.getBoundingClientRect().top + window.scrollY - 150;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }, 200);
       visibility = "block";
     }
   };
   $: if (visibility === "block") {
     icon = "bx-chevron-down";
-    setTimeout(() => {
-      const element = document.getElementById(`${uuid}`);
-      const y = element!.getBoundingClientRect().top + window.scrollY - 150;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }, 200);
   } else {
     icon = "bx-chevron-right";
   }
