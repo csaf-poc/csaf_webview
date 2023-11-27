@@ -66,7 +66,14 @@
   };
 </script>
 
-<svelte:window on:dragover={disable} on:drop={disable} />
+<svelte:window
+  on:dragover={disable}
+  on:drop={disable}
+  on:popstate={() => {
+    appStore.setFeedErrorMsg("");
+    appStore.setSingleErrorMsg("");
+  }}
+/>
 
 <div class="content">
   <!-- svelte-ignore a11y-no-redundant-roles -->
