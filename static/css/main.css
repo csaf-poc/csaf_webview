@@ -292,7 +292,6 @@ hr {
 }
 
 .revisionhistory {
-  width: 90vw;
   overflow-y: auto;
   max-height: 40vh;
 }
@@ -521,9 +520,6 @@ hr {
   }
   .droparea {
     width: 50%;
-  }
-  .revisionhistory {
-    width: 50vw;
   }
   .collapsible-body {
     margin-left: 1.5rem;
