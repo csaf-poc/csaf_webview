@@ -11,11 +11,12 @@
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
   import UrlCollapsible from "$lib/feedview/entries/URLCollapsible.svelte";
+  import { appStore } from "$lib/store";
+  import { tick } from "svelte";
   import Entry from "./Entry.svelte";
   import type { EntryIDURLLookup, EntryType, Link } from "./entrytypes";
   export let entries: EntryType[] = [];
   export let year: string;
-  let rendered = false;
   /**
    * entryIDURLLookup is a Lookup to link entry IDs to the URL referenced with "self".
    */
@@ -25,17 +26,20 @@
     return acc;
   }, {});
   const ready = (_) => {
-    rendered = false;
-    console.log("finished");
+    updateUI();
   };
+  async function updateUI() {
+    await tick();
+    appStore.setLoading(false);
+  }
 </script>
 
-<div class:collapsible-wait={rendered === true}>
+<div>
   <Collapsible
     header={year}
     level="4"
     onOpen={() => {
-      rendered = true;
+      appStore.setLoading(true);
     }}
   >
     <section use:ready>
