@@ -98,5 +98,3 @@
   </div>
   <slot />
 </div>
-
-<Spinner active={$appStore.ui.loading} />

@@ -26,22 +26,12 @@
     return acc;
   }, {});
   const ready = (_) => {
-    updateUI();
+    // when rendering is done
   };
-  async function updateUI() {
-    await tick();
-    appStore.setLoading(false);
-  }
 </script>
 
 <div>
-  <Collapsible
-    header={year}
-    level="4"
-    onOpen={() => {
-      appStore.setLoading(true);
-    }}
-  >
+  <Collapsible header={year} level="4" onOpen={() => {}}>
     <section use:ready>
       {#each entries as entry}
         <UrlCollapsible {entry} lookupID={entryIDURLLookup[entry.id]} level="4">
