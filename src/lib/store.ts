@@ -27,6 +27,7 @@ type AppStore = {
     isRevisionHistoryVisible: boolean;
     isVulnerabilitiesOverviewVisible: boolean;
     isVulnerabilitiesSectionVisible: boolean;
+    isProductTreeOpen: boolean;
     isProductTreeVisible: boolean;
     isFeedSectionOpen: boolean;
     lastFeed: string;
@@ -62,6 +63,7 @@ const generateInitialState = (): AppStore => {
       isRevisionHistoryVisible: false,
       isVulnerabilitiesOverviewVisible: true,
       isVulnerabilitiesSectionVisible: false,
+      isProductTreeOpen: false,
       isProductTreeVisible: false,
       isFeedSectionOpen: false,
       lastFeed: "",
@@ -254,6 +256,18 @@ function createStore() {
     setVulnerabilitiesOverviewInvisible: () => {
       update((settings) => {
         settings.ui.isVulnerabilitiesOverviewVisible = false;
+        return settings;
+      });
+    },
+    setProductTreeOpen: () => {
+      update((settings) => {
+        settings.ui.isProductTreeOpen = true;
+        return settings;
+      });
+    },
+    setProductTreeClosed: () => {
+      update((settings) => {
+        settings.ui.isProductTreeOpen = false;
         return settings;
       });
     },

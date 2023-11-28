@@ -66,12 +66,13 @@
     <Collapsible
       header="Product tree"
       onOpen={() => {
-        appStore.setProductTreeSectionVisible();
+        appStore.setProductTreeOpen();
       }}
       open={$appStore.ui.isProductTreeVisible}
       onClose={() => {
         appStore.setProductTreeSectionInVisible();
         appStore.resetSelectedProduct();
+        appStore.setProductTreeClosed();
       }}
     >
       <ProductTree />
