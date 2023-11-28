@@ -20,7 +20,7 @@ A browser based web app to:
 
 Status: in beta
 
-![](docs/app.png)
+![](docs/app_single.png)
 
 A demo deployment will be done occasionally via github pages
 and thus maybe behind the latest developments.
