@@ -14,8 +14,8 @@
   import { goto } from "$app/navigation";
   export let distribution: Distribution;
   const sortedFeeds = distribution.rolie.feeds.sort((entry1: any, entry2: any) => {
-    if (entry1.url < entry2.url) return 1;
-    if (entry1.url > entry2.url) return -1;
+    if (entry1.url < entry2.url) return -1;
+    if (entry1.url > entry2.url) return 1;
     return 0;
   });
   /**
