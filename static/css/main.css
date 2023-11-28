@@ -71,6 +71,20 @@ hr {
   margin-bottom: 0.5rem;
 }
 
+.loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  background: #000;
+  color: #fff;
+  opacity: 30%;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
 .content {
   margin-left: 0.5rem;
   margin-right: 0.5rem;

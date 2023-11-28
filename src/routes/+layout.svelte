@@ -2,6 +2,7 @@
   import "boxicons/css/boxicons.min.css";
   import { appStore } from "$lib/store";
   import { base } from "$app/paths";
+  import Spinner from "$lib/Spinner.svelte";
   /*global __APP_VERSION__*/
   const version: string = __APP_VERSION__;
   const MODE = {
@@ -97,3 +98,5 @@
   </div>
   <slot />
 </div>
+
+<Spinner active={$appStore.ui.loading} />

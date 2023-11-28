@@ -10,27 +10,27 @@ async function loadSingleCSAF(url: string) {
   url = `${PUBLIC_PROXY_PATH}${url}`;
   appStore.setSingleErrorMsg("");
   try {
-    appStore.setCSAFLoading(true);
+    appStore.setLoading(true);
     const response = await fetch(`${url}`);
     if (response.ok) {
       const csafDoc = await response.json();
       appStore.clearUploadedFile();
       const docModel = convertToDocModel(csafDoc);
       appStore.setDocument(docModel);
-      appStore.setCSAFLoading(false);
+      appStore.setLoading(false);
     } else {
       const msg = response.statusText
         ? `An Error occured: HTTP ${response.status} - ${response.statusText}`
         : `An Error occured: HTTP ${response.status}`;
       appStore.setSingleErrorMsg(msg);
-      appStore.setCSAFLoading(false);
+      appStore.setLoading(false);
       appStore.setDocument(null);
     }
   } catch (error) {
     appStore.setSingleErrorMsg(
       "Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions."
     );
-    appStore.setCSAFLoading(false);
+    appStore.setLoading(false);
     appStore.setDocument(null);
   }
 }
@@ -46,7 +46,7 @@ const displayErrorMsg = (response: Response) => {
   appStore.setFeedErrorMsg(msg);
   appStore.setProviderMetadata(null);
   appStore.setCurrentFeed(null);
-  appStore.setFeedLoading(false);
+  appStore.setLoading(false);
 };
 
 /**
@@ -56,7 +56,7 @@ const displayErrorMsg = (response: Response) => {
 async function load(url: string) {
   url = `${PUBLIC_PROXY_PATH}${url}`;
   try {
-    appStore.setFeedLoading(true);
+    appStore.setLoading(true);
     const response = await fetch(`${url}`);
     if (response.ok) {
       appStore.setCurrentFeed(null);
@@ -77,7 +77,7 @@ async function load(url: string) {
         appStore.setFeedSectionOpen();
       }
 
-      appStore.setFeedLoading(false);
+      appStore.setLoading(false);
     } else {
       displayErrorMsg(response);
     }
@@ -87,7 +87,7 @@ async function load(url: string) {
     );
     appStore.setProviderMetadata(null);
     appStore.setCurrentFeed(null);
-    appStore.setFeedLoading(false);
+    appStore.setLoading(false);
   }
 }
 

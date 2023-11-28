@@ -1,7 +1,9 @@
 <script lang="ts">
-  export let open = false;
+  export let active = false;
 </script>
 
-{#if open}
-  <i class="bx bx-loader-alt spinner" />
+{#if active}
+  <div class="loading-container">
+    <i class="bx bx-loader-alt spinner" />
+  </div>
 {/if}
