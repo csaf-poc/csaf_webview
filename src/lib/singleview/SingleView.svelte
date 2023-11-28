@@ -65,6 +65,9 @@
   {#if $appStore.doc && $appStore.doc["isProductTreePresent"]}
     <Collapsible
       header="Product tree"
+      onOpen={() => {
+        appStore.setProductTreeSectionVisible();
+      }}
       open={$appStore.ui.isProductTreeVisible}
       onClose={() => {
         appStore.setProductTreeSectionInVisible();
