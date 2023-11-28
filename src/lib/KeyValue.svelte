@@ -26,9 +26,7 @@
               {@html DOMPurify.sanitize(
                 marked.parse(values[index].replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))
               )}
-              <br />
             </div>
-            <small class="hint">Markdown</small>
           </td>
         </tr>
       {:else}
