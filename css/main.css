@@ -1,0 +1,556 @@
+/* Sane CSS defaults*/
+::root {
+  font-size: 18px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 100;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 100;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+h6 {
+  font-size: 0.75rem;
+  font-weight: 100;
+}
+
+hr {
+  width: 66vw;
+  border-top: 1px solid lightgray;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  background: #000;
+  color: #fff;
+  opacity: 30%;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+.programname {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.versionstring {
+  margin-left: 0.25rem;
+}
+
+.title {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: large;
+}
+
+.btn {
+  box-shadow: 1px 3px 3px #c1c1c1;
+  color: rgb(63, 65, 68);
+  background: lightgrey;
+  padding: 0.5rem;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.error-message {
+  margin-left: 1rem;
+  color: red;
+  font-size: large;
+  font-weight: bold;
+}
+
+.key {
+  width: 5rem;
+}
+
+.loader {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.url-outline {
+  padding: 0.5rem;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.url-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.postpend {
+  position: absolute;
+  right: 0;
+}
+
+.postpend button {
+  background-color: white;
+  border: 0;
+}
+
+.url-input {
+  flex-grow: 1;
+  margin-left: 1rem;
+}
+
+.url-input input {
+  width: 85%;
+}
+
+.url-outline input {
+  border: 0;
+}
+
+.url-outline input:focus {
+  outline: none;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.file-upload-container {
+  border: 1px solid lightgrey;
+  height: 50px;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.file-upload::file-selector-button {
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 34px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 16px;
+  transition: background-color 200ms;
+}
+
+.file-upload::file-selector-button:hover {
+  background-color: lightgrey;
+  color: white;
+}
+
+.file-upload::file-selector-button:active {
+  background-color: lightgrey;
+  color: white;
+}
+
+.droparea {
+  height: 50px;
+  width: 100%;
+  border: 1px dashed gray;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.droparea-error {
+  background: red;
+  color: white;
+}
+
+.droparea-okay {
+  background-color: green;
+  color: white;
+}
+
+.collapsible {
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+}
+
+.collapsible-body {
+  margin-left: 0.25rem;
+}
+
+.url-collapsible-title {
+  width: 95%;
+}
+
+.url-collapsible-titletext {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.collapsible-wait {
+  cursor: progress;
+}
+
+.documentdata {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.documentdata .key {
+  white-space: nowrap;
+}
+
+.backbutton {
+  background-color: black;
+  color: white;
+  text-align: center;
+  width: 8rem;
+  padding: 0.5rem;
+  position: sticky;
+  bottom: 1rem;
+  cursor: pointer;
+  float: right;
+}
+
+.tag {
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding: 0.25rem;
+}
+
+.hint {
+  background: lightgray;
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0.25rem;
+}
+
+.keyvalue {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.markdown-text {
+  margin-left: 1rem;
+  padding: 0.5rem;
+  border: 1px solid lightgray;
+  width: 100%;
+  overflow-x: auto;
+  position: relative;
+}
+
+.revisionhistory {
+  overflow-y: auto;
+  max-height: 40vh;
+}
+
+.revisionhistory table {
+  border-spacing: 0;
+}
+
+.revisionhistory tr {
+  text-align: left;
+}
+
+.revisionhistory th {
+  border-bottom: 1px solid lightgray;
+}
+
+.revisionhistory table tbody tr:first-child td {
+  padding-top: 1rem;
+}
+
+.revisionhistory tbody tr:last-child td {
+  padding-bottom: 1rem;
+}
+
+.history-date {
+  min-width: 17rem;
+}
+
+.history-number {
+  min-width: 5rem;
+}
+
+.history-summary {
+  min-width: 20rem;
+}
+
+.highlight-section {
+  background-color: lightgrey;
+}
+
+.valuelist {
+  list-style-type: none;
+  padding-inline-start: 1em;
+}
+
+.crosstable {
+  overflow: auto;
+}
+
+.crosstable-overview {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: 1rem;
+}
+
+.crosstable-container {
+  max-width: 100%;
+}
+
+.crosstable table {
+  border-spacing: 0;
+}
+
+.crosstable td {
+  line-height: 1.5rem;
+}
+
+.crosstable table tbody tr:nth-of-type(2n) {
+  background: #f2f2f2;
+}
+
+.crosstable table tbody tr:first-child td {
+  padding-top: 1rem;
+}
+
+.crosstable table tbody tr:last-child td {
+  padding-bottom: 1rem;
+}
+
+.crosstable-header-row th {
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.productname {
+  text-align: left;
+  width: 30rem;
+  white-space: nowrap;
+}
+
+.total {
+  text-align: center;
+  width: 10rem;
+  white-space: nowrap;
+}
+
+.cve {
+  text-align: center;
+  width: 10rem;
+  white-space: nowrap;
+}
+
+.affectionstate {
+  text-align: center;
+}
+
+.legend {
+  margin-left: 0rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+}
+
+.legend dd {
+  display: inline;
+  margin: 0;
+}
+.legend dd:after {
+  display: block;
+  content: "";
+}
+.legend dt {
+  display: inline-block;
+  min-width: 30px;
+}
+
+.branch {
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.is-small {
+  font-size: small;
+}
+
+.xgeneric {
+  margin-left: 1rem;
+}
+
+.category-name {
+  margin-left: 1rem;
+}
+
+.markdowntext {
+  margin-left: 2rem;
+}
+
+.spinner {
+  font-size: xx-large;
+  animation-name: spin;
+  animation-duration: 750ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  /* transform: rotate(3deg); */
+  /* transform: rotate(0.3rad);/ */
+  /* transform: rotate(3grad); */
+  /* transform: rotate(.03turn);  */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tlpclear {
+  background: #000;
+  color: #fff;
+  padding: 0.3rem;
+}
+.tlpred {
+  background: #000;
+  color: #ff2b2b;
+  padding: 0.3rem;
+}
+.tlpamber {
+  background: #000;
+  color: #ffc000;
+  padding: 0.3rem;
+}
+.tlpgreen {
+  background: #000;
+  color: #33ff00;
+  padding: 0.3rem;
+}
+
+@media screen and (min-width: 1782px) {
+  .crosstable-container {
+    max-width: 89%;
+  }
+  .legend {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .content {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+  }
+
+  .header {
+    flex-direction: row;
+    margin-bottom: 1rem;
+  }
+  .programname {
+    white-space: nowrap;
+  }
+  .title {
+    margin-top: 0rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .switchbtn {
+    min-width: fit-content;
+    text-align: right;
+  }
+  .upload {
+    flex-direction: row;
+  }
+  .file-upload-container {
+    width: 50%;
+  }
+  .droparea {
+    width: 50%;
+  }
+  .collapsible-body {
+    margin-left: 1.5rem;
+  }
+  .branch {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0.6rem;
+  }
+  .key {
+    width: 12rem;
+  }
+}
