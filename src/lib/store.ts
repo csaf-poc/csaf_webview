@@ -15,10 +15,9 @@ type AppStore = {
   currentFeed: any;
   ui: {
     appMode: string;
-    csafLoading: boolean;
     docToggleExpandAll: boolean;
     feedErrorMsg: string;
-    feedLoading: boolean;
+    loading: boolean;
     singleErrorMsg: string;
     isFeedDistributionOpen: boolean;
     isFeedGeneralSectionOpen: boolean;
@@ -27,6 +26,7 @@ type AppStore = {
     isRevisionHistoryVisible: boolean;
     isVulnerabilitiesOverviewVisible: boolean;
     isVulnerabilitiesSectionVisible: boolean;
+    isProductTreeOpen: boolean;
     isProductTreeVisible: boolean;
     isFeedSectionOpen: boolean;
     lastFeed: string;
@@ -50,10 +50,9 @@ const generateInitialState = (): AppStore => {
     currentFeed: null,
     ui: {
       appMode: MODE.SINGLE,
-      csafLoading: false,
       docToggleExpandAll: false,
       feedErrorMsg: "",
-      feedLoading: false,
+      loading: false,
       singleErrorMsg: "",
       isFeedDistributionOpen: true,
       isFeedGeneralSectionOpen: true,
@@ -62,6 +61,7 @@ const generateInitialState = (): AppStore => {
       isRevisionHistoryVisible: false,
       isVulnerabilitiesOverviewVisible: true,
       isVulnerabilitiesSectionVisible: false,
+      isProductTreeOpen: false,
       isProductTreeVisible: false,
       isFeedSectionOpen: false,
       lastFeed: "",
@@ -80,12 +80,6 @@ function createStore() {
 
   return {
     subscribe,
-    setCSAFLoading: (option: boolean) => {
-      update((settings) => {
-        settings.ui.csafLoading = option;
-        return settings;
-      });
-    },
     toggleDocExpandAll: () => {
       update((settings) => {
         if (settings.ui.docToggleExpandAll) {
@@ -120,9 +114,9 @@ function createStore() {
         return settings;
       });
     },
-    setFeedLoading: (option: boolean) => {
+    setLoading: (option: boolean) => {
       update((settings) => {
-        settings.ui.feedLoading = option;
+        settings.ui.loading = option;
         return settings;
       });
     },
@@ -254,6 +248,18 @@ function createStore() {
     setVulnerabilitiesOverviewInvisible: () => {
       update((settings) => {
         settings.ui.isVulnerabilitiesOverviewVisible = false;
+        return settings;
+      });
+    },
+    setProductTreeOpen: () => {
+      update((settings) => {
+        settings.ui.isProductTreeOpen = true;
+        return settings;
+      });
+    },
+    setProductTreeClosed: () => {
+      update((settings) => {
+        settings.ui.isProductTreeOpen = false;
         return settings;
       });
     },

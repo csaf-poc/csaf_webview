@@ -14,5 +14,5 @@
 </script>
 
 {#each categories as category}
-  <KeyValue keys={["scheme", "term"]} values={[category.scheme, category.term]} compact={true} />
+  <KeyValue keys={["scheme", "term"]} values={[category.scheme, category.term]} />
 {/each}

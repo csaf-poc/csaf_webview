@@ -17,7 +17,7 @@
   {#each references as reference, index}
     <Reference {reference} />
     {#if references.length > 1 && index < references.length - 1}
-      <hr style="width:80vw;" />
+      <hr />
     {/if}
   {/each}
 {/if}

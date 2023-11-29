@@ -30,7 +30,7 @@
   );
 </script>
 
-<div class="loadfromurl">
+<div class="loader">
   <UrlLoader
     baseroute={`${base}/?q=`}
     tooltiptext={"URL to fetch Advisory from"}
@@ -38,22 +38,14 @@
     errormessage={$appStore.ui.singleErrorMsg}
   />
 </div>
-<div class="row">
-  <div class="col-6 col-3-lg">
-    <Upload />
-  </div>
-  <div class="col-6 col-9-lg">
-    <Droparea />
-  </div>
+
+<div class="upload">
+  <Upload />
+  <Droparea />
 </div>
 
 {#if isCSAF}
   {#if $appStore.doc}
-    <div class="row">
-      <div class="col">
-        <h1>{$appStore.doc["id"]}: {$appStore.doc["title"]}</h1>
-      </div>
-    </div>
     <Collapsible header="General" open={$appStore.ui.isGeneralSectionVisible}>
       <General />
     </Collapsible>
@@ -73,10 +65,14 @@
   {#if $appStore.doc && $appStore.doc["isProductTreePresent"]}
     <Collapsible
       header="Product tree"
+      onOpen={() => {
+        appStore.setProductTreeOpen();
+      }}
       open={$appStore.ui.isProductTreeVisible}
       onClose={() => {
         appStore.setProductTreeSectionInVisible();
         appStore.resetSelectedProduct();
+        appStore.setProductTreeClosed();
       }}
     >
       <ProductTree />
@@ -98,17 +94,3 @@
     <Back />
   {/if}
 {/if}
-
-<style>
-  h1 {
-    padding: 0;
-  }
-  h2 {
-    /* style similar to h2 in Collapsible.svelte */
-    margin: 0;
-    font-weight: bold;
-  }
-  .loadfromurl {
-    margin-bottom: 1rem;
-  }
-</style>

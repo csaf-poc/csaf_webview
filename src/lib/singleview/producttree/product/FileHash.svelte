@@ -16,9 +16,5 @@
 </script>
 
 {#each hash as hashEntry}
-  <KeyValue
-    compact={true}
-    keys={["algorithm", "value"]}
-    values={[hashEntry.algorithm, hashEntry.value]}
-  />
+  <KeyValue keys={["algorithm", "value"]} values={[hashEntry.algorithm, hashEntry.value]} />
 {/each}

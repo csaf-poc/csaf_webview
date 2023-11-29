@@ -36,23 +36,14 @@
 </script>
 
 <KeyValue
-  compact={true}
   keys={["ID", "Published", "Title", "Updated"]}
   values={[entry.id, entry.published, entry.title, entry.updated]}
 />
 <Collapsible header="Content" level="5">
-  <KeyValue
-    compact={true}
-    keys={["Type", "Src"]}
-    values={[entry.content.type, entry.content.src]}
-  />
+  <KeyValue keys={["Type", "Src"]} values={[entry.content.type, entry.content.src]} />
 </Collapsible>
 <Collapsible header="Format" level="5">
-  <KeyValue
-    compact={true}
-    keys={["Schema", "Version"]}
-    values={[entry.format.schema, entry.format.version]}
-  />
+  <KeyValue keys={["Schema", "Version"]} values={[entry.format.schema, entry.format.version]} />
 </Collapsible>
 
 <Collapsible header="Links" level="5">
@@ -71,12 +62,3 @@
     {/each}
   </table>
 </Collapsible>
-
-<style>
-  .key {
-    width: 6vw;
-  }
-  td {
-    padding: 0.3rem;
-  }
-</style>

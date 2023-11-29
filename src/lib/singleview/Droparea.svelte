@@ -49,8 +49,8 @@
   title="Drop a CSAF file here"
   class="droparea"
   class:hover
-  class:bg-error={valid == false}
-  class:bg-primary={valid == true}
+  class:droparea-error={valid == false}
+  class:droparea-okay={valid == true}
   on:dragover|preventDefault={() => {
     hover = true;
   }}
@@ -63,16 +63,6 @@
 </div>
 
 <style>
-  .droparea {
-    height: 50px;
-    width: 100%;
-    border: 1px dashed gray;
-    color: gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2em;
-  }
   .hover {
     color: #fff;
     border: 1px dashed #fff;

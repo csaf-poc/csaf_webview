@@ -28,11 +28,3 @@
     <Product product={branch.product} />
   {/if}
 </div>
-
-<style>
-  .branch {
-    margin-left: 3rem;
-    margin-bottom: 1rem;
-    margin-top: 0.6rem;
-  }
-</style>

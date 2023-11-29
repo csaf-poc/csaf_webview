@@ -15,6 +15,9 @@
   export let class_ = "";
   export let highlight = false;
   const uuid = crypto.randomUUID();
+  export let onOpen = () => {
+    //default: Do notthing
+  };
   export let onClose = () => {
     //default: Do notthing
   };
@@ -33,82 +36,54 @@
       onClose();
       visibility = "none";
     } else {
+      onOpen();
+      setTimeout(() => {
+        const element = document.getElementById(`${uuid}`);
+        const y = element!.getBoundingClientRect().top + window.scrollY - 150;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }, 200);
       visibility = "block";
     }
   };
   $: if (visibility === "block") {
     icon = "bx-chevron-down";
-    setTimeout(() => {
-      const element = document.getElementById(`${uuid}`);
-      const y = element!.getBoundingClientRect().top + window.scrollY - 150;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }, 200);
   } else {
     icon = "bx-chevron-right";
   }
 </script>
 
-<div class:collapsible={true} class:bg-light={highlight}>
+<div class:collapsible={true} class:highlight-section={highlight}>
   {#if level == "2"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} id={header} on:click={toggle} class={class_}>
       <h2><i class="bx {icon}" />{header}</h2>
     </div>
   {/if}
   {#if level == "3"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} id={header} on:click={toggle} class={class_}>
       <h3><i class="bx {icon}" />{header}</h3>
     </div>
   {/if}
   {#if level == "4"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
+    <div title={header} id={header} on:click={toggle} class={class_}>
       <h4><i class="bx {icon}" />{header}</h4>
     </div>
   {/if}
   {#if level == "5"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} style="cursor:pointer" id={header} on:click={toggle} class={class_}>
-      <h6><i class="bx {icon}" />{header}</h6>
+    <div title={header} id={header} on:click={toggle} class={class_}>
+      <h5><i class="bx {icon}" />{header}</h5>
     </div>
   {/if}
   {#if visibility === "block"}
-    <div id={uuid} class="body">
+    <div id={uuid} class="collapsible-body">
       <slot />
     </div>
   {/if}
 </div>
-
-<style>
-  .collapsible {
-    white-space: nowrap;
-    width: fit-content;
-    max-width: 95vw;
-  }
-  .body {
-    padding-left: 3rem;
-    white-space: normal;
-  }
-  h2,
-  h3,
-  h4 {
-    margin: 0;
-  }
-  h3,
-  h4 {
-    line-height: 3rem;
-  }
-  h2 {
-    font-weight: bold;
-  }
-  h6 {
-    line-height: 0.3em;
-    font-size: large;
-    margin: 0.6rem;
-  }
-</style>

@@ -22,7 +22,11 @@
     acc[published.getFullYear()].push(entry);
     return acc;
   }, {});
-  const years = Object.keys(entriesByYear).sort();
+  const years = Object.keys(entriesByYear).sort((entry1: any, entry2: any) => {
+    if (entry1 < entry2) return 1;
+    if (entry1 > entry2) return -1;
+    return 0;
+  });
 </script>
 
 {#each years as year}

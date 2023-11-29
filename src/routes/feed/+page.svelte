@@ -38,5 +38,7 @@
   });
 </script>
 
-<FeedView />
-<Spinner open={$appStore.ui.feedLoading} />
+<div class="appbody">
+  <FeedView />
+</div>
+<Spinner modal={false} active={$appStore.ui.loading} />

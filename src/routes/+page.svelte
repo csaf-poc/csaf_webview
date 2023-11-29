@@ -44,5 +44,7 @@
   });
 </script>
 
-<SingleView />
-<Spinner open={$appStore.ui.csafLoading} />
+<div class="appbody">
+  <SingleView />
+</div>
+<Spinner modal={false} active={$appStore.ui.loading} />

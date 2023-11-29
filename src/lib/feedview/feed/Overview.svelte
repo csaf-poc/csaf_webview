@@ -13,7 +13,6 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import Distributions from "./distributions/Distributions.svelte";
   import GeneralInformation from "./GeneralInformation.svelte";
-  import KeyValue from "$lib/KeyValue.svelte";
 </script>
 
 {#if $appStore.providerMetadata}
@@ -29,7 +28,12 @@
     open={$appStore.ui.isFeedPublicPGPSectionOpen}
   >
     {#each $appStore.providerMetadata["public_openpgp_keys"] as key}
-      <KeyValue keys={["fingerprint", "url"]} values={[key.fingerprint, key.url]} />
+      <table class="keyvalue">
+        <tbody>
+          <tr><td class="key">fingerprint</td><td class="value">{key.fingerprint}</td></tr>
+          <tr><td class="key">url</td><td class="value"><a href={key.url}>{key.url}</a></td></tr>
+        </tbody>
+      </table>
     {/each}
   </Collapsible>
 {/if}

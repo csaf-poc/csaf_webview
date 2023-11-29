@@ -21,7 +21,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible visibilit
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await expect(page.getByRole("heading", { name: " Product status" })).toBeVisible();
 });
 
@@ -34,7 +34,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible functiona
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Product status" }).click();
   await expect(page.getByRole("heading", { name: " Product status" })).toBeVisible();
 });
@@ -48,7 +48,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible entry Fir
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Product status" }).click();
   await expect(page.getByText("First Fixed")).toBeVisible();
 });
@@ -62,7 +62,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible entry Fir
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Product status" }).click();
   await expect(
     page.getByRole("link", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-rc2" }).first()
@@ -78,7 +78,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible entry Fix
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Product status" }).click();
   await expect(page.locator("p").filter({ hasText: /^Fixed$/ })).toBeVisible();
 });
@@ -92,7 +92,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible entry Fix
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Product status" }).click();
   await expect(
     page.getByRole("link", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-rc2" }).nth(1)
@@ -108,7 +108,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible entry Kno
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Product status" }).click();
   await expect(page.locator("p").filter({ hasText: "Known affected" })).toBeVisible();
 });
@@ -122,7 +122,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible entry Kno
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Product status" }).click();
   await expect(
     page.getByRole("link", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha" })
@@ -138,7 +138,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible entry Kno
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Product status" }).click();
   await page.getByRole("link", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha" }).click();
   await expect(
@@ -157,7 +157,7 @@ test("Vulnerabilities collapsible CVE entry Product status collapsible entry Kno
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Product status" }).click();
   await expect(
     page.getByRole("link", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-rc1" })
@@ -173,7 +173,7 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible visibility"
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await expect(page.getByRole("heading", { name: " Remediations" })).toBeVisible();
 });
 
@@ -186,7 +186,7 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible functionali
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Remediations" }).click();
   await expect(page.getByRole("heading", { name: " Remediations" })).toBeVisible();
 });
@@ -200,7 +200,7 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible category vi
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Remediations" }).click();
   await expect(page.getByRole("heading", { name: " Category: vendor_fix" })).toBeVisible();
 });
@@ -214,7 +214,7 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible category fu
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Remediations" }).click();
   await page.getByRole("heading", { name: " Category: vendor_fix" }).click();
   await expect(page.getByRole("heading", { name: " Category: vendor_fix" })).toBeVisible();
@@ -229,12 +229,11 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible Category en
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Remediations" }).click();
   await page.getByRole("heading", { name: " Category: vendor_fix" }).click();
-  await expect(
-    page.getByText("Date2022-03-14T13:10:55.000+01:00 URLhttps://github.com/csaf-tools/")
-  ).toBeVisible();
+  await expect(page.getByText("Date2022-03-14T13:10:55.000+01:00")).toBeVisible();
+  await expect(page.getByText("URLhttps://github.com/csaf-tools/")).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Remediations collapsible Category Product ID links visible", async ({
@@ -246,7 +245,7 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible Category Pr
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Remediations" }).click();
   await page.getByRole("heading", { name: " Category: vendor_fix" }).click();
   await expect(
@@ -263,7 +262,7 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible Category Pr
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Remediations" }).click();
   await page.getByRole("heading", { name: " Category: vendor_fix" }).click();
   await expect(
@@ -281,7 +280,7 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible Category Pr
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Remediations" }).click();
   await page.getByRole("heading", { name: " Category: vendor_fix" }).click();
   await page.getByRole("link", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-rc1" }).click;
@@ -297,7 +296,7 @@ test("Vulnerabilities collapsible CVE entry Scores visible", async ({ page }) =>
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await expect(page.getByRole("heading", { name: " Scores" })).toBeVisible();
 });
 
@@ -308,7 +307,7 @@ test("Vulnerabilities collapsible CVE entry Scores functionality", async ({ page
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Scores" }).click();
   await expect(page.getByRole("heading", { name: "Score 1" })).toBeVisible();
 });
@@ -320,7 +319,7 @@ test("Vulnerabilities collapsible CVE entry Scores Score functionality", async (
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Scores" }).click();
   await page.getByRole("heading", { name: "Score 1" }).click();
   await expect(page.getByRole("heading", { name: "Score 1" })).toBeVisible();
@@ -333,15 +332,15 @@ test("Vulnerabilities collapsible CVE entry Scores Score CVSS  visibility", asyn
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Scores" }).click();
   await page.getByRole("heading", { name: "Score 1" }).click();
   await page.getByRole("heading", { name: "CVSS V3.1" }).click();
-  await expect(
-    page.getByText(
-      "attackComplexityLOW attackVectorLOCAL availabilityImpactLOW baseScore6.1 baseSev"
-    )
-  ).toBeVisible();
+  await expect(page.getByText("attackComplexityLOW")).toBeVisible();
+  await expect(page.getByText("attackVectorLOCAL")).toBeVisible();
+  await expect(page.getByText("availabilityImpactLOW")).toBeVisible();
+  await expect(page.getByText("baseScore6.1")).toBeVisible();
+  await expect(page.getByText("baseSev")).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Scores Score ID list visibility", async ({ page }) => {
@@ -351,7 +350,7 @@ test("Vulnerabilities collapsible CVE entry Scores Score ID list visibility", as
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" }).click();
   await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " CVE-2022-27193" }).click();
+
   await page.getByRole("heading", { name: " Scores" }).click();
   await page.getByRole("heading", { name: "Score 1" }).click();
   await expect(page.getByRole("list")).toBeVisible();

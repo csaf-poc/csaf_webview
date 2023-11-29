@@ -1,8 +1,8 @@
 <script lang="ts">
   import "boxicons/css/boxicons.min.css";
-  import "chota/dist/chota.min.css";
   import { appStore } from "$lib/store";
   import { base } from "$app/paths";
+  import Spinner from "$lib/Spinner.svelte";
   /*global __APP_VERSION__*/
   const version: string = __APP_VERSION__;
   const MODE = {
@@ -12,7 +12,11 @@
   let switchToRoute = "";
   let headerText = "Advisory";
   $: if (mode === MODE.SINGLE) {
-    headerText = "Advisory";
+    if ($appStore.doc && $appStore.doc.title) {
+      headerText = `${$appStore.doc["id"]}: ${$appStore.doc["title"]}`;
+    } else {
+      headerText = "Advisory";
+    }
   } else {
     if ($appStore.currentFeed) {
       headerText = "ROLIE-Feed";
@@ -63,65 +67,34 @@
   };
 </script>
 
-<svelte:window on:dragover={disable} on:drop={disable} />
+<svelte:window
+  on:dragover={disable}
+  on:drop={disable}
+  on:popstate={() => {
+    appStore.setFeedErrorMsg("");
+    appStore.setSingleErrorMsg("");
+  }}
+/>
 
 <div class="content">
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <div class="header">
     <div class="programname">
-      <h1 role="heading">CSAF Webview</h1>
-      <h4>v{version}</h4>
+      <div>
+        <h4 role="heading">CSAF Webview</h4>
+      </div>
+      <div>
+        <small class="versionstring">v{version}</small>
+      </div>
     </div>
-    <div><h4>{headerText}</h4></div>
+    <div class="title">{headerText}</div>
     <div class="switchbtn">
       <a
         title={mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}
         href={switchToRoute}
-        class="switchbutton button"
-        >{mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}</a
+        class="btn">{mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}</a
       >
     </div>
   </div>
   <slot />
 </div>
-
-<style>
-  .switchbutton {
-    box-shadow: 1px 3px 3px #c1c1c1;
-    color: rgb(63, 65, 68);
-  }
-  .content {
-    margin-left: 3rem;
-    margin-right: 3rem;
-  }
-  .header {
-    display: flex-column;
-    align-items: center;
-    margin-block-end: 2rem;
-  }
-
-  .programname {
-    display: flex;
-    align-items: baseline;
-  }
-
-  h1 {
-    margin-bottom: 0;
-    margin-right: 1rem;
-  }
-  @media only screen and (min-width: 768px) {
-    .header {
-      display: flex;
-      align-items: center;
-      margin-block-end: 1rem;
-    }
-    .programname {
-      min-width: 45vw;
-    }
-    .switchbtn {
-      min-width: 20vw;
-      text-align: right;
-      margin-left: auto;
-    }
-  }
-</style>

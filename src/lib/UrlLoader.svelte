@@ -17,6 +17,10 @@
   export let errormessage: string;
   export let placeholder: string;
   let url = "";
+  $: if (url === "") {
+    errormessage = "";
+  }
+
   /**
    * onMount set url if given via query param.
    */
@@ -42,76 +46,28 @@
   };
 </script>
 
-<div class="row">
-  <div class="col-12 outline">
-    <div class="urlcontainer" title={tooltiptext}>
-      <span class="prepend">
-        <i class="bx bx-file" />
-        <span class="prependtext">URL</span>
-      </span>
-      <input class="urlinput" {placeholder} type="text" bind:value={url} on:keydown={keydown} />
-      {#if url}
-        <span class="postpend" title="Discard search">
-          <button
-            on:click={() => {
-              url = "";
-            }}><i class="bx bx-x" /></button
-          >
-        </span>
-      {/if}
+<div class="url-outline">
+  <div class="url-container" title={tooltiptext}>
+    <div class="prepend">
+      <i class="bx bx-file" />
+      <span class="prependtext">URL</span>
     </div>
+    <div class="url-input">
+      <input {placeholder} type="text" bind:value={url} on:keydown={keydown} />
+    </div>
+    {#if url}
+      <div class="postpend" title="Discard search">
+        <button
+          on:click={() => {
+            url = "";
+          }}><i class="bx bx-x" /></button
+        >
+      </div>
+    {/if}
   </div>
 </div>
 {#if errormessage}
-  <div class="row">
-    <div class="col">
-      <div class="errors text-error">{errormessage}</div>
-    </div>
+  <div class="error-message">
+    {errormessage}
   </div>
 {/if}
-
-<style>
-  .errors {
-    font-size: x-large;
-    font-weight: bold;
-  }
-  .outline {
-    padding: 0.5rem;
-    border: 1px solid #d2d6dd;
-    border-radius: 5px;
-  }
-  .bx-x {
-    font-size: larger;
-  }
-  .postpend {
-    font-size: larger;
-    line-height: 1.1rem;
-  }
-  .postpend button {
-    background: #fff;
-  }
-  .prepend {
-    padding-left: 1rem;
-    width: 7rem;
-    white-space: nowrap;
-  }
-  .prependtext {
-    margin-left: 0.1rem;
-  }
-  .urlinput {
-    border: 0;
-  }
-  input:focus {
-    outline: 0 !important;
-    border: 0;
-    border-color: #fff;
-    border-radius: 0;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-  }
-  .urlcontainer {
-    display: flex;
-    align-items: center;
-    height: 40px;
-  }
-</style>

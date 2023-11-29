@@ -17,10 +17,10 @@
     <table class="striped">
       <thead>
         <tr
-          ><th class="date">Date</th>
-          <th class="number">Number</th>
-          <th class="summary">Summary</th>
-          <th>Legacy_version</th>
+          ><th class="history-date">Date</th>
+          <th class="history-number">Number</th>
+          <th class="history-summary">Summary</th>
+          <th class="hisotry-legacyversion">Legacy_version</th>
         </tr>
       </thead>
       <tbody>
@@ -35,22 +35,3 @@
     </table>
   </div>
 {/if}
-
-<style>
-  th {
-    font-weight: 100;
-  }
-  .revisionhistory {
-    width: 60vw;
-    min-width: 70rem;
-  }
-  .date {
-    width: 20%;
-  }
-  .number {
-    width: 5%;
-  }
-  .summary {
-    width: 80%;
-  }
-</style>

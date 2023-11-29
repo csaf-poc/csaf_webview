@@ -14,7 +14,6 @@
   import { base } from "$app/paths";
   export let open = false;
   export let level = "2";
-  export let class_ = "";
   export let highlight = false;
   export let entry: any;
   export let lookupID: string;
@@ -51,35 +50,26 @@
   }
 </script>
 
-<div class:collapsible={true} class:bg-light={highlight}>
+<div class:collapsible={true} class:highlight-section={highlight}>
   {#if level == "4"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={entry.title} style="cursor:pointer" id={entry.id} on:click={toggle} class={class_}>
-      <h4>
+    <div
+      title={entry.title}
+      style="cursor:pointer"
+      id={entry.id}
+      on:click={toggle}
+      class="url-collapsible-title"
+    >
+      <h5 class="url-collapsible-titletext">
         <i class="bx {icon}" />
         <a href={lookupID} on:click={openLink}>{entry.id}: {entry.title}</a>
-      </h4>
+      </h5>
     </div>
   {/if}
   {#if visibility === "block"}
-    <div class="body">
+    <div class="collapsible-body">
       <slot />
     </div>
   {/if}
 </div>
-
-<style>
-  .collapsible {
-    white-space: nowrap;
-  }
-  .body {
-    padding-left: 3rem;
-  }
-  h4 {
-    margin: 0;
-  }
-  h4 {
-    line-height: 3rem;
-  }
-</style>

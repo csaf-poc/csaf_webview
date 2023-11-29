@@ -36,7 +36,7 @@ test("Vulnerabilities overview collapsible table", async ({ page }) => {
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
   await page.getByRole("heading", { name: "Vulnerabilities overview" });
-  await expect(page.locator("div:nth-child(6) > .body").first()).toBeVisible();
+  await expect(page.locator(".collapsible-body").first()).toBeVisible();
 });
 
 test("Vulnerabilities overview collapsible table inner", async ({ page }) => {
@@ -45,7 +45,7 @@ test("Vulnerabilities overview collapsible table inner", async ({ page }) => {
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
   await page.getByRole("heading", { name: " Vulnerabilities overview" });
-  await expect(page.locator(".body > .crosstable-overview")).toBeVisible();
+  await expect(page.locator(".collapsible-body > .crosstable-overview")).toBeVisible();
 });
 
 test("Vulnerabilities overview collapsible product cell", async ({ page }) => {
