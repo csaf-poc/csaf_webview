@@ -11,12 +11,15 @@
 <script lang="ts">
   import Collapsible from "$lib/Collapsible.svelte";
   import UrlCollapsible from "$lib/feedview/entries/URLCollapsible.svelte";
-  import { appStore } from "$lib/store";
-  import { tick } from "svelte";
   import Entry from "./Entry.svelte";
   import type { EntryIDURLLookup, EntryType, Link } from "./entrytypes";
   export let entries: EntryType[] = [];
   export let year: string;
+  entries.sort((entry1: any, entry2: any) => {
+    if (entry1.updated < entry2.updated) return 1;
+    if (entry1.updated > entry2.updated) return -1;
+    return 0;
+  });
   /**
    * entryIDURLLookup is a Lookup to link entry IDs to the URL referenced with "self".
    */
