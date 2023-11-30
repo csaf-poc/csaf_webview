@@ -2,7 +2,6 @@
   import "boxicons/css/boxicons.min.css";
   import { appStore } from "$lib/store";
   import { base } from "$app/paths";
-  import Spinner from "$lib/Spinner.svelte";
   /*global __APP_VERSION__*/
   const version: string = __APP_VERSION__;
   const MODE = {
@@ -65,6 +64,11 @@
   const disable = (e: Event) => {
     e.preventDefault();
   };
+
+  const onSwitch = (_) => {
+    appStore.setSelectedCVE("");
+    appStore.setSelectedProduct("");
+  };
 </script>
 
 <svelte:window
@@ -92,6 +96,7 @@
       <a
         title={mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}
         href={switchToRoute}
+        on:click={onSwitch}
         class="btn">{mode !== MODE.SINGLE ? "Switch to Advisory" : "Switch to Overview"}</a
       >
     </div>
