@@ -55,6 +55,7 @@ const displayErrorMsg = (response: Response) => {
  */
 async function load(url: string) {
   url = `${PUBLIC_PROXY_PATH}${url}`;
+  appStore.setFeedErrorMsg("");
   try {
     appStore.setLoading(true);
     const response = await fetch(`${url}`);
