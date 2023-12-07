@@ -22,6 +22,11 @@ Status: in beta
 
 ![](docs/app_single.png)
 
+*Displaying a single document*
+
+![](docs/app_feed.png)
+*Displaying a ROLIE-Feed*
+
 A demo deployment will be done occasionally via github pages
 and thus maybe behind the latest developments.
 
