@@ -10,7 +10,7 @@
 
 # CSAF Webview
 
-A browser based web app to:
+A browser based web app (module) to:
 
 - Display the contents of a
   [CSAF 2.0](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html)
@@ -22,6 +22,11 @@ Note: As of 2023-12-14 all but one server do not allow web applications
  to read the CSAF information directly. So you will get failures
  due to _CORS restrictions_ often.
  See https://github.com/oasis-tcs/csaf/issues/653 for more details.
+
+The envisoned usage is to be integrated in a larger application.
+Therefore it is kept simple and stylable.
+A backend can act as a proxy to avoid the problems caused by
+CSAF Providers missing `Access-Control-Allow-Origin: *` headers.
 
 ![](docs/app_single.png)
 
