@@ -15,7 +15,7 @@ A browser based web app (module) to:
 - Display the contents of a
   [CSAF 2.0](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html)
   document.
-- Browse the tree of documents offered by a CSAF Provider or Aggregator
+- Browse the tree of documents offered by a CSAF Provider or mirror
   via the ROLIE feed.
 
 Note: As of 2023-12-14 all but one server do not allow web applications
