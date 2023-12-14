@@ -18,7 +18,10 @@ A browser based web app to:
 - Browse the tree of documents offered by a CSAF Provider or Aggregator
   via the ROLIE feed.
 
-Status: in beta
+Note: As of 2023-12-14 all but one server do not allow web applications
+ to read the CSAF information directly. So you will get failures
+ due to _CORS restrictions_ often.
+ See https://github.com/oasis-tcs/csaf/issues/653 for more details.
 
 ![](docs/app_single.png)
 
@@ -27,8 +30,8 @@ Status: in beta
 ![](docs/app_feed.png)
 *Displaying a ROLIE-Feed*
 
-A demo deployment will be done occasionally via github pages
-and thus maybe behind the latest developments.
+The deployment via github pages is a demo
+and thus may not reflect the current state of the source repository.
 
 ## Development
 
