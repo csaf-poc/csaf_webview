@@ -13,6 +13,7 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import Distributions from "./distributions/Distributions.svelte";
   import GeneralInformation from "./GeneralInformation.svelte";
+  import SafeLink from "../../SafeLink.svelte";
 </script>
 
 {#if $appStore.providerMetadata}
@@ -31,7 +32,7 @@
       <table class="keyvalue">
         <tbody>
           <tr><td class="key">fingerprint</td><td class="value">{key.fingerprint}</td></tr>
-          <tr><td class="key">url</td><td class="value"><a href={key.url}>{key.url}</a></td></tr>
+          <tr><td class="key">url</td><td class="value"><SafeLink url={key.url}/></td></tr>
         </tbody>
       </table>
     {/each}

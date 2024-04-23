@@ -16,6 +16,7 @@
   import References from "$lib/singleview/references/References.svelte";
   import RevisionHistory from "./RevisionHistory.svelte";
   import ValueList from "../../ValueList.svelte";
+  import SafeLink from "../../SafeLink.svelte";
   let tlpStyle = "";
   $: aliases = $appStore.doc?.aliases;
   $: trackingVersion = $appStore.doc?.trackingVersion;
@@ -89,7 +90,7 @@
     {#if tlp?.url}
       <tr>
         <td class="key">TLP URL</td>
-        <td class="value"><a href={tlpurl}>{tlp?.url}</a></td>
+        <td class="value"><SafeLink url={tlpurl}/></td>
       </tr>
     {/if}
     <tr>
