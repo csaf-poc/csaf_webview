@@ -10,6 +10,8 @@
 
 <script lang="ts">
   import type { Link } from "./feedTypes";
+  import SafeLink from "../../SafeLink.svelte";
+
   export let links: Link[] = [];
 </script>
 
@@ -17,7 +19,7 @@
   {#each links as link}
     <tr>
       <td class="key">{link.rel}: </td><td
-        ><a id={crypto.randomUUID()} target="_blank" href={link.href}>{link.href}</a></td
+        ><SafeLink id={crypto.randomUUID()} target="_blank" url={link.href}/></td
       >
     </tr>
   {/each}
