@@ -36,11 +36,11 @@
   $: if (tlp?.label === TLP.WHITE) {
     tlpStyle = "tlpclear";
   } else if (tlp?.label === TLP.RED) {
-    tlpStyle = "tlred";
+    tlpStyle = "tlpred";
   } else if (tlp?.label === TLP.AMBER) {
-    tlpStyle = "tlamber";
+    tlpStyle = "tlpamber";
   } else if (tlp?.label === TLP.GREEN) {
-    tlpStyle = "tlgreen";
+    tlpStyle = "tlpgreen";
   }
   $: id = $appStore.doc?.id;
   $: published = $appStore.doc?.published;
@@ -90,7 +90,7 @@
     {#if tlp?.url}
       <tr>
         <td class="key">TLP URL</td>
-        <td class="value"><SafeLink url={tlpurl}/></td>
+        <td class="value"><SafeLink url={tlpurl} /></td>
       </tr>
     {/if}
     <tr>
