@@ -129,6 +129,11 @@ const getCSAFVersion = (csafDoc: any): string => {
   return csafDoc.document[CSAFDocProps.CSAFVERSION] || EMPTY;
 };
 
+const getDistributionText = (csafDoc: any): string => {
+  if (!checkDistributionPresent(csafDoc)) return EMPTY;
+  return csafDoc.document[CSAFDocProps.DISTRIBUTION][CSAFDocProps.TEXT] || EMPTY;
+};
+
 /**
  * getId retrieves a document ID.
  * @param csafDoc
@@ -367,6 +372,7 @@ const convertToDocModel = (csafDoc: any): DocModel => {
     aliases: getAliases(csafDoc),
     category: getCategory(csafDoc),
     csafVersion: getCSAFVersion(csafDoc),
+    distributionText: getDistributionText(csafDoc),
     generator: getGenerator(csafDoc),
     id: getId(csafDoc),
     isDistributionPresent: checkDistributionPresent(csafDoc),

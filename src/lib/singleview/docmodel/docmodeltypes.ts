@@ -32,6 +32,7 @@ export const CSAFDocProps = {
   REVISIONHISTORY: "revision_history",
   STATUS: "status",
   SOURCELANG: "sourcelang",
+  TEXT: "text",
   TITLE: "title",
   TLP: "tlp",
   TRACKING: "tracking",
@@ -86,6 +87,7 @@ export type DocModel = {
   aliases: string[];
   category: string;
   csafVersion: string;
+  distributionText: string;
   generator: any;
   id: string;
   isDistributionPresent: boolean;
