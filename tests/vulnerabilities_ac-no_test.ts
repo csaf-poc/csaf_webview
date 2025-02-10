@@ -85,7 +85,7 @@ test("Vulnerabilities collapsible CVE entry CWE name entry visibility", async ({
   ).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Acknowledgements visibility", async ({ page }) => {
+test("Vulnerabilities collapsible CVE entry Acknowledgments visibility", async ({ page }) => {
   await page.goto("/");
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
@@ -94,7 +94,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgements visibility", async 
   await expect(page.getByRole("heading", { name: " Acknowledgments" })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Acknowledgements functionality", async ({ page }) => {
+test("Vulnerabilities collapsible CVE entry Acknowledgments functionality", async ({ page }) => {
   await page.goto("/");
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
@@ -104,9 +104,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgements functionality", asy
   await expect(page.getByRole("heading", { name: " Acknowledgments" })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Acknowledgements Names visibility", async ({
-  page
-}) => {
+test("Vulnerabilities collapsible CVE entry Acknowledgments Names visibility", async ({ page }) => {
   await page.goto("/");
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
@@ -116,7 +114,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgements Names visibility", 
   await expect(page.getByRole("cell", { name: "Names", exact: true })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Acknowledgements Names entry visibility", async ({
+test("Vulnerabilities collapsible CVE entry Acknowledgments Names entry visibility", async ({
   page
 }) => {
   await page.goto("/");
@@ -128,7 +126,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgements Names entry visibil
   await expect(page.getByRole("cell", { name: "Damian Pfammatter", exact: true })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Acknowledgements Organization visibility", async ({
+test("Vulnerabilities collapsible CVE entry Acknowledgments Organization visibility", async ({
   page
 }) => {
   await page.goto("/");
@@ -140,7 +138,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgements Organization visibi
   await expect(page.getByRole("cell", { name: "Organization", exact: true })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Acknowledgements Organization entry visibility", async ({
+test("Vulnerabilities collapsible CVE entry Acknowledgments Organization entry visibility", async ({
   page
 }) => {
   await page.goto("/");
@@ -152,7 +150,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgements Organization entry 
   await expect(page.getByRole("cell", { name: "Cyber-Defense Campus", exact: true })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Acknowledgements Summary visibility", async ({
+test("Vulnerabilities collapsible CVE entry Acknowledgments Summary visibility", async ({
   page
 }) => {
   await page.goto("/");
@@ -164,7 +162,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgements Summary visibility"
   await expect(page.getByRole("cell", { name: "Summary", exact: true })).toBeVisible();
 });
 
-test("Vulnerabilities collapsible CVE entry Acknowledgements Summary entry visibility", async ({
+test("Vulnerabilities collapsible CVE entry Acknowledgments Summary entry visibility", async ({
   page
 }) => {
   await page.goto("/");

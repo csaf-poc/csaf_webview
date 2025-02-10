@@ -196,10 +196,10 @@
   </div>
 {/if}
 
-{#if $appStore.doc?.acknowledgements}
+{#if $appStore.doc?.acknowledgments}
   <div class="subsection">
-    <Collapsible header="Acknowledgements" level="3">
-      <Acknowledgments acknowledgments={$appStore.doc?.acknowledgements} />
+    <Collapsible header="Acknowledgments" level="3">
+      <Acknowledgments acknowledgments={$appStore.doc?.acknowledgments} />
     </Collapsible>
   </div>
 {/if}
