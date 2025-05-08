@@ -27,7 +27,7 @@
         {#each $appStore.doc?.revisionHistory as entry}
           <tr>
             <td>{entry.date}</td><td>{entry.number}</td><td>{entry.summary}</td><td
-              >{#if entry.legacyVersion}{entry.legacyVersion}{/if}</td
+              >{#if entry.legacy_version}{entry.legacy_version}{/if}</td
             >
           </tr>
         {/each}

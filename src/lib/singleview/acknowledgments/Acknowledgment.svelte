@@ -11,8 +11,8 @@
 <script lang="ts">
   import KeyValue from "$lib/KeyValue.svelte";
   import ValueList from "$lib/ValueList.svelte";
-  import type { Acknowledgement } from "../docmodel/docmodeltypes";
-  export let ack: Acknowledgement;
+  import type { Acknowledgment } from "../docmodel/docmodeltypes";
+  export let ack: Acknowledgment;
   const keys: Array<String> = [];
   const values: string[] = [];
   if (ack.names) {

@@ -33,6 +33,7 @@
   $: csafVersion = $appStore.doc?.csafVersion;
   $: tlp = $appStore.doc?.tlp;
   $: tlpurl = $appStore.doc?.tlp.url;
+  $: distributionText = $appStore.doc?.distributionText;
   $: if (tlp?.label === TLP.WHITE) {
     tlpStyle = "tlpclear";
   } else if (tlp?.label === TLP.RED) {
@@ -91,6 +92,12 @@
       <tr>
         <td class="key">TLP URL</td>
         <td class="value"><SafeLink url={tlpurl} /></td>
+      </tr>
+    {/if}
+    {#if distributionText}
+      <tr>
+        <td class="key">Distribution</td>
+        <td class="value">{distributionText}</td>
       </tr>
     {/if}
     <tr>
@@ -196,10 +203,10 @@
   </div>
 {/if}
 
-{#if $appStore.doc?.acknowledgements}
+{#if $appStore.doc?.acknowledgments}
   <div class="subsection">
-    <Collapsible header="Acknowledgements" level="3">
-      <Acknowledgments acknowledgments={$appStore.doc?.acknowledgements} />
+    <Collapsible header="Acknowledgments" level="3">
+      <Acknowledgments acknowledgments={$appStore.doc?.acknowledgments} />
     </Collapsible>
   </div>
 {/if}
