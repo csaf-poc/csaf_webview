@@ -17,7 +17,7 @@ test("Vulnerabilities collapsible visibility", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await expect(page.getByRole("heading", { name: " Vulnerabilities", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Vulnerabilities", exact: true })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible functionality", async ({ page }) => {
@@ -25,8 +25,8 @@ test("Vulnerabilities collapsible functionality", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await expect(page.getByRole("heading", { name: " Vulnerabilities", exact: true })).toBeVisible();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Vulnerabilities", exact: true })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry visibility", async ({ page }) => {
@@ -34,7 +34,7 @@ test("Vulnerabilities collapsible CVE entry visibility", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("heading", { name: "CVE-2022-27193" })).toBeVisible();
 });
 
@@ -43,7 +43,7 @@ test("Vulnerabilities collapsible CVE entry functionality", async ({ page }) => 
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("heading", { name: "CVE-2022-27193" })).toBeVisible();
 });
 
@@ -52,7 +52,7 @@ test("Vulnerabilities collapsible CVE entry CWE ID visibility", async ({ page })
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("cell", { name: "CWE ID" })).toBeVisible();
 });
 
@@ -61,7 +61,7 @@ test("Vulnerabilities collapsible CVE entry CWE ID entry visibility", async ({ p
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("cell", { name: "CWE-611" })).toBeVisible();
 });
 
@@ -70,7 +70,7 @@ test("Vulnerabilities collapsible CVE entry CWE name visibility", async ({ page 
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("cell", { name: "CWE Name" })).toBeVisible();
 });
 
@@ -79,7 +79,7 @@ test("Vulnerabilities collapsible CVE entry CWE name entry visibility", async ({
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(
     page.getByRole("cell", { name: "Improper Restriction of XML External Entity Reference" })
   ).toBeVisible();
@@ -90,8 +90,8 @@ test("Vulnerabilities collapsible CVE entry Acknowledgments visibility", async (
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await expect(page.getByRole("heading", { name: " Acknowledgments" })).toBeVisible();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Acknowledgments", exact: false })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Acknowledgments functionality", async ({ page }) => {
@@ -99,9 +99,9 @@ test("Vulnerabilities collapsible CVE entry Acknowledgments functionality", asyn
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " Acknowledgments" }).click();
-  await expect(page.getByRole("heading", { name: " Acknowledgments" })).toBeVisible();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Acknowledgments", exact: false }).click();
+  await expect(page.getByRole("heading", { name: "Acknowledgments", exact: false })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry Acknowledgments Names visibility", async ({ page }) => {
@@ -109,8 +109,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgments Names visibility", a
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " Acknowledgments" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("cell", { name: "Names", exact: true })).toBeVisible();
 });
 
@@ -121,8 +120,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgments Names entry visibili
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " Acknowledgments" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("cell", { name: "Damian Pfammatter", exact: true })).toBeVisible();
 });
 
@@ -133,8 +131,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgments Organization visibil
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " Acknowledgments" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("cell", { name: "Organization", exact: true })).toBeVisible();
 });
 
@@ -145,8 +142,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgments Organization entry v
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " Acknowledgments" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("cell", { name: "Cyber-Defense Campus", exact: true })).toBeVisible();
 });
 
@@ -157,8 +153,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgments Summary visibility",
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " Acknowledgments" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("cell", { name: "Summary", exact: true })).toBeVisible();
 });
 
@@ -169,8 +164,7 @@ test("Vulnerabilities collapsible CVE entry Acknowledgments Summary entry visibi
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " Acknowledgments" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(
     page.getByRole("cell", { name: "Finding and reporting the vulnerability", exact: true })
   ).toBeVisible();
@@ -181,8 +175,8 @@ test("Vulnerabilities collapsible CVE entry IDs visibility", async ({ page }) =>
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await expect(page.getByRole("heading", { name: " IDs" })).toBeVisible();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "IDs" })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry IDs functionality", async ({ page }) => {
@@ -190,9 +184,9 @@ test("Vulnerabilities collapsible CVE entry IDs functionality", async ({ page })
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " IDs" }).click();
-  await expect(page.getByRole("heading", { name: " IDs" })).toBeVisible();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "IDs" }).click();
+  await expect(page.getByRole("heading", { name: "IDs" })).toBeVisible();
 });
 
 test("Vulnerabilities collapsible CVE entry IDs Systemname visibility", async ({ page }) => {
@@ -200,8 +194,8 @@ test("Vulnerabilities collapsible CVE entry IDs Systemname visibility", async ({
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " IDs" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "IDs" }).click();
   await expect(page.getByRole("cell", { name: "Systemname" })).toBeVisible();
 });
 
@@ -210,8 +204,8 @@ test("Vulnerabilities collapsible CVE entry IDs Systemname entry visibility", as
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " IDs" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "IDs" }).click();
   await expect(page.getByRole("cell", { name: "Github Issue" })).toBeVisible();
 });
 
@@ -220,8 +214,8 @@ test("Vulnerabilities collapsible CVE entry IDs Text visibility", async ({ page 
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " IDs" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "IDs" }).click();
   await expect(page.getByRole("cell", { name: "Text", exact: true })).toBeVisible();
 });
 
@@ -230,8 +224,8 @@ test("Vulnerabilities collapsible CVE entry IDs Text entry visibility", async ({
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
-  await page.getByRole("heading", { name: " IDs" }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "IDs" }).click();
   await expect(page.getByRole("cell", { name: "csaf-tools/CVRF-CSAF-Converter#78" })).toBeVisible();
 });
 
@@ -240,7 +234,7 @@ test("Vulnerabilities collapsible CVE entry Notes visibility", async ({ page }) 
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Notes" })).toBeVisible();
 });
 
@@ -249,7 +243,7 @@ test("Vulnerabilities collapsible CVE entry Notes functionality", async ({ page 
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: "Notes" }).click();
   await expect(page.getByRole("heading", { name: "Notes" })).toBeVisible();
 });
@@ -261,7 +255,7 @@ test("Vulnerabilities collapsible CVE entry Notes Category: description visibili
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Category: description" })).toBeVisible();
 });
 
@@ -272,7 +266,7 @@ test("Vulnerabilities collapsible CVE entry Notes Category: description function
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: "Category: description" }).click();
   await expect(page.getByRole("heading", { name: "Category: description" })).toBeVisible();
 });
@@ -284,6 +278,6 @@ test("Vulnerabilities collapsible CVE entry Notes Category: description Category
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities", exact: true }).click();
+  await page.getByRole("heading", { name: "Vulnerabilities", exact: true }).click();
   await page.getByRole("heading", { name: "CVE-2022-27193" }).click();
 });

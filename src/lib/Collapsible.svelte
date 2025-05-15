@@ -56,29 +56,33 @@
   {#if level == "2"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} id={header} on:click={toggle} class={class_}>
-      <h2><i class="bx {icon}" />{header}</h2>
+    <div title={header} id={header} on:click={toggle} class={`collapsible-header ${class_}`}>
+      <i class="bx {icon}" />
+      <h2>{header}</h2>
     </div>
   {/if}
   {#if level == "3"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} id={header} on:click={toggle} class={class_}>
-      <h3><i class="bx {icon}" />{header}</h3>
+    <div title={header} id={header} on:click={toggle} class={`collapsible-header ${class_}`}>
+      <i class="bx {icon}" />
+      <h3>{header}</h3>
     </div>
   {/if}
   {#if level == "4"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} id={header} on:click={toggle} class={class_}>
-      <h4><i class="bx {icon}" />{header}</h4>
+    <div title={header} id={header} on:click={toggle} class={`collapsible-header ${class_}`}>
+      <i class="bx {icon} small" />
+      <h4>{header}</h4>
     </div>
   {/if}
   {#if level == "5"}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div title={header} id={header} on:click={toggle} class={class_}>
-      <h5><i class="bx {icon}" />{header}</h5>
+    <div title={header} id={header} on:click={toggle} class={`collapsible-header ${class_}`}>
+      <i class="bx {icon} small" />
+      <h5>{header}</h5>
     </div>
   {/if}
   {#if visibility === "block"}
@@ -87,3 +91,16 @@
     </div>
   {/if}
 </div>
+
+<style>
+  .collapsible-header {
+    display: flex;
+    align-items: center;
+  }
+  .collapsible > div > i {
+    font-size: 20pt;
+  }
+  .collapsible > div > i.small {
+    font-size: 16pt;
+  }
+</style>
