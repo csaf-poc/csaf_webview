@@ -19,7 +19,7 @@
 <div class="helperinfo">
   <table>
     <tr>
-      <td><h5>Product Version Helper</h5></td>
+      <td><h5>Product identification helper</h5></td>
     </tr>
   </table>
   <div class="helperinfobody">
