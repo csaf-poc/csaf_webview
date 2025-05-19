@@ -84,14 +84,17 @@
                         <i class="bx bx-heart" />
                         <i class="bx b-minus" />
                       {:else}
-                        <i
-                          class:bx={true}
-                          class:bx-x={column === ProductStatusSymbol.KNOWN_AFFECTED}
-                          class:bx-check={column === ProductStatusSymbol.FIXED}
-                          class:bx-error={column === ProductStatusSymbol.UNDER_INVESTIGATION}
-                          class:bx-minus={column === ProductStatusSymbol.NOT_AFFECTED}
-                          class:bx-heart={column === ProductStatusSymbol.RECOMMENDED}
-                        />
+                        <!-- May contain more than one status and thus more than one character -->
+                        {#each column as char}
+                          <i
+                            class:bx={true}
+                            class:bx-x={char === ProductStatusSymbol.KNOWN_AFFECTED}
+                            class:bx-check={char === ProductStatusSymbol.FIXED}
+                            class:bx-error={char === ProductStatusSymbol.UNDER_INVESTIGATION}
+                            class:bx-minus={char === ProductStatusSymbol.NOT_AFFECTED}
+                            class:bx-heart={char === ProductStatusSymbol.RECOMMENDED}
+                          />
+                        {/each}
                       {/if}
                     </td>
                   {/if}
