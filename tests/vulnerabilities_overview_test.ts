@@ -44,7 +44,7 @@ test("Vulnerabilities overview collapsible table inner", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.locator(".collapsible-body > .crosstable-overview")).toBeVisible();
 });
 
@@ -53,7 +53,7 @@ test("Vulnerabilities overview collapsible product cell", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.getByRole("cell", { name: "Product" })).toBeVisible();
 });
 
@@ -62,7 +62,7 @@ test("Vulnerabilities overview collapsible table total result cell", async ({ pa
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.getByRole("cell", { name: "Total result" })).toBeVisible();
 });
 
@@ -71,7 +71,7 @@ test("Vulnerabilities overview collapsible table CVE Cell", async ({ page }) => 
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.getByRole("cell", { name: "CVE-2022-27193" })).toBeVisible();
 });
 
@@ -80,7 +80,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link", async ({ page }
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.getByRole("link", { name: "CVE-2022-27193" })).toBeVisible();
 });
 
@@ -89,7 +89,7 @@ test("Vulnerabilities overview collapsible table CVE Cell entry 1", async ({ pag
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page.getByRole("cell", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha (CSAFPID-0001)" })
   ).toBeVisible();
@@ -100,7 +100,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 1", async ({ page
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page.getByRole("link", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha (CSAFPID-0001)" })
   ).toBeVisible();
@@ -113,7 +113,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 1 total result ic
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha (CSAFPID-0001)  " })
@@ -129,7 +129,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 1 total result ce
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha (CSAFPID-0001)  " })
@@ -145,7 +145,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 1 cve result icon
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha (CSAFPID-0001)  " })
@@ -161,7 +161,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 1 cve result cell
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha (CSAFPID-0001)  " })
@@ -175,7 +175,7 @@ test("Vulnerabilities overview collapsible table CVE Cell entry 2", async ({ pag
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page.getByRole("cell", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1 (CSAFPID-0002)" })
   ).toBeVisible();
@@ -186,7 +186,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 2", async ({ page
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page.getByRole("link", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1 (CSAFPID-0002)" })
   ).toBeVisible();
@@ -199,7 +199,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 2 total result ic
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1 (CSAFPID-0002)  " })
@@ -215,7 +215,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 2 total result ce
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1 (CSAFPID-0002)  " })
@@ -231,7 +231,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 2 cve result icon
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1 (CSAFPID-0002)  " })
@@ -247,7 +247,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 2 cve result cell
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1 (CSAFPID-0002)  " })
@@ -261,7 +261,7 @@ test("Vulnerabilities overview collapsible table CVE Cell entry 6", async ({ pag
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page.getByRole("cell", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-rc2 (CSAFPID-0006)" })
   ).toBeVisible();
@@ -272,7 +272,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 6", async ({ page
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page.getByRole("link", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-rc2 (CSAFPID-0006)" })
   ).toBeVisible();
@@ -285,7 +285,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 6 total result ic
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-rc2 (CSAFPID-0006)  " })
@@ -301,7 +301,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 6 total result ce
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.getByRole("cell", { name: "" }).first()).toBeVisible();
 });
 
@@ -312,7 +312,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 6 cve result icon
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page
       .getByRole("row", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-rc2 (CSAFPID-0006)  " })
@@ -328,7 +328,7 @@ test("Vulnerabilities overview collapsible table CVE Cell link 6 cve result cell
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.getByRole("cell", { name: "" }).nth(1)).toBeVisible();
 });
 
@@ -337,7 +337,7 @@ test("Vulnerabilities overview legend", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(
     page.getByText("Legend FixedUnder investigationKnown affectedNot affectedRecommended")
   ).toBeVisible();
@@ -348,7 +348,7 @@ test("Vulnerabilities overview legend icon 1", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.locator("dl i").first()).toBeVisible();
 });
 
@@ -357,7 +357,7 @@ test("Vulnerabilities overview legend icon 2", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.locator("dl i").nth(1)).toBeVisible();
 });
 
@@ -366,7 +366,7 @@ test("Vulnerabilities overview legend icon 3", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.locator("dl i").nth(2)).toBeVisible();
 });
 
@@ -375,7 +375,7 @@ test("Vulnerabilities overview legend icon 4", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.locator("dl i").nth(3)).toBeVisible();
 });
 
@@ -384,6 +384,6 @@ test("Vulnerabilities overview legend icon 5", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Vulnerabilities overview" });
+  await page.getByRole("heading", { name: "Vulnerabilities overview" });
   await expect(page.locator("dl i").nth(4)).toBeVisible();
 });

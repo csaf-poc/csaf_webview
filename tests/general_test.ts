@@ -36,7 +36,7 @@ test("general collapsible visibility", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await expect(page.getByRole("heading", { name: " General" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "General" })).toBeVisible();
 });
 
 test("general collapsible content ID", async ({ page }) => {

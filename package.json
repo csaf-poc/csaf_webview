@@ -20,7 +20,7 @@
     "node": "^18.18.2 || ^20.5.1 || ^21.1.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.39.0",
+    "@playwright/test": "^1.52.0",
     "@sveltejs/adapter-auto": "^2.1.1",
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "^1.30.4",

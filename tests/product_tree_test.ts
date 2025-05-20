@@ -18,7 +18,7 @@ test("Product tree collapsible visibility", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await expect(page.getByRole("heading", { name: " Product tree" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Product tree" })).toBeVisible();
 });
 
 test("Product tree collapsible function", async ({ page }) => {
@@ -26,8 +26,8 @@ test("Product tree collapsible function", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
-  await expect(page.getByRole("heading", { name: " Product tree" })).toBeVisible();
+  await page.getByRole("heading", { name: "Product tree" }).click();
+  await expect(page.getByRole("heading", { name: "Product tree" })).toBeVisible();
 });
 
 test("Product tree collapsible branches visibility", async ({ page }) => {
@@ -35,7 +35,7 @@ test("Product tree collapsible branches visibility", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
   await expect(page.getByRole("heading", { name: "Branches" })).toBeVisible();
 });
 
@@ -44,7 +44,7 @@ test("Product tree collapsible branches function", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
   await page.getByRole("heading", { name: "Branches" }).click();
   await expect(page.getByRole("heading", { name: "Branches" })).toBeVisible();
 });
@@ -54,7 +54,7 @@ test("Product tree collapsible vendor visibility", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
   await expect(
     page.getByText(
       "vendor CSAF Tools product_name CVRF-CSAF-Converter product_version 1.0.0-alpha C"
@@ -67,7 +67,7 @@ test("Product tree collapsible product name visibility", async ({ page }) => {
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
   await expect(
     page.getByText(
       "product_name CVRF-CSAF-Converter product_version 1.0.0-alpha CSAF Tools CVRF-CSA"
@@ -80,7 +80,7 @@ test("Product tree collapsible product version tree entry 1 visibility", async (
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
   await expect(
     page.getByText("product_version 1.0.0-alpha CSAF Tools CVRF-CSAF-Converter 1.0.0-alpha")
   ).toBeVisible();
@@ -91,7 +91,7 @@ test("Product tree collapsible product version tree entry 2 visibility", async (
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
   await expect(
     page.getByText("product_version 1.0.0-dev1 CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1")
   ).toBeVisible();
@@ -102,9 +102,9 @@ test("Product tree collapsible product version 2 collapsible visibility", async 
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
   await expect(
-    page.getByRole("heading", { name: " CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" })
+    page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" })
   ).toBeVisible();
 });
 
@@ -113,10 +113,10 @@ test("Product tree collapsible product version 2 collapsible functionality", asy
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
-  await page.getByRole("heading", { name: " CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
+  await page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
   await expect(
-    page.getByRole("heading", { name: " CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" })
+    page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" })
   ).toBeVisible();
 });
 
@@ -127,8 +127,8 @@ test("Product tree collapsible product version 2 collapsible Product ID visibili
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
-  await page.getByRole("heading", { name: " CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
+  await page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
   await expect(page.getByRole("cell", { name: "Product ID" })).toBeVisible();
 });
 
@@ -140,8 +140,8 @@ test("Product tree collapsible product version 2 collapsible Product ID entry vi
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
   await page.getByRole("heading", { name: "Vulnerabilities Overview" }).click();
-  await page.getByRole("heading", { name: " Product tree" }).click();
-  await page.getByRole("heading", { name: " CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
+  await page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
   await expect(
     page.getByRole("cell", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" })
   ).toBeVisible();
@@ -154,8 +154,8 @@ test("Product tree collapsible product version 2 collapsible Product version hel
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
-  await page.getByRole("heading", { name: " CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
+  await page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
   await expect(page.getByRole("heading", { name: "Product Version Helper" })).toBeVisible();
 });
 
@@ -166,8 +166,8 @@ test("Product tree collapsible product version 2 collapsible Product version hel
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
-  await page.getByRole("heading", { name: " CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
+  await page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
   await expect(page.getByRole("cell", { name: "cpe" })).toBeVisible();
 });
 
@@ -178,7 +178,7 @@ test("Product tree collapsible product version 2 collapsible Product version hel
   await page.locator('input[type="file"]').click();
   await page.locator('input[type="file"]').setInputFiles("./docs/bsi-2022-0001.json");
 
-  await page.getByRole("heading", { name: " Product tree" }).click();
-  await page.getByRole("heading", { name: " CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
+  await page.getByRole("heading", { name: "Product tree" }).click();
+  await page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
   await expect(page.getByRole("cell", { name: "c", exact: true })).toBeVisible();
 });
