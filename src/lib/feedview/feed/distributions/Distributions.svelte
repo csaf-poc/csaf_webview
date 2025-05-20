@@ -11,18 +11,22 @@
   import { appStore } from "$lib/store";
   import Collapsible from "$lib/Collapsible.svelte";
   import Distribution from "./Distribution.svelte";
+
+  const getDistributions = () => {
+    return $appStore.providerMetadata["distributions"].filter(
+      (d: any) => d.rolie?.feeds !== undefined
+    );
+  };
 </script>
 
 {#if $appStore.providerMetadata}
-  {#each $appStore.providerMetadata["distributions"] as distribution, index}
-    {#if distribution.rolie && distribution.rolie.feeds}
-      <Collapsible
-        header={`Distribution ${index + 1}`}
-        level="3"
-        open={$appStore.providerMetadata["distributions"].length === 1}
-      >
-        <Distribution {distribution} />
-      </Collapsible>
-    {/if}
+  {#each getDistributions() as distribution, index}
+    <Collapsible
+      header={`Distribution ${index + 1}`}
+      level="3"
+      open={$appStore.providerMetadata["distributions"].length === 1}
+    >
+      <Distribution {distribution} />
+    </Collapsible>
   {/each}
 {/if}
