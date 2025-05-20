@@ -17,22 +17,26 @@ Other URLs are renders a plain text.
 -->
 
 <script lang="ts">
-  export let url = undefined
-  export let id = undefined
-  export let target = undefined
+  export let url = undefined;
+  export let id = undefined;
+  export let target = undefined;
 
   // Protocols that are considered safe for URLs that should be
   // clickable.
-  const safeProtocols = ["https:", "http:"]
+  const safeProtocols = ["https:", "http:"];
 
-  let protocol = undefined
-  if (URL.canParse(url)) {
-    protocol = new URL(url).protocol
+  let protocol = undefined;
+  if (url) {
+    try {
+      protocol = new URL(url).protocol;
+    } catch {
+      // Ignore
+    }
   }
 </script>
 
-{#if safeProtocols.includes(protocol)}
-<a id={id} target={target} href={url}>{url}</a>
+{#if protocol && safeProtocols.includes(protocol)}
+  <a {id} {target} href={url}>{url}</a>
 {:else}
-{url}
+  {url}
 {/if}

@@ -251,7 +251,7 @@ test("Vulnerabilities collapsible CVE entry Remediations collapsible Category Pr
   ).toBeVisible();
 });
 
-// TODO: Does not work as expected: Product Tree should open to show Product Tree > Branches > CSAF Tools CVRF-CSAF-Converter 1.0.0-rc1 > Product ID and Product Version helper. Not reproducable
+// TODO: Does not work as expected: Product Tree should open to show Product Tree > Branches > CSAF Tools CVRF-CSAF-Converter 1.0.0-rc1 > Product ID and Product identification helper. Not reproducable
 test("Vulnerabilities collapsible CVE entry Remediations collapsible Category Product ID link functionality", async ({
   page
 }) => {
