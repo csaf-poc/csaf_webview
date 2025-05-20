@@ -129,7 +129,7 @@ test("Product tree collapsible product version 2 collapsible Product ID visibili
 
   await page.getByRole("heading", { name: "Product tree" }).click();
   await page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
-  await expect(page.getByRole("cell", { name: "Product ID" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "Product ID", exact: true })).toBeVisible();
 });
 
 test("Product tree collapsible product version 2 collapsible Product ID entry visibility", async ({
@@ -147,7 +147,7 @@ test("Product tree collapsible product version 2 collapsible Product ID entry vi
   ).toBeVisible();
 });
 
-test("Product tree collapsible product version 2 collapsible Product version helper visibility", async ({
+test("Product tree collapsible product version 2 collapsible Product identification helper visibility", async ({
   page
 }) => {
   await page.goto("/");
@@ -156,10 +156,10 @@ test("Product tree collapsible product version 2 collapsible Product version hel
 
   await page.getByRole("heading", { name: "Product tree" }).click();
   await page.getByRole("heading", { name: "CSAF Tools CVRF-CSAF-Converter 1.0.0-dev1" }).click();
-  await expect(page.getByRole("heading", { name: "Product Version Helper" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Product identification helper" })).toBeVisible();
 });
 
-test("Product tree collapsible product version 2 collapsible Product version helper cpe visibility", async ({
+test("Product tree collapsible product version 2 collapsible Product identification helper cpe visibility", async ({
   page
 }) => {
   await page.goto("/");
@@ -171,7 +171,7 @@ test("Product tree collapsible product version 2 collapsible Product version hel
   await expect(page.getByRole("cell", { name: "cpe" })).toBeVisible();
 });
 
-test("Product tree collapsible product version 2 collapsible Product version helper cpe value visibility", async ({
+test("Product tree collapsible product version 2 collapsible Product identification helper cpe value visibility", async ({
   page
 }) => {
   await page.goto("/");
