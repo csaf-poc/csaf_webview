@@ -11,9 +11,7 @@
 <script lang="ts">
   import KeyValue from "../../KeyValue.svelte";
   import type { Note } from "$lib/singleview/docmodel/docmodeltypes";
-  import { marked } from "marked";
-  import DOMPurify from "dompurify";
-  marked.use({ gfm: true });
+
   export let note: Note;
   let keys: string[] = [];
   let values: string[] = [];
@@ -33,9 +31,7 @@
 </div>
 
 <div class="markdown-text">
-  <div class="display-markdown">
-    {@html DOMPurify.sanitize(
-      marked.parse(note.text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""))
-    )}
+  <div>
+    {note.text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, "")}
   </div>
 </div>
