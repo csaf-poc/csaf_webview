@@ -43,7 +43,7 @@ Therefore it is kept simple and stylable.
 Background: Initially this web component was used
 in [ISDuBA](https://github.com/ISDuBA/ISDuBA), which should serve
 as our example for a universal CSAF document display component.
-During ISDuBA's development we've decided to integrate a copy
+During ISDuBA's development we decided to integrate a copy
 of Webview's code and make it ISDuBA specific instead.
 We wanted to understand more about
 what a real application handling CSAF documents would want
