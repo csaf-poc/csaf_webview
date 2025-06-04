@@ -35,7 +35,7 @@ Therefore it is kept simple and stylable.
 > If you have tried or considered using this component
 > please contact us and explain your use cases.
 >
-> Also let us know in case you when using webview and why you are.
+> Please also let us know in case you are using webview and the reasons for its selection.
 >
 > Open an issue in this repo or send us an email, e.g. to
 > [@bernhardreiter](https://github.com/bernhardreiter).
