@@ -23,10 +23,11 @@ Note: As of 2023-12-14 all but one server do not allow web applications
  due to _CORS restrictions_ often.
  See https://github.com/oasis-tcs/csaf/issues/653 for more details.
 
-The envisoned usage is to be integrated in a larger application.
-Therefore it is kept simple and stylable.
 A backend can act as a proxy to avoid the problems caused by
 CSAF Providers missing `Access-Control-Allow-Origin: *` headers.
+
+The envisoned usage is to be integrated in a larger application.
+Therefore it is kept simple and stylable.
 
 ## Feedback sought
 
