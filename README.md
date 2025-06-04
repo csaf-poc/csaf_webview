@@ -33,9 +33,11 @@ CSAF Providers missing `Access-Control-Allow-Origin: *` headers.
 > [!NOTE]
 > If you have tried or considered using this component
 > please contact us and explain your use cases.
-> Also let us know in case you are using webview and why you use it.
 >
-> Open an issue in this repo or send us an email, e.g. to @bernhardreiter .
+> Also let us know in case you when using webview and why you are.
+>
+> Open an issue in this repo or send us an email, e.g. to
+> [@bernhardreiter](https://github.com/bernhardreiter).
 
 Background: Initially this web component was used
 in [ISDuBA](https://github.com/ISDuBA/ISDuBA), which should serve
@@ -55,9 +57,9 @@ Which leads to:
 Is a universal web viewing component (for displaying CSAF documents)
 feasable and useful? Is there is enough demand for it?
 
-So we like to hear from you about how close this components gets to what
+So we would like to hear from you about how close this components gets to what
 you need to support CSAF display on the web and what you would need
-from it.
+from it. This helps us planing the maintenance.
 
 
 ### Screenshots
