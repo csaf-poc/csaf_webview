@@ -28,6 +28,40 @@ Therefore it is kept simple and stylable.
 A backend can act as a proxy to avoid the problems caused by
 CSAF Providers missing `Access-Control-Allow-Origin: *` headers.
 
+## Feedback sought
+
+> [!NOTE]
+> If you have tried or considered using this component
+> please contact us and explain your use cases.
+> Also let us know in case you are using webview and why you use it.
+>
+> Open an issue in this repo or send us an email, e.g. to @bernhardreiter .
+
+Background: Initially this web component was used
+in [ISDuBA](https://github.com/ISDuBA/ISDuBA), which should serve
+as our example for a universal CSAF document display component.
+During ISDuBA's development we've decided to integrate a copy
+of Webview's code and make it ISDuBA specific instead.
+We wanted to understand more about
+what a real application handling CSAF documents would want
+from a viewing component.
+
+Our lesson learned: It is hard to display CSAF documents well;
+which means fast and navigable that users will find the information
+they want easily. Depending on their tasks, users profit from
+tayloring the viewing experience.
+
+Which leads to:
+Is a universal web viewing component (for displaying CSAF documents)
+feasable and useful? Is there is enough demand for it?
+
+So we like to hear from you about how close this components gets to what
+you need to support CSAF display on the web and what you would need
+from it.
+
+
+### Screenshots
+
 ![](docs/app_single.png)
 
 *Displaying a single document*
