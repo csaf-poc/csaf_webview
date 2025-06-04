@@ -50,14 +50,14 @@ integrated a copy of the code and made it ISDuBA specific instead.
 Putting the focus on the needs of ISDuBA first
 helped to understand more about what this real CSAF-handling application
 needed from a viewing component. Mainly a deeper integration
-in the handled use cases.
+with the handled use cases.
 It is hard to display CSAF documents well;
 which means fast and navigable that users will find the information
 they want easily. Depending on their tasks, users profit from
 tayloring the viewing experience. 
 
-This also means, we cannot easily
-rip out the viewing component of ISDuBA and make it an external module again.
+Being ISDuBA specific means, we cannot easily
+rip out the viewing component there and make it an external module again.
 We could do a much better one now, but if other applications would need
 a deeper integration as well anyway, they may or may not profit that much.
 
@@ -67,7 +67,7 @@ Which leaves us with the questions:
 feasable and useful? 
 * Is there is enough demand for it?
 
-So we would like to hear from you about how close this component gets to what
+Thus we would like to hear from you about how close this component gets to what
 you need to support displaying CSAF documents on the web
 and what you would need from it. This helps us planning the maintenance.
 
