@@ -27,7 +27,7 @@ A backend can act as a proxy to avoid the problems caused by
 CSAF Providers missing `Access-Control-Allow-Origin: *` headers.
 
 The envisoned usage is to be integrated in a larger application.
-Therefore it is kept simple and stylable.
+Therefore, `csaf_webview` is kept simple and stylable.
 
 ## Feedback sought
 
