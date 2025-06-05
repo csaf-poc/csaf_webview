@@ -23,10 +23,56 @@ Note: As of 2023-12-14 all but one server do not allow web applications
  due to _CORS restrictions_ often.
  See https://github.com/oasis-tcs/csaf/issues/653 for more details.
 
-The envisoned usage is to be integrated in a larger application.
-Therefore it is kept simple and stylable.
 A backend can act as a proxy to avoid the problems caused by
 CSAF Providers missing `Access-Control-Allow-Origin: *` headers.
+
+The envisoned usage is to be integrated in a larger application.
+Therefore, `csaf_webview` is kept simple and stylable.
+
+## Feedback sought
+
+> [!NOTE]
+> If you have tried or considered using this component
+> please contact us and explain your use cases.
+>
+> Please also let us know in case you are using webview and the reasons for its selection.
+>
+> Open an issue in this repo or send us an email, e.g. to
+> [@bernhardreiter](https://github.com/bernhardreiter).
+
+Background: Initially this web component was used
+in [ISDuBA](https://github.com/ISDuBA/ISDuBA) and the plan
+was to keep it external and by doing so, develop a more
+universal component to display CSAF files.
+
+During ISDuBA's development we've changed the approach,
+integrated a copy of the code and made it ISDuBA specific instead.
+Putting the focus on the needs of ISDuBA first
+helped to understand more about what this real CSAF-handling application
+needed from a viewing component. Mainly a deeper integration
+with the handled use cases.
+It is hard to display CSAF documents well;
+which means fast and navigable that users will find the information
+they want easily. Depending on their tasks, users profit from
+tayloring the viewing experience. 
+
+Being ISDuBA specific means, we cannot easily
+rip out the viewing component there and make it an external module again.
+We could do a much better one now, but if other applications would need
+a deeper integration as well anyway, they may or may not profit that much.
+
+Which leaves us with the questions:
+
+* Is a universal web viewing component (for displaying CSAF documents)
+feasable and useful? 
+* Is there is enough demand for it?
+
+Thus we would like to hear from you about how close this component gets to what
+you need to support displaying CSAF documents on the web
+and what you would need from it. This helps us planning the maintenance.
+
+
+### Screenshots
 
 ![](docs/app_single.png)
 
