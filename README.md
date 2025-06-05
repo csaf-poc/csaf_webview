@@ -154,7 +154,7 @@ Change target to the URL to be proxied.
 
 ## License
 
-- csaf_webview is licensed as Free Software under MIT License.
+- csaf_webview is licensed as Free Software under Apache-2.0 License.
 
 - See the specific source files
   for details, the licenses itself can be found in the directory `LICENSES/`.
