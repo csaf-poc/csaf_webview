@@ -8,13 +8,30 @@
 
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vitest/config";
-import { readFileSync } from "fs";
+import { execSync } from 'child_process';
 
-import { fileURLToPath } from "url";
+function getSemverVersion() {
+  try {
+    const raw = execSync('git describe --tags --long --always', { encoding: 'utf8' }).trim();
+    // Example: v1.2.3-4-gf123abc
+    const match = raw.match(/^v?(\d+\.\d+\.\d+)(?:-(\d+)-g([0-9a-f]+))?$/);
 
-const file = fileURLToPath(new URL("package.json", import.meta.url));
-const json = readFileSync(file, "utf8");
-const pkg = JSON.parse(json);
+    if (!match) {
+      throw new Error(`Unrecognized version format: ${raw}`);
+    }
+
+    const [, version, commitsSinceTag, gitSha] = match;
+
+    if (commitsSinceTag && gitSha) {
+      return `${version}-${commitsSinceTag}.g${gitSha}`;
+    }
+
+    return version;
+  } catch (err) {
+    console.error('Failed to get git version:');
+    process.exit(1);
+  }
+}
 
 export default defineConfig({
   server: {
@@ -39,6 +56,6 @@ export default defineConfig({
     }
   },
   define: {
-    __APP_VERSION__: `${JSON.stringify(pkg.version)}`
+    __APP_VERSION__: JSON.stringify(getSemverVersion())
   }
 });
