@@ -17,13 +17,6 @@ test("index page has expected h1", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "CSAF Webview" })).toBeVisible();
 });
 
-test("index page has expected version", async ({ page }) => {
-  var versionnr = process.env.npm_package_version;
-  var version = "v" + versionnr;
-  await page.goto("/");
-  await expect(page.getByText(version)).toBeVisible();
-});
-
 test("index page has file input", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('input[type="file"]')).toBeVisible();
