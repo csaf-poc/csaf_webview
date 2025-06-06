@@ -8,29 +8,19 @@
 
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vitest/config";
-import { execSync } from 'child_process';
+import { execSync } from "child_process";
 
+// See comment here
+// https://github.com/gocsaf/csaf/blob/3093f717817b9369d390e56d1012eaedcfa19e32/Makefile#L40-L49
 function getSemverVersion() {
-  try {
-    const raw = execSync('git describe --tags --long --always', { encoding: 'utf8' }).trim();
-    // Example: v1.2.3-4-gf123abc
-    const match = raw.match(/^v?(\d+\.\d+\.\d+)(?:-(\d+)-g([0-9a-f]+))?$/);
-
-    if (!match) {
-      throw new Error(`Unrecognized version format: ${raw}`);
-    }
-
-    const [, version, commitsSinceTag, gitSha] = match;
-
-    if (commitsSinceTag && gitSha) {
-      return `${version}-${commitsSinceTag}.g${gitSha}`;
-    }
-
-    return version;
-  } catch (err) {
-    console.error('Failed to get git version:');
-    process.exit(1);
-  }
+  const GITDESC = execSync("git describe --tags --always", { encoding: "utf8" }).trim();
+  const GITDESCPATCH = GITDESC.replace(/v?[0-9]+\.[0-9]+\.([0-9]+)[-+]?.*/, "$1");
+  const SEMVERPATCH = Number(GITDESCPATCH) + 1;
+  const SEMVER = GITDESC.replace(
+    new RegExp("v?([0-9]+.[0-9]+.)([0-9]+)(-[1-9].*)"),
+    `$1${SEMVERPATCH}$3`
+  );
+  return SEMVER;
 }
 
 export default defineConfig({
