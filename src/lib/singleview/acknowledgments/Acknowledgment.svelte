@@ -13,7 +13,7 @@
   import ValueList from "$lib/ValueList.svelte";
   import type { Acknowledgment } from "../docmodel/docmodeltypes";
   export let ack: Acknowledgment;
-  const keys: Array<String> = [];
+  const keys: Array<string> = [];
   const values: string[] = [];
   if (ack.names) {
     keys.push("Names");
