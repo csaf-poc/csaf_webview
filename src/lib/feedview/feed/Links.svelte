@@ -19,7 +19,7 @@
   {#each links as link}
     <tr>
       <td class="key">{link.rel}: </td><td
-        ><SafeLink id={crypto.randomUUID()} target="_blank" url={link.href}/></td
+        ><SafeLink id={crypto.randomUUID()} target="_blank" url={link.href} /></td
       >
     </tr>
   {/each}
