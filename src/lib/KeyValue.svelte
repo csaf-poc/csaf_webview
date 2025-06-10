@@ -9,7 +9,7 @@
 -->
 
 <script lang="ts">
-  export let keys: Array<String>;
+  export let keys: Array<string>;
   export let values: any;
 </script>
 
@@ -20,6 +20,7 @@
         <tr
           ><td class="key">{key}</td><td class="value">
             <div>
+              <!-- eslint-disable-next-line no-misleading-character-class -->
               {values[index].replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, "")}
             </div>
           </td>

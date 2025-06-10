@@ -34,6 +34,7 @@
 </script>
 
 <div>
+  <!-- eslint-disable-next-line @typescript-eslint/no-empty-function -->
   <Collapsible header={year} level="4" onOpen={() => {}}>
     <section use:ready>
       {#each entries as entry}
