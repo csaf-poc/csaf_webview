@@ -20,24 +20,23 @@
   import UrlLoader from "$lib/UrlLoader.svelte";
   import { base } from "$app/paths";
   // Initial selections for dropdown example picker
-  let selectedOption: string = '';
-  let advisoryUrl: string = '';
+  let selectedOption = "";
+  let advisoryUrl = "";
 
   // How to call the advisories in the dropdown menu
-  const dropdownChoices: string[] = [
-    'BSI: Schwachstellen in Go',
-  ];
+  const dropdownChoices: string[] = ["BSI: Schwachstellen in Go"];
 
   // loadExamples loads the example advisory depending on the string selected in the dropdown menu into the url field
   function loadExamples(): void {
     const exampleUrls: Record<string, string> = {
-      'BSI: Schwachstellen in Go': 'https://wid.cert-bund.de/.well-known/csaf/white/2025/wid-sec-w-2025-1205.json',
-      'Option 2': 'https://example.com/advisory2.json',
-      'Option 3': 'https://example.com/advisory3.json',
-      'Another Option': 'https://example.com/advisory4.json',
+      "BSI: Schwachstellen in Go":
+        "https://wid.cert-bund.de/.well-known/csaf/white/2025/wid-sec-w-2025-1205.json",
+      "Option 2": "https://example.com/advisory2.json",
+      "Option 3": "https://example.com/advisory3.json",
+      "Another Option": "https://example.com/advisory4.json"
     };
-  advisoryUrl = exampleUrls[selectedOption] || '';
-}
+    advisoryUrl = exampleUrls[selectedOption] || "";
+  }
   $: isCSAF = !(
     !$appStore.doc?.isRevisionHistoryPresent &&
     !$appStore.doc?.isDocPresent &&
@@ -112,9 +111,9 @@
     <Back />
   {/if}
 {/if}
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />
 Example Advisories
 
 <div class="dropdown-container">

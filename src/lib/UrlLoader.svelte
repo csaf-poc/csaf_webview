@@ -16,7 +16,7 @@
   export let tooltiptext: string;
   export let errormessage: string;
   export let placeholder: string;
-  export let url: string = "";
+  export let url = "";
   $: if (url === "") {
     errormessage = "";
   }
