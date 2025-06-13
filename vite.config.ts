@@ -8,11 +8,11 @@
 
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vitest/config";
-import { execSync } from 'child_process';
+import { execSync } from "child_process";
 
 function getSemverVersion() {
   try {
-    const raw = execSync('git describe --tags --long --always', { encoding: 'utf8' }).trim();
+    const raw = execSync("git describe --tags --long --always", { encoding: "utf8" }).trim();
     // Example: v1.2.3-4-gf123abc
     const match = raw.match(/^v?(\d+\.\d+\.\d+)(?:-(\d+)-g([0-9a-f]+))?$/);
 
@@ -23,13 +23,18 @@ function getSemverVersion() {
     const [, version, commitsSinceTag, gitSha] = match;
 
     if (commitsSinceTag && gitSha) {
-      return `${version}-${commitsSinceTag}.g${gitSha}`;
+      // Increment patch version
+      const parts = version.split(".");
+      parts[parts.length - 1] = (parseInt(parts[parts.length - 1]) + 1).toString();
+      const incrementVersion = parts.join(".");
+      return `${incrementVersion}-${commitsSinceTag}.g${gitSha}`;
     }
 
     return version;
   } catch (err) {
-    console.error('Failed to get git version:');
-    process.exit(1);
+    console.error("Failed to get git version: " + err);
+    console.warn("Using placeholder version");
+    return "999.0.0-0";
   }
 }
 

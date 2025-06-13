@@ -19,9 +19,9 @@ A browser based web app (module) to:
   via the ROLIE feed.
 
 Note: As of 2023-12-14 all but one server do not allow web applications
- to read the CSAF information directly. So you will get failures
- due to _CORS restrictions_ often.
- See https://github.com/oasis-tcs/csaf/issues/653 for more details.
+to read the CSAF information directly. So you will get failures
+due to _CORS restrictions_ often.
+See https://github.com/oasis-tcs/csaf/issues/653 for more details.
 
 A backend can act as a proxy to avoid the problems caused by
 CSAF Providers missing `Access-Control-Allow-Origin: *` headers.
@@ -54,7 +54,7 @@ with the handled use cases.
 It is hard to display CSAF documents well;
 which means fast and navigable that users will find the information
 they want easily. Depending on their tasks, users profit from
-tayloring the viewing experience. 
+tayloring the viewing experience.
 
 Being ISDuBA specific means, we cannot easily
 rip out the viewing component there and make it an external module again.
@@ -63,23 +63,22 @@ a deeper integration as well anyway, they may or may not profit that much.
 
 Which leaves us with the questions:
 
-* Is a universal web viewing component (for displaying CSAF documents)
-feasable and useful? 
-* Is there is enough demand for it?
+- Is a universal web viewing component (for displaying CSAF documents)
+  feasable and useful?
+- Is there is enough demand for it?
 
 Thus we would like to hear from you about how close this component gets to what
 you need to support displaying CSAF documents on the web
 and what you would need from it. This helps us planning the maintenance.
 
-
 ### Screenshots
 
 ![](docs/app_single.png)
 
-*Displaying a single document*
+_Displaying a single document_
 
 ![](docs/app_feed.png)
-*Displaying a ROLIE-Feed*
+_Displaying a ROLIE-Feed_
 
 The deployment via github pages is a demo
 and thus may not reflect the current state of the source repository.
@@ -107,6 +106,7 @@ npx playwright install
 ```
 
 ### Run development server
+
 Optionally add `-- --open` to directly open a browser.
 
 `npm run dev -- --open`
@@ -148,6 +148,7 @@ server: {
   },
 ...
 ```
+
 For more information look [here](https://vitejs.dev/config/server-options.html#server-proxy).
 
 Change target to the URL to be proxied.

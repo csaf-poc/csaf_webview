@@ -32,6 +32,7 @@
 
 <div class="markdown-text">
   <div>
+    <!-- eslint-disable-next-line no-misleading-character-class -->
     {note.text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, "")}
   </div>
 </div>
