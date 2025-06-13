@@ -32,8 +32,9 @@ function getSemverVersion() {
 
     return version;
   } catch (err) {
-    console.error("Failed to get git version:");
-    process.exit(1);
+    console.error("Failed to get git version: " + err);
+    console.warn("Using placeholder version");
+    return "999.0.0-0";
   }
 }
 
