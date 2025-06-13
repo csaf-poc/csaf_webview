@@ -32,7 +32,7 @@ function getSemverVersion() {
 
     return version;
   } catch (err) {
-    console.error("Failed to get git version:");
+    console.error("Failed to get git version: " + err);
     process.exit(1);
   }
 }
