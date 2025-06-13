@@ -17,7 +17,7 @@
     "coverage": "vitest run --coverage"
   },
   "engines": {
-    "node": "^20 || ^21 || ^22 || ^23"
+    "node": ">=20.0.0"
   },
   "publishConfig": {
     "access": "public"
