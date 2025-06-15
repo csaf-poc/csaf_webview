@@ -1,5 +1,5 @@
 {
-  "name": "csaf-webview",
+  "name": "@csaf-poc/csaf-webview",
   "version": "1.0.1",
   "scripts": {
     "dev": "vite dev",
@@ -19,6 +19,9 @@
   "license": "Apache-2.0",
   "engines": {
     "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",
