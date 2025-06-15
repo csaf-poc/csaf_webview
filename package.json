@@ -1,5 +1,5 @@
 {
-  "name": "csaf-webview",
+  "name": "@csaf-poc/csaf-webview",
   "version": "1.0.1",
   "scripts": {
     "dev": "vite dev",
