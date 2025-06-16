@@ -1,6 +1,9 @@
 {
   "name": "@csaf-poc/csaf-webview",
   "version": "1.0.1",
+  "keywords": [
+    "csaf"
+  ],
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
