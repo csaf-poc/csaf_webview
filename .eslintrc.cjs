@@ -21,6 +21,17 @@ module.exports = {
     ecmaVersion: 2020,
     extraFileExtensions: [".svelte"]
   },
+  rules: {
+    "@typescript-eslint/no-explicit-any": "off", // Allow any
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        argsIgnorePattern: "^_", // This ignores any variable starting with an underscore in arguments
+        varsIgnorePattern: "^_", // This ignores any variable starting with an underscore
+        caughtErrorsIgnorePattern: "^_" // This ignores caught errors starting with an underscore
+      }
+    ]
+  },
   env: {
     browser: true,
     es2017: true,

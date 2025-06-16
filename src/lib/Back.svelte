@@ -17,8 +17,10 @@
   async function updateUI(id: string) {
     setTimeout(() => {
       const element = document.getElementById(`${id}`);
-      const y = element!.getBoundingClientRect().top + window.scrollY - 150;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.scrollY - 150;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
     }, 200);
   }
   /**

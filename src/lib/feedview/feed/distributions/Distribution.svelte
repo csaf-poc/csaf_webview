@@ -1,4 +1,5 @@
 <!--
+
  This file is Free Software under the Apache-2.0 License
  without warranty, see README.md and LICENSES/Apache-2.0.txt for details.
 
@@ -23,9 +24,11 @@
    * @param e
    */
   const openFeed = (e: Event) => {
-    const url = (e.target as Element).getAttribute("href")!;
-    goto(`${base}/feed?q=${url}`);
-    e.preventDefault();
+    const url: string | null = (e.target as Element).getAttribute("href");
+    if (url) {
+      goto(`${base}/feed?q=${url}`);
+      e.preventDefault();
+    }
   };
 </script>
 

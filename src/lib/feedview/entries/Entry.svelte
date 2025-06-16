@@ -28,10 +28,12 @@
    * @param e
    */
   const open = (e: Event) => {
-    let url: string = (e.target as Element).getAttribute("href")!;
-    switchSingleMode();
-    loadSingleCSAF(url);
-    e.preventDefault();
+    let url: string | null = (e.target as Element).getAttribute("href");
+    if (url) {
+      switchSingleMode();
+      loadSingleCSAF(url);
+      e.preventDefault();
+    }
   };
 </script>
 
