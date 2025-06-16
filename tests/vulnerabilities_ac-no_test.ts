@@ -10,7 +10,6 @@
 
 // This part tests the first half of the Singleview Vulnerabilities collapsible
 import { expect, test } from "@playwright/test";
-import { readFileSync } from "fs";
 
 test("Vulnerabilities collapsible visibility", async ({ page }) => {
   await page.goto("/");

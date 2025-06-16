@@ -30,10 +30,12 @@
    * @param e
    */
   const openLink = (e: Event) => {
-    let url: string = (e.target as Element).getAttribute("href")!;
-    const feed = $page.url.searchParams.get("q") || "";
-    goto(`${base}/?q=${url}&feed=${feed}`);
-    e.preventDefault();
+    let url: string | null = (e.target as Element).getAttribute("href");
+    if (url) {
+      const feed = $page.url.searchParams.get("q") || "";
+      goto(`${base}/?q=${url}&feed=${feed}`);
+      e.preventDefault();
+    }
   };
   const toggle = () => {
     if (visibility === "block") {

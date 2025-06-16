@@ -11,7 +11,6 @@
 // This part tests the vulnerabilities overview collapsible section
 
 import { expect, test } from "@playwright/test";
-import { readFileSync } from "fs";
 
 test("Vulnerabilities overview collapsible visibility", async ({ page }) => {
   await page.goto("/");

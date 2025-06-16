@@ -10,7 +10,6 @@
 
 // This part tests what is avaible without uploading any files
 import { expect, test } from "@playwright/test";
-import { readFileSync } from "fs";
 
 test("index page has expected h1", async ({ page }) => {
   await page.goto("/");

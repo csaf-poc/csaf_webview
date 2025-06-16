@@ -10,7 +10,6 @@
 
 // This part tests the second half of the Singleview Vulnerabilities collapsible
 import { expect, test } from "@playwright/test";
-import { readFileSync } from "fs";
 
 test("Vulnerabilities collapsible CVE entry Product status collapsible visibility", async ({
   page

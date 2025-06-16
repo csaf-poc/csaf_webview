@@ -25,10 +25,12 @@
    */
   const entryIDURLLookup = entries.reduce((acc: EntryIDURLLookup, entry: EntryType) => {
     const selfURL = entry.link.find((link: Link) => link.rel === "self");
-    acc[entry.id] = selfURL!.href;
+    if (selfURL) {
+      acc[entry.id] = selfURL.href;
+    }
     return acc;
   }, {});
-  const ready = (_) => {
+  const ready = (_: any) => {
     // when rendering is done
   };
 </script>

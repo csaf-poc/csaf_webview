@@ -11,7 +11,6 @@
 // This part tests the product tree collapsible section
 
 import { expect, test } from "@playwright/test";
-import { readFileSync } from "fs";
 
 test("Product tree collapsible visibility", async ({ page }) => {
   await page.goto("/");
