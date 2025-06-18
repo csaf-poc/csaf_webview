@@ -19,6 +19,9 @@
   import Vulnerabilities from "./vulnerabilities/Vulnerabilities.svelte";
   import UrlLoader from "$lib/UrlLoader.svelte";
   import { base } from "$app/paths";
+
+  let advisoryUrl = "";
+
   $: isCSAF = !(
     !$appStore.doc?.isRevisionHistoryPresent &&
     !$appStore.doc?.isDocPresent &&
@@ -36,14 +39,13 @@
     tooltiptext={"URL to fetch Advisory from"}
     placeholder={"Advisory URL"}
     errormessage={$appStore.ui.singleErrorMsg}
+    bind:url={advisoryUrl}
   />
 </div>
-
 <div class="upload">
   <Upload />
   <Droparea />
 </div>
-
 {#if isCSAF}
   {#if $appStore.doc}
     <Collapsible header="General" open={$appStore.ui.isGeneralSectionVisible}>
@@ -94,3 +96,13 @@
     <Back />
   {/if}
 {/if}
+<br />
+<br />
+<br />
+<button
+  on:click={() => {
+    advisoryUrl = "https://intevation.de/.well-known/csaf/white/2025/intevation-os-2025-0001.json";
+  }}
+>
+  Load Intevation Example Advisory
+</button>

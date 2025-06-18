@@ -15,6 +15,7 @@
   import Overview from "./feed/Overview.svelte";
   import UrlLoader from "$lib/UrlLoader.svelte";
   import { base } from "$app/paths";
+  let feedUrl = "";
 </script>
 
 <UrlLoader
@@ -22,6 +23,7 @@
   tooltiptext={"URL to fetch provider metadata or ROLIE-feed"}
   placeholder={"ROLIE feed or provider metadata URL"}
   errormessage={$appStore.ui.feedErrorMsg}
+  bind:url={feedUrl}
 />
 <Overview />
 {#if $appStore.currentFeed}
@@ -39,3 +41,13 @@
 {#if $appStore.ui.history.length > 0}
   <Back />
 {/if}
+<br />
+<br />
+<br />
+<button
+  on:click={() => {
+    feedUrl = "https://intevation.de/.well-known/csaf/provider-metadata.json";
+  }}
+>
+  Load Intevation Example Feed
+</button>
