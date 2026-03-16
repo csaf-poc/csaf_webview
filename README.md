@@ -65,7 +65,7 @@ Which leaves us with the questions:
 
 - Is a universal web viewing component (for displaying CSAF documents)
   feasable and useful?
-- Is there is enough demand for it?
+- Is there enough demand for it?
 
 Thus we would like to hear from you about how close this component gets to what
 you need to support displaying CSAF documents on the web
